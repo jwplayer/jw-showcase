@@ -1,8 +1,8 @@
 # JW Showcase
 
-JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.
+JW Showcase is an open-source, dynamically generated video website built around [JW Player](http://www.jwplayer.com) and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.
 
-You can use JW Showcase with other content delivery platforms (or your own web server), but you will need to modify the source code.
+You can use JW Showcase with other content delivery platforms (or your own CDN), but you will need to modify the source code.
 
 ## Supported Features
 
