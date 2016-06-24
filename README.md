@@ -33,12 +33,12 @@ For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwpla
 
 1. Download the latest [pre-compiled stable release](https://github.com/jwplayer/jw-showcase/releases).
 2. Extract the release archive to your web server.
-3. By default, JW Showcase assumes the site is in your top-level web document root (`/`). If you want to use a subdirectory (for example, /video/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, "/video/").
+3. By default, JW Showcase assumes the site is in your top-level web document root (/). If you want to use a subdirectory (for example, /video/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, &lt;base href="/video/"&gt;).
 3. Create a player in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/players) and get its `player key`.
     - The player key is the eight-character identifier of the player, not your JW Player license key. 
     - To get the player key, in the JW Dashboard go to **Players** &gt; **Tools**. In the **Cloud Hosted Player Libraries** section at the top of the page, select the player you want to use from the **Player Title** drop down. Then, in the **Cloud Player Library URL** field, copy the eight-character value that appears just before `.js`. This value is the Player key.
 4. Create one or more video playlist(s) in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/content/playlists) and record their eight-character playlist IDs.
-5. Setup your site by editing the `config.json` file in the directory where you extracted the JW Showcase release files.
+5. Configure your site by editing the `config.json` file in the directory where you extracted the JW Showcase release files.
     - Use the player key from the previously step in the `player` field.
     - Use playlist IDs for the `featuredPlaylist` and `playlists` key.
 6. Visit your site.
