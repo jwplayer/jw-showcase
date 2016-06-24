@@ -16,7 +16,7 @@
 
 - *hardware | device*
 - *operating system | version*
-- *Jabberwocky version | url*
+- *JW Showcase version | url*
 
 ----------------------------------------------------------------------------------------
 
