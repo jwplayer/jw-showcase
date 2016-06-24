@@ -1,0 +1,41 @@
+linters:
+
+  Indentation:
+    width: 4
+
+  NestingDepth:
+    max_depth: 4
+
+  SelectorDepth:
+    max_depth: 4
+
+  MergeableSelector:
+    enabled: false
+
+  LeadingZero:
+    enabled: false
+
+  NameFormat:
+    enabled:             true
+#    variable_convention: '^[a-z][a-z0-9]*(\-[a-z0-9]+)*$'
+    convention:          'hyphenated_lowercase'
+
+  SelectorFormat:
+    enabled:       true
+    convention:    '^((jwy?|is|ng)((\-[a-z0-9]+)+((\-\-[a-z0-9]([A-Za-z0-9]+)*))?)|jwplayer)$'
+    ignored_names: ['html', 'body', 'div', 'span', 'class', 'video', 'img']
+
+  PropertySortOrder:
+    enabled:            true
+    order:              'smacss'
+    ignore_unspecified: false
+    separate_groups:    true
+
+  TrailingZero:
+    enabled: false
+
+  UnnecessaryMantissa:
+    enabled: false
+
+  ImportantRule:
+    enabled: false

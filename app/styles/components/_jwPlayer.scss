@@ -1,0 +1,61 @@
+//
+// jwPlayer
+// --------------------------------
+
+.jw-player {
+
+    .jwplayer {
+
+        .jw-title {
+            display: none;
+        }
+
+        &.jw-state-idle,
+        &.jw-state-paused {
+
+            .jw-overlays {
+                background: rgba($black, 0.6);
+            }
+
+            .jw-display-icon-container {
+                display: table;
+
+                border: 4px solid $white;
+                background: transparent;
+                font-size: 20px;
+            }
+
+            .jw-display-icon-container > .jw-icon {
+                padding-left: 4px;
+
+                color: $radical-red;
+                font-size: 1.7em;
+            }
+        }
+
+        .jw-controls {
+            z-index: $view-z-index + 1;
+        }
+    }
+}
+
+// Hide native chromecast button in video
+// http://stackoverflow.com/a/29780590
+video::-internal-media-controls-overlay-cast-button {
+    display: none;
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include tablet-and-larger () {
+
+    .jw-player {
+        height: 100%;
+
+        .jwplayer.jw-flag-aspect-mode {
+            height: 100% !important;
+        }
+    }
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js" ng-app="app" ng-controller="RootController as rootVm">
+<head>
+  <base href="<%= path %>">
+  <meta charset="utf-8">
+
+  <title><%= siteName %></title>
+  <meta name="description" content="<%= description %>">
+  <meta property="og:title" content="<%= siteName %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/social-image.jpg<% } %>">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body class="jw-theme-{{ ::rootVm.config.theme }}">
+
+<div class="jw-container">
+  <div ui-view=""></div>
+</div>
+
+<div class="jw-cover jw-loading" ng-show="rootVm.dataStore.loading">
+  <div class="jw-loading-icon">
+    <div class="jw-loading-icon-animation">
+      <i class="jwy-icon-buffer"></i>
+    </div>
+  </div>
+</div>
+
+<div class="jw-cover jw-modal ng-cloak" ng-show="rootVm.dataStore.error">
+  <div class="jw-modal-container">
+    <div class="jw-modal-title">Our apologies, you have found an error!</div>
+    <div class="jw-modal-message">
+      {{ rootVm.dataStore.error.message }}
+    </div>
+  </div>
+</div>
+
+<!-- build:js(.) scripts/vendor.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
+<script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/polyfills.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/templates.js"></script>
+<script src="scripts/core/core.module.js"></script>
+<script src="scripts/core/controllers/card.controller.js"></script>
+<script src="scripts/core/controllers/cardSlider.controller.js"></script>
+<script src="scripts/core/controllers/footer.controller.js"></script>
+<script src="scripts/core/controllers/header.controller.js"></script>
+<script src="scripts/core/controllers/root.controller.js"></script>
+<script src="scripts/core/directives/autoScroll.directive.js"></script>
+<script src="scripts/core/directives/card.directive.js"></script>
+<script src="scripts/core/directives/cardPoster.directive.js"></script>
+<script src="scripts/core/directives/cardSlider.directive.js"></script>
+<script src="scripts/core/directives/footer.directive.js"></script>
+<script src="scripts/core/directives/header.directive.js"></script>
+<script src="scripts/core/directives/jwPlayer.directive.js"></script>
+<script src="scripts/core/directives/truncateText.directive.js"></script>
+<script src="scripts/core/services/api.service.js"></script>
+<script src="scripts/core/services/autoScroll.service.js"></script>
+<script src="scripts/core/services/apiConsumer.service.js"></script>
+<script src="scripts/core/services/cardSliderCache.service.js"></script>
+<script src="scripts/core/services/configResolver.service.js"></script>
+<script src="scripts/core/services/dataStore.service.js"></script>
+<script src="scripts/core/services/utils.service.js"></script>
+<script src="scripts/core/services/seo.service.js"></script>
+
+<script src="scripts/dashboard/dashboard.module.js"></script>
+<script src="scripts/dashboard/controllers/dashboard.controller.js"></script>
+
+<script src="scripts/video/video.module.js"></script>
+<script src="scripts/video/controllers/video.controller.js"></script>
+<!-- endbuild -->
+
+<script>
+  window.configLocation = './config.json';
+</script>
+</body>
+</html>

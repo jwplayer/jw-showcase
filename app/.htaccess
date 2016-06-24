@@ -1,0 +1,19 @@
+# Apache Configuration File
+
+# (!) Using `.htaccess` files slows down Apache, therefore, if you have access
+# to the main server config file (usually called `httpd.conf`), you should add
+# this logic there: http://httpd.apache.org/docs/current/howto/htaccess.html.
+
+# ##############################################################################
+# # AngularJS pretty url's                                                     #
+# ##############################################################################
+
+# Needed for the AngularJS html5 routing option. The following rewrite makes
+# sure we don't see 404 pages when navigation to routes directly.
+
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule (.*) index.html [L]
+</ifModule>

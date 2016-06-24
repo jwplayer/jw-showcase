@@ -1,0 +1,22 @@
+<div class="jw-card-slider">
+  <div class="jw-card-slider-container">
+    <div class="jw-card-slider-title" ng-if="vm.title">{{ ::vm.title }}</div>
+    <div class="jw-card-slider-touch">
+      <ul class="jw-card-slider-list">
+        <li class="jw-card-slider-slide" ng-repeat="item in vm.feed.playlist">
+          <jw-card item="item" featured="vm.featured" show-title="true" show-description="true"
+              on-click="vm.onCardClick"></jw-card>
+        </li>
+      </ul>
+    </div>
+    <a class="jw-card-slider-button jw-card-slider-button--left is-hidden-mobile" ng-click="vm.slideLeft($event)">
+      <i class="jwy-icon jwy-icon-angle-left"></i>
+    </a>
+    <a class="jw-card-slider-button jw-card-slider-button--right is-hidden-mobile" ng-click="vm.slideRight($event)">
+      <i class="jwy-icon jwy-icon-angle-right"></i>
+    </a>
+    <ul class="jw-card-slider-indicators">
+      <li class="jw-card-slider-indicator" ng-repeat="item in vm.feed.playlist" ng-click="vm.slideToIndex($index)"></li>
+    </ul>
+  </div>
+</div>

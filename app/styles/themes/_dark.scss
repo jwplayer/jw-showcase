@@ -1,0 +1,60 @@
+
+.jw-theme-dark {
+
+    background-color: $shark;
+
+    .jw-header {
+        background-color: $black;
+    }
+
+    .jw-card .jw-card-title {
+        color: $white;
+    }
+
+    .jw-card-alt {
+        color: $gray;
+    }
+
+    .jw-card-slider.jw-card-slider--default {
+        border-bottom: 1px solid $black;
+    }
+
+    .jw-card-slider .jw-card-slider-button {
+        color: $white;
+    }
+
+    .jw-card-slider-title {
+        color: $white;
+    }
+
+    .jw-card.jw-card--default {
+
+        &.is-visible:not(.jw-card--touch):hover {
+            .jw-card-info {
+                background-color: $black;
+            }
+
+            .jw-card-title,
+            .jw-card-description {
+                color: $white;
+            }
+        }
+
+        .jw-card-info {
+            background-color: $mine-shaft;
+        }
+
+        .jw-card-title,
+        .jw-card-description {
+            color: $white;
+        }
+    }
+
+    .jw-theme-background {
+        background-color: $black-lighter;
+    }
+
+    .jw-footer {
+        color: $white;
+    }
+}

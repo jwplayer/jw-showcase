@@ -1,0 +1,250 @@
+//
+// jwCard
+// --------------------------------
+
+.jw-card {
+    position: relative;
+
+    font-size: 15px;
+    cursor: pointer;
+
+    &:not(.jw-card--touch):hover,
+    &:not(.jw-card--touch).is-active {
+        .jw-card-controls {
+            opacity: 1;
+        }
+    }
+
+    .jw-card-aspect {
+        position: relative;
+        padding-bottom: (9 / 16) * 100%;
+    }
+
+    .jw-card-poster-container {
+        @include cover();
+
+        .jw-card-poster {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .jw-card-poster-filter {
+        @include cover();
+    }
+
+    .jw-card-container {
+        @include cover();
+    }
+
+    .jw-card-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+
+        table-layout: fixed;
+    }
+
+    .jw-card-row {
+        display: table-row;
+    }
+
+    .jw-card-cell {
+        display: table-cell;
+    }
+
+    .jw-card-info {
+        @include transition(background 0.2s ease);
+
+        color: $white;
+    }
+
+    .jw-card-controls {
+        @include single-transition(opacity, 0.2s, ease, 0s);
+        opacity: 0;
+
+        .jw-card-cell {
+            position: relative;
+            height: 100%;
+
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+
+    .jw-card-duration {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 5px;
+
+        color: $white;
+        font-size: 14px;
+    }
+
+    .jw-card-description,
+    .jw-card-title {
+        @include single-transition(color, 0.2s, ease, 0s);
+    }
+
+    .jw-card-title {
+        padding: 10px;
+
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .jw-card-description {
+        padding: 0 10px;
+
+        font-size: 14px;
+        line-height: 16px;
+        overflow: hidden;
+    }
+
+    .jw-card-play-button {
+        @include single-transition(opacity, 0.05s, ease-out, 0s);
+
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+//
+// jwCard--default
+// --------------------------------
+
+.jw-card.jw-card--default {
+    padding-bottom: 39px;
+
+    &.is-visible:not(.jw-card--touch):not(.is-compact):hover {
+        .jw-card-info .jw-card-info-mask {
+            height: 100px;
+        }
+
+        .jw-card-poster-filter {
+            opacity: 1;
+        }
+    }
+
+    .jw-card-poster-filter {
+        @include single-transition(opacity, 0.2s, ease, 0s);
+        background-color: rgba($black, 0.6);
+        opacity: 0;
+    }
+
+    .jw-card-info-mask {
+        @include transition(height 0.2s ease);
+        height: 39px;
+        overflow: hidden;
+    }
+
+    .jw-card-info {
+        .jw-card-cell {
+            height: 39px;
+        }
+    }
+
+    .jw-card-description {
+        max-height: 3 * 16px;
+    }
+
+}
+
+//
+// jwCard--featured
+// --------------------------------
+
+.jw-card.jw-card--featured {
+    font-size: 32px;
+
+    &.is-visible:not(.jw-card--touch).is-active,
+    &.is-visible:not(.jw-card--touch):hover {
+        .jw-card-poster-filter {
+            background-color: rgba($black, 0.4);
+        }
+    }
+
+    .jw-card-duration {
+        display: none;
+    }
+
+    .jw-card-info {
+        .jw-card-cell {
+            padding-bottom: 10px;
+        }
+    }
+
+    .jw-card-title {
+        padding: 0 50px 20px;
+    }
+
+    .jw-card-description {
+        max-height: 6 * 18px;
+        padding: 0 150px 0 50px;
+        line-height: 18px;
+    }
+
+    .jw-card-poster-filter {
+        @include background-image(linear-gradient(rgba($black, 0) 50%, rgba($black, 0.9) 95%));
+        @include single-transition(background, 0.2s, ease, 0s);
+    }
+}
+
+//
+// jwCardAlt
+// --------------------------------
+
+.jw-card-alt {
+    padding: 20px;
+
+    > span {
+        display: inline-block;
+        min-height: 20px;
+        max-height: 3 * 18px;
+
+        line-height: 18px;
+        overflow: hidden;
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only () {
+
+    .jw-card.jw-card--featured .jw-card-title {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 20px 20px 0;
+    }
+}
+
+@include mobile-and-tablet () {
+
+    .jw-card.jw-card--featured {
+        font-size: 21px;
+    }
+}
+
+@include tablet-only () {
+
+    .jw-card.jw-card--featured {
+
+        .jw-card-title {
+            padding: 0 30px 10px;
+        }
+
+        .jw-card-description {
+            max-height: 3 * 18px;
+            padding: 0 30px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+//
+// jwHeader
+// --------------------------------
+
+.jw-header {
+    min-height: 72px;
+    padding: 5px 20px;
+
+    background-color: $white;
+    text-align: center;
+
+    .jw-header-logo {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,33 @@
+<div class="jw-jumbotron" ng-mousemove="vm.mouseMoveHandler()">
+  <div class="jw-jumbotron-content">
+    <jw-player settings="::vm.playerSettings" on-ready="vm.onReady" on-play="vm.onPlay" on-pause="vm.onPause"
+        on-complete="vm.onComplete">
+    </jw-player>
+
+    <div class="jw-meta" ng-show="vm.controlsVisible">
+      <div class="jw-meta-title">{{ ::vm.item.title }}</div>
+      <div class="jw-meta-duration"><span>{{ ::vm.duration }}</span></div>
+      <div class="jw-meta-description">{{ ::vm.item.description }}</div>
+      <div class="jw-meta-social">
+        <a ng-href="{{ ::vm.facebookShareLink }}" target="_blank" class="jw-button jw-button-share">
+          <i class="jwy-icon-facebook"></i>
+        </a>
+        <a ng-href="{{ ::vm.twitterShareLink }}" target="_blank" class="jw-button jw-button-share">
+          <i class="jwy-icon-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="jw-jumbotron-controls" ng-show="vm.controlsVisible">
+    <a href="./" class="jw-button jw-button-back">
+      <i class="jwy-icon-double-angle-left"></i>
+    </a>
+  </div>
+</div>
+
+<div class="jw-row" ng-if="vm.feed">
+  <jw-card-slider feed="vm.feed" featured="false" spacing="12" feed-title="'More like this'"
+      visible-items="[2,2,3,4,5]" on-card-click="vm.onCardClickHandler"></jw-card-slider>
+</div>
+
+<jw-footer></jw-footer>

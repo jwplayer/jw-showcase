@@ -1,0 +1,36 @@
+//
+// jwJumbotron
+// --------------------------------
+
+.jw-jumbotron {
+    position: relative;
+    width: 100%;
+    min-height: 70%;
+
+    background-color: $shark;
+
+    .jw-jumbotron-controls {
+        @include cover(auto, auto);
+        padding: 40px 0 0 40px;
+
+        z-index: $view-z-index + 5;
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only () {
+
+    .jw-jumbotron .jw-jumbotron-controls {
+        padding: 20px 0 0 20px;
+    }
+}
+
+@include tablet-and-larger () {
+
+    .jw-jumbotron .jw-jumbotron-content {
+        @include cover();
+    }
+}

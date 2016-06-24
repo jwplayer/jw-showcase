@@ -1,0 +1,35 @@
+
+//
+// jwModal
+// --------------------------------
+
+.jw-modal {
+    background: url('../images/error-desktop.jpg') center no-repeat;
+    background-color: $white-off;
+    background-size: cover;
+    z-index: $view-z-index + 100;
+
+    .jw-modal-container {
+        @include transform(translate(-50%, -50%));
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+    }
+
+    .jw-modal-title,
+    .jw-modal-message {
+        color: $black;
+        text-align: center;
+    }
+
+    .jw-modal-title {
+        padding: 10px 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .jw-modal-message {
+        padding: 10px 20px;
+    }
+}
