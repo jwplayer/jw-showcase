@@ -42,3 +42,7 @@ For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwpla
     - Use the player key from the previously step in the `player` field.
     - Use playlist IDs for the `featuredPlaylist` and `playlists` key.
 6. Visit your site.
+
+## Support and Bug Reporting 
+
+To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
