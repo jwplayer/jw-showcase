@@ -32,12 +32,7 @@ For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwpla
 ### Basic Setup
 
 1. Download the latest [pre-compiled stable release](https://github.com/jwplayer/jw-showcase/releases).
-2. Extract the release to your web server.
-
-  ```
-  $ tar -C /path/to/www/ -zxvf {pre-compiled-version}.gz
-  ```
-
+2. Extract the release archive to your web server.
 3. By default, JW Showcase assumes the site is in your top-level web document root (`/`). If you want to use a subdirectory (for example, /video/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, "/video/").
 3. Create a player in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/players) and get its `player key`.
     - The player key is the eight-character identifier of the player, not your JW Player license key. 
@@ -47,66 +42,3 @@ For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwpla
     - Use the player key from the previously step in the `player` field.
     - Use playlist IDs for the `featuredPlaylist` and `playlists` key.
 6. Visit your site.
-
-# Build from Source Code
-
-Building from source is not required to create a JW Showcase site and should only be done by advanced users.
-
-## Install Required Tools
-
-Make sure you have [Node, NPM](https://nodejs.org) and [Compass](http://compass-style.org/) installed on your machine, then install Grunt and Bower globally using NPM.
-
-```
-$ npm i grunt-cli -g
-$ npm i bower -g
-```
-
-Install NPM and Bower dependencies:
-
-```
-$ cd /path/to/source/
-$ npm install
-```
-
-## Testing Locally
-
-You can test your site in a local environment using Grunt. To start the Grunt livereload server on your local machine run `grunt serve`.
-
-If you want to build the ready-to-release application run `grunt build`.
-
-Use the `--url` option to define the URL of your location where the JW Showcase application will run. This will populate the `<base href="">` tag and `<meta property="og:image">` tags with your url.
-
-```
-$ grunt build --url=http://yourdomain.com/path/to/JWShowcase/
-```
-
-To deploy your site, copy the contents of the `dist/` folder to your web root and then follow the instructions in [Getting Started](https://github.com/jwplayer/JW Showcase/wiki/Getting-Started).
-
-## Automated Testing
-
-To run Protractor tests locally make sure you have an running selenium standalone server on port 4444. Then execute
-the following command to start testing.
-
-```
-$ grunt test:protractor:local
-```
-
-To test in BrowserStack add the credentials to your environment variables.
-
-```
-$ export BROWSERSTACK_USER=username
-$ export BROWSERSTACK_KEY=authkey
-```
-
-Then run the following Grunt task.
-
-```
-$ grunt test:protractor:browserstack
-```
-
-## Contributing
-
-We welcome contributions to JW Showcase in the form of pull requests to our develop branch.
-
-- [The seven rules of a great commit message](http://chris.beams.io/posts/git-commit/)
-- [AngularJS styleguide](https://github.com/johnpapa/angular-styleguide/tree/master/a1)
