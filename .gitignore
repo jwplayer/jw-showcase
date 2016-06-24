@@ -1,0 +1,11 @@
+node_modules
+bower_components
+dist
+
+.tmp
+.sass-cache
+.DS_Store
+.idea
+
+test/reports
+!test/reports/.gitkeep
