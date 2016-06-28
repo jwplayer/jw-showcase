@@ -37,12 +37,20 @@
     }
 
     //
+    // jwCardSliderAlign
+    // --------------------------------
+
+    .jw-card-slider-align {
+        margin: 0 90px;
+    }
+
+    //
     // jwCardSliderList
     // --------------------------------
 
     .jw-card-slider-list {
         position: relative;
-        margin: 0 90px;
+        margin: 0;
         padding: 0;
         list-style: none;
         white-space: nowrap;
@@ -219,7 +227,7 @@
                 margin: 20px;
             }
 
-            .jw-card-slider-list {
+            .jw-card-slider-align {
                 margin: 0 20px;
             }
         }

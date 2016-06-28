@@ -132,7 +132,7 @@
 
                 window.addEventListener('resize', resizeDebounced);
 
-                $('.jw-card-slider-touch').addEventListener('touchstart', onTouchStart, false);
+                $('.jw-card-slider-container').addEventListener('touchstart', onTouchStart, false);
 
                 element.addClass(className);
 
@@ -360,8 +360,8 @@
              */
             function onTouchStart (event) {
 
-                var coords    = getCoords(event),
-                    touchContainer = $('.jw-card-slider-touch');
+                var coords         = getCoords(event),
+                    touchContainer = $('.jw-card-slider-container');
 
                 touchContainer.addEventListener('touchmove', onTouchMove);
                 touchContainer.addEventListener('touchend', onTouchEnd);
@@ -434,7 +434,7 @@
              */
             function afterTouchEnd () {
 
-                var touchContainer = $('.jw-card-slider-touch');
+                var touchContainer = $('.jw-card-slider-container');
 
                 startCoords = null;
 
