@@ -55,6 +55,7 @@
             display: inline-block;
             position: relative;
             white-space: normal;
+            vertical-align: top;
         }
     }
 
@@ -145,6 +146,8 @@
 // --------------------------------
 
 .jw-card-slider.jw-card-slider--featured {
+
+    background: $black-lighter;
 
     .jw-card-slider-button.jw-card-slider-button--right {
         margin-left: 40px;

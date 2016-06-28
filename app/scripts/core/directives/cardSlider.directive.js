@@ -230,7 +230,15 @@
              */
             function update (animate) {
 
+                var listWidth = $('.jw-card-slider-list').offsetWidth,
+                    offset    = 0;
+
+                if (scope.vm.featured) {
+                    offset = (listWidth - slideWidth) / 2;
+                }
+
                 translateX = (index * (slideWidth + scope.vm.spacing)) * -1;
+                translateX += offset;
 
                 updateSlides();
                 updateIndicator();
