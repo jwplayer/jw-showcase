@@ -107,20 +107,30 @@
          */
         function getVideoDurationByItem (item) {
 
-            var sourceWithDuration = item.sources
-                .find(function (source) {
-                    return source.duration > 0;
-                });
+            var source,
+                duration = 0;
 
-            if (!sourceWithDuration) {
-                return '0 sec';
+            if (angular.isNumber(item.duration)) {
+
+                duration = item.duration;
+            }
+            else {
+
+                source = item.sources
+                    .find(function (source) {
+                        return source.duration > 0;
+                    });
+
+                if (source && source.duration) {
+                    duration = source.duration;
+                }
             }
 
-            if (sourceWithDuration.duration < 60) {
-                return sourceWithDuration.duration + ' sec';
+            if (duration < 60) {
+                return duration + ' sec';
             }
 
-            return Math.ceil(sourceWithDuration.duration / 60) + ' min';
+            return Math.ceil(duration / 60) + ' min';
         }
 
         /**
