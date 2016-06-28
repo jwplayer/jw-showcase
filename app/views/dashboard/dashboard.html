@@ -6,7 +6,7 @@
 </div>
 
 <div class="jw-row jw-theme-background is-visible-mobile"
-    ng-repeat="item in vm.dataStore.featuredFeed.playlist | limitTo:3">
+    ng-repeat="item in vm.dataStore.featuredFeed.playlist">
   <jw-card class="is-active" item="item" featured="true" show-title="true" show-description="false" visible-items="1"
       on-click="vm.onCardClickHandler"></jw-card>
   <div class="jw-card-alt">

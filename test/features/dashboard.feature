@@ -7,10 +7,10 @@ Feature: Dashboard page
     Then the featured slider should be visible
 
   @mobile
-  Scenario: As a user I want to see 3 featured items
+  Scenario: As a user I want to see 8 featured items
     Given I go to the "index" page
     When I do nothing
-    Then there should be "3" featured items visible
+    Then there should be "8" featured items visible
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the default sliders
