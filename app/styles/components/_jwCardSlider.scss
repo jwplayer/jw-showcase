@@ -37,12 +37,20 @@
     }
 
     //
+    // jwCardSliderAlign
+    // --------------------------------
+
+    .jw-card-slider-align {
+        margin: 0 90px;
+    }
+
+    //
     // jwCardSliderList
     // --------------------------------
 
     .jw-card-slider-list {
         position: relative;
-        margin: 0 90px;
+        margin: 0;
         padding: 0;
         list-style: none;
         white-space: nowrap;
@@ -55,6 +63,7 @@
             display: inline-block;
             position: relative;
             white-space: normal;
+            vertical-align: top;
         }
     }
 
@@ -146,6 +155,8 @@
 
 .jw-card-slider.jw-card-slider--featured {
 
+    background: $black-lighter;
+
     .jw-card-slider-button.jw-card-slider-button--right {
         margin-left: 40px;
     }
@@ -216,7 +227,7 @@
                 margin: 20px;
             }
 
-            .jw-card-slider-list {
+            .jw-card-slider-align {
                 margin: 0 20px;
             }
         }
