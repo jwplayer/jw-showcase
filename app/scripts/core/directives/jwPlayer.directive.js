@@ -39,8 +39,8 @@
      * ```
      *
      */
-    JwPlayerDirective.$inject = ['$parse', '$timeout', 'utils'];
-    function JwPlayerDirective ($parse, $timeout, utils) {
+    JwPlayerDirective.$inject = ['$parse', '$timeout', 'utils', 'config'];
+    function JwPlayerDirective ($parse, $timeout, utils, config) {
 
         return {
             scope:       {
@@ -72,7 +72,15 @@
                     .attr('id', playerId);
 
                 playerInstance = jwplayer(playerId)
-                    .setup(scope.settings);
+                    .setup(angular.extend({
+                        plugins: {
+                            '/scripts/countdown.js': {
+                                enabled: !!scope.settings.countdown,
+                                offset:  config.autoAdvanceWarningOffset,
+                                message: config.autoAdvanceMessage
+                            }
+                        }
+                    }, scope.settings));
 
                 if (scope.settings.width) {
                     element.css('width', scope.settings.width);
