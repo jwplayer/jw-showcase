@@ -29,8 +29,11 @@
      *
      * @param {Object=} settings Jwplayer settings that will be used in the `.setup()` method.
      *
+     * @requires $browser
      * @requires $parse
+     * @requires $timeout
      * @requires app.core.utils
+     * @requires config
      *
      * @example
      *
@@ -39,8 +42,8 @@
      * ```
      *
      */
-    JwPlayerDirective.$inject = ['$parse', '$timeout', 'utils'];
-    function JwPlayerDirective ($parse, $timeout, utils) {
+    JwPlayerDirective.$inject = ['$browser', '$parse', '$timeout', 'utils', 'config'];
+    function JwPlayerDirective ($browser, $parse, $timeout, utils, config) {
 
         return {
             scope:       {
@@ -67,12 +70,22 @@
              */
             function activate () {
 
+                var plugins = {};
+
+                plugins[$browser.baseHref() + 'scripts/countdown.js'] = {
+                    enabled: !!scope.settings.countdown,
+                    offset:  config.autoAdvanceWarningOffset,
+                    message: config.autoAdvanceMessage
+                };
+
                 angular
                     .element(element[0].querySelector('.jw-player-ref'))
                     .attr('id', playerId);
 
                 playerInstance = jwplayer(playerId)
-                    .setup(scope.settings);
+                    .setup(angular.extend({
+                        plugins: plugins
+                    }, scope.settings));
 
                 if (scope.settings.width) {
                     element.css('width', scope.settings.width);

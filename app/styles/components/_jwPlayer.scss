@@ -36,6 +36,22 @@
         .jw-controls {
             z-index: $view-z-index + 1;
         }
+
+        .jw-overlays {
+
+            .jw-countdown {
+                position: absolute;
+                top: 40px;
+                right: 0;
+                bottom: auto !important;
+                padding: 10px;
+
+                background: $black-lighter;
+                color: $white;
+                font-size: 18px;
+                box-shadow: 0 0 20px rgba($white, .3);
+            }
+        }
     }
 }
 
@@ -48,6 +64,14 @@ video::-internal-media-controls-overlay-cast-button {
 //
 // mediaQueries
 // --------------------------------
+
+@include mobile-only () {
+
+    .jw-player .jwplayer .jw-overlays .jw-countdown {
+        top: 21px;
+        font-size: 12px;
+    }
+}
 
 @include tablet-and-larger () {
 

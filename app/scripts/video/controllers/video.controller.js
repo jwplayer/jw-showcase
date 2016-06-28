@@ -30,10 +30,11 @@
      * @requires app.core.dataStore
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$timeout', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $timeout, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$timeout', 'config', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $timeout, config, utils, feed, item) {
 
         var vm = this,
+            nextItem,
             mouseMoveTimeout;
 
         vm.item              = item;
@@ -47,7 +48,7 @@
         vm.onReady    = onPlayerEvent;
         vm.onPlay     = onPlayerEvent;
         vm.onPause    = onPlayerEvent;
-        vm.onComplete = onPlayerEvent;
+        vm.onComplete = onCompleteEvent;
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
@@ -62,6 +63,12 @@
          */
         function activate () {
 
+            var itemIndex = feed.playlist.findIndex(function (item) {
+                return item.mediaid === vm.item.mediaid;
+            });
+
+            nextItem = feed.playlist[itemIndex + 1];
+
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
             vm.feed.playlist = vm.feed.playlist.filter(function (item) {
@@ -73,15 +80,28 @@
                 height:      '100%',
                 aspectratio: '16:9',
                 autostart:   $stateParams.autoStart,
-                playlist:    [{
-                    mediaid:     vm.item.mediaid,
-                    title:       vm.item.title,
-                    description: vm.item.description,
-                    image:       vm.item.image,
-                    sources:     vm.item.sources,
-                    tracks:      vm.item.tracks
-                }],
-                sharing:     false
+                playlist:    [generatePlaylistItem(vm.item)],
+                sharing:     false,
+                countdown:   !!nextItem
+            };
+        }
+
+        /**
+         * Generate playlist item from feed item
+         *
+         * @param {Object}      item    Item from feed
+         *
+         * @returns {Object} Playlist item
+         */
+        function generatePlaylistItem (item) {
+
+            return {
+                mediaid:     item.mediaid,
+                title:       item.title,
+                description: item.description,
+                image:       item.image,
+                sources:     item.sources,
+                tracks:      item.tracks
             };
         }
 
@@ -93,6 +113,24 @@
 
             vm.isPlaying       = 'play' === event.type;
             vm.controlsVisible = !vm.isPlaying;
+        }
+
+        /**
+         * Handle complete event
+         * @param event
+         */
+        function onCompleteEvent (event) {
+
+            if (config.autoAdvance && nextItem) {
+
+                return $state.go('root.video', {
+                    mediaId:   nextItem.mediaid,
+                    feedId:    nextItem.feedid,
+                    autoStart: true
+                });
+            }
+
+            onPlayerEvent(event);
         }
 
         /**
