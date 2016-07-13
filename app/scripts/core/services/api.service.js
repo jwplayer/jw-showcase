@@ -28,8 +28,10 @@
      * @requires $http
      * @requires $log
      */
-    apiService.$inject = ['$http', '$q'];
-    function apiService ($http, $q) {
+    apiService.$inject = ['$http', '$q', '$filter'];
+    function apiService ($http, $q, $filter) {
+
+        var imageFilter = $filter('jwImage');
 
         /**
          * @ngdoc method
@@ -62,6 +64,7 @@
                 if (feed && angular.isArray(feed.playlist)) {
                     feed.playlist = feed.playlist.map(function (item) {
                         item.feedid = feed.feedid;
+                        item.image  = imageFilter(item.image);
                         return item;
                     });
                 }
