@@ -79,6 +79,7 @@
                 width:       '100%',
                 height:      '100%',
                 aspectratio: '16:9',
+                ph:          4,
                 autostart:   $stateParams.autoStart,
                 playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false,
