@@ -1,0 +1,43 @@
+
+@include mobile-only () {
+    .jw-video {
+
+        .jwplayer.jw-flag-overlay-open-related ~,
+        .jwplayer.jw-flag-overlay-open-share ~ {
+            .jw-jumbotron-controls {
+                display: none;
+            }
+        }
+
+        .jwplayer.jw-state-playing.jw-flag-user-inactive ~, // inactive and playing
+        .jwplayer.jw-flag-ads ~ { // ad playback
+
+            .jw-meta {
+                opacity: 0;
+            }
+
+            .jw-jumbotron-controls {
+                display: none;
+            }
+        }
+    }
+}
+
+@include tablet-and-larger () {
+    .jw-video {
+
+        .jwplayer.jw-state-playing.jw-flag-user-inactive ~, // inactive and playing
+        .jwplayer.jw-flag-overlay-open-related ~, // related overlay open
+        .jwplayer.jw-flag-overlay-open-share ~, // share overlay open
+        .jwplayer.jw-flag-ads ~ { // ad playback
+
+            .jw-meta {
+                opacity: 0;
+            }
+
+            .jw-jumbotron-controls {
+                display: none;
+            }
+        }
+    }
+}
