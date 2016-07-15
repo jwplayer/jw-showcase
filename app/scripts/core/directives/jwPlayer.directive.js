@@ -50,7 +50,6 @@
                 settings: '='
             },
             replace:     true,
-            transclude:  true,
             templateUrl: 'views/core/jwPlayer.html',
             link:        link
         };
@@ -79,7 +78,7 @@
                 };
 
                 angular
-                    .element(element[0].querySelector('.jw-player-ref'))
+                    .element(element[0])
                     .attr('id', playerId);
 
                 playerInstance = jwplayer(playerId)
