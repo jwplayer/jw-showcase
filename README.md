@@ -17,7 +17,6 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 ### Unsupported Features
 
 - Security-related features (encrypted HLS, DRM, signed URLs)
-- Captions
 - Search
 - Self-hosted JW Players
 
