@@ -6,7 +6,9 @@
     <div class="jw-meta">
       <div class="jw-meta-title">{{ ::vm.item.title }}</div>
       <div class="jw-meta-duration"><span>{{ ::vm.duration }}</span></div>
-      <div class="jw-meta-description" jw-truncate-text="::vm.item.description"></div>
+      <div class="jw-meta-description">
+        <p>{{ ::vm.item.description }}</p>
+      </div>
       <div class="jw-meta-social">
         <a ng-href="{{ ::vm.facebookShareLink }}" target="_blank" class="jw-button jw-button-share">
           <i class="jwy-icon-facebook"></i>

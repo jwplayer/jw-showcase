@@ -32,7 +32,7 @@
         .jwplayer.jw-flag-ads ~ { // ad playback
 
             .jw-meta {
-                opacity: 0;
+                display: none;
             }
 
             .jw-jumbotron-controls {

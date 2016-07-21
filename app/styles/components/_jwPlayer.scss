@@ -8,6 +8,15 @@
         display: none;
     }
 
+    .jw-dock {
+        pointer-events: none;
+        margin: 30px;
+
+        .jw-dock-button {
+            pointer-events: all;
+        }
+    }
+
     &.jw-state-idle,
     &.jw-state-paused {
 
@@ -32,7 +41,7 @@
     }
 
     .jw-controls {
-        z-index: $view-z-index + 1;
+        z-index: $view-z-index + 6;
     }
 
     .jw-overlays {
@@ -74,5 +83,12 @@ video::-internal-media-controls-overlay-cast-button {
 
     .jwplayer.jw-reset.jw-flag-aspect-mode {
         height: 100% !important;
+    }
+
+    .jwplayer.jw-reset {
+
+        &:not(.jw-flag-fullscreen) .jw-display-icon-container {
+            top: 40%;
+        }
     }
 }
