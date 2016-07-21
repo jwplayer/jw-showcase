@@ -83,7 +83,7 @@
                 autostart:   $stateParams.autoStart,
                 playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false,
-                countdown:   !!nextItem
+                countdown:   !!nextItem && config.autoAdvance
             };
         }
 
@@ -122,7 +122,7 @@
          */
         function onCompleteEvent (event) {
 
-            if (config.autoAdvance && nextItem) {
+            if (!!nextItem && config.autoAdvance) {
 
                 return $state.go('root.video', {
                     mediaId:   nextItem.mediaid,

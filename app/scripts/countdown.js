@@ -30,7 +30,6 @@
     function countdown (player, options, element) {
 
         var _              = window.jwplayer._,
-            visible        = false,
             playlistIndex  = 0,
             playlistLength = 1;
 
@@ -41,6 +40,7 @@
         }, options);
 
         element.className += ' jw-countdown';
+        element.style.display = 'none';
 
         if (false === options.enabled) {
             return;
@@ -75,16 +75,15 @@
         function timeEventHandler (event) {
 
             var remainingTime = Math.round(event.duration - event.position),
-                showCountdown = remainingTime <= options.offset;
+                showCountdown = remainingTime <= options.offset,
+                toDisplay     = showCountdown ? 'block' : 'none';
 
             if (showCountdown) {
                 element.textContent = options.message.replace('${offset}', remainingTime.toString());
             }
 
-            if (showCountdown !== visible) {
-                element.style.display = showCountdown ? 'block' : 'none';
-
-                visible = showCountdown;
+            if (toDisplay !== element.style.display) {
+                element.style.display = toDisplay;
             }
         }
 
