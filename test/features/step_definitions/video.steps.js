@@ -173,7 +173,7 @@ var stepsDefinition = function () {
                     .findElement(by.css('.jw-card-slider-title'))
                     .getAttribute('innerText')
                     .then(function (txt) {
-                        expect(txt).to.equal('More like this');
+                        expect(txt).to.equal('More like this (7)');
                         callback();
                     });
             });
