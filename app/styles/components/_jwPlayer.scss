@@ -9,8 +9,9 @@
     }
 
     .jw-dock {
-        pointer-events: none;
         margin: 30px;
+
+        pointer-events: none;
 
         .jw-dock-button {
             pointer-events: all;
