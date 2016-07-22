@@ -49,7 +49,6 @@
                 settings: '='
             },
             replace:     true,
-            transclude:  true,
             templateUrl: 'views/core/jwPlayer.html',
             link:        link
         };
@@ -70,7 +69,7 @@
             function activate () {
 
                 angular
-                    .element(element[0].querySelector('.jw-player-ref'))
+                    .element(element[0])
                     .attr('id', playerId);
 
                 playerInstance = jwplayer(playerId)

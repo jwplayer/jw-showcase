@@ -26,21 +26,17 @@
      *
      * @requires $state
      * @requires $stateParams
-     * @requires $timeout
-     * @requires app.core.dataStore
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$timeout', 'config', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $timeout, config, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, utils, feed, item) {
 
-        var vm = this,
-            mouseMoveTimeout;
+        var vm = this;
 
         vm.item              = item;
         vm.feed              = feed;
         vm.duration          = 0;
         vm.isPlaying         = false;
-        vm.controlsVisible   = true;
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
@@ -51,7 +47,6 @@
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
-        vm.mouseMoveHandler   = mouseMoveHandler;
 
         activate();
 
@@ -105,24 +100,6 @@
         function onPlayerEvent (event) {
 
             vm.isPlaying       = 'play' === event.type;
-            vm.controlsVisible = !vm.isPlaying;
-        }
-
-        /**
-         * Handle mouse move event
-         */
-        function mouseMoveHandler () {
-
-            if (!vm.controlsVisible) {
-                vm.controlsVisible = true;
-            }
-
-            $timeout.cancel(mouseMoveTimeout);
-            mouseMoveTimeout = $timeout(function () {
-                if (true === vm.isPlaying) {
-                    vm.controlsVisible = false;
-                }
-            }, 4000);
         }
 
         /**
