@@ -34,7 +34,6 @@
     function VideoController ($state, $stateParams, $timeout, config, utils, feed, item) {
 
         var vm = this,
-            nextItem,
             mouseMoveTimeout;
 
         vm.item              = item;
@@ -48,7 +47,7 @@
         vm.onReady    = onPlayerEvent;
         vm.onPlay     = onPlayerEvent;
         vm.onPause    = onPlayerEvent;
-        vm.onComplete = onCompleteEvent;
+        vm.onComplete = onPlayerEvent;
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
@@ -63,12 +62,6 @@
          */
         function activate () {
 
-            var itemIndex = feed.playlist.findIndex(function (item) {
-                return item.mediaid === vm.item.mediaid;
-            });
-
-            nextItem = feed.playlist[itemIndex + 1];
-
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
             vm.feed.playlist = vm.feed.playlist.filter(function (item) {
@@ -82,8 +75,7 @@
                 ph:          4,
                 autostart:   $stateParams.autoStart,
                 playlist:    [generatePlaylistItem(vm.item)],
-                sharing:     false,
-                countdown:   !!nextItem && config.autoAdvance
+                sharing:     false
             };
         }
 
@@ -114,24 +106,6 @@
 
             vm.isPlaying       = 'play' === event.type;
             vm.controlsVisible = !vm.isPlaying;
-        }
-
-        /**
-         * Handle complete event
-         * @param event
-         */
-        function onCompleteEvent (event) {
-
-            if (!!nextItem && config.autoAdvance) {
-
-                return $state.go('root.video', {
-                    mediaId:   nextItem.mediaid,
-                    feedId:    nextItem.feedid,
-                    autoStart: true
-                });
-            }
-
-            onPlayerEvent(event);
         }
 
         /**
