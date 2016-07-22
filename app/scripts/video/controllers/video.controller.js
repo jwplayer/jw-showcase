@@ -26,14 +26,12 @@
      *
      * @requires $state
      * @requires $stateParams
-     * @requires app.core.config
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', 'config', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, config, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, utils, feed, item) {
 
-        var vm = this,
-            nextItem;
+        var vm = this;
 
         vm.item              = item;
         vm.feed              = feed;
@@ -45,7 +43,7 @@
         vm.onReady    = onPlayerEvent;
         vm.onPlay     = onPlayerEvent;
         vm.onPause    = onPlayerEvent;
-        vm.onComplete = onCompleteEvent;
+        vm.onComplete = onPlayerEvent;
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
@@ -58,12 +56,6 @@
          * Initialize the controller.
          */
         function activate () {
-
-            var itemIndex = feed.playlist.findIndex(function (item) {
-                return item.mediaid === vm.item.mediaid;
-            });
-
-            nextItem = feed.playlist[itemIndex + 1];
 
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
@@ -78,8 +70,7 @@
                 ph:          4,
                 autostart:   $stateParams.autoStart,
                 playlist:    [generatePlaylistItem(vm.item)],
-                sharing:     false,
-                countdown:   !!nextItem
+                sharing:     false
             };
         }
 
@@ -109,24 +100,6 @@
         function onPlayerEvent (event) {
 
             vm.isPlaying       = 'play' === event.type;
-        }
-
-        /**
-         * Handle complete event
-         * @param event
-         */
-        function onCompleteEvent (event) {
-        
-            if (config.autoAdvance && nextItem) {
-        
-                return $state.go('root.video', {
-                    mediaId:   nextItem.mediaid,
-                    feedId:    nextItem.feedid,
-                    autoStart: true
-                });
-            }
-        
-            onPlayerEvent(event);
         }
 
         /**
