@@ -26,10 +26,11 @@
      *
      * @requires $state
      * @requires $stateParams
+     * @requires $location
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, utils, feed, item) {
 
         var vm = this;
 
@@ -127,7 +128,7 @@
             var facebookShareLink = 'https://www.facebook.com/sharer/sharer.php?p[url]={url}';
 
             return facebookShareLink
-                .replace('{url}', encodeURIComponent(window.location.href));
+                .replace('{url}', encodeURIComponent($location.absUrl()));
         }
 
         /**
@@ -140,7 +141,7 @@
             var twitterShareLink = 'http://twitter.com/share?text={text}&amp;url={url}';
 
             return twitterShareLink
-                .replace('{url}', encodeURIComponent(window.location.href))
+                .replace('{url}', encodeURIComponent($location.absUrl()))
                 .replace('{text}', encodeURIComponent(item.title));
         }
     }
