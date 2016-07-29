@@ -97,6 +97,11 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^I move my mouse over the video$/, function (callback) {
+
+        if ('safari' === browser.browserName) {
+            return callback(null, 'pending');
+        }
+
         browser
             .waitForAngular()
             .then(function () {

@@ -127,12 +127,21 @@ var stepsDefinition = function () {
 
     this.When(/^I move my mouse to the first item in the default slider$/, function (callback) {
 
+        if ('safari' === browser.browserName) {
+            return callback(null, 'pending');
+        }
+
         browser
-            .actions()
-            .mouseMove(browser.findElement(by.css('.jw-card-slider--default .jw-card-slider-slide:first-child')))
-            .perform()
-            .then(function () {
-                setTimeout(callback, 1000);
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+
+                browser
+                    .actions()
+                    .mouseMove(elements[0].findElement(by.css('.jw-card-slider-slide:first-child')))
+                    .perform()
+                    .then(function () {
+                        setTimeout(callback, 1000);
+                    });
             });
     });
 

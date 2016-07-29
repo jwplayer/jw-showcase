@@ -21,6 +21,17 @@ var configure = function () {
     this.After(function () {
         browser.clearMockModules();
     });
+
+    this.Before(function () {
+
+        if (!browser.browserName) {
+            return browser
+                .getCapabilities()
+                .then(function (capabilities) {
+                    browser.browserName = capabilities.get('browserName');
+                });
+        }
+    })
 };
 
 module.exports = configure;
