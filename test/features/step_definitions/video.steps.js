@@ -244,12 +244,12 @@ var stepsDefinition = function () {
                 browser
                     .findElement(by.css('video.jw-video'))
                     .getSize()
-                    .then(function (s) {
+                    .then(function (size) {
                         browser
                             .findElement(by.css('.jw-meta'))
                             .getLocation()
-                            .then(function (l) {
-                                expect(s.height).to.equal(l.y);
+                            .then(function (location) {
+                                expect(Math.round(size.height)).to.equal(Math.round(location.y));
                                 callback();
                             });
                     });
