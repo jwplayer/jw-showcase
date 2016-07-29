@@ -39,7 +39,7 @@ var stepsDefinition = function () {
             .waitForAngular()
             .then(function () {
                 browser
-                    .findElement(by.css('.jw-player'))
+                    .findElement(by.css('.jwplayer'))
                     .click()
                     .then(function () {
                         callback();
@@ -101,7 +101,7 @@ var stepsDefinition = function () {
             .waitForAngular()
             .then(function () {
                 browser
-                    .findElement(by.css('.jw-player'))
+                    .findElement(by.css('.jwplayer'))
                     .then(function (el) {
 
                         browser
