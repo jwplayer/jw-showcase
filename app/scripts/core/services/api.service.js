@@ -53,8 +53,7 @@
             }
 
             return $http.get('https://content.jwplatform.com/feeds/' + feedId + '.json')
-                .then(getFeedCompleted)
-                .catch(getFeedFailed);
+                .then(getFeedCompleted, getFeedFailed);
 
             function getFeedCompleted (response) {
 
@@ -67,6 +66,9 @@
                         item.image  = imageFilter(item.image);
                         return item;
                     });
+                }
+                else {
+                    return getFeedFailed(response);
                 }
 
                 return feed;

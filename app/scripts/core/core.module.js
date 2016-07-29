@@ -67,7 +67,10 @@
          */
         function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer) {
 
-            return configResolver.getConfig()
+            var defer = $q.defer();
+
+            configResolver
+                .getConfig()
                 .then(function (resolvedConfig) {
 
                     var promises = [];
@@ -91,11 +94,18 @@
                         promises.push(apiConsumer.getFeeds());
                     }
 
-                    return $q.all(promises);
-                })
-                .catch(function (error) {
-                    $exceptionHandler(error);
-                });
+                    $q.all(promises).then(
+                        defer.resolve,
+                        handlePreloadError
+                    );
+                }, handlePreloadError);
+
+            return defer.promise;
+
+            function handlePreloadError (error) {
+                $exceptionHandler(error);
+                defer.reject();
+            }
         }
     }
 
@@ -105,6 +115,9 @@
         window.FastClick.attach(document.body);
 
         $rootScope.$on('$stateChangeError', function (event, toState) {
+
+            event.preventDefault();
+
             if (toState.name === 'root.video') {
                 $state.go('root.404');
             }
@@ -119,7 +132,7 @@
 
         return function (exception) {
             dataStore.loading = false;
-            dataStore.error = exception;
+            dataStore.error   = exception;
         };
     }
 
