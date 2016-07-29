@@ -30,7 +30,9 @@
      * @param {Object=} settings Jwplayer settings that will be used in the `.setup()` method.
      *
      * @requires $parse
+     * @requires $timeout
      * @requires app.core.utils
+     * @requires config
      *
      * @example
      *
@@ -39,15 +41,14 @@
      * ```
      *
      */
-    JwPlayerDirective.$inject = ['$parse', '$timeout', 'utils'];
-    function JwPlayerDirective ($parse, $timeout, utils) {
+    JwPlayerDirective.$inject = ['$parse', '$timeout', 'utils', 'config'];
+    function JwPlayerDirective ($parse, $timeout, utils, config) {
 
         return {
             scope:       {
                 settings: '='
             },
             replace:     true,
-            transclude:  true,
             templateUrl: 'views/core/jwPlayer.html',
             link:        link
         };
@@ -68,11 +69,11 @@
             function activate () {
 
                 angular
-                    .element(element[0].querySelector('.jw-player-ref'))
+                    .element(element[0])
                     .attr('id', playerId);
 
                 playerInstance = jwplayer(playerId)
-                    .setup(scope.settings);
+                    .setup(angular.extend({}, scope.settings));
 
                 if (scope.settings.width) {
                     element.css('width', scope.settings.width);

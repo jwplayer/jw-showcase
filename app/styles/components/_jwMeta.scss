@@ -58,14 +58,6 @@
     }
 }
 
-@include tablet-only () {
-
-    .jw-meta {
-        width: 100%;
-        padding: 0 100px 80px;
-    }
-}
-
 @include tablet-and-larger () {
 
     .jw-meta {
@@ -74,28 +66,53 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        padding: 0 100px 60px;
 
-        z-index: $view-z-index;
+        z-index: $view-z-index + 5;
 
         .jw-meta-title {
             display: inline-block;
+            width: 100%;
             margin-right: 15px;
 
             font-size: 1.4em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .jw-meta-duration {
             display: inline-block;
             position: relative;
             top: -2px;
-            margin: 0;
+            margin: 0 0 15px;
+        }
+
+        .jw-meta-description {
+            position: relative;
+            height: 18 * 8px;
+            overflow: hidden;
+
+            pointer-events: auto;
+
+            > p {
+                position: absolute;
+                top: 0;
+                right: -19px;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                padding-right: 19px;
+
+                overflow-y: scroll;
+            }
         }
     }
 }
 
 @include desktop-only () {
 
-    .jw-meta {
-        padding: 0 55% 80px 100px;
+    .jw-meta .jw-meta-description {
+        width: 50%;
     }
 }

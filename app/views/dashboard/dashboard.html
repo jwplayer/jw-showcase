@@ -1,12 +1,11 @@
 <jw-header></jw-header>
 
 <div class="jw-row is-hidden-mobile" ng-if="vm.dataStore.featuredFeed">
-  <jw-card-slider feed="vm.dataStore.featuredFeed" feed-title="false" spacing="0" featured="true"
+  <jw-card-slider feed="vm.dataStore.featuredFeed" header="false" spacing="0" featured="true"
       max-width="'80%'" max-height="'50%'" visible-items="1" on-card-click="vm.onCardClickHandler"></jw-card-slider>
 </div>
 
-<div class="jw-row jw-theme-background is-visible-mobile"
-    ng-repeat="item in vm.dataStore.featuredFeed.playlist | limitTo:3">
+<div class="jw-row jw-theme-background is-visible-mobile" ng-repeat="item in vm.dataStore.featuredFeed.playlist">
   <jw-card class="is-active" item="item" featured="true" show-title="true" show-description="false" visible-items="1"
       on-click="vm.onCardClickHandler"></jw-card>
   <div class="jw-card-alt">
@@ -15,8 +14,8 @@
 </div>
 
 <div class="jw-row" ng-repeat="feed in vm.dataStore.feeds">
-  <jw-card-slider feed="feed" featured="false" visible-items="[2,2,3,4,5]" on-card-click="vm.onCardClickHandler"
-      spacing="12"></jw-card-slider>
+  <jw-card-slider feed="feed" featured="false" header="feed.title" visible-items="[2,2,3,4,5]"
+      on-card-click="vm.onCardClickHandler" spacing="12"></jw-card-slider>
 </div>
 
 <jw-footer></jw-footer>

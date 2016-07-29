@@ -43,10 +43,10 @@
      *
      * @scope
      *
-     * @param {app.core.feed}       feed            Feed, which will be displayed in the slider
-     * @param {string=}             feedTitle       Title defaults to title from feed. Override title or disable title
-     *                                              by settings this attribute to false.
-     * @param {number=}             spacing         Spacing between cards
+     * @param {app.core.feed}       feed            Feed which will be displayed in the slider.
+     * @param {boolean|string=}     header          Text which will be displayed in the title or false if no title
+     *                                              should be displayed.
+     * @param {number=}             spacing         Spacing between cards.
      * @param {Array|number=}       visibleItems    How many items should be visible. Can either be a fixed number or an
      *                                              array with different values for multiple screen sizes.
      *
@@ -82,7 +82,7 @@
 
         return {
             scope:            {
-                feedTitle:    '=?',
+                header:       '=?',
                 feed:         '=',
                 maxWidth:     '=',
                 maxHeight:    '=',
@@ -116,8 +116,6 @@
             scope.vm.slideRight   = slideRight;
             scope.vm.slideToIndex = slideToIndex;
 
-            scope.vm.title = scope.vm.feed.title;
-
             activate();
 
             ////////////////////////
@@ -132,7 +130,7 @@
 
                 window.addEventListener('resize', resizeDebounced);
 
-                $('.jw-card-slider-touch').addEventListener('touchstart', onTouchStart, false);
+                $('.jw-card-slider-container').addEventListener('touchstart', onTouchStart, false);
 
                 element.addClass(className);
 
@@ -140,10 +138,6 @@
 
                     angular.element($('.jw-card-slider-indicators'))
                         .addClass('is-visible');
-                }
-
-                if (false === scope.vm.feedTitle || angular.isString(scope.vm.feedTitle)) {
-                    scope.vm.title = scope.vm.feedTitle;
                 }
 
                 scope.$on('$destroy', destroy);
@@ -230,7 +224,15 @@
              */
             function update (animate) {
 
+                var listWidth = $('.jw-card-slider-list').offsetWidth,
+                    offset    = 0;
+
+                if (scope.vm.featured) {
+                    offset = (listWidth - slideWidth) / 2;
+                }
+
                 translateX = (index * (slideWidth + scope.vm.spacing)) * -1;
+                translateX += offset;
 
                 updateSlides();
                 updateIndicator();
@@ -352,8 +354,8 @@
              */
             function onTouchStart (event) {
 
-                var coords    = getCoords(event),
-                    touchContainer = $('.jw-card-slider-touch');
+                var coords         = getCoords(event),
+                    touchContainer = $('.jw-card-slider-container');
 
                 touchContainer.addEventListener('touchmove', onTouchMove);
                 touchContainer.addEventListener('touchend', onTouchEnd);
@@ -426,7 +428,7 @@
              */
             function afterTouchEnd () {
 
-                var touchContainer = $('.jw-card-slider-touch');
+                var touchContainer = $('.jw-card-slider-container');
 
                 startCoords = null;
 

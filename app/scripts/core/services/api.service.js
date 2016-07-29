@@ -28,8 +28,10 @@
      * @requires $http
      * @requires $log
      */
-    apiService.$inject = ['$http', '$q'];
-    function apiService ($http, $q) {
+    apiService.$inject = ['$http', '$q', '$filter'];
+    function apiService ($http, $q, $filter) {
+
+        var imageFilter = $filter('jwImage');
 
         /**
          * @ngdoc method
@@ -51,8 +53,7 @@
             }
 
             return $http.get('https://content.jwplatform.com/feeds/' + feedId + '.json')
-                .then(getFeedCompleted)
-                .catch(getFeedFailed);
+                .then(getFeedCompleted, getFeedFailed);
 
             function getFeedCompleted (response) {
 
@@ -62,8 +63,12 @@
                 if (feed && angular.isArray(feed.playlist)) {
                     feed.playlist = feed.playlist.map(function (item) {
                         item.feedid = feed.feedid;
+                        item.image  = imageFilter(item.image);
                         return item;
                     });
+                }
+                else {
+                    return getFeedFailed(response);
                 }
 
                 return feed;

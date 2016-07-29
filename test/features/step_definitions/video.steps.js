@@ -39,7 +39,7 @@ var stepsDefinition = function () {
             .waitForAngular()
             .then(function () {
                 browser
-                    .findElement(by.css('.jw-player'))
+                    .findElement(by.css('.jwplayer'))
                     .click()
                     .then(function () {
                         callback();
@@ -97,11 +97,16 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^I move my mouse over the video$/, function (callback) {
+
+        if ('safari' === browser.browserName) {
+            return callback(null, 'pending');
+        }
+
         browser
             .waitForAngular()
             .then(function () {
                 browser
-                    .findElement(by.css('.jw-player'))
+                    .findElement(by.css('.jwplayer'))
                     .then(function (el) {
 
                         browser
@@ -173,7 +178,7 @@ var stepsDefinition = function () {
                     .findElement(by.css('.jw-card-slider-title'))
                     .getAttribute('innerText')
                     .then(function (txt) {
-                        expect(txt).to.equal('More like this');
+                        expect(txt).to.equal('More like this (7)');
                         callback();
                     });
             });
@@ -244,12 +249,12 @@ var stepsDefinition = function () {
                 browser
                     .findElement(by.css('video.jw-video'))
                     .getSize()
-                    .then(function (s) {
+                    .then(function (size) {
                         browser
                             .findElement(by.css('.jw-meta'))
                             .getLocation()
-                            .then(function (l) {
-                                expect(s.height).to.equal(l.y);
+                            .then(function (location) {
+                                expect(Math.round(size.height)).to.equal(Math.round(location.y));
                                 callback();
                             });
                     });

@@ -26,21 +26,18 @@
      *
      * @requires $state
      * @requires $stateParams
-     * @requires $timeout
-     * @requires app.core.dataStore
+     * @requires $location
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$timeout', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $timeout, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, utils, feed, item) {
 
-        var vm = this,
-            mouseMoveTimeout;
+        var vm = this;
 
         vm.item              = item;
         vm.feed              = feed;
         vm.duration          = 0;
         vm.isPlaying         = false;
-        vm.controlsVisible   = true;
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
@@ -51,7 +48,6 @@
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
-        vm.mouseMoveHandler   = mouseMoveHandler;
 
         activate();
 
@@ -72,16 +68,29 @@
                 width:       '100%',
                 height:      '100%',
                 aspectratio: '16:9',
+                ph:          4,
                 autostart:   $stateParams.autoStart,
-                playlist:    [{
-                    mediaid:     vm.item.mediaid,
-                    title:       vm.item.title,
-                    description: vm.item.description,
-                    image:       vm.item.image,
-                    sources:     vm.item.sources,
-                    tracks:      vm.item.tracks
-                }],
+                playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false
+            };
+        }
+
+        /**
+         * Generate playlist item from feed item
+         *
+         * @param {Object}      item    Item from feed
+         *
+         * @returns {Object} Playlist item
+         */
+        function generatePlaylistItem (item) {
+
+            return {
+                mediaid:     item.mediaid,
+                title:       item.title,
+                description: item.description,
+                image:       item.image,
+                sources:     item.sources,
+                tracks:      item.tracks
             };
         }
 
@@ -92,24 +101,6 @@
         function onPlayerEvent (event) {
 
             vm.isPlaying       = 'play' === event.type;
-            vm.controlsVisible = !vm.isPlaying;
-        }
-
-        /**
-         * Handle mouse move event
-         */
-        function mouseMoveHandler () {
-
-            if (!vm.controlsVisible) {
-                vm.controlsVisible = true;
-            }
-
-            $timeout.cancel(mouseMoveTimeout);
-            mouseMoveTimeout = $timeout(function () {
-                if (true === vm.isPlaying) {
-                    vm.controlsVisible = false;
-                }
-            }, 4000);
         }
 
         /**
@@ -137,7 +128,7 @@
             var facebookShareLink = 'https://www.facebook.com/sharer/sharer.php?p[url]={url}';
 
             return facebookShareLink
-                .replace('{url}', encodeURIComponent(window.location.href));
+                .replace('{url}', encodeURIComponent($location.absUrl()));
         }
 
         /**
@@ -150,7 +141,7 @@
             var twitterShareLink = 'http://twitter.com/share?text={text}&amp;url={url}';
 
             return twitterShareLink
-                .replace('{url}', encodeURIComponent(window.location.href))
+                .replace('{url}', encodeURIComponent($location.absUrl()))
                 .replace('{text}', encodeURIComponent(item.title));
         }
     }

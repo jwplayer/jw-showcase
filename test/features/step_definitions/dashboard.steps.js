@@ -127,12 +127,21 @@ var stepsDefinition = function () {
 
     this.When(/^I move my mouse to the first item in the default slider$/, function (callback) {
 
+        if ('safari' === browser.browserName) {
+            return callback(null, 'pending');
+        }
+
         browser
-            .actions()
-            .mouseMove(browser.findElement(by.css('.jw-card-slider--default .jw-card-slider-slide:first-child')))
-            .perform()
-            .then(function () {
-                setTimeout(callback, 1000);
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+
+                browser
+                    .actions()
+                    .mouseMove(elements[0].findElement(by.css('.jw-card-slider-slide:first-child')))
+                    .perform()
+                    .then(function () {
+                        setTimeout(callback, 1000);
+                    });
             });
     });
 
@@ -272,16 +281,64 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^I should see title in the default slider/, function (callback) {
+    this.Then(/^the titles of the items should be visible/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-card-slider--default'))
-            .findElement(by.css('.jw-card-slider-slide:first-child .jw-card-title'))
-            .isDisplayed()
-            .then(function (isDisplayed) {
-                expect(isDisplayed).to.equal(true);
-                callback();
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+                elements[0]
+                    .findElement(by.css('.jw-card-slider-slide:first-child .jw-card-title'))
+                    .isDisplayed()
+                    .then(function (isDisplayed) {
+                        expect(isDisplayed).to.equal(true);
+                        callback();
+                    });
             });
+    });
+
+    this.Then(/^I should see the title of the first default slider/, function (callback) {
+
+        browser
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+                elements[0]
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .isDisplayed()
+                    .then(function (isDisplayed) {
+                        expect(isDisplayed).to.equal(true);
+                        callback();
+                    });
+            });
+    });
+
+    this.Then(/^the title of the first default slider should be "([^"]*)"/, function (expectedTitle, callback) {
+
+        browser
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+                elements[0]
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .getText()
+                    .then(function (title) {
+                        expect(title).to.equal(expectedTitle);
+                        callback();
+                    });
+            })
+    });
+
+    this.Then(/^the title of the second default slider should be "([^"]*)"/, function (expectedTitle, callback) {
+
+        browser
+            .findElements(by.css('.jw-card-slider--default'))
+            .then(function (elements) {
+                elements[1]
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .getText()
+                    .then(function (title) {
+                        expect(title).to.equal(expectedTitle);
+                        callback();
+                    });
+            })
     });
 
     this.Then(/^I should see the description in the default slider/, function (callback) {

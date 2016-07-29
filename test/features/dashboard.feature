@@ -7,10 +7,10 @@ Feature: Dashboard page
     Then the featured slider should be visible
 
   @mobile
-  Scenario: As a user I want to see 3 featured items
+  Scenario: As a user I want to see 8 featured items
     Given I go to the "index" page
     When I do nothing
-    Then there should be "3" featured items visible
+    Then there should be "8" featured items visible
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the default sliders
@@ -74,7 +74,25 @@ Feature: Dashboard page
   Scenario: As a user I want to see the title of the visible items in the default feeds
     Given I go to the "index" page
     When I wait until the page has been loaded
-    Then I should see title in the default slider
+    Then the titles of the items should be visible
+
+  @mobile @tablet @desktop
+  Scenario: As a user I want to see the playlist title of the default
+    Given I am still on the "index" page
+    When I wait until the page has been loaded
+    Then I should see the title of the first default slider
+
+  @mobile @tablet @desktop
+  Scenario: As a user I want to see the title with video count of the feed
+    Given I am still on the "index" page
+    When I wait until the page has been loaded
+    Then the title of the first default slider should be "Featured Trailers (5)"
+
+  @mobile @tablet @desktop
+  Scenario: As a user I want to see the title with video count of the feed
+    Given I am still on the "index" page
+    When I wait until the page has been loaded
+    Then the title of the second default slider should be "Comedy (6)"
 
   @desktop
   Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
