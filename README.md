@@ -22,11 +22,18 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 
 ## Instructions for Using JW Showcase
 
-For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwplayer/jw-showcase/wiki/):
+Topics for general users:
 
 * [Getting Started](https://github.com/jwplayer/jw-showcase/wiki/Getting-Started)
 * [Deploying JW Showcase](https://github.com/jwplayer/jw-showcase/wiki/Deploying-jw-showcase)
-* [Search Engines and Social Sharing](https://github.com/jwplayer/jw-showcase/wiki/Search-engines-and-social-sharing)
+* [Search engines and social sharing](https://github.com/jwplayer/jw-showcase/wiki/Search-engines-and-social-sharing)
+* [Support and Reporting Issues](https://github.com/jwplayer/jw-showcase/wiki/Support-and-Reporting-Issues)
+* [FAQ](https://github.com/jwplayer/jw-showcase/wiki/FAQ)
+
+Topics for advanced users:
+
+* [Building from the Source Code](https://github.com/jwplayer/jw-showcase/wiki/Building-from-the-Source-Code)
+* [Contributing to the Project](https://github.com/jwplayer/jw-showcase/wiki/Contributing-to-the-Project)
 
 ### Basic Setup
 
