@@ -1,7 +1,6 @@
 <div class="jw-jumbotron jw-video">
   <div class="jw-jumbotron-content">
-    <jw-player settings="::vm.playerSettings" on-ready="vm.onReady" on-play="vm.onPlay" on-pause="vm.onPause"
-        on-complete="vm.onComplete">
+    <jw-player settings="::vm.playerSettings" on-related-play="vm.onRelatedPlay">
     </jw-player>
     <div class="jw-meta">
       <div class="jw-meta-title">{{ ::vm.item.title }}</div>

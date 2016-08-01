@@ -27,10 +27,11 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
+     * @requires app.core.dataStore
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, utils, feed, item) {
 
         var vm = this;
 
@@ -41,11 +42,7 @@
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
-        vm.onReady    = onPlayerEvent;
-        vm.onPlay     = onPlayerEvent;
-        vm.onPause    = onPlayerEvent;
-        vm.onComplete = onPlayerEvent;
-        vm.onError    = onPlayerEvent;
+        vm.onRelatedPlay     = onRelatedPlayEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
 
@@ -95,15 +92,6 @@
         }
 
         /**
-         * Handle player event
-         * @param event
-         */
-        function onPlayerEvent (event) {
-
-            vm.isPlaying       = 'play' === event.type;
-        }
-
-        /**
          * Handle click event on card
          *
          * @param {Object}      item        Clicked item
@@ -115,6 +103,31 @@
                 feedId:    item.feedid,
                 mediaId:   item.mediaid,
                 autoStart: autoStart
+            });
+        }
+
+        /**
+         * Handle play event from related plugin
+         * @param event
+         */
+        function onRelatedPlayEvent (event) {
+
+            var mediaId = event.item.mediaid,
+                feedId  = feed.feedid,
+                item    = dataStore.getItem(mediaId, feedId);
+
+            // item does not exist in current feed
+            if (!item) {
+                return;
+            }
+
+            // stop player playback
+            this.stop();
+
+            $state.go('root.video', {
+                feedId:    feedId,
+                mediaId:   mediaId,
+                autoStart: true
             });
         }
 
