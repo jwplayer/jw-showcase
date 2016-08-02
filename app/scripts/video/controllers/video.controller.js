@@ -27,10 +27,11 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
+     * @requires $window
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', '$window', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, $window, utils, feed, item) {
 
         var vm = this;
 
@@ -48,6 +49,7 @@
         vm.onError    = onPlayerEvent;
 
         vm.onCardClickHandler = onCardClickHandler;
+        vm.backButtonClickHandler = backButtonClickHandler;
 
         activate();
 
@@ -116,6 +118,19 @@
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
+        }
+
+        /**
+         * Handle click event on back button
+         */
+        function backButtonClickHandler () {
+
+            if ($state.history.length > 1) {
+                $window.history.back();
+            }
+            else {
+                $state.go('root.dashboard');
+            }
         }
 
         /**
