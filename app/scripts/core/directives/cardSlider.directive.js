@@ -92,7 +92,7 @@
                 onCardClick:  '='
             },
             replace:          true,
-            controller:       'CardSliderController',
+            controller:       angular.noop,
             controllerAs:     'vm',
             bindToController: true,
             templateUrl:      'views/core/cardSlider.html',
