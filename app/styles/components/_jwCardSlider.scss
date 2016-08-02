@@ -29,11 +29,20 @@
     // --------------------------------
 
     .jw-card-slider-title {
+        display: inline-block;
         margin: 20px 90px;
 
         font-size: 21px;
         font-weight: bold;
-        cursor: default;
+
+        > .jw-link {
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+                color: $radical-red;
+            }
+        }
     }
 
     //

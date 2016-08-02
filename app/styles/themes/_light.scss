@@ -11,11 +11,12 @@
         background-color: $white;
     }
 
-    .jw-card-slider {
+    .jw-card-slider-title .jw-link,
+    .jw-card-grid-title {
+        color: $pickled-bluewood;
+    }
 
-        .jw-card-slider-title {
-            color: $pickled-bluewood;
-        }
+    .jw-card-slider {
 
         &.jw-card-slider--default {
             border-bottom: 1px solid $cadet-blue;
