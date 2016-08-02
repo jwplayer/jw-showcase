@@ -1,0 +1,7 @@
+<div class="jw-card-grid">
+  <div class="jw-card-grid-title">{{ ::vm.heading }} ({{ vm.feed.playlist.length }})</div>
+  <div class="jw-card-grid-cards">
+    <jw-card item="item" ng-repeat="item in vm.feed.playlist" show-title="true" show-description="true"
+        class="is-visible" on-click="vm.onCardClick"></jw-card>
+  </div>
+</div>

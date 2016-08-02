@@ -1,0 +1,25 @@
+
+.jw-card-grid {
+    position: relative;
+    margin: 0 90px;
+
+    .jw-card {
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+}
+
+.jw-card-grid-title {
+    margin: 20px 0;
+
+    font-size: 21px;
+    font-weight: bold;
+    cursor: default;
+}
+
+@include mobile-only() {
+
+    .jw-card-grid {
+        margin: 0 20px;
+    }
+}

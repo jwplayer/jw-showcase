@@ -16,6 +16,18 @@
 
 (function () {
 
+    /**
+     * @const MEDIA_QUERIES
+     * @type {<Object>}
+     */
+    var SCREEN_SIZES = {
+        xs: window.matchMedia('(max-width: 640px)'),
+        sm: window.matchMedia('(min-width: 641px) and (max-width: 960px)'),
+        md: window.matchMedia('(min-width: 961px) and (max-width: 1280px)'),
+        lg: window.matchMedia('(min-width: 1281px) and (max-width: 1680px)'),
+        xl: window.matchMedia('(min-width: 1681px)')
+    };
+
     angular
         .module('app.core')
         .service('utils', utils);
@@ -32,6 +44,7 @@
         this.getTransitionEventName = getTransitionEventName;
         this.getVideoDurationByItem = getVideoDurationByItem;
         this.debounce               = debounce;
+        this.getValueForScreenSize  = getValueForScreenSize;
 
         ////////////////////////
 
@@ -156,6 +169,34 @@
             }
 
             return debounced;
+        }
+
+        /**
+         * Get value based on matching screenSize, will return last given screenSize or defaultValue when none did
+         * match.
+         *
+         * @param {Object} screenSizes
+         * @param {*}      defaultValue
+         *
+         * @returns {*} Value
+         */
+        function getValueForScreenSize (screenSizes, defaultValue) {
+
+            var index,
+                last;
+
+            for (index in SCREEN_SIZES) {
+
+                if (angular.isDefined(screenSizes[index])) {
+                    last = screenSizes[index];
+                }
+
+                if (true === SCREEN_SIZES[index].matches) {
+                    return last;
+                }
+            }
+
+            return last || defaultValue;
         }
     }
 }());
