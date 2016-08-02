@@ -48,8 +48,8 @@
         vm.onComplete = onPlayerEvent;
         vm.onError    = onPlayerEvent;
 
-        vm.onCardClickHandler = onCardClickHandler;
         vm.backButtonClickHandler = backButtonClickHandler;
+        vm.cardClickHandler       = cardClickHandler;
 
         activate();
 
@@ -102,7 +102,7 @@
          */
         function onPlayerEvent (event) {
 
-            vm.isPlaying       = 'play' === event.type;
+            vm.isPlaying = 'play' === event.type;
         }
 
         /**
@@ -111,7 +111,7 @@
          * @param {Object}      item        Clicked item
          * @param {boolean}     autoStart   Should the video playback start automatically
          */
-        function onCardClickHandler (item, autoStart) {
+        function cardClickHandler (item, autoStart) {
 
             $state.go('root.video', {
                 feedId:    item.feedid,
