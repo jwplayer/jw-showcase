@@ -6,6 +6,33 @@
     @include cover();
     background: rgba($black, 0.9);
 
+    &.ng-enter,
+    &.ng-leave {
+        @include transition(opacity 0.2s ease);
+
+        .jw-card-menu-container {
+            @include transition(transform 0.1s);
+        }
+    }
+
+    &.ng-leave.ng-leave-active,
+    &.ng-enter {
+        opacity: 0;
+
+        .jw-card-menu-container {
+            @include transform(translateY(-50%) scale(0.8));
+        }
+    }
+
+    &.ng-enter.ng-enter-active,
+    &.ng-leave {
+        opacity: 1;
+
+        .jw-card-menu-container {
+            @include transform(translateY(-50%) scale(1));
+        }
+    }
+
     .jw-card-menu-container {
         @include transform(translateY(-50%));
 
