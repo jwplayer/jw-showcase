@@ -18,4 +18,9 @@
       on-card-click="vm.onCardClickHandler" spacing="12"></jw-card-slider>
 </div>
 
+<div class="jw-row" ng-show="vm.dataStore.watchlistFeed.playlist.length > 0">
+  <jw-card-slider feed="vm.dataStore.watchlistFeed" featured="false" header="'My watchlist'" visible-items="[2,2,3,4,5]"
+      on-card-click="vm.onCardClickHandler" spacing="12"></jw-card-slider>
+</div>
+
 <jw-footer></jw-footer>
