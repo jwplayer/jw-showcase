@@ -1,0 +1,41 @@
+//
+// jwCardMenu
+// --------------------------------
+
+.jw-card-menu {
+    @include cover();
+    background: rgba($black, 0.9);
+
+    .jw-card-menu-container {
+        @include transform(translateY(-50%));
+
+        position: absolute;
+        top: 50%;
+        width: 100%;
+
+        font-size: 16px;
+    }
+
+    .jw-card-menu-item {
+        padding: 10px;
+
+        border-bottom: solid 1px rgba($white, 0.4);
+        color: $white;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 0 0 6px $black;
+        cursor: pointer;
+
+        &:last-child {
+            font-weight: normal;
+        }
+
+        &:first-child {
+            border-top: 1px solid rgba($white, 0.4);
+        }
+
+        &:hover {
+            color: $radical-red;
+        }
+    }
+}
