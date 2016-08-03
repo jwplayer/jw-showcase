@@ -24,12 +24,13 @@
      * @ngdoc controller
      * @name app.core.controller:CardMenuController
      */
-    CardMenuController.$inject = ['watchlist'];
-    function CardMenuController (watchlist) {
+    CardMenuController.$inject = ['$timeout', 'watchlist'];
+    function CardMenuController ($timeout, watchlist) {
 
         var vm = this;
 
         vm.inWatchlist = false;
+        vm.toast       = null;
 
         vm.closeClickHandler           = closeClickHandler;
         vm.watchlistAddClickHandler    = watchlistAddClickHandler;
@@ -43,14 +44,6 @@
          * Initialize controller
          */
         function activate () {
-
-            update();
-        }
-
-        /**
-         * Update controller
-         */
-        function update () {
 
             vm.inWatchlist = watchlist.hasItem(vm.item);
         }
@@ -71,7 +64,13 @@
         function watchlistAddClickHandler () {
 
             watchlist.addItem(vm.item);
-            update();
+
+            vm.toast = 'Added to watchlist';
+
+            $timeout(function () {
+                vm.onClose();
+                vm.toast = null;
+            }, 1000);
         }
 
         /**
@@ -80,7 +79,13 @@
         function watchlistRemoveClickHandler () {
 
             watchlist.removeItem(vm.item);
-            update();
+
+            vm.toast = 'Removed from watchlist';
+
+            $timeout(function () {
+                vm.onClose();
+                vm.toast = null;
+            }, 1000);
         }
     }
 

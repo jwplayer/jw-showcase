@@ -65,4 +65,20 @@
             color: $radical-red;
         }
     }
+
+    .jw-card-menu-toast {
+        color: $white;
+        text-align: center;
+        text-shadow: 0 0 6px $black;
+        cursor: default;
+
+        &.ng-hide-remove {
+            @include transform(scale(0.5));
+            @include single-transition(transform, 0.1s, ease, 0s);
+        }
+
+        &.ng-hide-remove-active {
+            @include transform(scale(1));
+        }
+    }
 }
