@@ -1,11 +1,11 @@
 // scss-lint:disable all
 @font-face {
     font-family: 'jwyicons';
-    src: url('../fonts/icons.eot?gve06s');
-    src: url('../fonts/icons.eot?gve06s#iefix') format('embedded-opentype'),
-    url('../fonts/icons.ttf?gve06s') format('truetype'),
-    url('../fonts/icons.woff?gve06s') format('woff'),
-    url('../fonts/icons.svg?gve06s#icomoon') format('svg');
+    src: url('../fonts/icons.eot?am3zlb');
+    src: url('../fonts/icons.eot?am3zlb#iefix') format('embedded-opentype'),
+    url('../fonts/icons.ttf?am3zlb') format('truetype'),
+    url('../fonts/icons.woff?am3zlb') format('woff'),
+    url('../fonts/icons.svg?am3zlb#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -44,6 +44,9 @@
 }
 .jwy-icon-play:before {
     content: "\e60e";
+}
+.jwy-icon-more:before {
+    content: "\e614";
 }
 .jwy-icon-buffer:before {
     content: "\e601";
