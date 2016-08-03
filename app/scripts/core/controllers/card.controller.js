@@ -23,16 +23,21 @@
     /**
      * @ngdoc controller
      * @name app.core.controller:CardController
+     * @requires $rootScope
+     * @requires $scope
      * @requires app.core.utils
      */
-    CardController.$inject = ['utils'];
-    function CardController (utils) {
+    CardController.$inject = ['$rootScope', '$scope', 'utils'];
+    function CardController ($rootScope, $scope, utils) {
 
         var vm = this;
 
-        vm.duration       = 0;
-        vm.getClassNames  = getClassNames;
-        vm.onClickHandler = onClickHandler;
+        vm.duration               = 0;
+        vm.getClassNames          = getClassNames;
+        vm.clickHandler           = clickHandler;
+        vm.menuButtonClickHandler = menuButtonClickHandler;
+        vm.closeMenuHandler       = closeMenuHandler;
+        vm.menuVisible            = false;
 
         activate();
 
@@ -44,6 +49,21 @@
         function activate () {
 
             vm.duration = utils.getVideoDurationByItem(vm.item);
+
+            $scope.$on('jwCardMenu:open', handleCardMenuOpenEvent);
+        }
+
+        /**
+         * Handle jwCardMenu:open event
+         * @param event
+         */
+        function handleCardMenuOpenEvent (event, targetScope) {
+
+            if (targetScope === $scope) {
+                return;
+            }
+
+            vm.menuVisible = false;
         }
 
         /**
@@ -55,7 +75,8 @@
                 'jw-card--featured': vm.featured,
                 'jw-card--default':  !vm.featured,
                 'jw-card--touch':    'ontouchstart' in window ||
-                                     (window.DocumentTouch && document instanceof window.DocumentTouch)
+                                     (window.DocumentTouch && document instanceof window.DocumentTouch),
+                'jw-card-menu-open': vm.menuVisible
             };
         }
 
@@ -63,7 +84,7 @@
          * @param {Object}      event               Event object
          * @param {boolean}     clickedOnPlayIcon   True if the user clicked on the play icon
          */
-        function onClickHandler (event, clickedOnPlayIcon) {
+        function clickHandler (event, clickedOnPlayIcon) {
 
             if (angular.isFunction(vm.onClick)) {
                 vm.onClick(vm.item, clickedOnPlayIcon);
@@ -71,6 +92,26 @@
 
             event.preventDefault();
             event.stopImmediatePropagation();
+        }
+
+        /**
+         * Handle click on more button
+         * @param event
+         */
+        function menuButtonClickHandler (event) {
+
+            event.stopImmediatePropagation();
+            vm.menuVisible = true;
+
+            $rootScope.$broadcast('jwCardMenu:open', $scope);
+        }
+
+        /**
+         * Close menu
+         */
+        function closeMenuHandler () {
+
+            vm.menuVisible = false;
         }
     }
 

@@ -6,12 +6,14 @@
     position: relative;
 
     font-size: 15px;
-    cursor: pointer;
 
-    &:not(.jw-card--touch):hover,
-    &:not(.jw-card--touch).is-active {
-        .jw-card-controls {
-            opacity: 1;
+    &:not(.jw-card--touch):not(.is-more-overlay-open) {
+
+        &.is-active,
+        .jw-card-container:hover {
+            .jw-card-controls {
+                opacity: 1;
+            }
         }
     }
 
@@ -31,10 +33,12 @@
 
     .jw-card-poster-filter {
         @include cover();
+        @include single-transition(background, 0.2s, ease, 0s);
     }
 
     .jw-card-container {
         @include cover();
+        cursor: pointer;
     }
 
     .jw-card-table {
@@ -113,6 +117,24 @@
             opacity: 1;
         }
     }
+
+    .jw-card-menu-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 35px;
+        height: 35px;
+
+        background: $black;
+        font-size: 16px;
+        line-height: 2;
+        text-align: center;
+
+        .jwy-icon {
+            vertical-align: middle;
+        }
+    }
 }
 
 //
@@ -122,20 +144,18 @@
 .jw-card.jw-card--default {
     padding-bottom: 39px;
 
-    &.is-visible:not(.jw-card--touch):not(.is-compact):hover {
-        .jw-card-info .jw-card-info-mask {
-            height: 100px;
-        }
+    &.is-visible:not(.jw-card--touch):not(.is-compact):not(.is-more-overlay-open) {
 
-        .jw-card-poster-filter {
-            opacity: 1;
-        }
-    }
+        .jw-card-container:hover {
 
-    .jw-card-poster-filter {
-        @include single-transition(opacity, 0.2s, ease, 0s);
-        background-color: rgba($black, 0.6);
-        opacity: 0;
+            .jw-card-info .jw-card-info-mask {
+                height: 100px;
+            }
+
+            .jw-card-poster-filter {
+                background-color: rgba($black, 0.6);
+            }
+        }
     }
 
     .jw-card-info-mask {
@@ -163,10 +183,12 @@
 .jw-card.jw-card--featured {
     font-size: 32px;
 
-    &.is-visible:not(.jw-card--touch).is-active,
-    &.is-visible:not(.jw-card--touch):hover {
-        .jw-card-poster-filter {
-            background-color: rgba($black, 0.4);
+    &.is-visible:not(.jw-card--touch) {
+        &.is-active,
+        &:hover {
+            .jw-card-poster-filter {
+                background-color: rgba($black, 0.4);
+            }
         }
     }
 
@@ -192,7 +214,6 @@
 
     .jw-card-poster-filter {
         @include background-image(linear-gradient(rgba($black, 0) 50%, rgba($black, 0.9) 95%));
-        @include single-transition(background, 0.2s, ease, 0s);
     }
 }
 

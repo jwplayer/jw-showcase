@@ -24,6 +24,16 @@
     speak: none;
 }
 
+.jwy-icon-rotate-90 {
+    @include transform(rotate(90deg));
+    display: inline-block;
+}
+
+.jwy-icon-rotate-180 {
+    @include transform(rotate(180deg));
+    display: inline-block;
+}
+
 .jwy-icon-envelop:before {
     content: "\e903";
 }
