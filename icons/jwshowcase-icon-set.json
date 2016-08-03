@@ -112,7 +112,7 @@
             "prevSize": 32
         },
         {
-            "order": 0,
+            "order": 30,
             "name": "more",
             "prevSize": 32
         },
@@ -149,7 +149,7 @@
         }
     ],
     "metadata": {
-        "name": "jwshowcase-icon-set",
+        "name": "jabberwocky-icon-set",
         "importSize": {
             "width": 512,
             "height": 512
@@ -493,9 +493,11 @@
         "showQuickUse2": true,
         "showSVGs": true,
         "fontPref": {
-            "prefix": "icon-",
+            "prefix": "jwy-icon-",
             "metadata": {
-                "fontFamily": "icomoon"
+                "fontFamily": "icons",
+                "majorVersion": 1,
+                "minorVersion": 0
             },
             "metrics": {
                 "emSize": 1024,
@@ -503,7 +505,8 @@
                 "whitespace": 50
             },
             "embed": false,
-            "autoHost": true
+            "autoHost": true,
+            "showSelector": false
         },
         "imagePref": {
             "prefix": "icon-",
