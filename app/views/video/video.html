@@ -26,8 +26,8 @@
   </div>
 </div>
 
-<div class="jw-row" ng-if="vm.feed">
-  <jw-card-slider feed="vm.feed" featured="false" spacing="12" header="'More like this'" visible-items="[2,2,3,4,5]"
+<div class="jw-row" ng-if="vm.feed && vm.feed.playlist.length > 0">
+  <jw-card-slider feed="vm.feed" featured="false" spacing="12" header="vm.feedTitle" visible-items="[2,2,3,4,5]"
       on-card-click="vm.onCardClickHandler"></jw-card-slider>
 </div>
 

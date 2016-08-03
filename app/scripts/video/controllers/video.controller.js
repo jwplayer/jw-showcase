@@ -38,6 +38,7 @@
         vm.feed              = feed;
         vm.duration          = 0;
         vm.isPlaying         = false;
+        vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
