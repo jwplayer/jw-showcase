@@ -141,6 +141,9 @@
                 }
 
                 scope.$on('$destroy', destroy);
+                scope.$watch('vm.feed', function () {
+                    resizeDebounced();
+                }, true);
 
                 // restore slider state if stored in cardSliderCache service
                 cardSliderCache.get(feedId, function (state) {
