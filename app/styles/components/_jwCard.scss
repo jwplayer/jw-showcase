@@ -7,7 +7,7 @@
 
     font-size: 15px;
 
-    &:not(.jw-card--touch):not(.is-more-overlay-open) {
+    &:not(.jw-card--touch):not(.jw-card-menu-open) {
 
         &.is-active,
         .jw-card-container:hover {
@@ -15,6 +15,10 @@
                 opacity: 1;
             }
         }
+    }
+
+    &.jw-card-menu-open .jw-card-menu-button {
+        display: none;
     }
 
     .jw-card-aspect {
@@ -130,6 +134,11 @@
         font-size: 16px;
         line-height: 2;
         text-align: center;
+        cursor: pointer;
+
+        &:hover .jwy-icon {
+            color: $radical-red;
+        }
 
         .jwy-icon {
             vertical-align: middle;
