@@ -66,6 +66,20 @@
         this.feeds = [];
 
         /**
+         * @ngdoc property
+         * @name app.core.dataStore#watchlistFeed
+         * @propertyOf app.core.dataStore
+         *
+         * @type {app.core.feed}
+         * @description
+         * The watchlist feed
+         */
+        this.watchlistFeed = {
+            feedid:   'watchlist',
+            playlist: []
+        };
+
+        /**
          * @ngdoc method
          * @name app.core.dataStore#getItem
          * @methodOf app.core.dataStore
@@ -112,7 +126,11 @@
                 feed;
 
             if (this.featuredFeed) {
-                allFeeds = allFeeds.concat(this.featuredFeed);
+                allFeeds = allFeeds.concat([this.featuredFeed]);
+            }
+
+            if (this.watchlistFeed) {
+                allFeeds = allFeeds.concat([this.watchlistFeed]);
             }
 
             feed = allFeeds.find(function (feed) {
