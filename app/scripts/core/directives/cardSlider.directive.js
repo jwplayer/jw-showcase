@@ -82,14 +82,15 @@
 
         return {
             scope:            {
-                header:       '=?',
-                feed:         '=',
-                maxWidth:     '=',
-                maxHeight:    '=',
-                visibleItems: '=',
-                featured:     '=',
-                spacing:      '=',
-                onCardClick:  '='
+                header:        '=?',
+                feed:          '=',
+                maxWidth:      '=',
+                maxHeight:     '=',
+                watchProgress: '=',
+                visibleItems:  '=',
+                featured:      '=',
+                spacing:       '=',
+                onCardClick:   '='
             },
             replace:          true,
             controller:       'CardSliderController',

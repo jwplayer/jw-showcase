@@ -16,6 +16,9 @@
       </div>
       <div class="jw-card-info jw-card-row">
         <div class="jw-card-cell">
+          <div class="jw-card-watch-progress" ng-if="vm.watchProgress && vm.item.progress > 0">
+            <div class="jw-card-watch-progress-indicator" ng-style="{width: vm.item.progress * 100 + '%'}"></div>
+          </div>
           <div class="jw-card-info-mask">
             <div class="jw-card-title jw-card-text" ng-if="vm.showTitle">{{ ::vm.item.title }}</div>
             <div class="jw-card-description jw-card-text" ng-if="vm.showDescription"
