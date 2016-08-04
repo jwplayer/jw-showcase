@@ -13,6 +13,12 @@
   </div>
 </div>
 
+<div class="jw-row" ng-show="vm.dataStore.watchProgressFeed.playlist.length > 0">
+  <jw-card-slider feed="vm.dataStore.watchProgressFeed" featured="false" header="'Continue watching'"
+      visible-items="[2,2,3,4,5]" on-card-click="vm.onCardClickHandler" spacing="12"
+      watch-progress="true"></jw-card-slider>
+</div>
+
 <div class="jw-row" ng-repeat="feed in vm.dataStore.feeds">
   <jw-card-slider feed="feed" featured="false" header="feed.title" visible-items="[2,2,3,4,5]"
       on-card-click="vm.onCardClickHandler" spacing="12"></jw-card-slider>
