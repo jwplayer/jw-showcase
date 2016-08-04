@@ -86,7 +86,7 @@
                 playlist[index].lastWatched = +new Date();
             }
             else {
-                clone.mediaid     = clone.$mediaid || clone.mediaid;
+                clone.feedid      = clone.$feedid || clone.feedid;
                 clone.progress    = progress;
                 clone.lastWatched = +new Date();
 
