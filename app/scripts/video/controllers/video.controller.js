@@ -27,27 +27,25 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
+     * @requires app.core.dataStore
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, utils, feed, item) {
 
         var vm = this;
 
         vm.item              = item;
         vm.feed              = feed;
+        vm.moreLikeThisFeed  = {};
         vm.duration          = 0;
         vm.isPlaying         = false;
-        vm.facebookShareLink = composeFacebookLink();
-        vm.twitterShareLink  = composeTwitterLink();
+        vm.facebookShareLink = '';
+        vm.twitterShareLink  = '';
 
-        vm.onReady    = onPlayerEvent;
-        vm.onPlay     = onPlayerEvent;
-        vm.onPause    = onPlayerEvent;
-        vm.onComplete = onPlayerEvent;
-        vm.onError    = onPlayerEvent;
+        vm.onPlaylistItemEvent = onPlaylistItemEvent;
+        vm.onCardClickHandler  = onCardClickHandler;
 
-        vm.onCardClickHandler = onCardClickHandler;
 
         activate();
 
@@ -58,12 +56,6 @@
          */
         function activate () {
 
-            vm.duration = utils.getVideoDurationByItem(vm.item);
-
-            vm.feed.playlist = vm.feed.playlist.filter(function (item) {
-                return item.mediaid !== vm.item.mediaid;
-            });
-
             vm.playerSettings = {
                 width:       '100%',
                 height:      '100%',
@@ -72,6 +64,25 @@
                 autostart:   $stateParams.autoStart,
                 playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false
+            };
+
+            update();
+        }
+
+        /**
+         * Update controller
+         */
+        function update () {
+
+            vm.facebookShareLink = composeFacebookLink();
+            vm.twitterShareLink  = composeTwitterLink();
+
+            vm.duration = utils.getVideoDurationByItem(vm.item);
+
+            vm.moreLikeThisFeed = {
+                playlist: vm.feed.playlist.filter(function (item) {
+                    return item.mediaid !== vm.item.mediaid;
+                })
             };
         }
 
@@ -95,15 +106,6 @@
         }
 
         /**
-         * Handle player event
-         * @param event
-         */
-        function onPlayerEvent (event) {
-
-            vm.isPlaying       = 'play' === event.type;
-        }
-
-        /**
          * Handle click event on card
          *
          * @param {Object}      item        Clicked item
@@ -116,6 +118,39 @@
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
+        }
+
+        /**
+         * Handle playlist item event
+         * @param {Object} event
+         */
+        function onPlaylistItemEvent (event) {
+
+            if (!event.item || event.item.mediaid === vm.item.mediaid) {
+                return;
+            }
+
+            var mediaId = event.item.mediaid,
+                feedId  = feed.feedid,
+                newItem = dataStore.getItem(mediaId, feedId);
+
+            // item does not exist in current feed. Update title and description but not the url
+            if (!newItem) {
+                vm.item = event.item;
+                update();
+                return;
+            }
+
+            // update state, but don't notify
+            $state.go('root.video', {
+                feedId:  newItem.feedid,
+                mediaId: newItem.mediaid
+            }, {
+                notify: false
+            });
+
+            vm.item = newItem;
+            update();
         }
 
         /**

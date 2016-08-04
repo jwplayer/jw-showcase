@@ -206,6 +206,13 @@
     .jw-card-slider-slide {
         @include single-transition(opacity, 0.2s, ease-in, 0s);
         opacity: 0.15;
+
+        &.ng-enter,
+        &.ng-leave,
+        &.ng-leave-active,
+        &.ng-enter-active {
+            @include transition(none !important);
+        }
     }
 
     .jw-card-slider-slide.is-visible {
