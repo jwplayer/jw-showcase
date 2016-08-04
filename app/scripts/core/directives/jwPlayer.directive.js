@@ -55,9 +55,8 @@
 
         function link (scope, element, attr) {
 
-            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error'],
+            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error', 'playlistItem'],
                 playerInstance = null,
-                relatedPlugin  = null,
                 playerId       = generateRandomId();
 
             activate();
@@ -94,24 +93,11 @@
              */
             function bindPlayerEventListeners () {
 
-                playerInstance
-                    .on('ready', function () {
-
-                        relatedPlugin = playerInstance.getPlugin('related');
-
-                        if (relatedPlugin) {
-                            relatedPlugin.on('play', function (event) {
-                                proxyEvent('relatedPlay', event);
-                            });
-                        }
-
-                    });
-
                 // custom events from directive
-                events.forEach(function (event) {
+                events.forEach(function (type) {
 
                     playerInstance
-                        .on(event, function (event) {
+                        .on(type, function (event) {
                             proxyEvent(type, event);
                         });
                 });

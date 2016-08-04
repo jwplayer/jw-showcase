@@ -114,7 +114,7 @@
 
                 duration = item.duration;
             }
-            else {
+            else if (angular.isArray(item.sources)) {
 
                 source = item.sources
                     .find(function (source) {
