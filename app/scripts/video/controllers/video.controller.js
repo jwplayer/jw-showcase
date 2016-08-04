@@ -33,24 +33,20 @@
     VideoController.$inject = ['$state', '$stateParams', '$location', 'watchProgress', 'utils', 'feed', 'item'];
     function VideoController ($state, $stateParams, $location, watchProgress, utils, feed, item) {
 
-        var vm = this,
+        var vm       = this,
             progress = 0,
             watchProgressItem;
 
         vm.item              = item;
-        vm.feed              = feed;
+        vm.feed              = {};
         vm.duration          = 0;
-        vm.isPlaying         = false;
         vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
-        vm.onReady      = onPlayerEvent;
-        vm.onPlay       = onPlayerEvent;
-        vm.onPause      = onPlayerEvent;
-        vm.onComplete   = onPlayerEvent;
-        vm.onError      = onPlayerEvent;
-        vm.onFirstFrame = onPlayerEvent;
+        vm.onPlay       = onPlay;
+        vm.onComplete   = onComplete;
+        vm.onFirstFrame = onFirstFrame;
         vm.onTime       = onTime;
 
         vm.onCardClickHandler = onCardClickHandler;
@@ -66,9 +62,11 @@
 
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
-            vm.feed.playlist = vm.feed.playlist.filter(function (item) {
-                return item.mediaid !== vm.item.mediaid;
-            });
+            vm.feed = {
+                playlist: feed.playlist.filter(function (item) {
+                    return item.mediaid !== vm.item.mediaid;
+                })
+            };
 
             vm.playerSettings = {
                 width:       '100%',
@@ -105,30 +103,36 @@
         }
 
         /**
-         * Handle player event
+         * Handle play event
          * @param event
          */
-        function onPlayerEvent (event) {
+        function onPlay (event) {
 
-            if (progress > 0) {
-
-                if (!$stateParams.autoStart && event.type === 'firstFrame') {
-                    this.seek(progress * this.getDuration());
-                    progress = 0;
-                }
-
-                if ($stateParams.autoStart && event.type === 'play') {
-                    this.seek(progress * this.getDuration());
-                    progress = 0;
-                }
+            if (progress > 0 && $stateParams.autoStart && event.type === 'play') {
+                this.seek(progress * this.getDuration());
+                progress = 0;
             }
+        }
 
-            // always remove watchProgress on complete event
-            if (event.type === 'complete') {
-                watchProgress.removeItem(vm.item);
+        /**
+         * Handle firstFrame event
+         * @param event
+         */
+        function onFirstFrame (event) {
+
+            if (progress > 0 && !$stateParams.autoStart && event.type === 'firstFrame') {
+                this.seek(progress * this.getDuration());
+                progress = 0;
             }
+        }
 
-            vm.isPlaying       = 'play' === event.type;
+        /**
+         * Handle complete event
+         * @param event
+         */
+        function onComplete (event) {
+
+            watchProgress.removeItem(vm.item);
         }
 
         /**

@@ -146,6 +146,13 @@
                     resizeDebounced();
                 }, true);
 
+                // update feed
+                scope.$watch('vm.feed', function () {
+                    $timeout(function () {
+                        resize();
+                    }, 30);
+                }, true);
+
                 // restore slider state if stored in cardSliderCache service
                 cardSliderCache.get(feedId, function (state) {
                     index = state.index;

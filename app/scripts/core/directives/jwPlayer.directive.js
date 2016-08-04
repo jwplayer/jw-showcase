@@ -55,7 +55,7 @@
 
         function link (scope, element, attr) {
 
-            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'time', 'error', 'firstFrame'],
+            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error', 'playlistItem'],
                 playerInstance = null,
                 playerId       = generateRandomId();
 
@@ -86,7 +86,6 @@
                 });
 
                 bindPlayerEventListeners();
-
             }
 
             /**
@@ -94,53 +93,34 @@
              */
             function bindPlayerEventListeners () {
 
-                playerInstance
-                    .on('play pause idle', handlePlayerEvent);
-
                 // custom events from directive
-                events.forEach(function (event) {
+                events.forEach(function (type) {
 
-                    var parsed,
-                        attrName = 'on' + utils.ucfirst(event);
-
-                    if (!attr[attrName]) {
-                        return;
-                    }
-
-                    parsed = $parse(attr[attrName])(scope.$parent);
-
-                    if (angular.isFunction(parsed)) {
-
-                        playerInstance
-                            .on(event, wrapEventCallback(parsed));
-                    }
+                    playerInstance
+                        .on(type, function (event) {
+                            proxyEvent(type, event);
+                        });
                 });
             }
 
             /**
-             * Handle player event
-             * @param event
+             * Proxy JW Player event to directive attribute
+             *
+             * @param {string} type
+             * @param {Object} event
              */
-            function handlePlayerEvent (event) {
+            function proxyEvent (type, event) {
 
-                element
-                    .removeClass('is-play is-pause is-idle')
-                    .addClass('is-' + event.type);
-            }
+                var attrName = 'on' + utils.ucfirst(type),
+                    parsed;
 
-            /**
-             * Wrap player event callback to request a $digest
-             * @param {Function} callback
-             * @returns {Function}
-             */
-            function wrapEventCallback (callback) {
+                parsed = $parse(attr[attrName])(scope.$parent);
 
-                return function (event) {
-
+                if (angular.isFunction(parsed)) {
                     scope.$apply(function () {
-                        callback.call(playerInstance, event);
+                        parsed.call(playerInstance, event);
                     });
-                };
+                }
             }
 
             /**

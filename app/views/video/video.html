@@ -1,19 +1,18 @@
 <div class="jw-jumbotron jw-video">
   <div class="jw-jumbotron-content">
-    <jw-player settings="::vm.playerSettings" on-ready="vm.onReady" on-play="vm.onPlay" on-pause="vm.onPause"
-        on-complete="vm.onComplete" on-time="vm.onTime" on-first-frame="vm.onFirstFrame">
-    </jw-player>
+    <jw-player settings="vm.playerSettings" on-playlist-item="vm.onPlaylistItemEvent" on-time="vm.onTime"
+        on-complete="vm.onComplete" on-first-frame="vm.onFirstFrame" on-play="vm.onPlay"></jw-player>
     <div class="jw-meta">
-      <div class="jw-meta-title">{{ ::vm.item.title }}</div>
-      <div class="jw-meta-duration"><span>{{ ::vm.duration }}</span></div>
+      <div class="jw-meta-title">{{ vm.item.title }}</div>
+      <div class="jw-meta-duration"><span>{{ vm.duration }}</span></div>
       <div class="jw-meta-description">
-        <p>{{ ::vm.item.description }}</p>
+        <p>{{ vm.item.description }}</p>
       </div>
       <div class="jw-meta-social">
-        <a ng-href="{{ ::vm.facebookShareLink }}" target="_blank" class="jw-button jw-button-share">
+        <a ng-href="{{ vm.facebookShareLink }}" target="_blank" class="jw-button jw-button-share">
           <i class="jwy-icon-facebook"></i>
         </a>
-        <a ng-href="{{ ::vm.twitterShareLink }}" target="_blank" class="jw-button jw-button-share">
+        <a ng-href="{{ vm.twitterShareLink }}" target="_blank" class="jw-button jw-button-share">
           <i class="jwy-icon-twitter"></i>
         </a>
       </div>
@@ -26,7 +25,7 @@
   </div>
 </div>
 
-<div class="jw-row" ng-if="vm.feed && vm.feed.playlist.length > 0">
+<div class="jw-row" ng-if="vm.feed.playlist.length > 0">
   <jw-card-slider feed="vm.feed" featured="false" spacing="12" header="vm.feedTitle" visible-items="[2,2,3,4,5]"
       on-card-click="vm.onCardClickHandler"></jw-card-slider>
 </div>
