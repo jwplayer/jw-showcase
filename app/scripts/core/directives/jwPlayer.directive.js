@@ -55,7 +55,7 @@
 
         function link (scope, element, attr) {
 
-            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error'],
+            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'time', 'error', 'firstFrame'],
                 playerInstance = null,
                 playerId       = generateRandomId();
 
@@ -138,7 +138,7 @@
                 return function (event) {
 
                     scope.$apply(function () {
-                        callback(event);
+                        callback.call(playerInstance, event);
                     });
                 };
             }

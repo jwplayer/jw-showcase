@@ -66,8 +66,8 @@
          *
          * @returns {$q.promise}
          */
-        preloadApp.$inject = ['$q', '$exceptionHandler', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist'];
-        function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer, watchlist) {
+        preloadApp.$inject = ['$q', '$exceptionHandler', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist', 'watchProgress'];
+        function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer, watchlist, watchProgress) {
 
             var defer = $q.defer();
 
@@ -108,6 +108,7 @@
 
             function handlePreloadSuccess () {
                 watchlist.restore();
+                watchProgress.restore();
                 defer.resolve();
             }
 

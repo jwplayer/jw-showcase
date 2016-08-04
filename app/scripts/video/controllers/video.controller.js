@@ -27,12 +27,15 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
+     * @requires app.core.watchProgress
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'watchProgress', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, watchProgress, utils, feed, item) {
 
-        var vm = this;
+        var vm = this,
+            progress = 0,
+            watchProgressItem;
 
         vm.item              = item;
         vm.feed              = feed;
@@ -42,11 +45,13 @@
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
 
-        vm.onReady    = onPlayerEvent;
-        vm.onPlay     = onPlayerEvent;
-        vm.onPause    = onPlayerEvent;
-        vm.onComplete = onPlayerEvent;
-        vm.onError    = onPlayerEvent;
+        vm.onReady      = onPlayerEvent;
+        vm.onPlay       = onPlayerEvent;
+        vm.onPause      = onPlayerEvent;
+        vm.onComplete   = onPlayerEvent;
+        vm.onError      = onPlayerEvent;
+        vm.onFirstFrame = onPlayerEvent;
+        vm.onTime       = onTime;
 
         vm.onCardClickHandler = onCardClickHandler;
 
@@ -74,6 +79,10 @@
                 playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false
             };
+
+            watchProgressItem = watchProgress.getItem(vm.item);
+
+            progress = watchProgressItem ? watchProgressItem.progress : 0;
         }
 
         /**
@@ -101,7 +110,53 @@
          */
         function onPlayerEvent (event) {
 
+            if (progress > 0) {
+
+                if (!$stateParams.autoStart && event.type === 'firstFrame') {
+                    this.seek(progress * this.getDuration());
+                    progress = 0;
+                }
+
+                if ($stateParams.autoStart && event.type === 'play') {
+                    this.seek(progress * this.getDuration());
+                    progress = 0;
+                }
+            }
+
+            // always remove watchProgress on complete event
+            if (event.type === 'complete') {
+                watchProgress.removeItem(vm.item);
+            }
+
             vm.isPlaying       = 'play' === event.type;
+        }
+
+        /**
+         * Handle time event
+         * @param event
+         */
+        function onTime (event) {
+
+            var position = Math.round(event.position),
+                progress = event.position / event.duration;
+
+            if (angular.isNumber(progress) && position % 2) {
+                handleWatchProgress(progress);
+            }
+        }
+
+        /**
+         * Save or remove watchProgress
+         * @param {number} progress
+         */
+        function handleWatchProgress (progress) {
+
+            if (progress > 0.95 && watchProgress.hasItem(vm.item)) {
+                watchProgress.removeItem(vm.item);
+            }
+            else {
+                watchProgress.saveItem(vm.item, progress);
+            }
         }
 
         /**

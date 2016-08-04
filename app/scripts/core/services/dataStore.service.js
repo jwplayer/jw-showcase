@@ -80,6 +80,22 @@
         };
 
         /**
+         * @ngdoc property
+         * @name app.core.dataStore#watchProgressFeed
+         * @propertyOf app.core.dataStore
+         *
+         * @type {app.core.feed}
+         * @description
+         * The watchProgress feed
+         */
+        this.watchProgressFeed = {
+            feedid:   'watchProgress',
+            playlist: []
+        };
+
+
+
+        /**
          * @ngdoc method
          * @name app.core.dataStore#getItem
          * @methodOf app.core.dataStore
@@ -129,9 +145,8 @@
                 allFeeds = allFeeds.concat([this.featuredFeed]);
             }
 
-            if (this.watchlistFeed) {
-                allFeeds = allFeeds.concat([this.watchlistFeed]);
-            }
+            // concat watchlist and watchProgress feeds
+            allFeeds = allFeeds.concat([this.watchlistFeed, this.watchProgressFeed]);
 
             feed = allFeeds.find(function (feed) {
                 return feed.feedid === feedId;
