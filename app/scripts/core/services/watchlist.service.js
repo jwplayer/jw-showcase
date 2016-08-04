@@ -18,17 +18,6 @@
 
     var LOCAL_STORAGE_KEY = 'jwshowcase.watchlist';
 
-    var LOCAL_STORAGE_SUPPORT = (function () {
-        try {
-            window.localStorage.setItem('test', 'test');
-            window.localStorage.removeItem('test');
-        }
-        catch (e) {
-            return false;
-        }
-        return true;
-    }());
-
     angular
         .module('app.core')
         .service('watchlist', watchlist);
@@ -88,7 +77,7 @@
                 clone.$feedid = clone.feedid;
                 clone.feedid  = 'watchlist';
 
-                dataStore.watchlistFeed.playlist.push(clone);
+                dataStore.watchlistFeed.playlist.unshift(clone);
                 persist();
             }
         }
@@ -145,8 +134,13 @@
                     return {mediaid: item.mediaid, feedid: item.$feedid};
                 });
 
-            if (LOCAL_STORAGE_SUPPORT) {
-                window.localStorage.setItem('jwshowcase.watchlist', JSON.stringify(data));
+            if (window.localStorageSupport) {
+                try {
+                    window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+                }
+                catch (e) {
+
+                }
             }
         }
 
@@ -176,7 +170,7 @@
 
             var data, parsed;
 
-            if (!LOCAL_STORAGE_SUPPORT) {
+            if (!window.localStorageSupport) {
                 return;
             }
 
@@ -186,19 +180,19 @@
                 return;
             }
 
-            parsed = JSON.parse(data);
+            try {
+                parsed = JSON.parse(data);
+                parsed.map(function (keys) {
+                    var item = dataStore.getItem(keys.mediaid, keys.feedid);
 
-            if (!parsed) {
-                return;
+                    if (item) {
+                        addItem(item);
+                    }
+                });
             }
+            catch (e) {
 
-            parsed.map(function (keys) {
-                var item = dataStore.getItem(keys.mediaid, keys.feedid);
-
-                if (item) {
-                    addItem(item);
-                }
-            });
+            }
         }
     }
 })();
