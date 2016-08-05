@@ -28,8 +28,9 @@ var stepsDefinition = function () {
                     .findElement(by.css('.jw-display-icon-container'))
                     .click()
                     .then(function () {
-                        browser.sleep(2000);
-                        callback();
+                        browser
+                            .sleep(2000)
+                            .then(callback);
                     });
             });
     });
@@ -94,6 +95,15 @@ var stepsDefinition = function () {
                 expect(url).to.equal(browser.baseUrl + '/404');
                 callback();
             });
+    });
+
+    this.Then(/^seek to the end of video$/, function (callback) {
+
+        browser
+            .executeScript(function () {
+                jwplayer().seek(jwplayer().getDuration());
+            })
+            .then(callback);
     });
 
     this.Then(/^I move my mouse over the video$/, function (callback) {
@@ -304,7 +314,7 @@ var stepsDefinition = function () {
         expect(secs).to.be.greaterThan(0);
 
         browser
-            .sleep(runTime)
+            .sleep(runTime);
 
         browser
             .findElement(by.css('.jw-meta'))
@@ -315,6 +325,20 @@ var stepsDefinition = function () {
             });
 
     }); // case
+
+    this.Then(/^the video progress should be greater than (\d+)%$/, function (progress, callback) {
+
+        progress = parseInt(progress) / 100;
+
+        browser
+            .executeScript(function () {
+                return jwplayer().getPosition() / jwplayer().getDuration();
+            })
+            .then(function (currentProgress) {
+                expect(currentProgress).to.be.greaterThan(progress);
+                callback();
+            });
+    });
 };
 
 module.exports = stepsDefinition;

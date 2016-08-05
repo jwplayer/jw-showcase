@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="jw-row" ng-if="vm.dataStore.watchProgressFeed.playlist.length > 0">
+<div class="jw-row watchProgress" ng-if="vm.dataStore.watchProgressFeed.playlist.length > 0">
   <jw-card-slider feed="vm.dataStore.watchProgressFeed" featured="false" header="'Continue watching'"
       visible-items="[2,2,3,4,5]" on-card-click="vm.onCardClickHandler" spacing="12"
       watch-progress="true"></jw-card-slider>
