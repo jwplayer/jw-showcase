@@ -16,9 +16,10 @@
 
 (function () {
 
-    var LOCAL_STORAGE_KEY = 'jwshowcase.watchprogress';
-
+    var LOCAL_STORAGE_KEY       = 'jwshowcase.watchprogress';
     var WATCH_PROGRESS_LIFETIME = 86400000 * 30;
+    var WATCH_PROGRESS_MIN      = 0.01;
+    var WATCH_PROGRESS_MAX      = 0.95;
 
     angular
         .module('app.core')
@@ -32,6 +33,9 @@
      */
     watchProgress.$inject = ['dataStore'];
     function watchProgress (dataStore) {
+
+        this.WATCH_PROGRESS_MAX = WATCH_PROGRESS_MAX;
+        this.WATCH_PROGRESS_MIN = WATCH_PROGRESS_MIN;
 
         this.saveItem   = saveItem;
         this.removeItem = removeItem;
@@ -93,9 +97,7 @@
                 playlist.unshift(clone);
             }
 
-            playlist.sort(function (a, b) {
-                return a.lastWatched < b.lastWatched;
-            });
+            playlist.sort(sortOnLastWatched);
 
             persist();
         }
@@ -108,7 +110,7 @@
          */
         function getItem (item) {
 
-            var index = findProgressIndex(item),
+            var index    = findProgressIndex(item),
                 playlist = dataStore.watchProgressFeed.playlist;
 
             return playlist[index];
@@ -191,12 +193,8 @@
             try {
                 parsed = JSON.parse(data);
                 parsed
-                    .filter(function (keys) {
-                        return isValid(keys);
-                    })
-                    .sort(function (a, b) {
-                        return a.lastWatched < b.lastWatched;
-                    })
+                    .filter(isValid(keys))
+                    .sort(sortOnLastWatched)
                     .map(function (keys) {
 
                         // dataStore#getItem already returns a clone of the item
@@ -227,13 +225,26 @@
                 }
 
                 // if progress is to small or past 95%
-                if (item.progress < 0.01 || item.progress > 0.95) {
+                if (item.progress < WATCH_PROGRESS_MIN || item.progress > WATCH_PROGRESS_MAX) {
                     return false;
                 }
 
                 // filter out older items older than lifetime
                 return time - item.lastWatched < WATCH_PROGRESS_LIFETIME
             }
+        }
+
+        /**
+         * Sort on last watched value DESC
+         *
+         * @param {app.core.item} a
+         * @param {app.core.item} b
+         *
+         * @returns {boolean}
+         */
+        function sortOnLastWatched (a, b) {
+
+            return a.lastWatched < b.lastWatched;
         }
     }
 })();

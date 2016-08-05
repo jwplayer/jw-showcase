@@ -208,8 +208,10 @@
          */
         function handleWatchProgress (progress) {
 
-            if (progress > 0.95 && watchProgress.hasItem(vm.item)) {
-                watchProgress.removeItem(vm.item);
+            if (progress > watchProgress.WATCH_PROGRESS_MAX) {
+                if (watchProgress.hasItem(vm.item)) {
+                    watchProgress.removeItem(vm.item);
+                }
             }
             else {
                 watchProgress.saveItem(vm.item, progress);

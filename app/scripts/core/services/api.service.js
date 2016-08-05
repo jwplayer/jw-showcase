@@ -144,6 +144,8 @@
      * @property {string}               tags            Tags
      * @property {string}               title           Video title
      * @property {Object[]}             tracks          Tracks
+     * @property {number}               [lastWatched]   Last watched timestamp
+     * @property {number}               [progress]      Watch progress percentage
      */
 
     /**
