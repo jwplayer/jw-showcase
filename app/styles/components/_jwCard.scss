@@ -55,7 +55,6 @@
     }
 
     .jw-card-cell {
-        position: relative;
         display: table-cell;
     }
 
@@ -173,6 +172,10 @@
 
     .jw-card-description {
         max-height: 3 * 16px;
+    }
+
+    .jw-card-watch-progress-container {
+        position: relative;
     }
 
     .jw-card-watch-progress {
