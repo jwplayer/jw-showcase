@@ -193,7 +193,7 @@
             try {
                 parsed = JSON.parse(data);
                 parsed
-                    .filter(isValid(keys))
+                    .filter(isValid)
                     .sort(sortOnLastWatched)
                     .map(function (keys) {
 
