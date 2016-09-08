@@ -5,7 +5,6 @@
 .jw-jumbotron {
     position: relative;
     width: 100%;
-    min-height: 70%;
 
     background-color: $shark;
 
@@ -29,6 +28,10 @@
 }
 
 @include tablet-and-larger () {
+
+    .jw-jumbotron {
+        min-height: 70%;
+    }
 
     .jw-jumbotron .jw-jumbotron-content {
         @include cover();

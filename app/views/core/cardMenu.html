@@ -1,16 +1,17 @@
 <div class="jw-card-menu">
   <div class="jw-card-menu-container">
-    <div ng-show="!vm.toast">
-      <div class="jw-card-menu-item" ng-click="vm.watchlistAddClickHandler()" ng-if="!vm.inWatchlist">
+    <div class="jw-card-menu-item" ng-switch="vm.inWatchlist">
+      <div class="jw-button jw-button-default" ng-click="vm.watchlistAddClickHandler()" ng-switch-when="false">
         Add to watchlist
       </div>
-      <div class="jw-card-menu-item" ng-click="vm.watchlistRemoveClickHandler()" ng-if="vm.inWatchlist">
+      <div class="jw-button jw-button-default" ng-click="vm.watchlistRemoveClickHandler()" ng-switch-when="true">
         Remove from watchlist
       </div>
-      <div class="jw-card-menu-item" ng-click="vm.closeClickHandler()">Close</div>
     </div>
-    <div class="jw-card-menu-toast" ng-show="vm.toast">
-      {{ vm.toast }}
+    <div class="jw-card-menu-item">
+      <div class="jw-button jw-button-transparent" ng-click="vm.closeClickHandler()">
+        Cancel
+      </div>
     </div>
   </div>
 </div>

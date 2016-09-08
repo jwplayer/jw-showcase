@@ -9,6 +9,24 @@
     color: $white;
     line-height: 1;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.jw-button-default {
+    padding: 5px 20px;
+
+    border-radius: 5px;
+    background: $radical-red;
+    color: $white;
+    font-weight: bold;
+}
+
+.jw-button-transparent {
+    padding: 5px 20px;
+
+    background: transparent;
+    color: $black;
+    font-weight: bold;
 }
 
 //
@@ -21,7 +39,6 @@
 
     border: 0.2em solid $white;
     border-radius: 50%;
-    cursor: pointer;
 
     .jwy-icon-play {
         @include center-self(50%, 54%);
@@ -47,8 +64,86 @@
 // --------------------------------
 
 .jw-button-share {
-    padding: 10px;
+    padding: 12px;
 
     border-radius: 50%;
     background: $mine-shaft;
+}
+
+.jw-button-share > .jwy-icon {
+    font-size: 26px;
+}
+
+//
+// jwButtonWatchlist
+// --------------------------------
+
+%jw-watchlist-white {
+    .jwy-icon-stack {
+        color: $white;
+
+        .jwy-icon {
+            color: $black;
+        }
+    }
+}
+
+%jw-watchlist-dark {
+    .jwy-icon-stack {
+        color: $radical-red;
+
+        .jwy-icon {
+            color: $white;
+        }
+    }
+}
+
+.jw-button-watchlist {
+
+    vertical-align: middle;
+
+    > span {
+        @include single-transition(opacity, .1s, ease);
+        display: inline-block;
+
+        text-align: right;
+        opacity: 0.65;
+        vertical-align: middle;
+    }
+
+    .jwy-icon-stack {
+        vertical-align: middle;
+    }
+
+    .jwy-icon {
+        @include transition(color .1s ease, transform .1s linear);
+        margin-top: -1px;
+        font-size: 29px;
+    }
+
+    &:hover > span {
+        opacity: 1;
+    }
+
+    &:not(.is-active) {
+        @extend %jw-watchlist-white;
+
+        &:hover .jwy-icon-stack .jwy-icon {
+            color: $radical-red;
+        }
+    }
+
+    &.is-active {
+        @extend %jw-watchlist-dark;
+
+        &:hover {
+            .jwy-icon-stack .jwy-icon:first-child {
+                transform: rotate(45deg);
+            }
+
+            .jwy-icon-stack .jwy-icon:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+    }
 }

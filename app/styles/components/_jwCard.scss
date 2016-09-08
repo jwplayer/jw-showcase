@@ -17,8 +17,18 @@
         }
     }
 
-    &.jw-card-menu-open .jw-card-menu-button {
-        display: none;
+    &.jw-card-menu-open {
+        .jw-card-menu-button,
+        .jw-card-watchlist-button {
+            display: none;
+        }
+    }
+
+    .jw-button-watchlist {
+        position: absolute;
+        top: -5px;
+        left: 20px;
+        font-size: 28px;
     }
 
     .jw-card-aspect {
@@ -138,6 +148,63 @@
             vertical-align: middle;
         }
     }
+
+    .jw-card-toast-container {
+        &.ng-enter,
+        &.ng-leave {
+            @include single-transition(opacity, 0.2s, ease);
+        }
+
+        &.ng-enter {
+            opacity: 0;
+        }
+
+        &.ng-enter-active {
+            opacity: 1;
+        }
+
+        &.ng-leave {
+            opacity: 1;
+        }
+
+        &.ng-leave-active {
+            opacity: 0;
+        }
+    }
+
+    .jw-card-toast {
+        @include cover();
+
+        &.jw-card-toast--removedFromWatchlist {
+            background: $torch-red;
+            color: $white;
+
+            .jwy-icon-stack > .jwy-icon {
+                opacity: 0.45;
+            }
+        }
+
+        &.jw-card-toast--addedToWatchlist {
+            background: $apple;
+            color: $white;
+        }
+
+        .jw-card-toast-container {
+            @include transform(translateY(-50%));
+
+            position: absolute;
+            top: 50%;
+            width: 100%;
+
+            font-size: 16px;
+            text-align: center;
+
+            .jw-card-toast-icon {
+                margin-bottom: 10px;
+                font-size: 3em;
+            }
+        }
+    }
 }
 
 //
@@ -234,6 +301,10 @@
 
     .jw-card-container {
         @include background-image(linear-gradient(rgba($black, 0) 50%, rgba($black, 0.9) 95%));
+    }
+
+    .jw-button-watchlist {
+        display: none;
     }
 }
 

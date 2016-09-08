@@ -335,6 +335,8 @@
                     visibleItems = scope.vm.visibleItems,
                     percent, maxHeight;
 
+                listWidth += scope.vm.spacing;
+
                 if (angular.isArray(visibleItems)) {
                     visibleItems = getResponsiveItemCount(visibleItems);
                 }
