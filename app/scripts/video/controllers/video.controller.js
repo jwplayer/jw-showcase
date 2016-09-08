@@ -31,8 +31,8 @@
      * @requires app.core.watchProgress
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, utils, feed, item) {
 
         var vm       = this,
             lastPos  = 0,
@@ -45,6 +45,7 @@
         vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
+        vm.inWatchList       = false;
 
         vm.onPlay         = onPlay;
         vm.onComplete     = onComplete;
@@ -53,6 +54,9 @@
         vm.onPlaylistItem = onPlaylistItem;
 
         vm.onCardClickHandler = onCardClickHandler;
+
+        vm.addToWatchList      = addToWatchList;
+        vm.removeFromWatchList = removeFromWatchList;
 
         activate();
 
@@ -93,8 +97,27 @@
             };
 
             watchProgressItem = watchProgress.getItem(vm.item);
+            progress          = watchProgressItem ? watchProgressItem.progress : 0;
 
-            progress = watchProgressItem ? watchProgressItem.progress : 0;
+            vm.inWatchList = watchlist.hasItem(vm.item);
+        }
+
+        /**
+         * Add current item to watchlist
+         */
+        function addToWatchList () {
+
+            watchlist.addItem(vm.item);
+            vm.inWatchList = true;
+        }
+
+        /**
+         * Remove current item from watchlist
+         */
+        function removeFromWatchList () {
+
+            watchlist.removeItem(vm.item);
+            vm.inWatchList = false;
         }
 
         /**

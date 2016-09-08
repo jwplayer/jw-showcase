@@ -27,8 +27,8 @@
      * @requires $scope
      * @requires app.core.utils
      */
-    CardController.$inject = ['$rootScope', '$scope', 'utils'];
-    function CardController ($rootScope, $scope, utils) {
+    CardController.$inject = ['$rootScope', '$scope', 'utils', 'watchlist', '$timeout'];
+    function CardController ($rootScope, $scope, utils, watchlist, $timeout) {
 
         var vm = this;
 
@@ -38,6 +38,11 @@
         vm.menuButtonClickHandler = menuButtonClickHandler;
         vm.closeMenuHandler       = closeMenuHandler;
         vm.menuVisible            = false;
+        vm.inWatchList            = false;
+        vm.toast                  = null;
+
+        vm.watchlistClickHandler = watchlistClickHandler;
+        vm.showToast             = showToast;
 
         activate();
 
@@ -48,14 +53,52 @@
          */
         function activate () {
 
-            vm.duration = utils.getVideoDurationByItem(vm.item);
+            vm.duration    = utils.getVideoDurationByItem(vm.item);
+            vm.inWatchList = watchlist.hasItem(vm.item);
 
             $scope.$on('jwCardMenu:open', handleCardMenuOpenEvent);
+
+            $scope.$watch(function () {
+                return watchlist.hasItem(vm.item);
+            }, function (val, oldVal) {
+                if (val !== oldVal) {
+                    vm.inWatchList = val;
+                }
+            });
+        }
+
+        /**
+         * Handle watchlistclick event
+         */
+        function watchlistClickHandler () {
+
+            if (watchlist.hasItem(vm.item) === true) {
+                watchlist.removeItem(vm.item);
+                // vm.inWatchList = false;
+                vm.showToast({template: 'removedFromWatchlist', duration: 1000});
+            }
+        }
+
+        /**
+         * Show a toast over the card
+         *
+         * @param {Object} toast                Toast options object
+         * @param {String} toast.template       Template name
+         * @param {Number} [toast.duration]     Optional duration
+         */
+        function showToast (toast) {
+
+            vm.toast = toast;
+
+            $timeout(function () {
+                vm.toast = null;
+            }, toast.duration || 1000);
         }
 
         /**
          * Handle jwCardMenu:open event
-         * @param event
+         * @param {$event} event
+         * @param {$scope} targetScope
          */
         function handleCardMenuOpenEvent (event, targetScope) {
 
@@ -64,6 +107,7 @@
             }
 
             vm.menuVisible = false;
+            vm.toast       = null;
         }
 
         /**

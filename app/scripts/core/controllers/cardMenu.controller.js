@@ -23,6 +23,9 @@
     /**
      * @ngdoc controller
      * @name app.core.controller:CardMenuController
+     *
+     * @requires $timeout
+     * @requires app.core.watchlist
      */
     CardMenuController.$inject = ['$timeout', 'watchlist'];
     function CardMenuController ($timeout, watchlist) {
@@ -30,7 +33,6 @@
         var vm = this;
 
         vm.inWatchlist = false;
-        vm.toast       = null;
 
         vm.closeClickHandler           = closeClickHandler;
         vm.watchlistAddClickHandler    = watchlistAddClickHandler;
@@ -46,6 +48,16 @@
         function activate () {
 
             vm.inWatchlist = watchlist.hasItem(vm.item);
+
+            $scope.$watch(function () {
+                return watchlist.hasItem(vm.item);
+            }, function (val, oldVal) {
+                if (val !== oldVal) {
+                    $timeout(function () {
+                        vm.inWatchlist = val;
+                    }, 200);
+                }
+            }, false);
         }
 
         /**
@@ -64,13 +76,7 @@
         function watchlistAddClickHandler () {
 
             watchlist.addItem(vm.item);
-
-            vm.toast = 'Added to watchlist';
-
-            $timeout(function () {
-                vm.onClose();
-                vm.toast = null;
-            }, 1000);
+            vm.jwCard.showToast({template: 'addedToWatchlist', duration: 1000});
         }
 
         /**
@@ -79,13 +85,7 @@
         function watchlistRemoveClickHandler () {
 
             watchlist.removeItem(vm.item);
-
-            vm.toast = 'Removed from watchlist';
-
-            $timeout(function () {
-                vm.onClose();
-                vm.toast = null;
-            }, 1000);
+            vm.jwCard.showToast({template: 'removedFromWatchlist', duration: 1000});
         }
     }
 
