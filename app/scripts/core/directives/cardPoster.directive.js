@@ -53,8 +53,6 @@
 
         function link (scope, element) {
 
-            var img;
-
             activate();
 
             ////////////////////////
@@ -64,26 +62,11 @@
              */
             function activate () {
 
-                img        = document.createElement('img');
-                img.onload = imageLoaded;
-                img.src    = scope.src;
-
                 element.css({
-                    opacity:            0,
+                    backgroundImage:    'url(' + scope.src + ')',
                     backgroundPosition: 'center',
                     backgroundRepeat:   'no-repeat',
                     backgroundSize:     'cover'
-                });
-            }
-
-            /**
-             * Called after the image has been loaded.
-             */
-            function imageLoaded () {
-
-                element.css({
-                    backgroundImage: 'url(' + scope.src + ')',
-                    opacity:         ''
                 });
             }
         }

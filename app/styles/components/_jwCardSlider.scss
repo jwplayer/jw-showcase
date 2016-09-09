@@ -59,6 +59,16 @@
             pointer-events: none !important;
         }
 
+        .jw-card-slider-slide.is-poster-visible .jw-card-poster {
+            @include single-transition(opacity, 0.5s, ease, 0.3s);
+            opacity: 1;
+        }
+
+        .jw-card-slider-slide:not(.is-poster-visible) .jw-card-poster {
+            background-image: none !important;
+            opacity: 0;
+        }
+
         .jw-card-slider-slide {
             display: inline-block;
             position: relative;
