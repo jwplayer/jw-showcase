@@ -24,11 +24,12 @@
      * @ngdoc controller
      * @name app.core.controller:CardMenuController
      *
+     * @requires $scope
      * @requires $timeout
      * @requires app.core.watchlist
      */
-    CardMenuController.$inject = ['$timeout', 'watchlist'];
-    function CardMenuController ($timeout, watchlist) {
+    CardMenuController.$inject = ['$scope', '$timeout', 'watchlist'];
+    function CardMenuController ($scope, $timeout, watchlist) {
 
         var vm = this;
 
