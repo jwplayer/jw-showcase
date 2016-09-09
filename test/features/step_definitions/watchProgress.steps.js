@@ -148,7 +148,6 @@ var stepsDefinition = function () {
         });
     });
 
-
     this.Then(/the first card in "Continue watching" slider should show "([^"]*)" watch progress/, function (width, callback) {
 
         element(by.css('.jw-row.watchProgress .jw-card:first-child .jw-card-watch-progress-indicator'))
