@@ -55,7 +55,7 @@
 
         function link (scope, element, attr) {
 
-            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error', 'playlistItem'],
+            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error', 'playlistItem', 'time', 'firstFrame'],
                 playerInstance = null,
                 playerId       = generateRandomId();
 
@@ -118,7 +118,7 @@
 
                 if (angular.isFunction(parsed)) {
                     scope.$apply(function () {
-                        parsed(event);
+                        parsed.call(playerInstance, event);
                     });
                 }
             }

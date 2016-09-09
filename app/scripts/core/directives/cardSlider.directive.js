@@ -82,14 +82,15 @@
 
         return {
             scope:            {
-                header:       '=?',
-                feed:         '=',
-                maxWidth:     '=',
-                maxHeight:    '=',
-                visibleItems: '=',
-                featured:     '=',
-                spacing:      '=',
-                onCardClick:  '='
+                header:        '=?',
+                feed:          '=',
+                maxWidth:      '=',
+                maxHeight:     '=',
+                watchProgress: '=',
+                visibleItems:  '=',
+                featured:      '=',
+                spacing:       '=',
+                onCardClick:   '='
             },
             replace:          true,
             controller:       'CardSliderController',
@@ -141,6 +142,9 @@
                 }
 
                 scope.$on('$destroy', destroy);
+                scope.$watch('vm.feed', function () {
+                    resizeDebounced();
+                }, true);
 
                 // update feed
                 scope.$watch('vm.feed', function () {
@@ -330,6 +334,8 @@
                 var listWidth    = $('.jw-card-slider-list').offsetWidth,
                     visibleItems = scope.vm.visibleItems,
                     percent, maxHeight;
+
+                listWidth += scope.vm.spacing;
 
                 if (angular.isArray(visibleItems)) {
                     visibleItems = getResponsiveItemCount(visibleItems);

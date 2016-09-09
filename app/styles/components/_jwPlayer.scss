@@ -21,10 +21,6 @@
     &.jw-state-idle,
     &.jw-state-paused {
 
-        .jw-overlays {
-            background: rgba($black, 0.6);
-        }
-
         .jw-display-icon-container {
             display: table;
 
@@ -39,10 +35,6 @@
             color: $radical-red;
             font-size: 1.7em;
         }
-    }
-
-    .jw-controls {
-        z-index: $view-z-index + 6;
     }
 
     .jw-overlays {
@@ -84,12 +76,5 @@ video::-internal-media-controls-overlay-cast-button {
 
     .jwplayer.jw-reset.jw-flag-aspect-mode {
         height: 100% !important;
-    }
-
-    .jwplayer.jw-reset {
-
-        &:not(.jw-flag-fullscreen) .jw-display-icon-container {
-            top: 40%;
-        }
     }
 }

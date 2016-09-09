@@ -1,0 +1,89 @@
+//
+// jwCardMenu
+// --------------------------------
+
+.jw-card-menu {
+    @include cover();
+    background: $white;
+
+    &.ng-enter,
+    &.ng-leave {
+        @include transition(opacity 0.2s ease);
+
+        .jw-card-menu-container {
+            @include transition(transform 0.1s);
+        }
+    }
+
+    &.ng-leave.ng-leave-active,
+    &.ng-enter {
+        opacity: 0;
+
+        .jw-card-menu-container {
+            @include transform(translateY(-50%) scale(0.8));
+        }
+    }
+
+    &.ng-enter.ng-enter-active,
+    &.ng-leave {
+        opacity: 1;
+
+        .jw-card-menu-container {
+            @include transform(translateY(-50%) scale(1));
+        }
+    }
+
+    .jw-card-menu-container {
+        @include transform(translateY(-50%));
+
+        position: absolute;
+        top: 50%;
+        width: 100%;
+
+        font-size: 16px;
+    }
+
+    //.jw-card-menu-item > button {
+    //    margin: auto 5px;
+    //    padding: 3px 20px;
+    //    border: 0;
+    //    border-radius: 5px;
+    //    background-color: $radical-red;
+    //    color: $white;
+    //    font-size: 0.7em;
+    //}
+
+    //.jw-card-menu-item > button:focus {
+    //    outline: 0;
+    //}
+
+    .jw-card-menu-item {
+        text-align: center;
+
+        &:last-child .jw-button {
+            color: $gray-darker;
+            font-weight: normal;
+        }
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include tablet-and-larger () {
+
+    .jw-card-menu .jw-card-menu-item {
+        padding: 10px;
+
+        //&:last-child {
+        //    font-size: 1em;
+        //}
+    }
+
+    //.jw-card-menu .jw-card-menu-item > button {
+    //    margin: 0;
+    //    padding: 5px 40px;
+    //    font-size: 1em;
+    //}
+}

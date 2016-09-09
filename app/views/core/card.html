@@ -1,15 +1,16 @@
-<div class="jw-card" ng-class="vm.getClassNames()" ng-click="vm.onClickHandler($event, false)">
+<div class="jw-card" ng-class="vm.getClassNames()">
+
   <div class="jw-card-aspect">
     <div class="jw-card-poster-container">
       <jw-card-poster src="vm.item.image"></jw-card-poster>
-      <div class="jw-card-poster-filter"></div>
     </div>
   </div>
-  <div class="jw-card-container">
+
+  <div class="jw-card-container" ng-click="vm.clickHandler($event, false)">
     <div class="jw-card-table">
       <div class="jw-card-controls jw-card-row">
         <div class="jw-card-cell">
-          <div class="jw-card-play-button jw-button jw-button-play" ng-click="vm.onClickHandler($event, true)">
+          <div class="jw-card-play-button jw-button jw-button-play" ng-click="vm.clickHandler($event, true)">
             <i class="jwy-icon jwy-icon-play"></i>
           </div>
           <div class="jw-card-duration jw-card-text">{{ ::vm.duration }}</div>
@@ -17,6 +18,11 @@
       </div>
       <div class="jw-card-info jw-card-row">
         <div class="jw-card-cell">
+          <div class="jw-card-watch-progress-container" ng-if="vm.watchProgress && vm.item.progress > 0">
+            <div class="jw-card-watch-progress">
+              <div class="jw-card-watch-progress-indicator" ng-style="{width: vm.item.progress * 100 + '%'}"></div>
+            </div>
+          </div>
           <div class="jw-card-info-mask">
             <div class="jw-card-title jw-card-text" ng-if="vm.showTitle">{{ ::vm.item.title }}</div>
             <div class="jw-card-description jw-card-text" ng-if="vm.showDescription"
@@ -26,4 +32,21 @@
       </div>
     </div>
   </div>
+
+  <div class="jw-card-menu-button jw-button" ng-click="vm.menuButtonClickHandler($event)" ng-show="!vm.featured">
+    <i class="jwy-icon jwy-icon-more jwy-icon-rotate-90"></i>
+  </div>
+
+  <jw-card-menu on-close="vm.closeMenuHandler()" item="vm.item" ng-if="vm.menuVisible"></jw-card-menu>
+
+  <div ng-include="'views/core/toasts/'  + vm.toast.template + '.html'" ng-if="vm.toast" class="jw-card-toast-container"></div>
+
+  <div class="jw-card-watchlist-button jw-button jw-button-watchlist is-active" ng-show="vm.inWatchList"
+      ng-click="vm.watchlistClickHandler($event)">
+    <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
+      <i class="jwy-icon jwy-icon-min"></i>
+      <i class="jwy-icon jwy-icon-min"></i>
+    </i>
+  </div>
+
 </div>

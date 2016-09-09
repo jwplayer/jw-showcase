@@ -5,7 +5,7 @@
       <ul class="jw-card-slider-list">
         <li class="jw-card-slider-slide" ng-repeat="item in vm.feed.playlist">
           <jw-card item="item" featured="vm.featured" show-title="true" show-description="true"
-              on-click="vm.onCardClick"></jw-card>
+              on-click="vm.onCardClick" watch-progress="vm.watchProgress"></jw-card>
         </li>
       </ul>
     </div>

@@ -28,24 +28,35 @@
      * @requires $stateParams
      * @requires $location
      * @requires app.core.dataStore
+     * @requires app.core.watchProgress
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, dataStore, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, utils, feed, item) {
 
-        var vm = this;
+        var vm       = this,
+            lastPos  = 0,
+            progress = 0,
+            watchProgressItem;
 
         vm.item              = item;
-        vm.feed              = feed;
-        vm.moreLikeThisFeed  = {};
+        vm.feed              = {};
         vm.duration          = 0;
-        vm.isPlaying         = false;
-        vm.facebookShareLink = '';
-        vm.twitterShareLink  = '';
+        vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
+        vm.facebookShareLink = composeFacebookLink();
+        vm.twitterShareLink  = composeTwitterLink();
+        vm.inWatchList       = false;
 
-        vm.onPlaylistItemEvent = onPlaylistItemEvent;
-        vm.onCardClickHandler  = onCardClickHandler;
+        vm.onPlay         = onPlay;
+        vm.onComplete     = onComplete;
+        vm.onFirstFrame   = onFirstFrame;
+        vm.onTime         = onTime;
+        vm.onPlaylistItem = onPlaylistItem;
 
+        vm.onCardClickHandler = onCardClickHandler;
+
+        vm.addToWatchList      = addToWatchList;
+        vm.removeFromWatchList = removeFromWatchList;
 
         activate();
 
@@ -79,11 +90,34 @@
 
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
-            vm.moreLikeThisFeed = {
-                playlist: vm.feed.playlist.filter(function (item) {
+            vm.feed = {
+                playlist: feed.playlist.filter(function (item) {
                     return item.mediaid !== vm.item.mediaid;
                 })
             };
+
+            watchProgressItem = watchProgress.getItem(vm.item);
+            progress          = watchProgressItem ? watchProgressItem.progress : 0;
+
+            vm.inWatchList = watchlist.hasItem(vm.item);
+        }
+
+        /**
+         * Add current item to watchlist
+         */
+        function addToWatchList () {
+
+            watchlist.addItem(vm.item);
+            vm.inWatchList = true;
+        }
+
+        /**
+         * Remove current item from watchlist
+         */
+        function removeFromWatchList () {
+
+            watchlist.removeItem(vm.item);
+            vm.inWatchList = false;
         }
 
         /**
@@ -106,25 +140,10 @@
         }
 
         /**
-         * Handle click event on card
-         *
-         * @param {Object}      item        Clicked item
-         * @param {boolean}     autoStart   Should the video playback start automatically
-         */
-        function onCardClickHandler (item, autoStart) {
-
-            $state.go('root.video', {
-                feedId:    item.feedid,
-                mediaId:   item.mediaid,
-                autoStart: autoStart
-            });
-        }
-
-        /**
          * Handle playlist item event
          * @param {Object} event
          */
-        function onPlaylistItemEvent (event) {
+        function onPlaylistItem (event) {
 
             if (!event.item || event.item.mediaid === vm.item.mediaid) {
                 return;
@@ -151,6 +170,90 @@
 
             vm.item = newItem;
             update();
+        }
+
+        /**
+         * Handle play event
+         * @param event
+         */
+        function onPlay (event) {
+
+            if (progress > 0 && $stateParams.autoStart && event.type === 'play') {
+                this.seek(progress * this.getDuration());
+                progress = 0;
+            }
+        }
+
+        /**
+         * Handle firstFrame event
+         * @param event
+         */
+        function onFirstFrame (event) {
+
+            if (progress > 0 && !$stateParams.autoStart && event.type === 'firstFrame') {
+                this.seek(progress * this.getDuration());
+                progress = 0;
+            }
+        }
+
+        /**
+         * Handle complete event
+         * @param event
+         */
+        function onComplete (event) {
+
+            watchProgress.removeItem(vm.item);
+        }
+
+        /**
+         * Handle time event
+         * @param event
+         */
+        function onTime (event) {
+
+            var position = Math.round(event.position),
+                progress = event.position / event.duration;
+
+            if (lastPos === position) {
+                return;
+            }
+
+            lastPos = position;
+
+            if (angular.isNumber(progress) && position % 2) {
+                handleWatchProgress(progress);
+            }
+        }
+
+        /**
+         * Save or remove watchProgress
+         * @param {number} progress
+         */
+        function handleWatchProgress (progress) {
+
+            if (progress > watchProgress.WATCH_PROGRESS_MAX) {
+                if (watchProgress.hasItem(vm.item)) {
+                    watchProgress.removeItem(vm.item);
+                }
+            }
+            else {
+                watchProgress.saveItem(vm.item, progress);
+            }
+        }
+
+        /**
+         * Handle click event on card
+         *
+         * @param {Object}      item        Clicked item
+         * @param {boolean}     autoStart   Should the video playback start automatically
+         */
+        function onCardClickHandler (item, autoStart) {
+
+            $state.go('root.video', {
+                feedId:    item.feedid,
+                mediaId:   item.mediaid,
+                autoStart: autoStart
+            });
         }
 
         /**

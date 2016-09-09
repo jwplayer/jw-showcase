@@ -7,10 +7,10 @@ Feature: Video page
     Then the 404 page should be visible
 
   @tablet @desktop @mobile
-  Scenario: The video that has been marked for testing exists
+  Scenario: As a user I want to watch a video
     Given I go to the "/video/lrYLc95e/Iyfst4Se" page
     When I wait until the page has been loaded
-    Then the video exists
+    Then the video player is ready
 
   @mobile @tablet @desktop
    Scenario: As a user I want to see the play icon
@@ -24,13 +24,7 @@ Feature: Video page
     When I do nothing
     Then the video description should show the duration
 
-  @tablet @desktop
-  Scenario: As a user I want to see the video title and description over the video
-    Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
-    When I do nothing
-    Then the video title and description should be visible over the video
-
-  @mobile
+  @mobile @tablet @desktop
   Scenario: As a user I want to see the video title and description below the video
     Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
     When I wait until the page has been loaded
@@ -55,20 +49,6 @@ Feature: Video page
     When I wait until the page has been loaded
     And I click on the play video icon
     Then the video should be playing
-
-  @desktop
-  Scenario: As a user I want the video information to reappear when I move my mouse over the playing video
-    Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
-    When I wait until the overlay disappears
-    And I move my mouse over the video
-    Then the video title and description should be visible over the video
-
-  @tablet @desktop
-  Scenario: As a user I want the video to pause when it is playing
-    Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
-    When I click on the playing video
-    Then the video should be paused
-    And the video title and description should be visible over the video
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to share the video on Facebook

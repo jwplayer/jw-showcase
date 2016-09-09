@@ -165,8 +165,15 @@
         font-size: 3em;
     }
 
-    .jw-card-slider-slide:not(.is-visible) .jw-card-poster-filter {
-        background: rgba($black, 0.5);
+    .jw-card-slider-slide:not(.is-visible) {
+
+        .jw-card-container {
+            background: rgba($black, 0.5);
+        }
+
+        .jw-card-menu-button {
+            display: none;
+        }
     }
 
     .jw-card-info {
