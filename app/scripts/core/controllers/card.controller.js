@@ -16,6 +16,8 @@
 
 (function () {
 
+    var LARGE_SCREEN = window.matchMedia('(min-device-width: 960px)').matches;
+
     angular
         .module('app.core')
         .controller('CardController', CardController);
@@ -40,6 +42,7 @@
         vm.menuVisible            = false;
         vm.inWatchList            = false;
         vm.toast                  = null;
+        vm.posterUrl              = getPosterUrl();
 
         vm.watchlistClickHandler = watchlistClickHandler;
         vm.showToast             = showToast;
@@ -122,6 +125,22 @@
                                      (window.DocumentTouch && document instanceof window.DocumentTouch),
                 'jw-card-menu-open': vm.menuVisible
             };
+        }
+
+        /**
+         * Return poster url with optimal quality for screen size
+         * @returns {string}
+         */
+        function getPosterUrl () {
+
+            var width = vm.featured ? 1280 : 640;
+
+            // half width when user has a small screen
+            if (false === LARGE_SCREEN) {
+                width = width / 2;
+            }
+
+            return utils.replaceImageSize(vm.item.image, width);
         }
 
         /**

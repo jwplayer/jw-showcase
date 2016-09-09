@@ -133,7 +133,7 @@
                 mediaid:     item.mediaid,
                 title:       item.title,
                 description: item.description,
-                image:       item.image,
+                image:       utils.replaceImageSize(item.image, 1920),
                 sources:     item.sources,
                 tracks:      item.tracks
             };

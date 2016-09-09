@@ -32,6 +32,7 @@
         this.getTransitionEventName = getTransitionEventName;
         this.getVideoDurationByItem = getVideoDurationByItem;
         this.debounce               = debounce;
+        this.replaceImageSize       = replaceImageSize;
 
         ////////////////////////
 
@@ -156,6 +157,25 @@
             }
 
             return debounced;
+        }
+
+        /**
+         * Replace size in image url
+         *
+         * @param {string} url
+         * @param {string} width
+         *
+         * @returns {string}
+         */
+        function replaceImageSize (url, width) {
+
+            var matches = url.match(/-(\d+)\.(\w+)$/);
+
+            if (matches.length === 3) {
+                url = url.replace(matches[0], matches[0].replace(matches[1], width));
+            }
+
+            return url;
         }
     }
 }());
