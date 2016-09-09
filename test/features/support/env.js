@@ -23,7 +23,9 @@ var configure = function () {
         browser.clearMockModules();
 
         browser.executeScript(function () {
-            window.localStorage.clear();
+            try {
+                window.localStorage.clear();
+            }catch(e) {}
         });
 
     });

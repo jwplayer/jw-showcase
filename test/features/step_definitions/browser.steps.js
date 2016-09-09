@@ -47,9 +47,7 @@ var stepsDefinition = function () {
 
         browser
             .waitForAngular()
-            .then(function () {
-                setTimeout(callback, 2000);
-            });
+            .then(delay(callback, 2000));
     });
 
     this.When(/^I do nothing$/, function (callback) {

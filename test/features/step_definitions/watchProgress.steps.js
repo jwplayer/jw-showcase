@@ -69,6 +69,7 @@ var stepsDefinition = function () {
     });
 
     this.Then(/I log the watchProgress/, function () {
+
         browser
             .executeScript(function () {
                 return JSON.parse(window.localStorage.getItem('jwshowcase.watchprogress'));

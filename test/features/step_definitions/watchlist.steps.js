@@ -16,13 +16,8 @@
 
 var stepsDefinition = function () {
 
-    function delay (fn, time) {
-        return function () {
-            setTimeout(fn, time);
-        };
-    }
-
     this.Given(/^I have the following saved watchlist:$/, function (data, callback) {
+
         browser
             .executeScript(function (watchlist) {
                 window.localStorage.setItem('jwshowcase.watchlist', JSON.stringify(watchlist));
@@ -32,41 +27,47 @@ var stepsDefinition = function () {
     });
 
     this.When(/^I click on the card menu button of the first card$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu-button'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu-button'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.When(/^I click on the add to watchlist button in the card menu$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.When(/^I click on the remove from watchlist button in the card menu$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.When(/^I click on the close button in the card menu$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-transparent'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-transparent'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.When(/^I click on the remove from watchlist button in the card$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-watchlist-button'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-watchlist-button'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.When(/^I click on the add to watchlist button on the video page$/, function (callback) {
+
         browser
             .findElement(by.css('.jw-meta .jw-button-watchlist'))
             .click()
@@ -74,6 +75,7 @@ var stepsDefinition = function () {
     });
 
     this.When(/^I click on the remove from watchlist button on the video page$/, function (callback) {
+
         browser
             .findElement(by.css('.jw-meta .jw-button-watchlist'))
             .click()
@@ -81,15 +83,17 @@ var stepsDefinition = function () {
     });
 
     this.When(/^I click on the first card in the watchlist slider$/, function (callback) {
+
         browser
-            .findElement(by.css('.watchlistFeed .jw-card-slider-list .jw-card-slider-slide:first-child .jw-card'))
+            .findElement(by.css('.watchlist .jw-card-slider-list .jw-card-slider-slide:first-child .jw-card'))
             .click()
             .then(delay(callback, 1200));
     });
 
     this.Then(/^the card menu should show a remove from watchlist button$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
             .getText()
             .then(function (text) {
                 expect(text).to.equal('Remove from watchlist');
@@ -98,8 +102,9 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^the card menu should show an add to watchlist button$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu .jw-button-default'))
             .getText()
             .then(function (text) {
                 expect(text).to.equal('Add to watchlist');
@@ -108,8 +113,9 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^there should be 1 video in the watchlist$/, function (callback) {
+
         browser
-            .findElements(by.css('.watchlistFeed .jw-card-slider-list .jw-card-slider-slide'))
+            .findElements(by.css('.watchlist .jw-card-slider-list .jw-card-slider-slide'))
             .then(function (cards) {
                 expect(cards.length).to.equal(1);
                 callback();
@@ -117,8 +123,9 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^the watchlist should be hidden$/, function (callback) {
+
         browser
-            .findElements(by.css('.watchlistFeed .jw-card-slider'))
+            .findElements(by.css('.watchlist .jw-card-slider'))
             .then(function (sliders) {
                 expect(sliders.length).to.equal(0);
                 callback();
@@ -126,8 +133,9 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^the remove from watchlist button should be visible in the card$/, function (callback) {
+
         browser
-            .findElement(by.css('.defaultFeed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-watchlist-button'))
+            .findElement(by.css('.feed > div:nth-child(1) .jw-card-slider-slide:first-child .jw-card-watchlist-button'))
             .isDisplayed()
             .then(function (displayed) {
                 expect(displayed).to.equal(true);
@@ -136,6 +144,7 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^the remove from watchlist button should be visible on the video page$/, function (callback) {
+
         browser
             .findElement(by.css('.jw-meta .jw-button-watchlist'))
             .getText()
@@ -147,6 +156,7 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^the add to watchlist button should be visible on the video page$/, function (callback) {
+
         browser
             .findElement(by.css('.jw-meta .jw-button-watchlist'))
             .getText()
@@ -158,6 +168,7 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^I should see the watchlist below the video$/, function (callback) {
+
         browser
             .findElement(by.css('.jw-card-slider .jw-card-slider-title'))
             .getText()
@@ -168,6 +179,7 @@ var stepsDefinition = function () {
     });
 
     this.Then(/^there should be 1 video in the watchlist below the video$/, function (callback) {
+
         browser
             .findElements(by.css('.jw-card-slider .jw-card-slider-list > .jw-card-slider-slide'))
             .then(function (cards) {
@@ -175,7 +187,6 @@ var stepsDefinition = function () {
                 callback();
             });
     });
-
 };
 
 module.exports = stepsDefinition;

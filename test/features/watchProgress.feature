@@ -27,6 +27,7 @@ Feature: Watch progress
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page
     Given I go to the "index" page
+    And I wait until the page has been loaded
     And I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched | offset |
       | LjBvF1FX | lrYLc95e | 0.75     | now         | -10    |
@@ -41,6 +42,7 @@ Feature: Watch progress
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page without the invalid items
     Given I go to the "index" page
+    And I wait until the page has been loaded
     And I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched   | offset |
       | LjBvF1FX | lrYLc95e | 0.75     | now           | -10    |
