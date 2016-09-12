@@ -27,39 +27,27 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
-     * @requires $window
-     * @requires app.core.dataStore
-     * @requires app.core.watchProgress
-     * @requires app.core.watchList
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', '$window', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, $window, dataStore, watchProgress, watchlist, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, utils, feed, item) {
 
-        var vm       = this,
-            lastPos  = 0,
-            progress = 0,
-            watchProgressItem;
+        var vm = this;
 
         vm.item              = item;
-        vm.feed              = {};
+        vm.feed              = feed;
         vm.duration          = 0;
-        vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
+        vm.isPlaying         = false;
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
-        vm.inWatchList       = false;
 
-        vm.onPlay         = onPlay;
-        vm.onComplete     = onComplete;
-        vm.onFirstFrame   = onFirstFrame;
-        vm.onTime         = onTime;
-        vm.onPlaylistItem = onPlaylistItem;
+        vm.onReady    = onPlayerEvent;
+        vm.onPlay     = onPlayerEvent;
+        vm.onPause    = onPlayerEvent;
+        vm.onComplete = onPlayerEvent;
+        vm.onError    = onPlayerEvent;
 
-        vm.backButtonClickHandler = backButtonClickHandler;
-        vm.cardClickHandler       = cardClickHandler;
-
-        vm.addToWatchList      = addToWatchList;
-        vm.removeFromWatchList = removeFromWatchList;
+        vm.onCardClickHandler = onCardClickHandler;
 
         activate();
 
@@ -70,6 +58,12 @@
          */
         function activate () {
 
+            vm.duration = utils.getVideoDurationByItem(vm.item);
+
+            vm.feed.playlist = vm.feed.playlist.filter(function (item) {
+                return item.mediaid !== vm.item.mediaid;
+            });
+
             vm.playerSettings = {
                 width:       '100%',
                 height:      '100%',
@@ -79,48 +73,6 @@
                 playlist:    [generatePlaylistItem(vm.item)],
                 sharing:     false
             };
-
-            update();
-        }
-
-        /**
-         * Update controller
-         */
-        function update () {
-
-            vm.facebookShareLink = composeFacebookLink();
-            vm.twitterShareLink  = composeTwitterLink();
-
-            vm.duration = utils.getVideoDurationByItem(vm.item);
-
-            vm.feed = {
-                playlist: feed.playlist.filter(function (item) {
-                    return item.mediaid !== vm.item.mediaid;
-                })
-            };
-
-            watchProgressItem = watchProgress.getItem(vm.item);
-            progress          = watchProgressItem ? watchProgressItem.progress : 0;
-
-            vm.inWatchList = watchlist.hasItem(vm.item);
-        }
-
-        /**
-         * Add current item to watchlist
-         */
-        function addToWatchList () {
-
-            watchlist.addItem(vm.item);
-            vm.inWatchList = true;
-        }
-
-        /**
-         * Remove current item from watchlist
-         */
-        function removeFromWatchList () {
-
-            watchlist.removeItem(vm.item);
-            vm.inWatchList = false;
         }
 
         /**
@@ -136,112 +88,19 @@
                 mediaid:     item.mediaid,
                 title:       item.title,
                 description: item.description,
-                image:       utils.replaceImageSize(item.image, 1920),
+                image:       item.image,
                 sources:     item.sources,
                 tracks:      item.tracks
             };
         }
 
         /**
-         * Handle playlist item event
-         * @param {Object} event
-         */
-        function onPlaylistItem (event) {
-
-            if (!event.item || event.item.mediaid === vm.item.mediaid) {
-                return;
-            }
-
-            var mediaId = event.item.mediaid,
-                feedId  = feed.feedid,
-                newItem = dataStore.getItem(mediaId, feedId);
-
-            // item does not exist in current feed. Update title and description but not the url
-            if (!newItem) {
-                vm.item = event.item;
-                update();
-                return;
-            }
-
-            // update state, but don't notify
-            $state.go('root.video', {
-                feedId:  newItem.feedid,
-                mediaId: newItem.mediaid
-            }, {
-                notify: false
-            });
-
-            vm.item = newItem;
-            update();
-        }
-
-        /**
-         * Handle play event
+         * Handle player event
          * @param event
          */
-        function onPlay (event) {
+        function onPlayerEvent (event) {
 
-            if (progress > 0 && $stateParams.autoStart && event.type === 'play') {
-                this.seek(progress * this.getDuration());
-                progress = 0;
-            }
-        }
-
-        /**
-         * Handle firstFrame event
-         * @param event
-         */
-        function onFirstFrame (event) {
-
-            if (progress > 0 && !$stateParams.autoStart && event.type === 'firstFrame') {
-                this.seek(progress * this.getDuration());
-                progress = 0;
-            }
-        }
-
-        /**
-         * Handle complete event
-         * @param event
-         */
-        function onComplete (event) {
-
-            watchProgress.removeItem(vm.item);
-        }
-
-        /**
-         * Handle time event
-         * @param event
-         */
-        function onTime (event) {
-
-            var position = Math.round(event.position),
-                progress = event.position / event.duration;
-
-            if (lastPos === position) {
-                return;
-            }
-
-            lastPos = position;
-
-            if (angular.isNumber(progress) && position % 2) {
-                handleWatchProgress(progress);
-            }
-        }
-
-        /**
-         * Save or remove watchProgress
-         * @param {number} progress
-         */
-        function handleWatchProgress (progress) {
-
-            if (progress > watchProgress.WATCH_PROGRESS_MAX) {
-                if (watchProgress.hasItem(vm.item)) {
-                    watchProgress.removeItem(vm.item);
-                }
-            }
-            else {
-                watchProgress.saveItem(vm.item, progress);
-            }
+            vm.isPlaying       = 'play' === event.type;
         }
 
         /**
@@ -250,26 +109,13 @@
          * @param {Object}      item        Clicked item
          * @param {boolean}     autoStart   Should the video playback start automatically
          */
-        function cardClickHandler (item, autoStart) {
+        function onCardClickHandler (item, autoStart) {
 
             $state.go('root.video', {
                 feedId:    item.feedid,
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
-        }
-
-        /**
-         * Handle click event on back button
-         */
-        function backButtonClickHandler () {
-
-            if ($state.history.length > 1) {
-                $window.history.back();
-            }
-            else {
-                $state.go('root.dashboard');
-            }
         }
 
         /**

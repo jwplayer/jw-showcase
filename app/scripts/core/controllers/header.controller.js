@@ -24,42 +24,14 @@
      * @ngdoc controller
      * @name app.core.controller:HeaderController
      *
-     * @requires $state
-     * @requires $window
      * @requires config
      */
-    HeaderController.$inject = ['$state', '$window', 'config'];
-    function HeaderController ($state, $window, config) {
+    HeaderController.$inject = ['config'];
+    function HeaderController (config) {
 
         var vm = this;
 
         vm.config = config;
-
-        vm.getHeaderClassNames    = getHeaderClassNames;
-        vm.backButtonClickHandler = backButtonClickHandler;
-
-        ////////////////
-
-        function getHeaderClassNames () {
-
-            return {
-                'jw-header':      true,
-                'jw-header--alt': !!vm.heading
-            };
-        }
-
-        /**
-         * Handle click event on back button
-         */
-        function backButtonClickHandler () {
-
-            if ($state.history.length > 1) {
-                $window.history.back();
-            }
-            else {
-                $state.go('root.dashboard');
-            }
-        }
     }
 
 }());

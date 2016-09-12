@@ -49,10 +49,4 @@ module.exports = function () {
                 });
             });
     };
-
-    root.delay = function (fn, time) {
-        return function () {
-            setTimeout(fn, time);
-        };
-    };
 };

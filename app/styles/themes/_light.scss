@@ -5,24 +5,17 @@
 
     .jw-header {
         background-color: $white;
-
-        &.jw-header--alt {
-            background-color: $black;
-            color: $white;
-        }
     }
 
     .jw-theme-background {
         background-color: $white;
     }
 
-    .jw-card-slider-title .jw-link,
-    .jw-card-slider-title > div,
-    .jw-card-grid-title {
-        color: $pickled-bluewood;
-    }
-
     .jw-card-slider {
+
+        .jw-card-slider-title {
+            color: $pickled-bluewood;
+        }
 
         &.jw-card-slider--default {
             border-bottom: 1px solid $cadet-blue;
@@ -39,7 +32,7 @@
 
     .jw-card.jw-card--default {
 
-        &.is-visible:not(.jw-card--touch) .jw-card-container:hover {
+        &.is-visible:not(.jw-card--touch):hover {
             .jw-card-info {
                 background-color: $black;
             }

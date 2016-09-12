@@ -19,15 +19,7 @@ var configure = function () {
     this.setDefaultTimeout(30 * 1000);
 
     this.After(function () {
-
         browser.clearMockModules();
-
-        browser.executeScript(function () {
-            try {
-                window.localStorage.clear();
-            }catch(e) {}
-        });
-
     });
 
     this.Before(function () {

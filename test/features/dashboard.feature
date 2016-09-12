@@ -1,9 +1,4 @@
 Feature: Dashboard page
-  The dashboard page should show one featured slider and multiple default sliders based on the configuration
-  It should show a featured card slider for tablet and desktop users
-  It should show featured cards vertically for mobile users
-  It should show default card sliders
-  It should be possible to slide the cards inside the slider
 
   @tablet @desktop
   Scenario: As a user I want to see the featured slider

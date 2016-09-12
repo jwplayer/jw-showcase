@@ -21,11 +21,16 @@
     &.jw-state-idle,
     &.jw-state-paused {
 
+        .jw-overlays {
+            background: rgba($black, 0.6);
+        }
+
         .jw-display-icon-container {
             display: table;
 
             border: 4px solid $white;
             background: transparent;
+            font-size: 20px;
         }
 
         .jw-display-icon-container > .jw-icon {
@@ -33,6 +38,26 @@
 
             color: $radical-red;
             font-size: 1.7em;
+        }
+    }
+
+    .jw-controls {
+        z-index: $view-z-index + 6;
+    }
+
+    .jw-overlays {
+
+        .jw-countdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: auto !important;
+            padding: 10px;
+
+            background: $black-lighter;
+            color: $white;
+            font-size: 18px;
+            box-shadow: 0 0 20px rgba($white, .3);
         }
     }
 }
@@ -47,9 +72,24 @@ video::-internal-media-controls-overlay-cast-button {
 // mediaQueries
 // --------------------------------
 
+@include mobile-only () {
+
+    .jwplayer.jw-reset .jw-overlays .jw-countdown {
+        top: 21px;
+        font-size: 12px;
+    }
+}
+
 @include tablet-and-larger () {
 
     .jwplayer.jw-reset.jw-flag-aspect-mode {
         height: 100% !important;
+    }
+
+    .jwplayer.jw-reset {
+
+        &:not(.jw-flag-fullscreen) .jw-display-icon-container {
+            top: 40%;
+        }
     }
 }

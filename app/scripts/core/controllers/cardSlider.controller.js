@@ -18,27 +18,25 @@
 
     angular
         .module('app.core')
-        .decorator('$state', stateDecorator);
+        .controller('CardSliderController', CardSliderController);
 
     /**
-     * @ngdoc decorator
-     *
-     * @description
-     *
-     * Decorate `$state` object with states history. Accessible via `$state.history`.
+     * @ngdoc controller
+     * @name app.core.controller:CardSliderController
      */
+    CardSliderController.$inject = [];
+    function CardSliderController () {
 
-    stateDecorator.$inject = ['$rootScope', '$delegate'];
-    function stateDecorator ($rootScope, $delegate) {
+        activate();
 
-        $delegate.history = [];
+        ////////////////////////
 
-        $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-            $delegate.history.unshift(toState);
-            $delegate.history.splice(15);
-        });
+        /**
+         * Initialize the controller
+         */
+        function activate () {
 
-        return $delegate;
+        }
     }
 
 }());

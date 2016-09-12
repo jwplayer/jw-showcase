@@ -37,7 +37,7 @@
                 abstract:    true,
                 templateUrl: 'views/core/root.html',
                 resolve:     {
-                    preload: preloadApp
+                    preload: ['$q', '$exceptionHandler', 'config', 'configResolver', 'api', 'apiConsumer', preloadApp]
                 }
             })
             .state('root.404', {
@@ -62,12 +62,10 @@
          * @param {app.core.configResolver} configResolver
          * @param {app.core.api} api
          * @param {app.core.apiConsumer} apiConsumer
-         * @param {app.core.watchlist} watchlist
          *
          * @returns {$q.promise}
          */
-        preloadApp.$inject = ['$q', '$exceptionHandler', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist', 'watchProgress'];
-        function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer, watchlist, watchProgress) {
+        function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer) {
 
             var defer = $q.defer();
 
@@ -97,20 +95,12 @@
                     }
 
                     $q.all(promises).then(
-                        handlePreloadSuccess,
+                        defer.resolve,
                         handlePreloadError
                     );
                 }, handlePreloadError);
 
             return defer.promise;
-
-            //////////////////
-
-            function handlePreloadSuccess () {
-                watchlist.restore();
-                watchProgress.restore();
-                defer.resolve();
-            }
 
             function handlePreloadError (error) {
                 $exceptionHandler(error);

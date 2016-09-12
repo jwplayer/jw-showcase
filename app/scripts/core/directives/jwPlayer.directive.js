@@ -55,7 +55,7 @@
 
         function link (scope, element, attr) {
 
-            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error', 'playlistItem', 'time', 'firstFrame'],
+            var events         = ['ready', 'play', 'pause', 'complete', 'seek', 'error'],
                 playerInstance = null,
                 playerId       = generateRandomId();
 
@@ -86,6 +86,7 @@
                 });
 
                 bindPlayerEventListeners();
+
             }
 
             /**
@@ -93,34 +94,53 @@
              */
             function bindPlayerEventListeners () {
 
-                // custom events from directive
-                events.forEach(function (type) {
+                playerInstance
+                    .on('play pause idle', handlePlayerEvent);
 
-                    playerInstance
-                        .on(type, function (event) {
-                            proxyEvent(type, event);
-                        });
+                // custom events from directive
+                events.forEach(function (event) {
+
+                    var parsed,
+                        attrName = 'on' + utils.ucfirst(event);
+
+                    if (!attr[attrName]) {
+                        return;
+                    }
+
+                    parsed = $parse(attr[attrName])(scope.$parent);
+
+                    if (angular.isFunction(parsed)) {
+
+                        playerInstance
+                            .on(event, wrapEventCallback(parsed));
+                    }
                 });
             }
 
             /**
-             * Proxy JW Player event to directive attribute
-             *
-             * @param {string} type
-             * @param {Object} event
+             * Handle player event
+             * @param event
              */
-            function proxyEvent (type, event) {
+            function handlePlayerEvent (event) {
 
-                var attrName = 'on' + utils.ucfirst(type),
-                    parsed;
+                element
+                    .removeClass('is-play is-pause is-idle')
+                    .addClass('is-' + event.type);
+            }
 
-                parsed = $parse(attr[attrName])(scope.$parent);
+            /**
+             * Wrap player event callback to request a $digest
+             * @param {Function} callback
+             * @returns {Function}
+             */
+            function wrapEventCallback (callback) {
 
-                if (angular.isFunction(parsed)) {
+                return function (event) {
+
                     scope.$apply(function () {
-                        parsed.call(playerInstance, event);
+                        callback(event);
                     });
-                }
+                };
             }
 
             /**
