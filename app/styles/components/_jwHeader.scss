@@ -45,9 +45,7 @@ $header-nav-width: 100px;
 }
 
 @include mobile-only () {
-    .jw-header {
-        .jw-header-brand {
-            font-size: rem(24px);
-        }
+    .jw-header .jw-header-logo h1 {
+        font-size: rem(24px);
     }
 }
