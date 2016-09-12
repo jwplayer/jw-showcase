@@ -31,7 +31,8 @@
       </a>
 
       <div class="jw-meta-watchlist">
-        <div class="jw-button jw-button-watchlist {{ vm.inWatchList ? 'is-active': '' }}" ng-click="vm.inWatchList ? vm.removeFromWatchList() : vm.addToWatchList()">
+        <div class="jw-button jw-button-watchlist {{ vm.inWatchList ? 'is-active': '' }}"
+            ng-click="vm.inWatchList ? vm.removeFromWatchList() : vm.addToWatchList()">
           <span>{{ vm.inWatchList ? 'Remove from' : 'Add to' }}<br> watchlist</span>
           <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
             <i class="jwy-icon jwy-icon1 jwy-icon-{{ vm.inWatchList ? 'min' : 'plus' }}"></i>
@@ -44,8 +45,8 @@
 </div>
 
 <div class="jw-row" ng-if="vm.feed.playlist.length > 0">
-  <jw-card-slider feed="vm.feed" featured="false" spacing="12" header="vm.feedTitle" visible-items="[2,2,3,4,5]"
-      on-card-click="vm.onCardClickHandler"></jw-card-slider>
+  <jw-card-slider feed="vm.feed" featured="false" spacing="12" heading="vm.feedTitle"
+      cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.onCardClickHandler"></jw-card-slider>
 </div>
 
 <jw-footer></jw-footer>
