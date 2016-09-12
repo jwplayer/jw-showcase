@@ -62,6 +62,18 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
+    this.Then(/^I should navigate to the "([^"]*)" page/, function (arg1, callback) {
+
+        arg1 = 'index' === arg1 ? '/' : arg1;
+
+        browser
+            .getCurrentUrl()
+            .then(function (currentUrl) {
+                expect(currentUrl).to.contain(arg1);
+                callback();
+            });
+    });
+
 };
 
 module.exports = stepsDefinition;
