@@ -16,6 +16,8 @@
 
 (function () {
 
+    var LARGE_SCREEN = window.matchMedia('(min-device-width: 960px)').matches;
+
     angular
         .module('app.core')
         .controller('CardController', CardController);
@@ -23,16 +25,27 @@
     /**
      * @ngdoc controller
      * @name app.core.controller:CardController
+     * @requires $rootScope
+     * @requires $scope
      * @requires app.core.utils
      */
-    CardController.$inject = ['utils'];
-    function CardController (utils) {
+    CardController.$inject = ['$rootScope', '$scope', 'utils', 'watchlist', '$timeout'];
+    function CardController ($rootScope, $scope, utils, watchlist, $timeout) {
 
         var vm = this;
 
-        vm.duration       = 0;
-        vm.getClassNames  = getClassNames;
-        vm.onClickHandler = onClickHandler;
+        vm.duration               = 0;
+        vm.getClassNames          = getClassNames;
+        vm.clickHandler           = clickHandler;
+        vm.menuButtonClickHandler = menuButtonClickHandler;
+        vm.closeMenuHandler       = closeMenuHandler;
+        vm.menuVisible            = false;
+        vm.inWatchList            = false;
+        vm.toast                  = null;
+        vm.posterUrl              = getPosterUrl();
+
+        vm.watchlistClickHandler = watchlistClickHandler;
+        vm.showToast             = showToast;
 
         activate();
 
@@ -43,7 +56,61 @@
          */
         function activate () {
 
-            vm.duration = utils.getVideoDurationByItem(vm.item);
+            vm.duration    = utils.getVideoDurationByItem(vm.item);
+            vm.inWatchList = watchlist.hasItem(vm.item);
+
+            $scope.$on('jwCardMenu:open', handleCardMenuOpenEvent);
+
+            $scope.$watch(function () {
+                return watchlist.hasItem(vm.item);
+            }, function (val, oldVal) {
+                if (val !== oldVal) {
+                    vm.inWatchList = val;
+                }
+            });
+        }
+
+        /**
+         * Handle watchlistclick event
+         */
+        function watchlistClickHandler () {
+
+            if (watchlist.hasItem(vm.item) === true) {
+                watchlist.removeItem(vm.item);
+                // vm.inWatchList = false;
+                vm.showToast({template: 'removedFromWatchlist', duration: 1000});
+            }
+        }
+
+        /**
+         * Show a toast over the card
+         *
+         * @param {Object} toast                Toast options object
+         * @param {String} toast.template       Template name
+         * @param {Number} [toast.duration]     Optional duration
+         */
+        function showToast (toast) {
+
+            vm.toast = toast;
+
+            $timeout(function () {
+                vm.toast = null;
+            }, toast.duration || 1000);
+        }
+
+        /**
+         * Handle jwCardMenu:open event
+         * @param {$event} event
+         * @param {$scope} targetScope
+         */
+        function handleCardMenuOpenEvent (event, targetScope) {
+
+            if (targetScope === $scope) {
+                return;
+            }
+
+            vm.menuVisible = false;
+            vm.toast       = null;
         }
 
         /**
@@ -55,15 +122,32 @@
                 'jw-card--featured': vm.featured,
                 'jw-card--default':  !vm.featured,
                 'jw-card--touch':    'ontouchstart' in window ||
-                                     (window.DocumentTouch && document instanceof window.DocumentTouch)
+                                     (window.DocumentTouch && document instanceof window.DocumentTouch),
+                'jw-card-menu-open': vm.menuVisible
             };
+        }
+
+        /**
+         * Return poster url with optimal quality for screen size
+         * @returns {string}
+         */
+        function getPosterUrl () {
+
+            var width = vm.featured ? 1280 : 640;
+
+            // half width when user has a small screen
+            if (false === LARGE_SCREEN) {
+                width = width / 2;
+            }
+
+            return utils.replaceImageSize(vm.item.image, width);
         }
 
         /**
          * @param {Object}      event               Event object
          * @param {boolean}     clickedOnPlayIcon   True if the user clicked on the play icon
          */
-        function onClickHandler (event, clickedOnPlayIcon) {
+        function clickHandler (event, clickedOnPlayIcon) {
 
             if (angular.isFunction(vm.onClick)) {
                 vm.onClick(vm.item, clickedOnPlayIcon);
@@ -71,6 +155,26 @@
 
             event.preventDefault();
             event.stopImmediatePropagation();
+        }
+
+        /**
+         * Handle click on more button
+         * @param event
+         */
+        function menuButtonClickHandler (event) {
+
+            event.stopImmediatePropagation();
+            vm.menuVisible = true;
+
+            $rootScope.$broadcast('jwCardMenu:open', $scope);
+        }
+
+        /**
+         * Close menu
+         */
+        function closeMenuHandler () {
+
+            vm.menuVisible = false;
         }
     }
 

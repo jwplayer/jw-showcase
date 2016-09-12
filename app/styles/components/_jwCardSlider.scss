@@ -29,11 +29,30 @@
     // --------------------------------
 
     .jw-card-slider-title {
+        display: inline-block;
         margin: 20px 90px;
 
         font-size: 21px;
         font-weight: bold;
-        cursor: default;
+
+        > .jw-link {
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+                color: $radical-red;
+            }
+
+            > span,
+            > .jwy-icon {
+                vertical-align: middle;
+            }
+        }
+
+        .jw-card-slider-title-count {
+            font-size: rem(18px);
+            font-weight: normal;
+        }
     }
 
     //
@@ -57,6 +76,16 @@
 
         .jw-card-slider-slide:not(.is-visible) {
             pointer-events: none !important;
+        }
+
+        .jw-card-slider-slide.is-poster-visible .jw-card-poster {
+            @include single-transition(opacity, 0.5s, ease, 0.3s);
+            opacity: 1;
+        }
+
+        .jw-card-slider-slide:not(.is-poster-visible) .jw-card-poster {
+            background-image: none !important;
+            opacity: 0;
         }
 
         .jw-card-slider-slide {
@@ -165,8 +194,15 @@
         font-size: 3em;
     }
 
-    .jw-card-slider-slide:not(.is-visible) .jw-card-poster-filter {
-        background: rgba($black, 0.5);
+    .jw-card-slider-slide:not(.is-visible) {
+
+        .jw-card-container {
+            background: rgba($black, 0.5);
+        }
+
+        .jw-card-menu-button {
+            display: none;
+        }
     }
 
     .jw-card-info {
@@ -206,6 +242,13 @@
     .jw-card-slider-slide {
         @include single-transition(opacity, 0.2s, ease-in, 0s);
         opacity: 0.15;
+
+        &.ng-enter,
+        &.ng-leave,
+        &.ng-leave-active,
+        &.ng-enter-active {
+            @include transition(none !important);
+        }
     }
 
     .jw-card-slider-slide.is-visible {

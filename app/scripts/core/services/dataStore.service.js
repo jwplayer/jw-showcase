@@ -66,6 +66,38 @@
         this.feeds = [];
 
         /**
+         * @ngdoc property
+         * @name app.core.dataStore#watchlistFeed
+         * @propertyOf app.core.dataStore
+         *
+         * @type {app.core.feed}
+         * @description
+         * The watchlist feed
+         */
+        this.watchlistFeed = {
+            feedid:   'watchlist',
+            title:    'Watchlist',
+            playlist: []
+        };
+
+        /**
+         * @ngdoc property
+         * @name app.core.dataStore#watchProgressFeed
+         * @propertyOf app.core.dataStore
+         *
+         * @type {app.core.feed}
+         * @description
+         * The watchProgress feed
+         */
+        this.watchProgressFeed = {
+            feedid:   'watchProgress',
+            title:    'Continue watching',
+            playlist: []
+        };
+
+
+
+        /**
          * @ngdoc method
          * @name app.core.dataStore#getItem
          * @methodOf app.core.dataStore
@@ -112,8 +144,11 @@
                 feed;
 
             if (this.featuredFeed) {
-                allFeeds = allFeeds.concat(this.featuredFeed);
+                allFeeds = allFeeds.concat([this.featuredFeed]);
             }
+
+            // concat watchlist and watchProgress feeds
+            allFeeds = allFeeds.concat([this.watchlistFeed, this.watchProgressFeed]);
 
             feed = allFeeds.find(function (feed) {
                 return feed.feedid === feedId;

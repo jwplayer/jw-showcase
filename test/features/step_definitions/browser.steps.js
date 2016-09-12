@@ -47,15 +47,33 @@ var stepsDefinition = function () {
 
         browser
             .waitForAngular()
-            .then(function () {
-                setTimeout(callback, 2000);
-            });
+            .then(delay(callback, 2000));
     });
 
     this.When(/^I do nothing$/, function (callback) {
 
         callback();
     });
+
+    this.When(/^wait for (\d+) seconds$/, function (seconds, callback) {
+
+        browser
+            .sleep(seconds * 1000)
+            .then(callback);
+    });
+
+    this.Then(/^I should navigate to the "([^"]*)" page/, function (arg1, callback) {
+
+        arg1 = 'index' === arg1 ? '/' : arg1;
+
+        browser
+            .getCurrentUrl()
+            .then(function (currentUrl) {
+                expect(currentUrl).to.contain(arg1);
+                callback();
+            });
+    });
+
 };
 
 module.exports = stepsDefinition;
