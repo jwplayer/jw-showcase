@@ -27,12 +27,14 @@
      * @requires $state
      * @requires $stateParams
      * @requires $location
+     * @requires $window
      * @requires app.core.dataStore
      * @requires app.core.watchProgress
+     * @requires app.core.watchList
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', '$window', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, $window, dataStore, watchProgress, watchlist, utils, feed, item) {
 
         var vm       = this,
             lastPos  = 0,
@@ -53,7 +55,8 @@
         vm.onTime         = onTime;
         vm.onPlaylistItem = onPlaylistItem;
 
-        vm.onCardClickHandler = onCardClickHandler;
+        vm.backButtonClickHandler = backButtonClickHandler;
+        vm.cardClickHandler       = cardClickHandler;
 
         vm.addToWatchList      = addToWatchList;
         vm.removeFromWatchList = removeFromWatchList;
@@ -247,13 +250,26 @@
          * @param {Object}      item        Clicked item
          * @param {boolean}     autoStart   Should the video playback start automatically
          */
-        function onCardClickHandler (item, autoStart) {
+        function cardClickHandler (item, autoStart) {
 
             $state.go('root.video', {
                 feedId:    item.feedid,
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
+        }
+
+        /**
+         * Handle click event on back button
+         */
+        function backButtonClickHandler () {
+
+            if ($state.history.length > 1) {
+                $window.history.back();
+            }
+            else {
+                $state.go('root.dashboard');
+            }
         }
 
         /**

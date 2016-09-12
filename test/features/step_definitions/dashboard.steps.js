@@ -239,16 +239,6 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^I should navigate to the "([^"]*)" page/, function (arg1, callback) {
-
-        browser
-            .getCurrentUrl()
-            .then(function (currentUrl) {
-                expect(currentUrl).to.contain(arg1);
-                callback();
-            });
-    });
-
     this.Then(/^the titles of the items should be visible/, function (callback) {
 
         browser

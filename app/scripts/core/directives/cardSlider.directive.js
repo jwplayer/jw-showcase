@@ -44,22 +44,12 @@
      * @scope
      *
      * @param {app.core.feed}       feed            Feed which will be displayed in the slider.
-     * @param {boolean|string=}     header          Text which will be displayed in the title or false if no title
+     * @param {boolean|string=}     heading         Text which will be displayed in the title or false if no title
      *                                              should be displayed.
      * @param {number=}             spacing         Spacing between cards.
-     * @param {Array|number=}       visibleItems    How many items should be visible. Can either be a fixed number or an
-     *                                              array with different values for multiple screen sizes.
-     *
-     *                                              |index|size|
-     *                                              |--|--|
-     *                                              |0|<=640px|
-     *                                              |1|\>640px and <=960px|
-     *                                              |2|\>960px and <=1280px|
-     *                                              |3|\>1280px and <=1680px|
-     *                                              |4|\>1680px|
-     *
-     *                                              For example, when the current window width is 800px and the
-     *                                              visibleItems value is `[1,2,4,6,7]` the result will be 2.
+     * @param {Object|number=}      cols            How many columns should be visible. Can either be a fixed number or
+     *                                              an object with responsive columns (e.g. `{sm: 2, md: 4}`).
+     *                                              Available sizes; xs, sm, md, lg and xl.
      *
      *                                              of visible items.
      * @param {string=}             maxWidth        Slide maximum width relatively to slider width.
@@ -71,9 +61,9 @@
      * @example
      *
      * ```
-     * <jw-card-slider feed="vm.feed" spacing="0" visible-items="1" featured="true"></jw-card-slider>
-     * <jw-card-slider feed="vm.feed" spacing="12" visible-items="[2,2,3,4,5]" featured="false"
-     * channel-title="'Videos'"></jw-card-slider>
+     * <jw-card-slider feed="vm.feed" spacing="0" cols="1" featured="true"></jw-card-slider>
+     * <jw-card-slider feed="vm.feed" spacing="12" cols="{xs: 2, sm: 3}" featured="false"
+     * heading="'Videos'"></jw-card-slider>
      * ```
      */
 
@@ -82,18 +72,19 @@
 
         return {
             scope:            {
-                header:        '=?',
+                heading:       '=?',
                 feed:          '=',
                 maxWidth:      '=',
                 maxHeight:     '=',
                 watchProgress: '=',
-                visibleItems:  '=',
+                cols:          '=',
                 featured:      '=',
                 spacing:       '=',
-                onCardClick:   '='
+                onCardClick:   '=',
+                link:          '='
             },
             replace:          true,
-            controller:       'CardSliderController',
+            controller:       angular.noop,
             controllerAs:     'vm',
             bindToController: true,
             templateUrl:      'views/core/cardSlider.html',
@@ -102,7 +93,7 @@
 
         function link (scope, element) {
 
-            var visibleSlides   = 0,
+            var cols            = 0,
                 index           = 0,
                 startCoords     = null,
                 animation       = null,
@@ -178,23 +169,23 @@
             }
 
             /**
-             * Slide amount of visible items to the left
+             * Slide amount of cols to the left
              */
             function slideLeft () {
 
                 if (canSlideLeft()) {
-                    index = Math.max(0, index - visibleSlides);
+                    index = Math.max(0, index - cols);
                     update(true);
                 }
             }
 
             /**
-             * Slide amount of visible items to the right
+             * Slide amount of cols to the right
              */
             function slideRight () {
 
                 if (canSlideRight()) {
-                    index = Math.min(getMaxIndex(), index + visibleSlides);
+                    index = Math.min(getMaxIndex(), index + cols);
                     update(true);
                 }
             }
@@ -262,7 +253,7 @@
                 forEach($('.jw-card-slider-list').children, function (slide, slideIndex) {
 
                     var jwCard              = slide.querySelector('.jw-card'),
-                        lastIndex           = index + visibleSlides,
+                        lastIndex           = index + cols,
                         offset              = scope.vm.featured ? 2 : 1,
                         isVisible           = slideIndex >= index && slideIndex < lastIndex,
                         isPosterVisible     = slideIndex >= index - offset && slideIndex < lastIndex + offset,
@@ -296,30 +287,11 @@
 
                 forEach(indicator.children, function (indicator, indicatorIndex) {
 
-                    var isActive = indicatorIndex >= index && indicatorIndex < index + visibleSlides,
+                    var isActive = indicatorIndex >= index && indicatorIndex < index + cols,
                         func     = isActive ? 'add' : 'remove';
 
                     indicator.classList[func]('is-active');
                 });
-            }
-
-            /**
-             * Get item count based on matching mediaQuery
-             *
-             * @param {Array} visibleItems
-             * @returns {number}
-             */
-            function getResponsiveItemCount (visibleItems) {
-
-                var index = MEDIA_QUERIES.findIndex(function (query) {
-                    return query.matches;
-                });
-
-                if (!angular.isNumber(visibleItems[index])) {
-                    return 1;
-                }
-
-                return visibleItems[index];
             }
 
             /**
@@ -336,18 +308,18 @@
              */
             function resize () {
 
-                var listWidth    = $('.jw-card-slider-list').offsetWidth,
-                    visibleItems = scope.vm.visibleItems,
+                var listWidth = $('.jw-card-slider-list').offsetWidth,
+                    toCols    = scope.vm.cols,
                     percent, maxHeight;
 
                 listWidth += scope.vm.spacing;
 
-                if (angular.isArray(visibleItems)) {
-                    visibleItems = getResponsiveItemCount(visibleItems);
+                if (angular.isObject(toCols)) {
+                    toCols = utils.getValueForScreenSize(toCols, 1);
                 }
 
-                visibleSlides = visibleItems;
-                slideWidth    = (listWidth / visibleSlides) - scope.vm.spacing;
+                cols       = toCols;
+                slideWidth = (listWidth / cols) - scope.vm.spacing;
 
                 // if maxWidth is set, calculate width based on list width
                 if (angular.isString(scope.vm.maxWidth)) {
@@ -478,7 +450,7 @@
              */
             function getMaxIndex () {
 
-                return scope.vm.feed.playlist.length - visibleSlides;
+                return scope.vm.feed.playlist.length - cols;
             }
 
             /**

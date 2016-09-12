@@ -23,7 +23,7 @@
     .jw-meta-title {
         display: inline-block;
 
-        font-size: 28px;
+        font-size: rem(28px);
         font-weight: bold;
         line-height: normal;
         white-space: normal;
@@ -38,7 +38,7 @@
 
         background-color: $white;
         color: $black;
-        font-size: 11px;
+        font-size: rem(11px);
 
         line-height: 20px;
         vertical-align: middle;
@@ -60,7 +60,7 @@
         }
 
         .jw-button-watchlist .jwy-icon-stack {
-            font-size: 1.8em;
+            font-size: rem(28px);
         }
     }
 }

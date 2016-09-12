@@ -76,6 +76,7 @@
          */
         this.watchlistFeed = {
             feedid:   'watchlist',
+            title:    'Watchlist',
             playlist: []
         };
 
@@ -90,6 +91,7 @@
          */
         this.watchProgressFeed = {
             feedid:   'watchProgress',
+            title:    'Continue watching',
             playlist: []
         };
 

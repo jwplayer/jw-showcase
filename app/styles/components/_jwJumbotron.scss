@@ -9,8 +9,9 @@
     background-color: $shark;
 
     .jw-jumbotron-controls {
-        @include cover(auto, auto);
-        padding: 40px 0 0 40px;
+        position: absolute;
+        top: 35px;
+        left: 34px;
 
         z-index: $view-z-index + 5;
     }

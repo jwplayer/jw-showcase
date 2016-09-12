@@ -5,7 +5,7 @@
 .jw-card {
     position: relative;
 
-    font-size: 15px;
+    font-size: rem(15px);
 
     &:not(.jw-card--touch):not(.jw-card-menu-open) {
 
@@ -28,7 +28,7 @@
         position: absolute;
         top: -5px;
         left: 20px;
-        font-size: 28px;
+        font-size: rem(28px);
     }
 
     .jw-card-aspect {
@@ -93,7 +93,7 @@
         padding: 5px;
 
         color: $white;
-        font-size: 14px;
+        font-size: rem(14px);
     }
 
     .jw-card-description,
@@ -113,8 +113,8 @@
     .jw-card-description {
         padding: 0 10px;
 
-        font-size: 14px;
-        line-height: 16px;
+        font-size: rem(14px);
+        line-height: rem(16px);
         overflow: hidden;
     }
 
@@ -135,7 +135,7 @@
         width: 35px;
         height: 35px;
 
-        font-size: 16px;
+        font-size: rem(16px);
         line-height: 2;
         text-align: center;
         cursor: pointer;
@@ -196,7 +196,7 @@
             top: 50%;
             width: 100%;
 
-            font-size: 16px;
+            font-size: rem(16px);
             text-align: center;
 
             .jw-card-toast-icon {
