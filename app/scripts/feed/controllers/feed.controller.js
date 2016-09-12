@@ -27,9 +27,19 @@
         var vm = this;
 
         vm.feed             = feed;
+        vm.title            = undefined;
         vm.cardClickHandler = cardClickHandler;
 
+        activate();
+
         ////////////////////////
+
+        function activate () {
+
+            if (feed.feedid === 'watchlist') {
+                vm.title = 'Watchlist';
+            }
+        }
 
         /**
          * Handle click event on cards

@@ -3,41 +3,64 @@
 // --------------------------------
 
 .jw-meta {
-    padding: 20px;
+    position: relative;
+    padding: 1.5em 20px;
+
+    background-color: $gray-darker;
     color: $white;
 
-    pointer-events: none;
+    pointer-events: auto;
+
+    .jw-row {
+        position: relative;
+    }
+
+    .jw-meta-heading {
+        display: inline-block;
+        margin-bottom: 1.5em;
+    }
 
     .jw-meta-title {
-        margin-bottom: 0.5em;
+        display: inline-block;
 
-        font-size: 1.2em;
+        font-size: 28px;
         font-weight: bold;
+        line-height: normal;
+        white-space: normal;
+
+        vertical-align: middle;
     }
 
     .jw-meta-duration {
-        margin-bottom: 0.5em;
+        display: inline-block;
+        margin-left: 10px;
+        padding: 0 8px;
 
-        > span {
-            display: inline-block;
-            padding: 2px 5px;
+        background-color: $white;
+        color: $black;
+        font-size: 11px;
 
-            background-color: $white;
-            color: $black;
-            font-size: 10px;
-            vertical-align: bottom;
-        }
+        line-height: 20px;
+        vertical-align: middle;
     }
 
     .jw-meta-description {
-        margin-bottom: 0.8em;
+        margin-bottom: 1.5em;
+
+        line-height: 1.4em;
+        white-space: normal;
     }
 
-    .jw-meta-social {
-        pointer-events: auto;
+    .jw-meta-actions {
 
-        .jw-button:not(:last-child) {
-            margin-right: 4px;
+        .jw-button-share:not(:last-child) {
+            margin-right: 8px;
+            // visual alignment
+            margin-left: -3px;
+        }
+
+        .jw-button-watchlist .jwy-icon-stack {
+            font-size: 1.8em;
         }
     }
 }
@@ -49,7 +72,7 @@
 @include mobile-only () {
 
     .jw-meta .jw-meta-social {
-        text-align: center;
+        //text-align: center;
     }
 
     .jw-meta.ng-hide {
@@ -58,61 +81,53 @@
     }
 }
 
+@include mobile-and-tablet() {
+
+    .jw-meta {
+
+        .jw-meta-social {
+            display: inline-block;
+        }
+
+        .jw-meta-watchlist {
+            float: right;
+            line-height: 45px;
+        }
+    }
+
+}
+
 @include tablet-and-larger () {
 
     .jw-meta {
-        @include background-image(linear-gradient(rgba($black, 0) 0%, rgba($black, 0.8) 50%, rgba($black, 1) 100%));
-        position: absolute;
-        bottom: 0;
-        left: 0;
         width: 100%;
-        padding: 0 100px 60px;
-
-        z-index: $view-z-index + 5;
-
-        .jw-meta-title {
-            display: inline-block;
-            width: 100%;
-            margin-right: 15px;
-
-            font-size: 1.4em;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .jw-meta-duration {
-            display: inline-block;
-            position: relative;
-            top: -2px;
-            margin: 0 0 15px;
-        }
-
-        .jw-meta-description {
-            position: relative;
-            height: 18 * 8px;
-            overflow: hidden;
-
-            pointer-events: auto;
-
-            > p {
-                position: absolute;
-                top: 0;
-                right: -19px;
-                bottom: 0;
-                left: 0;
-                margin: 0;
-                padding-right: 19px;
-
-                overflow-y: scroll;
-            }
-        }
+        padding: 36px 90px;
+        background-color: $gray-darker;
     }
 }
 
 @include desktop-only () {
 
-    .jw-meta .jw-meta-description {
-        width: 50%;
+    .jw-meta {
+
+        .jw-meta-description {
+            display: inline-block;
+            position: relative;
+            width: calc(100% - 230px);
+        }
+
+        .jw-meta-watchlist {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .jw-button-watchlist > span > br {
+            content: '';
+
+            &:after {
+                content: '';
+            }
+        }
     }
 }

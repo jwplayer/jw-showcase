@@ -28,10 +28,8 @@
      * @requires $http
      * @requires $log
      */
-    apiService.$inject = ['$http', '$q', '$filter'];
-    function apiService ($http, $q, $filter) {
-
-        var imageFilter = $filter('jwImage');
+    apiService.$inject = ['$http', '$q'];
+    function apiService ($http, $q) {
 
         /**
          * @ngdoc method
@@ -42,7 +40,7 @@
          * @description
          * Get feed from jw platform
          *
-         * @resolves {api.core.feed}
+         * @resolves {app.core.feed}
          * @returns {Promise} Promise which be resolved when the request is completed.
          */
         this.getFeed = function (feedId) {
@@ -63,7 +61,6 @@
                 if (feed && angular.isArray(feed.playlist)) {
                     feed.playlist = feed.playlist.map(function (item) {
                         item.feedid = feed.feedid;
-                        item.image  = imageFilter(item.image);
                         return item;
                     });
                 }
@@ -126,7 +123,7 @@
      * @property {string}               description    Feed description
      * @property {string}               feedid         Feed id
      * @property {string}               kind           Feed kind
-     * @property {api.core.item[]}      playlist       Feed playlist
+     * @property {app.core.item[]}      playlist       Feed playlist
      * @property {string}               title          Feed title
      */
 
@@ -144,6 +141,8 @@
      * @property {string}               tags            Tags
      * @property {string}               title           Video title
      * @property {Object[]}             tracks          Tracks
+     * @property {number}               [lastWatched]   Last watched timestamp
+     * @property {number}               [progress]      Watch progress percentage
      */
 
     /**

@@ -47,15 +47,21 @@ var stepsDefinition = function () {
 
         browser
             .waitForAngular()
-            .then(function () {
-                setTimeout(callback, 2000);
-            });
+            .then(delay(callback, 2000));
     });
 
     this.When(/^I do nothing$/, function (callback) {
 
         callback();
     });
+
+    this.When(/^wait for (\d+) seconds$/, function (seconds, callback) {
+
+        browser
+            .sleep(seconds * 1000)
+            .then(callback);
+    });
+
 };
 
 module.exports = stepsDefinition;

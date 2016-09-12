@@ -82,14 +82,15 @@
 
         return {
             scope:            {
-                header:       '=?',
-                feed:         '=',
-                maxWidth:     '=',
-                maxHeight:    '=',
-                visibleItems: '=',
-                featured:     '=',
-                spacing:      '=',
-                onCardClick:  '='
+                header:        '=?',
+                feed:          '=',
+                maxWidth:      '=',
+                maxHeight:     '=',
+                watchProgress: '=',
+                visibleItems:  '=',
+                featured:      '=',
+                spacing:       '=',
+                onCardClick:   '='
             },
             replace:          true,
             controller:       angular.noop,
@@ -141,6 +142,16 @@
                 }
 
                 scope.$on('$destroy', destroy);
+                scope.$watch('vm.feed', function () {
+                    resizeDebounced();
+                }, true);
+
+                // update feed
+                scope.$watch('vm.feed', function () {
+                    $timeout(function () {
+                        resize();
+                    }, 30);
+                }, true);
 
                 // restore slider state if stored in cardSliderCache service
                 cardSliderCache.get(feedId, function (state) {
@@ -250,15 +261,20 @@
 
                 forEach($('.jw-card-slider-list').children, function (slide, slideIndex) {
 
-                    var jwCard        = slide.querySelector('.jw-card'),
-                        isVisible     = slideIndex >= index && slideIndex < index + visibleSlides,
-                        isVisibleFunc = isVisible ? 'add' : 'remove',
-                        isCompactFunc = slideWidth < 200 ? 'add' : 'remove';
+                    var jwCard              = slide.querySelector('.jw-card'),
+                        lastIndex           = index + visibleSlides,
+                        offset              = scope.vm.featured ? 2 : 1,
+                        isVisible           = slideIndex >= index && slideIndex < lastIndex,
+                        isPosterVisible     = slideIndex >= index - offset && slideIndex < lastIndex + offset,
+                        isVisibleFunc       = isVisible ? 'add' : 'remove',
+                        isPosterVisibleFunc = isPosterVisible ? 'add' : 'remove',
+                        isCompactFunc       = slideWidth < 200 ? 'add' : 'remove';
 
                     slide.style.marginRight = scope.vm.spacing + 'px';
                     slide.style.width       = slideWidth + 'px';
 
                     slide.classList[isVisibleFunc]('is-visible');
+                    slide.classList[isPosterVisibleFunc]('is-poster-visible');
 
                     if (jwCard) {
                         jwCard.classList[isVisibleFunc]('is-visible');
@@ -323,6 +339,8 @@
                 var listWidth    = $('.jw-card-slider-list').offsetWidth,
                     visibleItems = scope.vm.visibleItems,
                     percent, maxHeight;
+
+                listWidth += scope.vm.spacing;
 
                 if (angular.isArray(visibleItems)) {
                     visibleItems = getResponsiveItemCount(visibleItems);

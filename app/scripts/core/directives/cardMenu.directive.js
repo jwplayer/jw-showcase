@@ -18,50 +18,44 @@
 
     angular
         .module('app.core')
-        .directive('jwCard', cardDirective);
+        .directive('jwCardMenu', cardMenuDirective);
 
     /**
      * @ngdoc directive
-     * @name app.core.directive:jwCard
-     *
-     * @description
-     * # jwCard
-     * The `jwCard` directive renders a playlist item. There are two possible styles available; 'default' or
-     * 'featured'.
+     * @name app.core.directive:jwCardMenu
      *
      * @scope
      *
      * @param {app.core.item}   item            Playlist item
-     * @param {boolean=}        featured        Featured flag
-     * @param {boolean=}        showTitle       Show item title when true
-     * @param {boolean=}        showDescription Show item description when true
-     * @param {function=}       onClick         Will be called when an click event occurs on the card.
+     * @param {function}        onClose         Callback which is called after the user clicks on the close button
      *
      * @example
      *
      * ```
-     * <jw-card item="item" featured="false" show-title="true"></jw-card>
+     * <jw-card-menu item="item" on-close="onClose()"></jw-card-menu>
      * ```
      */
 
-    cardDirective.$inject = [];
-    function cardDirective () {
+    cardMenuDirective.$inject = [];
+    function cardMenuDirective () {
 
         return {
             scope:            {
-                item:            '=',
-                featured:        '=',
-                showTitle:       '=',
-                showDescription: '=',
-                watchProgress:   '=',
-                onClick:         '='
+                onClose: '&',
+                item:    '='
             },
+            require:          '^jwCard',
             controllerAs:     'vm',
-            controller:       'CardController',
+            controller:       'CardMenuController',
             bindToController: true,
             replace:          true,
-            templateUrl:      'views/core/card.html'
+            templateUrl:      'views/core/cardMenu.html',
+            link:             link
         };
+
+        function link (scope, element, attr, jwCard) {
+            scope.vm.jwCard = jwCard;
+        }
     }
 
 }());

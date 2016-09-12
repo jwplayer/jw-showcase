@@ -45,6 +45,7 @@
         this.getVideoDurationByItem = getVideoDurationByItem;
         this.debounce               = debounce;
         this.getValueForScreenSize  = getValueForScreenSize;
+        this.replaceImageSize       = replaceImageSize;
 
         ////////////////////////
 
@@ -127,7 +128,7 @@
 
                 duration = item.duration;
             }
-            else {
+            else if (angular.isArray(item.sources)) {
 
                 source = item.sources
                     .find(function (source) {
@@ -197,6 +198,25 @@
             }
 
             return last || defaultValue;
+        }
+
+        /**
+         * Replace size in image url
+         *
+         * @param {string} url
+         * @param {string} width
+         *
+         * @returns {string}
+         */
+        function replaceImageSize (url, width) {
+
+            var matches = url.match(/-(\d+)\.(\w+)$/);
+
+            if (matches.length === 3) {
+                url = url.replace(matches[0], matches[0].replace(matches[1], width));
+            }
+
+            return url;
         }
     }
 }());
