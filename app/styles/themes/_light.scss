@@ -5,6 +5,11 @@
 
     .jw-header {
         background-color: $white;
+
+        &.jw-header--inverse {
+            background-color: $black;
+            color: $white;
+        }
     }
 
     .jw-theme-background {
@@ -12,6 +17,7 @@
     }
 
     .jw-card-slider-title .jw-link,
+    .jw-card-slider-title > div,
     .jw-card-grid-title {
         color: $pickled-bluewood;
     }

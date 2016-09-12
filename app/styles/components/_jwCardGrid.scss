@@ -6,22 +6,14 @@
     position: relative;
     margin: 0 90px;
 
+    .jw-card-grid-cards {
+        margin: 50px 0 0;
+    }
+
     .jw-card {
         display: inline-block;
         margin-bottom: 12px;
     }
-}
-
-//
-// jwCardGridTitle
-// --------------------------------
-
-.jw-card-grid-title {
-    margin: 20px 0;
-
-    font-size: 21px;
-    font-weight: bold;
-    cursor: default;
 }
 
 //

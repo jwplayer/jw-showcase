@@ -23,7 +23,7 @@ linters:
   SelectorFormat:
     enabled:       true
     convention:    '^((jwy?|is|ng)((\-[a-z0-9]+)+((\-\-[a-z0-9]([A-Za-z0-9]+)*))?)|jwplayer)$'
-    ignored_names: ['html', 'body', 'div', 'span', 'class', 'video', 'img', 'p', 'br']
+    ignored_names: ['html', 'body', 'div', 'span', 'class', 'video', 'img', 'p', 'br', 'h1']
 
   PropertySortOrder:
     enabled:            true

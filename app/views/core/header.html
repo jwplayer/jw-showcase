@@ -1,5 +1,14 @@
-<div class="jw-header">
-  <a href="./">
-    <img class="jw-header-logo" ng-src="{{ ::vm.config.bannerImage }}" />
-  </a>
+<div ng-class="vm.getHeaderClassNames()">
+  <div class="jw-header-nav">
+    <a ng-click="vm.backButtonClickHandler()" class="jw-button" ng-if="vm.back">
+      <i class="jwy-icon jwy-icon-double-angle-left"></i>
+    </a>
+  </div>
+  <div class="jw-header-logo">
+    <img ng-src="{{ ::vm.config.bannerImage }}" ng-if="!vm.heading"/>
+    <h1 class="jw-header-title" ng-if="vm.heading">
+      {{ vm.heading }}
+    </h1>
+  </div>
+  <div class="jw-header-nav"></div>
 </div>
