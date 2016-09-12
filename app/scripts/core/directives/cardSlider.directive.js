@@ -90,7 +90,8 @@
                 visibleItems:  '=',
                 featured:      '=',
                 spacing:       '=',
-                onCardClick:   '='
+                onCardClick:   '=',
+                link:          '='
             },
             replace:          true,
             controller:       angular.noop,

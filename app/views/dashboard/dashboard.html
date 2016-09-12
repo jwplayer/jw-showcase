@@ -23,7 +23,7 @@
 
 <div class="feed">
   <jw-card-slider feed="feed" featured="false" header="feed.title" visible-items="[2,2,3,4,5]"
-      on-card-click="vm.onCardClickHandler" spacing="12" ng-repeat="feed in vm.dataStore.feeds"></jw-card-slider>
+      on-card-click="vm.onCardClickHandler" spacing="12" ng-repeat="feed in vm.dataStore.feeds" link="true"></jw-card-slider>
 </div>
 
 <div class="watchlist" ng-if="vm.dataStore.watchlistFeed.playlist.length > 0">

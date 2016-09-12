@@ -42,6 +42,16 @@
             &:hover {
                 color: $radical-red;
             }
+
+            > span,
+            > .jwy-icon {
+                vertical-align: middle;
+            }
+        }
+
+        .jw-card-slider-title-count {
+            font-size: rem(18px);
+            font-weight: normal;
         }
     }
 
