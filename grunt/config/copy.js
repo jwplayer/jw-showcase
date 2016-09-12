@@ -11,7 +11,7 @@ module.exports = {
                 'config.json',
                 '*.html',
                 'fonts/{,*/}*',
-                'images/{,*/}*.{jpg,gif,png}',
+                'images/{,*/}*.{jpg,gif,png,svg}',
                 'styles/fonts/{,*/}*.*'
             ]
         }]
