@@ -21,13 +21,6 @@
 // mediaQueries
 // --------------------------------
 
-@include mobile-only () {
-
-    .jw-jumbotron .jw-jumbotron-controls {
-        padding: 20px 0 0 20px;
-    }
-}
-
 @include tablet-and-larger () {
 
     .jw-jumbotron {
