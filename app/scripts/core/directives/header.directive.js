@@ -28,10 +28,14 @@
      * # jwHeader
      * Render the header element.
      *
+     * @param {boolean}     backButton  Show the back button
+     * @param {string=}     heading     Show heading instead of the logo
+     *
      * @example
      *
      * ```
      * <jw-header></jw-header>
+     * <jw-header back-button="true" heading="'Title'"></jw-header>
      * ```
      */
 
@@ -40,9 +44,8 @@
 
         return {
             scope:            {
-                back:    '=',
-                inverse: '=',
-                heading: '='
+                backButton: '=',
+                heading:    '='
             },
             controllerAs:     'vm',
             controller:       'HeaderController',

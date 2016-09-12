@@ -43,8 +43,8 @@
         function getHeaderClassNames () {
 
             return {
-                'jw-header':          true,
-                'jw-header--inverse': vm.inverse
+                'jw-header':      true,
+                'jw-header--alt': !!vm.heading
             };
         }
 
