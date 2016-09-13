@@ -28,7 +28,15 @@
         position: absolute;
         top: -5px;
         left: 20px;
-        font-size: rem(28px);
+        font-size: rem(20px);
+
+        &:hover {
+            @include transform(scale(1.2));
+        }
+
+        .jwy-icon {
+            font-size: rem(20px);
+        }
     }
 
     .jw-card-aspect {

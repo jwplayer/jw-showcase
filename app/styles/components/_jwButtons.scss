@@ -102,11 +102,9 @@
     vertical-align: middle;
 
     > span {
-        @include single-transition(opacity, .1s, ease);
         display: inline-block;
 
         text-align: right;
-        opacity: 0.65;
         vertical-align: middle;
     }
 
@@ -115,13 +113,9 @@
     }
 
     .jwy-icon {
-        @include transition(color .1s ease, transform .1s linear);
+        @include transition(color .1s ease);
         margin-top: -1px;
-        font-size: 29px;
-    }
-
-    &:hover > span {
-        opacity: 1;
+        font-size: 1em;
     }
 
     &:not(.is-active) {
@@ -134,15 +128,5 @@
 
     &.is-active {
         @extend %jw-watchlist-dark;
-
-        &:hover {
-            .jwy-icon-stack .jwy-icon:first-child {
-                transform: rotate(45deg);
-            }
-
-            .jwy-icon-stack .jwy-icon:last-child {
-                transform: rotate(-45deg);
-            }
-        }
     }
 }

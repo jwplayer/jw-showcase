@@ -92,7 +92,7 @@
         },
         "designer": "JW Player",
         "url": "http://jwplayer.com",
-        "iconsHash": 1454687632
+        "iconsHash": 366298898
     },
     "height": 1024,
     "prevSize": 32,
@@ -158,7 +158,7 @@
         },
         {
             "paths": [
-                "M762 478.3v67.4h-500v-67.4h500z"
+                "M683.1 478.3v67.4h-342.2v-67.4h342.2z"
             ],
             "isMulticolor2": false,
             "grid": 32,
@@ -298,7 +298,7 @@
                 "whitespace": 50
             },
             "embed": false,
-            "autoHost": true,
+            "autoHost": false,
             "showSelector": false
         },
         "imagePref": {
