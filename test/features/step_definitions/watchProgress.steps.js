@@ -114,7 +114,7 @@ var stepsDefinition = function () {
     this.Then(/the "Continue watching" slider should not be visible/, function (callback) {
 
         browser
-            .findElements(by.css('.jw-row.watchProgress'))
+            .findElements(by.css('.watchProgress'))
             .then(function (elements) {
                 expect(elements.length).to.equal(0);
                 callback();
@@ -124,7 +124,7 @@ var stepsDefinition = function () {
     this.Then(/the "Continue watching" slider should be visible/, function (callback) {
 
         browser
-            .findElements(by.css('.jw-row.watchProgress'))
+            .findElements(by.css('.watchProgress'))
             .then(function (elements) {
                 expect(elements.length).to.equal(1);
                 callback();
@@ -134,7 +134,7 @@ var stepsDefinition = function () {
     this.Then(/the "Continue watching" slider should contain (\d+) cards/, function (count, callback) {
 
         browser
-            .findElements(by.css('.jw-row.watchProgress .jw-card'))
+            .findElements(by.css('.watchProgress .jw-card'))
             .then(function (elements) {
                 expect(elements.length).to.equal(parseInt(count));
                 callback();
@@ -143,7 +143,7 @@ var stepsDefinition = function () {
 
     this.Then(/the first card in "Continue watching" slider should have mediaid "([^"]*)"/, function (mediaid, callback) {
 
-        element(by.css('.jw-row.watchProgress .jw-card:first-child')).evaluate('item').then(function (item) {
+        element(by.css('.watchProgress .jw-card:first-child')).evaluate('item').then(function (item) {
             expect(item.mediaid).to.equal(mediaid);
             callback();
         });
@@ -151,7 +151,7 @@ var stepsDefinition = function () {
 
     this.Then(/the first card in "Continue watching" slider should show "([^"]*)" watch progress/, function (width, callback) {
 
-        element(by.css('.jw-row.watchProgress .jw-card:first-child .jw-card-watch-progress-indicator'))
+        element(by.css('.watchProgress .jw-card:first-child .jw-card-watch-progress-indicator'))
             .getAttribute('style')
             .then(function (style) {
                 expect(style).to.contains('width: ' + width);

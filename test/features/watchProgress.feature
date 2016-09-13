@@ -11,7 +11,7 @@ Feature: Watch progress
     Given I go to the "/video/lrYLc95e/Iyfst4Se" page
     And I wait until the page has been loaded
     When I click on the play video icon
-    And wait for 5 seconds
+    And I wait until the video starts playing
     And I click on the playing video
     Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should be saved
 

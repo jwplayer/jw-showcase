@@ -28,7 +28,7 @@ Feature: Video page
   Scenario: As a user I want to see the video title and description below the video
     Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
     When I wait until the page has been loaded
-    Then the video title and description should be visible below the video
+    Then the video title and description should be visible
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the More like this title

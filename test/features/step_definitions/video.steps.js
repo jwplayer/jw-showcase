@@ -61,6 +61,21 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
+    this.When(/^I wait until the video starts playing$/, function (callback) {
+
+        browser
+            .executeAsyncScript(function (callback) {
+                var called = false;
+                jwplayer().on('time', function (evt) {
+                    if (!called && evt.position > 2) {
+                        called = true;
+                        callback();
+                    }
+                });
+            })
+            .then(callback);
+    });
+
     this.Then(/^the 404 page should be visible$/, function (callback) {
 
         browser
@@ -135,7 +150,7 @@ var stepsDefinition = function () {
             .findElement(by.css('.jw-card-slider-title'))
             .getAttribute('innerText')
             .then(function (txt) {
-                expect(txt).to.equal('More like this (7)');
+                expect(txt.trim()).to.equal('More like this (7)');
                 callback();
             });
     });
@@ -146,7 +161,7 @@ var stepsDefinition = function () {
             .findElement(by.css('.jw-meta .jw-meta-duration'))
             .getText()
             .then(function (txt) {
-                var text = txt.split(' ');
+                var text = txt.trim().split(' ');
                 expect(text[1]).to.equal('min');
                 expect(text[0]).not.to.be.NaN;
                 callback();
@@ -168,19 +183,14 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^the video title and description should be visible below the video$/, function (callback) {
+    this.Then(/^the video title and description should be visible$/, function (callback) {
 
         browser
-            .findElement(by.css('video.jw-video'))
-            .getSize()
-            .then(function (size) {
-                browser
-                    .findElement(by.css('.jw-meta'))
-                    .getLocation()
-                    .then(function (location) {
-                        expect(Math.round(size.height)).to.equal(Math.round(location.y));
-                        callback();
-                    });
+            .findElement(by.css('.jw-meta'))
+            .isDisplayed()
+            .then(function (isDisplayed) {
+                expect(isDisplayed).to.equal(true);
+                callback();
             });
     });
 
