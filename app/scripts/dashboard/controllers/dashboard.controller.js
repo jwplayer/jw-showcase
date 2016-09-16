@@ -33,7 +33,7 @@
         var vm = this;
 
         vm.dataStore          = dataStore;
-        vm.onCardClickHandler = onCardClickHandler;
+        vm.cardClickHandler   = cardClickHandler;
 
         ////////////
 
@@ -43,7 +43,7 @@
          * @param {app.core.item}   item        Clicked item
          * @param {boolean}         autoStart   Should the video playback start automatically
          */
-        function onCardClickHandler (item, autoStart) {
+        function cardClickHandler (item, autoStart) {
 
             $state.go('root.video', {
                 feedId:    item.feedid,
