@@ -122,7 +122,7 @@
 
                 var correction = scope.vm.spacing - (scope.vm.spacing / cols);
 
-                element[0].querySelectorAll('.jw-card').forEach(function (card, index) {
+                angular.forEach(element[0].querySelectorAll('.jw-card'), function (card, index) {
                     card.style.width        = 'calc(' + width + '% - ' + correction + 'px)';
                     card.style.marginRight  = '';
                     card.style.marginBottom = scope.vm.spacing + 'px';
