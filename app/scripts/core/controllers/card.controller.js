@@ -73,13 +73,15 @@
         /**
          * Handle watchlistclick event
          */
-        function watchlistClickHandler () {
+        function watchlistClickHandler (event) {
 
             if (watchlist.hasItem(vm.item) === true) {
                 watchlist.removeItem(vm.item);
-                // vm.inWatchList = false;
                 vm.showToast({template: 'removedFromWatchlist', duration: 1000});
             }
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
         }
 
         /**

@@ -31,21 +31,21 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="jw-card-menu-button jw-button" ng-click="vm.menuButtonClickHandler($event)" ng-show="!vm.featured">
-    <i class="jwy-icon jwy-icon-more jwy-icon-rotate-90"></i>
+    <div class="jw-card-menu-button jw-button" ng-click="vm.menuButtonClickHandler($event)" ng-show="!vm.featured">
+      <i class="jwy-icon jwy-icon-more jwy-icon-rotate-90"></i>
+    </div>
+
+    <div class="jw-card-watchlist-button jw-button jw-button-watchlist is-active" ng-show="vm.inWatchList"
+        ng-click="vm.watchlistClickHandler($event)">
+      <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
+        <i class="jwy-icon jwy-icon-min"></i>
+      </i>
+    </div>
   </div>
 
   <jw-card-menu on-close="vm.closeMenuHandler()" item="vm.item" ng-if="vm.menuVisible"></jw-card-menu>
 
   <div ng-include="'views/core/toasts/'  + vm.toast.template + '.html'" ng-if="vm.toast" class="jw-card-toast-container"></div>
-
-  <div class="jw-card-watchlist-button jw-button jw-button-watchlist is-active" ng-show="vm.inWatchList"
-      ng-click="vm.watchlistClickHandler($event)">
-    <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
-      <i class="jwy-icon jwy-icon-min"></i>
-    </i>
-  </div>
 
 </div>
