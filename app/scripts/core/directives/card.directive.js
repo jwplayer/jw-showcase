@@ -53,6 +53,7 @@
                 featured:        '=',
                 showTitle:       '=',
                 showDescription: '=',
+                watchProgress:   '=',
                 onClick:         '='
             },
             controllerAs:     'vm',

@@ -1,15 +1,51 @@
+$header-height: 100px;
+$header-h-padding: 10px;
+$header-nav-width: 100px;
+
 //
 // jwHeader
 // --------------------------------
 
 .jw-header {
-    min-height: 72px;
-    padding: 5px 20px;
+    @include display-flex();
+    @include flex-direction(row);
+    height: $header-height;
+    padding: $header-h-padding 0;
 
     background-color: $white;
     text-align: center;
 
+    .jw-header-nav {
+        @include flex(0 1 $header-nav-width);
+        @include align-self(center);
+        min-width: 70px;
+        font-size: rem(32px);
+
+        .jw-button {
+            vertical-align: middle;
+        }
+    }
+
     .jw-header-logo {
-        max-width: 100%;
+        @include flex(1 1 auto);
+        @include align-self(center);
+
+        img {
+            max-width: 100%;
+            max-height: $header-height - ($header-h-padding * 2);
+            vertical-align: middle;
+        }
+
+        h1 {
+            font-size: rem(32px);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}
+
+@include mobile-only () {
+    .jw-header .jw-header-logo h1 {
+        font-size: rem(24px);
     }
 }

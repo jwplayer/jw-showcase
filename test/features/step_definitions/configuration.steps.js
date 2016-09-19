@@ -31,7 +31,7 @@ var stepsDefinition = function () {
     this.Then(/^the logo should use "([^"]*)" as src$/, function (arg1, callback) {
 
         browser
-            .findElement(by.css('.jw-header-logo'))
+            .findElement(by.css('.jw-header-logo > img'))
             .getAttribute('src')
             .then(function (src) {
                 expect(src).to.contain(arg1);

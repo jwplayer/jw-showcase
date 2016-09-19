@@ -5,6 +5,7 @@
 
     .jw-header {
         background-color: $black;
+        color: $white;
     }
 
     .jw-card .jw-card-title {
@@ -23,13 +24,15 @@
         color: $white;
     }
 
-    .jw-card-slider-title {
+    .jw-card-slider-title .jw-link,
+    .jw-card-slider-title > div,
+    .jw-card-grid-title {
         color: $white;
     }
 
     .jw-card.jw-card--default {
 
-        &.is-visible:not(.jw-card--touch):hover {
+        &.is-visible:not(.jw-card--touch) .jw-card-container:hover {
             .jw-card-info {
                 background-color: $black;
             }

@@ -29,6 +29,7 @@
             'ui.router',
             'app.core',
             'app.dashboard',
+            'app.feed',
             'app.video'
         ])
         .value('config', {})

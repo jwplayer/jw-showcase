@@ -2,15 +2,15 @@
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 if (!Array.prototype.find) {
-    Array.prototype.find = function(predicate) {
+    Array.prototype.find = function (predicate) {
         if (this === null) {
             throw new TypeError('Array.prototype.find called on null or undefined');
         }
         if (typeof predicate !== 'function') {
             throw new TypeError('predicate must be a function');
         }
-        var list = Object(this);
-        var length = list.length >>> 0;
+        var list    = Object(this);
+        var length  = list.length >>> 0;
         var thisArg = arguments[1];
         var value;
 
@@ -26,15 +26,15 @@ if (!Array.prototype.find) {
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
 if (!Array.prototype.findIndex) {
-    Array.prototype.findIndex = function(predicate) {
+    Array.prototype.findIndex = function (predicate) {
         if (this === null) {
             throw new TypeError('Array.prototype.findIndex called on null or undefined');
         }
         if (typeof predicate !== 'function') {
             throw new TypeError('predicate must be a function');
         }
-        var list = Object(this);
-        var length = list.length >>> 0;
+        var list    = Object(this);
+        var length  = list.length >>> 0;
         var thisArg = arguments[1];
         var value;
 
@@ -49,8 +49,8 @@ if (!Array.prototype.findIndex) {
 }
 
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish,
-Nicholas Zakas, David Knight. Dual MIT/BSD license */
-window.matchMedia || (window.matchMedia = function() {
+ Nicholas Zakas, David Knight. Dual MIT/BSD license */
+window.matchMedia || (window.matchMedia = function () {
     "use strict";
 
     // For browsers that support matchMedium api such as IE 9 and webkit
@@ -58,12 +58,12 @@ window.matchMedia || (window.matchMedia = function() {
 
     // For those that don't support matchMedium
     if (!styleMedia) {
-        var style       = document.createElement('style'),
-            script      = document.getElementsByTagName('script')[0],
-            info        = null;
+        var style  = document.createElement('style'),
+            script = document.getElementsByTagName('script')[0],
+            info   = null;
 
-        style.type  = 'text/css';
-        style.id    = 'matchmediajs-test';
+        style.type = 'text/css';
+        style.id   = 'matchmediajs-test';
 
         script.parentNode.insertBefore(style, script);
 
@@ -71,7 +71,7 @@ window.matchMedia || (window.matchMedia = function() {
         info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
 
         styleMedia = {
-            matchMedium: function(media) {
+            matchMedium: function (media) {
                 var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
 
                 // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
@@ -87,10 +87,10 @@ window.matchMedia || (window.matchMedia = function() {
         };
     }
 
-    return function(media) {
+    return function (media) {
         return {
             matches: styleMedia.matchMedium(media || 'all'),
-            media: media || 'all'
+            media:   media || 'all'
         };
     };
 }());
@@ -118,16 +118,16 @@ if ("document" in self) {
             if (!('Element' in view)) return;
 
             var
-                classListProp = "classList"
-                , protoProp = "prototype"
-                , elemCtrProto = view.Element[protoProp]
-                , objCtr = Object
-                , strTrim = String[protoProp].trim || function () {
+                classListProp           = "classList"
+                , protoProp             = "prototype"
+                , elemCtrProto          = view.Element[protoProp]
+                , objCtr                = Object
+                , strTrim               = String[protoProp].trim || function () {
                         return this.replace(/^\s+|\s+$/g, "");
                     }
-                , arrIndexOf = Array[protoProp].indexOf || function (item) {
+                , arrIndexOf            = Array[protoProp].indexOf || function (item) {
                         var
-                            i = 0
+                            i     = 0
                             , len = this.length
                             ;
                         for (; i < len; i++) {
@@ -138,9 +138,9 @@ if ("document" in self) {
                         return -1;
                     }
                 // Vendors: please allow content code to instantiate DOMExceptions
-                , DOMEx = function (type, message) {
-                    this.name = type;
-                    this.code = DOMException[type];
+                , DOMEx                 = function (type, message) {
+                    this.name    = type;
+                    this.code    = DOMException[type];
                     this.message = message;
                 }
                 , checkTokenAndGetIndex = function (classList, token) {
@@ -158,12 +158,12 @@ if ("document" in self) {
                     }
                     return arrIndexOf.call(classList, token);
                 }
-                , ClassList = function (elem) {
+                , ClassList             = function (elem) {
                     var
                         trimmedClasses = strTrim.call(elem.getAttribute("class") || "")
-                        , classes = trimmedClasses ? trimmedClasses.split(/\s+/) : []
-                        , i = 0
-                        , len = classes.length
+                        , classes      = trimmedClasses ? trimmedClasses.split(/\s+/) : []
+                        , i            = 0
+                        , len          = classes.length
                         ;
                     for (; i < len; i++) {
                         this.push(classes[i]);
@@ -172,26 +172,26 @@ if ("document" in self) {
                         elem.setAttribute("class", this.toString());
                     };
                 }
-                , classListProto = ClassList[protoProp] = []
+                , classListProto        = ClassList[protoProp] = []
                 , classListGetter = function () {
                     return new ClassList(this);
                 }
                 ;
             // Most DOMException implementations don't allow calling DOMException's toString()
             // on non-DOMExceptions. Error's toString() is sufficient here.
-            DOMEx[protoProp] = Error[protoProp];
-            classListProto.item = function (i) {
+            DOMEx[protoProp]        = Error[protoProp];
+            classListProto.item     = function (i) {
                 return this[i] || null;
             };
             classListProto.contains = function (token) {
                 token += "";
                 return checkTokenAndGetIndex(this, token) !== -1;
             };
-            classListProto.add = function () {
+            classListProto.add      = function () {
                 var
-                    tokens = arguments
-                    , i = 0
-                    , l = tokens.length
+                    tokens    = arguments
+                    , i       = 0
+                    , l       = tokens.length
                     , token
                     , updated = false
                     ;
@@ -208,11 +208,11 @@ if ("document" in self) {
                     this._updateClassName();
                 }
             };
-            classListProto.remove = function () {
+            classListProto.remove   = function () {
                 var
-                    tokens = arguments
-                    , i = 0
-                    , l = tokens.length
+                    tokens    = arguments
+                    , i       = 0
+                    , l       = tokens.length
                     , token
                     , updated = false
                     , index
@@ -223,7 +223,7 @@ if ("document" in self) {
                     while (index !== -1) {
                         this.splice(index, 1);
                         updated = true;
-                        index = checkTokenAndGetIndex(this, token);
+                        index   = checkTokenAndGetIndex(this, token);
                     }
                 }
                 while (++i < l);
@@ -232,11 +232,11 @@ if ("document" in self) {
                     this._updateClassName();
                 }
             };
-            classListProto.toggle = function (token, force) {
+            classListProto.toggle   = function (token, force) {
                 token += "";
 
                 var
-                    result = this.contains(token)
+                    result   = this.contains(token)
                     , method = result ?
                     force !== true && "remove"
                         :
@@ -259,8 +259,8 @@ if ("document" in self) {
 
             if (objCtr.defineProperty) {
                 var classListPropDesc = {
-                    get: classListGetter
-                    , enumerable: true
+                    get:            classListGetter
+                    , enumerable:   true
                     , configurable: true
                 };
                 try {
@@ -291,10 +291,10 @@ if ("document" in self) {
             // Polyfill for IE 10/11 and Firefox <26, where classList.add and
             // classList.remove exist but support only one argument at a time.
             if (!testElement.classList.contains("c2")) {
-                var createMethod = function(method) {
+                var createMethod = function (method) {
                     var original = DOMTokenList.prototype[method];
 
-                    DOMTokenList.prototype[method] = function(token) {
+                    DOMTokenList.prototype[method] = function (token) {
                         var i, len = arguments.length;
 
                         for (i = 0; i < len; i++) {
@@ -314,7 +314,7 @@ if ("document" in self) {
             if (testElement.classList.contains("c3")) {
                 var _toggle = DOMTokenList.prototype.toggle;
 
-                DOMTokenList.prototype.toggle = function(token, force) {
+                DOMTokenList.prototype.toggle = function (token, force) {
                     if (1 in arguments && !this.contains(token) === !force) {
                         return force;
                     } else {
@@ -328,4 +328,16 @@ if ("document" in self) {
         }());
     }
 }
+
+(function () {
+    try {
+        window.localStorage.setItem('test', 'test');
+        window.localStorage.removeItem('test');
+
+        window.localStorageSupport = true;
+    }
+    catch (e) {
+        window.localStorageSupport = false;
+    }
+}());
 /* jshint ignore:end */

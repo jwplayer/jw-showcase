@@ -1,0 +1,28 @@
+//
+// jwCardGrid
+// --------------------------------
+
+.jw-card-grid {
+    position: relative;
+    margin: 0 90px;
+
+    .jw-card-grid-cards {
+        margin: 50px 0 0;
+    }
+
+    .jw-card {
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only() {
+
+    .jw-card-grid {
+        margin: 0 20px;
+    }
+}

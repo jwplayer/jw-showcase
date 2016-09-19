@@ -13,7 +13,7 @@
  * express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  **/
-    
+
 (function () {
 
     angular
@@ -28,10 +28,14 @@
      * # jwHeader
      * Render the header element.
      *
+     * @param {boolean}     backButton  Show the back button
+     * @param {string=}     heading     Show heading instead of the logo
+     *
      * @example
      *
      * ```
      * <jw-header></jw-header>
+     * <jw-header back-button="true" heading="'Title'"></jw-header>
      * ```
      */
 
@@ -39,7 +43,10 @@
     function headerDirective () {
 
         return {
-            scope:            true,
+            scope:            {
+                backButton: '=',
+                heading:    '='
+            },
             controllerAs:     'vm',
             controller:       'HeaderController',
             bindToController: true,

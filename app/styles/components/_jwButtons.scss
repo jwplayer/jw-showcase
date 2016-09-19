@@ -9,6 +9,24 @@
     color: $white;
     line-height: 1;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.jw-button-default {
+    padding: 5px 20px;
+
+    border-radius: 5px;
+    background: $radical-red;
+    color: $white;
+    font-weight: bold;
+}
+
+.jw-button-transparent {
+    padding: 5px 20px;
+
+    background: transparent;
+    color: $black;
+    font-weight: bold;
 }
 
 //
@@ -21,7 +39,6 @@
 
     border: 0.2em solid $white;
     border-radius: 50%;
-    cursor: pointer;
 
     .jwy-icon-play {
         @include center-self(50%, 54%);
@@ -36,9 +53,8 @@
 // --------------------------------
 
 .jw-button-back {
-
     .jwy-icon-double-angle-left {
-        font-size: 2.2em;
+        font-size: rem(32px);
     }
 }
 
@@ -47,8 +63,70 @@
 // --------------------------------
 
 .jw-button-share {
-    padding: 10px;
+    padding: 12px;
 
     border-radius: 50%;
     background: $mine-shaft;
+}
+
+.jw-button-share > .jwy-icon {
+    font-size: 26px;
+}
+
+//
+// jwButtonWatchlist
+// --------------------------------
+
+%jw-watchlist-white {
+    .jwy-icon-stack {
+        color: $white;
+
+        .jwy-icon {
+            color: $black;
+        }
+    }
+}
+
+%jw-watchlist-dark {
+    .jwy-icon-stack {
+        color: $radical-red;
+
+        .jwy-icon {
+            color: $white;
+        }
+    }
+}
+
+.jw-button-watchlist {
+
+    vertical-align: middle;
+
+    > span {
+        display: inline-block;
+
+        text-align: right;
+        vertical-align: middle;
+    }
+
+    .jwy-icon-stack {
+        vertical-align: middle;
+    }
+
+    .jwy-icon {
+        @include transition(color .1s ease);
+        margin-top: -1px;
+        font-size: 1em;
+    }
+
+    &:not(.is-active) {
+        @extend %jw-watchlist-white;
+
+        &:hover .jwy-icon-stack .jwy-icon {
+            color: $radical-red;
+        }
+    }
+
+    &.is-active {
+        @extend %jw-watchlist-dark;
+    }
 }
