@@ -30,6 +30,10 @@
         <i class="jwy-icon jwy-icon-twitter"></i>
       </a>
 
+      <a ng-href="{{ vm.emailShareLink }}" target="_blank" class="jw-button jw-button-share">
+        <i class="jwy-icon jwy-icon-envelop"></i>
+      </a>
+
       <div class="jw-meta-watchlist">
         <div class="jw-button jw-button-watchlist {{ vm.inWatchList ? 'is-active': '' }}"
             ng-click="vm.inWatchList ? vm.removeFromWatchList() : vm.addToWatchList()">
