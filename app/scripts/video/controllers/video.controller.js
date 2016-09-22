@@ -36,9 +36,10 @@
     VideoController.$inject = ['$state', '$stateParams', '$location', '$window', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
     function VideoController ($state, $stateParams, $location, $window, dataStore, watchProgress, watchlist, utils, feed, item) {
 
-        var vm       = this,
-            lastPos  = 0,
-            progress = 0,
+        var vm      = this,
+            lastPos = 0,
+            resumed = false,
+            started = false,
             watchProgressItem;
 
         vm.item              = item;
@@ -101,7 +102,6 @@
             };
 
             watchProgressItem = watchProgress.getItem(vm.item);
-            progress          = watchProgressItem ? watchProgressItem.progress : 0;
 
             vm.inWatchList = watchlist.hasItem(vm.item);
         }
@@ -182,9 +182,9 @@
          */
         function onPlay (event) {
 
-            if (progress > 0 && $stateParams.autoStart && event.type === 'play') {
-                this.seek(progress * this.getDuration());
-                progress = 0;
+            if ($stateParams.autoStart) {
+                resumeWatchProgress(this);
+                started = true;
             }
         }
 
@@ -194,9 +194,9 @@
          */
         function onFirstFrame (event) {
 
-            if (progress > 0 && !$stateParams.autoStart && event.type === 'firstFrame') {
-                this.seek(progress * this.getDuration());
-                progress = 0;
+            if (!$stateParams.autoStart) {
+                resumeWatchProgress(this);
+                started = true;
             }
         }
 
@@ -218,7 +218,17 @@
             var position = Math.round(event.position),
                 progress = event.position / event.duration;
 
-            if (lastPos === position) {
+            // resume watch progress fail over when duration was 0 on the play or firstFrame event
+
+            if (true === started && false === resumed && !!watchProgressItem) {
+                resumeWatchProgress(this);
+                return;
+            }
+
+            // occasionally the onTime event fires before the onPlay or onFirstFrame event.
+            // so we have to prevent updating the watchProgress before the video has started
+
+            if (false === started || lastPos === position) {
                 return;
             }
 
@@ -226,6 +236,21 @@
 
             if (angular.isNumber(progress) && position % 2) {
                 handleWatchProgress(progress);
+            }
+        }
+
+        /**
+         *
+         * @param player
+         */
+        function resumeWatchProgress (player) {
+
+            var duration        = player.getDuration(),
+                toWatchProgress = watchProgressItem ? watchProgressItem.progress : 0;
+
+            if (toWatchProgress > 0 && duration > 0) {
+                player.seek(toWatchProgress * duration);
+                resumed = true;
             }
         }
 
