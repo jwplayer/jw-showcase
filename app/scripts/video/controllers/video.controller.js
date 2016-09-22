@@ -47,6 +47,7 @@
         vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
+        vm.emailShareLink    = composeEmailLink();
         vm.inWatchList       = false;
 
         vm.onPlay         = onPlay;
@@ -297,6 +298,20 @@
             return twitterShareLink
                 .replace('{url}', encodeURIComponent($location.absUrl()))
                 .replace('{text}', encodeURIComponent(item.title));
+        }
+
+        /**
+         * Compose a Email share link with the current URL and title
+         *
+         * @returns {string}
+         */
+        function composeEmailLink () {
+
+            var twitterShareLink = 'mailto:?subject={subject}&body={url}';
+
+            return twitterShareLink
+                .replace('{url}', encodeURIComponent($location.absUrl()))
+                .replace('{subject}', encodeURIComponent(item.title));
         }
     }
 
