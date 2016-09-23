@@ -228,7 +228,7 @@
             // occasionally the onTime event fires before the onPlay or onFirstFrame event.
             // so we have to prevent updating the watchProgress before the video has started
 
-            if (false === started || lastPos === position) {
+            if (false === started || !vm.item.feedid || lastPos === position) {
                 return;
             }
 
