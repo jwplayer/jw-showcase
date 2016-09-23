@@ -16,26 +16,30 @@
 
 var FACEBOOK_SHARE_URL = 'https://www.facebook.com/sharer/sharer.php';
 var TWITTER_SHARE_URL  = 'http://twitter.com/share';
+var EMAIL_SHARE_URL    = 'mailto:';
 
 var stepsDefinition = function () {
 
-    this.When(/^I click on the play video icon$/, function (callback) {
-
-        browser
-            .executeScript('window.scrollTo(0,document.body.scrollHeight);');
-
-        browser
-            .findElement(by.css('.jw-display-icon-container'))
-            .click()
-            .then(delay(callback, 2000));
-    });
-
-    this.When(/^I click on the playing video$/, function (callback) {
+    this.When(/^I start video playback$/, function (callback) {
 
         browser
             .findElement(by.css('.jwplayer'))
-            .click()
-            .then(callback);
+            .getAttribute('class')
+            .then(function (className) {
+
+                if (className.indexOf('jw-flag-touch') !== -1) {
+                    return browser
+                        .touchActions()
+                        .tap(element(by.css('.jwplayer .jw-video')))
+                        .perform()
+                        .then(delay(callback, 2000));
+                }
+
+                browser
+                    .findElement(by.css('.jwplayer .jw-display-icon-container'))
+                    .click()
+                    .then(delay(callback, 2000));
+            });
     });
 
     this.When(/^I click on the navigate back chevron$/, function (callback) {
@@ -122,8 +126,23 @@ var stepsDefinition = function () {
 
     this.Then(/^the "([^"]*)" share button should contain the correct href$/, function (type, callback) {
 
-        var nth = 'facebook' ? 1 : 2,
-            url = 'facebook' ? FACEBOOK_SHARE_URL : TWITTER_SHARE_URL;
+        var nth,
+            url;
+
+        switch (type) {
+        case 'facebook':
+            nth = 1;
+            url = FACEBOOK_SHARE_URL;
+            break;
+        case 'twitter':
+            nth = 2;
+            url = TWITTER_SHARE_URL;
+            break;
+        case 'email':
+            nth = 3;
+            url = EMAIL_SHARE_URL;
+            break;
+        }
 
         browser
             .findElement(by.css('.jw-button-share:nth-child(' + nth + ')'))

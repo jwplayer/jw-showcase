@@ -30,6 +30,10 @@
         <i class="jwy-icon jwy-icon-twitter"></i>
       </a>
 
+      <a ng-href="{{ vm.emailShareLink }}" target="_blank" class="jw-button jw-button-share">
+        <i class="jwy-icon jwy-icon-envelop"></i>
+      </a>
+
       <div class="jw-meta-watchlist">
         <div class="jw-button jw-button-watchlist {{ vm.inWatchList ? 'is-active': '' }}"
             ng-click="vm.inWatchList ? vm.removeFromWatchList() : vm.addToWatchList()">
@@ -45,7 +49,7 @@
 
 <div class="jw-row" ng-if="vm.feed.playlist.length > 0">
   <jw-card-slider feed="vm.feed" featured="false" spacing="12" heading="vm.feedTitle"
-      cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.onCardClickHandler"></jw-card-slider>
+      cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler"></jw-card-slider>
 </div>
 
 <jw-footer></jw-footer>

@@ -43,11 +43,11 @@ Feature: Video page
     And I click on the navigate back chevron
     Then the index loads
 
-  @tablet @desktop
-  Scenario: As a user I want to be able to start the video by clicking the play icon
+  @desktop @mobile @tablet
+  Scenario: As a user I want to be able to start video playback
     Given I go to the "/video/lrYLc95e/Iyfst4Se" page
     When I wait until the page has been loaded
-    And I click on the play video icon
+    And I start video playback
     Then the video should be playing
 
   @mobile @tablet @desktop
@@ -58,6 +58,12 @@ Feature: Video page
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to share the video on Twitter
-    Given I go to the "/video/lrYLc95e/Iyfst4Se" page
+    Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
     When I wait until the page has been loaded
     Then the "twitter" share button should contain the correct href
+
+  @mobile @tablet @desktop
+  Scenario: As a user I want to be able to share the video via mail
+    Given I am still on the "/video/lrYLc95e/Iyfst4Se" page
+    When I wait until the page has been loaded
+    Then the "email" share button should contain the correct href

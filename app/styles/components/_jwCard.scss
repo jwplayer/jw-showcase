@@ -345,6 +345,10 @@
         width: 100%;
         padding: 20px 20px 0;
     }
+
+    .jw-card.jw-card--default .jw-card-toast .jw-card-toast-container {
+        font-size: rem(12px);
+    }
 }
 
 @include mobile-and-tablet () {

@@ -117,9 +117,9 @@
                 parsed = $parse(attr[attrName])(scope.$parent);
 
                 if (angular.isFunction(parsed)) {
-                    scope.$apply(function () {
+                    $timeout(function () {
                         parsed.call(playerInstance, event);
-                    });
+                    }, 1);
                 }
             }
 

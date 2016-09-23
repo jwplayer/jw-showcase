@@ -16,15 +16,16 @@
 
 module.exports = function () {
 
-    root.swipe = function (element, direction) {
+    root.swipe = function (selector, direction) {
 
         return browser
-            .executeScript(function (element, direction) {
+            .executeScript(function (selector, direction) {
 
-                var fromX = 200,
-                    fromY = 200,
-                    toX   = 200,
-                    toY   = 200;
+                var fromX   = 200,
+                    fromY   = 200,
+                    toX     = 200,
+                    toY     = 200,
+                    element = document.querySelector(selector);
 
                 switch (direction) {
                 case 'left':
@@ -57,7 +58,7 @@ module.exports = function () {
                     target.dispatchEvent(event);
                 }
 
-            }, element, direction);
+            }, selector, direction);
     };
 
 };

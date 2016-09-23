@@ -52,9 +52,7 @@ Feature: Watchlist
 
   @desktop @tablet @mobile
   Scenario: Watch video from the watchlist in the index page
-    Given I go to the "index" page
-    And I wait until the page has been loaded
-    And I have the following saved watchlist:
+    Given I have the following saved watchlist:
       | mediaid  | feedid   |
       | LjBvF1FX | lrYLc95e |
       | Iyfst4Se | lrYLc95e |

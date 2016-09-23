@@ -44,6 +44,7 @@
     }
 
     .jw-card-menu-item {
+        margin: 0 10px 10px;
         text-align: center;
 
         &:last-child .jw-button {
@@ -57,9 +58,10 @@
 // mediaQueries
 // --------------------------------
 
-@include tablet-and-larger () {
+@include mobile-only () {
 
     .jw-card-menu .jw-card-menu-item {
-        padding: 10px;
+        font-size: rem(12px);
     }
+
 }

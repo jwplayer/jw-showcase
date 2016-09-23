@@ -7,20 +7,28 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 ## Supported Features
 
 - Works with any JW Player edition, from Free to Enterprise (note that usage will count against your monthly JW streaming limits). Only cloud-hosted JW Players are supported.
+- Looks great on any device. The Showcase repsonsive UI automatically optimizes itself for desktop, tablet or mobile screens.
 - Populates your site's media content using JSON feeds. If you are using JW Platform, this happens auto-magically based on playlists that you specify. Using feeds from other sources will require you to hack the source code.
 - Video titles, descriptions and hero images are populated from JW Platform JSON feed metadata.
 - Playback of HLS video content from the JW Platform CDN. You can add external URLs (for example, URLS from your own server or CDN) to your playlists in the Content section of your JW Player account dashboard, but they must be HLS streams (`.m3u8` files).
-- Customize the user interface with your own branding. The default app is configured for JW Player branding and content but you can easily change this to use your own assets by modifying the `config.json`. Advanced customization is possible (for example, editing the CSS files) , but you will need to modify the source code.
+- Customize the user interface with your own branding. The default app is configured for JW Player branding and content but you can easily change this to use your own assets by modifying the `config.json` file. Advanced customization is possible (for example, editing the CSS files), but you will need to modify the source code and [build from source](https://github.com/jwplayer/jw-showcase/wiki/Building-from-the-Source-Code).
 - Basic playback analytics reporting to your JW Dashboard.
-- Ad integrations (VAST, VPAID, GoogleIMA, etc.)
+- Ad integrations (VAST, VPAID, GoogleIMA, etc.). These features require a JW Player Ads Edition license. For more information, see the [JW Player pricing page](https://www.jwplayer.com/pricing/). 
+- A "Watchlist" feature for users to save videos for watching later. A separate list for "Continue Watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., lists do not sync across user's browsers or devices).
+- A grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
+- Social sharing options for Facebook, Twitter and email.
 
 ### Unsupported Features
 
 - Security-related features (encrypted HLS, DRM, signed URLs)
 - Search
 - Self-hosted JW Players
+- "Trending" JW Platform Playlists
+- Data-driven JW Platform Feeds
 
 ## Instructions for Using JW Showcase
+
+Topics for general users:
 
 Topics for general users:
 
@@ -39,7 +47,7 @@ Topics for advanced users:
 
 1. Download the latest [pre-compiled stable release](https://github.com/jwplayer/jw-showcase/releases).
 2. Extract the release archive to your web server.
-3. By default, JW Showcase assumes the site is in your top-level web document root (/). If you want to use a subdirectory (for example, /video/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, &lt;base href="/video/"&gt;).
+3. By default, JW Showcase assumes the site is in your top-level web document root (/). If you want to use a subdirectory (for example, /videos/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, &lt;base href="/videos/"&gt;).
 3. Create a player in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/players) and get its `player key`.
     - The player key is the eight-character identifier of the player, not your JW Player license key. 
     - To get the player key, in the JW Dashboard go to **Players** &gt; **Tools**. In the **Cloud Hosted Player Libraries** section at the top of the page, select the player you want to use from the **Player Title** drop down. Then, in the **Cloud Player Library URL** field, copy the eight-character value that appears just before `.js`. This value is the Player key. 
