@@ -7,12 +7,16 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 ## Supported Features
 
 - Works with any JW Player edition, from Free to Enterprise (note that usage will count against your monthly JW streaming limits). Only cloud-hosted JW Players are supported.
+- Looks great on any device. The Showcase repsonsive UI automatically optimizes itself for desktop, tablet or mobile screens.
 - Populates your site's media content using JSON feeds. If you are using JW Platform, this happens auto-magically based on playlists that you specify. Using feeds from other sources will require you to hack the source code.
 - Video titles, descriptions and hero images are populated from JW Platform JSON feed metadata.
 - Playback of HLS video content from the JW Platform CDN. You can add external URLs (for example, URLS from your own server or CDN) to your playlists in the Content section of your JW Player account dashboard, but they must be HLS streams (`.m3u8` files).
-- Customize the user interface with your own branding. The default app is configured for JW Player branding and content but you can easily change this to use your own assets by modifying the `config.json`. Advanced customization is possible (for example, editing the CSS files) , but you will need to modify the source code.
+- Customize the user interface with your own branding. The default app is configured for JW Player branding and content but you can easily change this to use your own assets by modifying the `config.json` file. Advanced customization is possible (for example, editing the CSS files), but you will need to modify the source code and [build from source](https://github.com/jwplayer/jw-showcase/wiki/Building-from-the-Source-Code).
 - Basic playback analytics reporting to your JW Dashboard.
-- Ad integrations (VAST, VPAID, GoogleIMA, etc.)
+- Ad integrations (VAST, VPAID, GoogleIMA, etc.). These features require a JW Player Ads Edition license. For more information, see the [JW Player pricing page](https://www.jwplayer.com/pricing/). 
+- A "Watchlist" feature for users to save videos for watching later. A separate list for "Continue Watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., lists do not sync across user's browsers or devices).
+- A grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
+- Social sharing options for Facebook, Twitter and email.
 
 ### Unsupported Features
 
@@ -26,9 +30,18 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 
 For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwplayer/jw-showcase/wiki/):
 
+Topics for general users:
+
 * [Getting Started](https://github.com/jwplayer/jw-showcase/wiki/Getting-Started)
 * [Deploying JW Showcase](https://github.com/jwplayer/jw-showcase/wiki/Deploying-jw-showcase)
-* [Search Engines and Social Sharing](https://github.com/jwplayer/jw-showcase/wiki/Search-engines-and-social-sharing)
+* [Search engines and social sharing](https://github.com/jwplayer/jw-showcase/wiki/Search-engines-and-social-sharing)
+* [Support and Reporting Issues](https://github.com/jwplayer/jw-showcase/wiki/Support-and-Reporting-Issues)
+* [FAQ](https://github.com/jwplayer/jw-showcase/wiki/FAQ)
+
+Topics for advanced users:
+
+* [Building from the Source Code](https://github.com/jwplayer/jw-showcase/wiki/Building-from-the-Source-Code)
+* [Contributing to the Project](https://github.com/jwplayer/jw-showcase/wiki/Contributing-to-the-Project)
 
 ### Basic Setup
 
