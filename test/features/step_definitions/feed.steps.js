@@ -27,7 +27,7 @@ var stepsDefinition = function () {
     this.When(/^I click on the first video in the grid overview$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-card-grid .jw-card-grid-cards > .jw-card:first-child'))
+            .findElement(by.css('.jw-card-grid .jw-card-grid-cards > .jw-card:first-child .jw-card-container'))
             .click()
             .then(callback);
     });

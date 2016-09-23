@@ -16,6 +16,7 @@
 
 var FACEBOOK_SHARE_URL = 'https://www.facebook.com/sharer/sharer.php';
 var TWITTER_SHARE_URL  = 'http://twitter.com/share';
+var EMAIL_SHARE_URL    = 'mailto:';
 
 var stepsDefinition = function () {
 
@@ -122,8 +123,23 @@ var stepsDefinition = function () {
 
     this.Then(/^the "([^"]*)" share button should contain the correct href$/, function (type, callback) {
 
-        var nth = 'facebook' ? 1 : 2,
-            url = 'facebook' ? FACEBOOK_SHARE_URL : TWITTER_SHARE_URL;
+        var nth,
+            url;
+
+        switch (type) {
+        case 'facebook':
+            nth = 1;
+            url = FACEBOOK_SHARE_URL;
+            break;
+        case 'twitter':
+            nth = 2;
+            url = TWITTER_SHARE_URL;
+            break;
+        case 'email':
+            nth = 3;
+            url = EMAIL_SHARE_URL;
+            break;
+        }
 
         browser
             .findElement(by.css('.jw-button-share:nth-child(' + nth + ')'))

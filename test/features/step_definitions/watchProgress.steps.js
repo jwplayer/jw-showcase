@@ -16,54 +16,55 @@
 
 var stepsDefinition = function () {
 
-    /**
-     * Save watchProgress in localStorage
-     * @param mediaid
-     * @param feedid
-     * @param progress
-     * @param lastWatched
-     * @param callback
-     */
-    function saveWatchProgress (mediaid, feedid, progress, lastWatched, callback) {
-
-        browser
-            .executeScript(function (mediaid, feedid, progress, lastWatched, offset) {
-
-                lastWatched = lastWatched == 'now' ? +new Date() : lastWatched;
-                offset      = parseInt(offset) || 0;
-
-                if (offset !== 0) {
-                    lastWatched += offset;
-                }
-
-                var watchProgress       = JSON.parse(window.localStorage.getItem('jwshowcase.watchprogress')) || [];
-                var watchProgressConcat = watchProgress.concat([{
-                    mediaid:     mediaid,
-                    feedid:      feedid,
-                    progress:    progress,
-                    lastWatched: lastWatched
-                }]);
-
-                window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgressConcat));
-
-            }, mediaid, feedid, progress, lastWatched)
-            .then(function () {
-                callback && callback();
-            });
-    }
-
     this.Given(/I have a saved watchProgress of 31 days old with mediaid "([^"]*)" and feedid "([^"]*)"/, function (mediaid, feedid, callback) {
 
-        var lastWatched = +new Date() - (3600 * 24 * 1000 * 31);
+        var data = [{
+            mediaid:     mediaid,
+            feedid:      feedid,
+            progress:    0.5,
+            lastWatched: +new Date() - (3600 * 24 * 1000 * 31)
+        }];
 
-        saveWatchProgress(mediaid, feedid, 0.5, lastWatched, callback);
+        browser
+            .addMockModule('app', function (watchProgress) {
+                angular.module('app').run(function () {
+                    window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                });
+            }, data);
+
+        callback();
     });
 
     this.Given(/I have the following saved watch progress/, function (data, callback) {
 
-        data.hashes().forEach(function (data) {
-            saveWatchProgress(data.mediaid, data.feedid, data.progress, data.lastWatched)
-        });
+        var hashes = data
+            .hashes()
+            .map(function (item) {
+
+                item.progress = parseFloat(item.progress);
+
+                if (item.lastWatched === 'now') {
+                    item.lastWatched = +new Date();
+                } else {
+                    item.lastWatched = parseInt(item.lastWatched);
+                }
+
+                if (item.offset) {
+                    item.lastWatched += parseInt(item.offset);
+                }
+
+                delete item.offset;
+
+                return item;
+            });
+
+        browser
+            .addMockModule('app', function (watchProgress) {
+                window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                angular.module('app').run(function () {
+                    window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                });
+            }, hashes);
 
         callback();
     });

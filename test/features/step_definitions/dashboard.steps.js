@@ -18,7 +18,7 @@ var stepsDefinition = function () {
 
     this.Given(/^I scroll to the first default slider$/, function (callback) {
         browser
-            .findElements(by.css('.feed .jw-card-slider--default:first-child'))
+            .findElement(by.css('.feed .jw-card-slider--default:first-child'))
             .getLocation()
             .then(function (location) {
                 browser
@@ -93,7 +93,7 @@ var stepsDefinition = function () {
     this.When(/^I click the first featured item in the dashboard/, function (callback) {
 
         browser
-            .findElement(by.css('.featured .jw-row.is-visible-mobile .jw-card--featured:first-child'))
+            .findElement(by.css('.featured .jw-row.is-visible-mobile .jw-card--featured:first-child .jw-card-container'))
             .click()
             .then(delay(callback, 1000));
     });

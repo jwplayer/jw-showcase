@@ -26,9 +26,7 @@ Feature: Watch progress
 
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page
-    Given I go to the "index" page
-    And I wait until the page has been loaded
-    And I have the following saved watch progress:
+    Given I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched | offset |
       | LjBvF1FX | lrYLc95e | 0.75     | now         | -10    |
       | Iyfst4Se | lrYLc95e | 0.5      | now         | 0      |
@@ -41,9 +39,7 @@ Feature: Watch progress
 
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page without the invalid items
-    Given I go to the "index" page
-    And I wait until the page has been loaded
-    And I have the following saved watch progress:
+    Given I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched   | offset |
       | LjBvF1FX | lrYLc95e | 0.75     | now           | -10    |
       | Iyfst4Se | lrYLc95e | 0.5      | now           | 0      |
@@ -63,7 +59,7 @@ Feature: Watch progress
 
   @desktop @tablet @mobile
   Scenario: Start video at last known position
-    And I have the following saved watch progress:
+    Given I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched   | offset |
       | LjBvF1FX | lrYLc95e | 0.75     | now           | -10    |
     And I go to the "/video/lrYLc95e/LjBvF1FX" page

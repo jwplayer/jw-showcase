@@ -19,11 +19,13 @@ var stepsDefinition = function () {
     this.Given(/^I have the following saved watchlist:$/, function (data, callback) {
 
         browser
-            .executeScript(function (watchlist) {
-                window.localStorage.setItem('jwshowcase.watchlist', JSON.stringify(watchlist));
-            }, data.hashes())
-            .then(callback);
+            .addMockModule('app', function (watchlist) {
+                angular.module('app').run(function () {
+                    window.localStorage.setItem('jwshowcase.watchlist', JSON.stringify(watchlist));
+                });
+            }, data.hashes());
 
+        callback();
     });
 
     this.When(/^I click on the card menu button of the first card$/, function (callback) {

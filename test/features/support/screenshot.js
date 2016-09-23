@@ -26,7 +26,7 @@ module.exports = function TakeScreenshot () {
                     callback();
                 });
         } else {
-            setTimeout(callback, 4000);
+            setTimeout(callback, 1000);
         }
     });
 };
