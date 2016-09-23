@@ -19,6 +19,8 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 - Security-related features (encrypted HLS, DRM, signed URLs)
 - Search
 - Self-hosted JW Players
+- "Trending" JW Platform Playlists
+- Data-driven JW Platform Feeds
 
 ## Instructions for Using JW Showcase
 
