@@ -28,7 +28,7 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 
 ## Instructions for Using JW Showcase
 
-For full instructions, see the JW Showcase [Wiki pages](https://github.com/jwplayer/jw-showcase/wiki/):
+Topics for general users:
 
 Topics for general users:
 
