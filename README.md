@@ -7,7 +7,7 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 ## Supported Features
 
 - Works with any JW Player edition, from Free to Enterprise (note that usage will count against your monthly JW streaming limits). Only cloud-hosted JW Players are supported.
-- Looks great on any device. The Showcase repsonsive UI automatically optimzies itself for dersktop, tablet or mobile screens.
+- Looks great on any device. The Showcase repsonsive UI automatically optimzies itself for desktop, tablet or mobile screens.
 - Populates your site's media content using JSON feeds. If you are using JW Platform, this happens auto-magically based on playlists that you specify. Using feeds from other sources will require you to hack the source code.
 - Video titles, descriptions and hero images are populated from JW Platform JSON feed metadata.
 - Playback of HLS video content from the JW Platform CDN. You can add external URLs (for example, URLS from your own server or CDN) to your playlists in the Content section of your JW Player account dashboard, but they must be HLS streams (`.m3u8` files).
