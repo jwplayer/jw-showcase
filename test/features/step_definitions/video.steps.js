@@ -20,23 +20,26 @@ var EMAIL_SHARE_URL    = 'mailto:';
 
 var stepsDefinition = function () {
 
-    this.When(/^I click on the play video icon$/, function (callback) {
-
-        browser
-            .executeScript('window.scrollTo(0,document.body.scrollHeight);');
-
-        browser
-            .findElement(by.css('.jw-display-icon-container'))
-            .click()
-            .then(delay(callback, 2000));
-    });
-
-    this.When(/^I click on the playing video$/, function (callback) {
+    this.When(/^I start video playback$/, function (callback) {
 
         browser
             .findElement(by.css('.jwplayer'))
-            .click()
-            .then(callback);
+            .getAttribute('class')
+            .then(function (className) {
+
+                if (className.indexOf('jw-flag-touch') !== -1) {
+                    return browser
+                        .touchActions()
+                        .tap(element(by.css('.jwplayer .jw-video')))
+                        .perform()
+                        .then(delay(callback, 2000));
+                }
+
+                browser
+                    .findElement(by.css('.jwplayer .jw-display-icon-container'))
+                    .click()
+                    .then(delay(callback, 2000));
+            });
     });
 
     this.When(/^I click on the navigate back chevron$/, function (callback) {

@@ -55,21 +55,13 @@ var stepsDefinition = function () {
 
     this.When(/^I swipe left in the first default slider/, function (callback) {
 
-        var firstDefaultSlider = element
-            .all(by.css('.feed .jw-card-slider--default:first-child .jw-card-slider-container'))
-            .getWebElement();
-
-        swipe(firstDefaultSlider, 'left')
+        swipe('.feed .jw-card-slider--default:first-child .jw-card-slider-container', 'left')
             .then(delay(callback, 1000));
     });
 
     this.When(/^I swipe right in the first default slider$/, function (callback) {
 
-        var firstDefaultSlider = element
-            .all(by.css('.feed .jw-card-slider--default:first-child .jw-card-slider-container'))
-            .getWebElement();
-
-        swipe(firstDefaultSlider, 'right')
+        swipe('.feed .jw-card-slider--default:first-child .jw-card-slider-container', 'right')
             .then(delay(callback, 1000));
     });
 
@@ -195,7 +187,7 @@ var stepsDefinition = function () {
     this.Then(/^the "([^"]*)" item in the first default slider should be visible/, function (arg1, callback) {
 
         browser
-            .findElements(by.css('.feed .jw-card-slider.jw-card-slider--default:first-child'))
+            .findElement(by.css('.feed .jw-card-slider.jw-card-slider--default:first-child'))
             .findElement(by.css('.jw-card-slider-slide:nth-child(' + arg1 + ')'))
             .getAttribute('class')
             .then(function (classNames) {

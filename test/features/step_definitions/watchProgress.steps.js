@@ -107,7 +107,7 @@ var stepsDefinition = function () {
                 return JSON.parse(window.localStorage.getItem('jwshowcase.watchprogress'));
             })
             .then(function (data) {
-                expect(data.length).to.equal(0);
+                expect((data || []).length).to.equal(0);
                 callback();
             });
     });
@@ -144,7 +144,7 @@ var stepsDefinition = function () {
 
     this.Then(/the first card in "Continue watching" slider should have mediaid "([^"]*)"/, function (mediaid, callback) {
 
-        element(by.css('.watchProgress .jw-card:first-child')).evaluate('item').then(function (item) {
+        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card')).evaluate('item').then(function (item) {
             expect(item.mediaid).to.equal(mediaid);
             callback();
         });
@@ -152,7 +152,7 @@ var stepsDefinition = function () {
 
     this.Then(/the first card in "Continue watching" slider should show "([^"]*)" watch progress/, function (width, callback) {
 
-        element(by.css('.watchProgress .jw-card:first-child .jw-card-watch-progress-indicator'))
+        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card .jw-card-watch-progress-indicator'))
             .getAttribute('style')
             .then(function (style) {
                 expect(style).to.contains('width: ' + width);
