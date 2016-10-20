@@ -18,36 +18,33 @@
 
     angular
         .module('app.core')
-        .controller('HeaderController', HeaderController);
+        .controller('SubheaderController', SubheaderController);
 
     /**
      * @ngdoc controller
-     * @name app.core.controller:HeaderController
+     * @name app.core.controller:SubheaderController
      */
-    HeaderController.$inject = [];
-    function HeaderController () {
+    SubheaderController.$inject = ['$state', '$ionicHistory', '$ionicViewSwitcher'];
+    function SubheaderController ($state, $ionicHistory, $ionicViewSwitcher) {
 
         var vm = this;
 
-        vm.menuButtonClickHandler   = menuButtonClickHandler;
-        vm.searchButtonClickHandler = searchButtonClickHandler;
+        vm.backButtonClickHandler   = backButtonClickHandler;
 
         ///////////////
 
         /**
-         * Handle click event on menu button
+         * Handle click event on back button
          */
-        function menuButtonClickHandler () {
+        function backButtonClickHandler () {
 
-            // noop
-        }
-
-        /**
-         * Handle click event on search button
-         */
-        function searchButtonClickHandler () {
-
-            // noop
+            if ($ionicHistory.backView()) {
+                $ionicHistory.goBack();
+            }
+            else {
+                $ionicViewSwitcher.nextDirection('back');
+                $state.go('root.dashboard');
+            }
         }
     }
 

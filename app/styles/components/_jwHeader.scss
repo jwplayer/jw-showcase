@@ -1,6 +1,7 @@
-$header-height: 100px;
+$header-height: 80px;
 $header-h-padding: 10px;
 $header-nav-width: 100px;
+$subheader-height: 50px;
 
 //
 // jwHeader
@@ -9,11 +10,31 @@ $header-nav-width: 100px;
 .jw-header {
     @include display-flex();
     @include flex-direction(row);
+    position: fixed;
+    width: 100vw;
     height: $header-height;
     padding: $header-h-padding 0;
+    z-index: 9;
 
     background-color: $white;
     text-align: center;
+
+    &.jw-subheader {
+        top: $header-height;
+        height: $subheader-height;
+
+        background-color: $black-light;
+
+        .jw-header-nav .jw-button {
+            color: $white;
+        }
+
+        .jw-header-title {
+            font-size: rem(24px);
+            font-weight: bold;
+            color: $white;
+        }
+    }
 
     .jw-header-nav {
         @include flex(0 1 $header-nav-width);
@@ -22,7 +43,11 @@ $header-nav-width: 100px;
         font-size: rem(32px);
 
         .jw-button {
+            padding: 10px;
+
             vertical-align: middle;
+            color: $black-lighter;
+            font-size: rem(25px);
         }
     }
 
@@ -35,12 +60,14 @@ $header-nav-width: 100px;
             max-height: $header-height - ($header-h-padding * 2);
             vertical-align: middle;
         }
+    }
 
-        h1 {
-            font-size: rem(32px);
-            white-space: nowrap;
-            overflow: hidden;
-        }
+    .jw-header-title {
+        @include flex(1 1 auto);
+        @include align-self(center);
+
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 

@@ -18,41 +18,43 @@
 
     angular
         .module('app.core')
-        .directive('jwHeader', headerDirective);
+        .directive('jwSubheader', subheaderDirective);
 
     /**
      * @ngdoc directive
-     * @name jwHeader
+     * @name jwSubheader
      * @module app.core
      * @restrict E
      *
      * @description
      *
-     * # jwHeader
-     * Render the header element.
+     * # jwSubheader
+     * Render the subheader element.
      *
      * @example
      *
      * ```html
-     * <jw-header></jw-header>
+     * <jw-subheader heading="'My title'" back-button="true"></jw-subheader>
      * ```
      *
-     * @param {string=} logo Location to logo to show in header
+     * @param {string=} [heading]       Title to display in the center
+     * @param {bool=}   [back-button]   Toggle back button
      */
 
-    headerDirective.$inject = [];
-    function headerDirective () {
+    subheaderDirective.$inject = [];
+    function subheaderDirective () {
 
         return {
             restrict:         'E',
             scope:            {
-                logo: '='
+                heading:    '=',
+                backButton: '='
             },
             controllerAs:     'vm',
-            controller:       'HeaderController',
+            controller:       'SubheaderController',
             bindToController: true,
             replace:          true,
-            templateUrl:      'views/core/header.html'
+            templateUrl:      'views/core/subheader.html'
         };
     }
 
