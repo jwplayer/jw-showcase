@@ -27,15 +27,24 @@
      * @requires ui.router.state.$state
      * @requires app.core.dataStore
      */
-    DashboardController.$inject = ['$state', 'dataStore'];
-    function DashboardController ($state, dataStore) {
+    DashboardController.$inject = ['$scope', '$state', '$ionicHistory', 'dataStore'];
+    function DashboardController ($scope, $state, $ionicHistory, dataStore) {
 
         var vm = this;
 
         vm.dataStore          = dataStore;
         vm.cardClickHandler   = cardClickHandler;
 
+        activate();
+
         ////////////
+
+        function activate () {
+
+            $scope.$on('$ionicView.enter', function () {
+                $ionicHistory.clearHistory();
+            });
+        }
 
         /**
          * Handle click event on cards
