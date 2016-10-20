@@ -1,7 +1,9 @@
 
 .jw-theme-light {
 
-    background-color: $white-darker;
+    .pane, .view {
+        background-color: $white-darker;
+    }
 
     .jw-header {
         background-color: $white;

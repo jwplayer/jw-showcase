@@ -1,7 +1,9 @@
 
 .jw-theme-dark {
 
-    background-color: $shark;
+    .pane, .view {
+        background-color: $shark;
+    }
 
     .jw-header {
         background-color: $black;
