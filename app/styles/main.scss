@@ -36,6 +36,19 @@
 @import 'themes/light';
 @import 'themes/dark';
 
+//
+// Import Ionic
+// --------------------------------
+//@import '../../bower_components/ionic/scss/variables';
+//@import '../../bower_components/ionic/scss/mixins';
+//@import '../../bower_components/ionic/scss/scaffolding';
+
+$bar-height: 80px;
+$bar-subheader-height: 40px;
+$link-color: #fff;
+
+@import '../../bower_components/ionic/scss/ionic';
+
 html,
 body {
     height: 100%;
