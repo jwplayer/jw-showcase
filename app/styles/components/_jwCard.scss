@@ -317,33 +317,19 @@
 }
 
 //
-// jwCardAlt
-// --------------------------------
-
-.jw-card-alt {
-    padding: 20px;
-
-    > span {
-        display: inline-block;
-        min-height: 20px;
-        max-height: 3 * 18px;
-
-        line-height: 18px;
-        overflow: hidden;
-    }
-}
-
-//
 // mediaQueries
 // --------------------------------
 
 @include mobile-only () {
 
     .jw-card.jw-card--featured .jw-card-title {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        padding: 20px 20px 0;
+        padding: 0 20px;
+        margin-bottom: 10px;
+    }
+
+    .jw-card.jw-card--featured .jw-card-description {
+        max-height: 3 * 18px;
+        padding: 0 20px;
     }
 
     .jw-card.jw-card--default .jw-card-toast .jw-card-toast-container {

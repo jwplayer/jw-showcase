@@ -7,30 +7,27 @@
             max-width="'80%'" max-height="'50%'" cols="1" on-card-click="vm.cardClickHandler"></jw-card-slider>
       </div>
 
-      <div class="jw-row jw-theme-background is-visible-mobile" ng-repeat="item in vm.dataStore.featuredFeed.playlist">
-        <jw-card class="is-active" item="item" featured="true" show-title="true" show-description="false"
+      <div class="jw-row is-visible-mobile" style="margin-bottom: 20px;" ng-repeat="item in vm.dataStore.featuredFeed.playlist">
+        <jw-card class="is-active" item="item" featured="true" show-title="true" show-description="true"
             on-click="vm.cardClickHandler"></jw-card>
-        <div class="jw-card-alt">
-          <span jw-truncate-text="::item.description"></span>
-        </div>
       </div>
     </div>
 
     <div class="watchProgress" ng-if="vm.dataStore.watchProgressFeed.playlist.length > 0">
       <jw-card-slider feed="vm.dataStore.watchProgressFeed" featured="false" heading="'Continue watching'"
-          cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler" spacing="12"
+          cols="{xs: 1, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler" spacing="12"
           watch-progress="true"></jw-card-slider>
     </div>
 
     <div class="feed">
-      <jw-card-slider feed="feed" featured="false" heading="feed.title" cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}"
+      <jw-card-slider feed="feed" featured="false" heading="feed.title" cols="{xs: 1, sm: 2, md: 3, lg: 4, xl: 5}"
           on-card-click="vm.cardClickHandler" spacing="12" ng-repeat="feed in vm.dataStore.feeds"
           link="true"></jw-card-slider>
     </div>
 
     <div class="watchlist" ng-if="vm.dataStore.watchlistFeed.playlist.length > 0">
       <jw-card-slider feed="vm.dataStore.watchlistFeed" featured="false" heading="'My watchlist'"
-          cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler" spacing="12"></jw-card-slider>
+          cols="{xs: 1, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler" spacing="12"></jw-card-slider>
     </div>
 
     <jw-footer></jw-footer>

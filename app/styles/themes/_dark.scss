@@ -5,6 +5,10 @@
         background-color: $shark;
     }
 
+    .featured {
+        background-color: $black-lighter;
+    }
+
     .jw-card .jw-card-title {
         color: $white;
     }
@@ -48,10 +52,6 @@
         .jw-card-description {
             color: $white;
         }
-    }
-
-    .jw-theme-background {
-        background-color: $black-lighter;
     }
 
     .jw-footer {
