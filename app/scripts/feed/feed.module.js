@@ -20,8 +20,8 @@
         .module('app.feed', [])
         .config(config);
 
-    config.$inject = ['$stateProvider', 'autoScrollProvider', 'seoProvider'];
-    function config ($stateProvider, autoScrollProvider, seoProvider) {
+    config.$inject = ['$stateProvider', 'seoProvider'];
+    function config ($stateProvider, seoProvider) {
 
         $stateProvider
             .state('root.feed', {
@@ -43,11 +43,6 @@
                     description: config.description
                 };
             }]);
-
-        autoScrollProvider
-            .register('root.feed', {
-                delay: 200
-            });
 
         ////////////
 

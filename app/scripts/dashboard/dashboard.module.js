@@ -27,8 +27,8 @@
         .module('app.dashboard', [])
         .config(config);
 
-    config.$inject = ['$stateProvider', 'autoScrollProvider', 'seoProvider'];
-    function config ($stateProvider, autoScrollProvider, seoProvider) {
+    config.$inject = ['$stateProvider', 'seoProvider'];
+    function config ($stateProvider, seoProvider) {
 
         $stateProvider
             .state('root.dashboard', {
@@ -44,11 +44,6 @@
                     description: config.description
                 };
             }]);
-
-        autoScrollProvider
-            .register('root.dashboard', {
-                delay: 200
-            });
     }
 
 }());
