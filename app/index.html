@@ -17,9 +17,9 @@
 </head>
 <body class="jw-theme-{{ ::rootVm.config.theme }}">
 
-<div class="jw-container">
-  <div ui-view=""></div>
-</div>
+<jw-header></jw-header>
+
+<ion-nav-view></ion-nav-view>
 
 <div class="jw-cover jw-loading" ng-show="rootVm.dataStore.loading">
   <div class="jw-loading-icon">
@@ -47,7 +47,17 @@
 <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
 <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/ionic/js/ionic.js"></script>
+<script src="bower_components/ionic/js/ionic-angular.js"></script>
 <!-- endbuild -->
+
+<script>
+  // make search depth defaulting to 20 instead of 10
+  ionic.DomUtil.$getParentOrSelfWithClass = ionic.DomUtil.getParentOrSelfWithClass;
+  ionic.DomUtil.getParentOrSelfWithClass = function (elem, className, depth) {
+    return ionic.DomUtil.$getParentOrSelfWithClass(elem, className, depth || 20);
+  };
+</script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/polyfills.js"></script>

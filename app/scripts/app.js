@@ -27,6 +27,7 @@
             'ngSanitize',
             'ngTouch',
             'ui.router',
+            'ionic',
             'app.core',
             'app.dashboard',
             'app.feed',
