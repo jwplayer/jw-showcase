@@ -35,7 +35,6 @@
         $stateProvider
             .state('root', {
                 abstract:    true,
-                templateUrl: 'views/core/root.html',
                 resolve:     {
                     preload: preloadApp
                 }

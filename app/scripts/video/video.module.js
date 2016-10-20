@@ -32,14 +32,18 @@
 
         $stateProvider
             .state('root.video', {
-                url:         '/video/:feedId/:mediaId',
-                controller:  'VideoController as vm',
-                templateUrl: 'views/video/video.html',
-                resolve:     {
+                url:     '/video/:feedId/:mediaId',
+                views:   {
+                    '@': {
+                        controller:  'VideoController as vm',
+                        templateUrl: 'views/video/video.html'
+                    }
+                },
+                resolve: {
                     item: resolveItem,
                     feed: resolveFeed
                 },
-                params:      {
+                params:  {
                     autoStart: false
                 }
             });

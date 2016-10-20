@@ -33,8 +33,12 @@
         $stateProvider
             .state('root.dashboard', {
                 url:         '/',
-                controller:  'DashboardController as vm',
-                templateUrl: 'views/dashboard/dashboard.html'
+                views: {
+                    '@': {
+                        controller:  'DashboardController as vm',
+                        templateUrl: 'views/dashboard/dashboard.html'
+                    }
+                }
             });
 
         seoProvider
