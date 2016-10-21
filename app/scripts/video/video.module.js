@@ -45,7 +45,8 @@
                 },
                 params:  {
                     autoStart: false
-                }
+                },
+                cache:   false
             });
 
         seoProvider

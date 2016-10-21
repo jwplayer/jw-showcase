@@ -1,57 +1,30 @@
 <ion-view>
-  <ion-content class="has-header">
+  <ion-content>
 
-    <div class="jw-jumbotron jw-video">
-      <div class="jw-jumbotron-content">
+    <div class="jw-video-container jw-video">
+      <div class="jw-video-container-aspect">
         <jw-player settings="vm.playerSettings" on-playlist-item="vm.onPlaylistItem" on-time="vm.onTime"
             on-complete="vm.onComplete" on-first-frame="vm.onFirstFrame" on-play="vm.onPlay"></jw-player>
-        <div class="jw-jumbotron-controls">
-          <a href="" ng-click="vm.backButtonClickHandler()" class="jw-button jw-button-back">
-            <i class="jwy-icon-double-angle-left"></i>
-          </a>
-        </div>
       </div>
     </div>
 
-    <div class="jw-meta">
-      <div class="jw-row">
-        <div class="jw-meta-description">
-          <div class="jw-meta-heading">
-            <span class="jw-meta-title">{{ vm.item.title }}</span>
-            <span class="jw-meta-duration">{{ vm.duration }}</span>
-          </div>
-          <div class="jw-meta-description-text">
-            {{ vm.item.description }}
-          </div>
-        </div>
-        <div class="jw-meta-actions">
-          <a ng-href="{{ vm.facebookShareLink }}" target="_blank" class="jw-button jw-button-share">
-            <i class="jwy-icon jwy-icon-facebook"></i>
-          </a>
+    <jw-header class="jw-header-static jw-subheader">
+      <jw-header-left>
+        <jw-header-back-button></jw-header-back-button>
+      </jw-header-left>
+      <jw-header-main>
+        <jw-header-title class="left">
+          {{ vm.item.title }} <span class="jw-meta-duration">{{ vm.duration }}</span>
+        </jw-header-title>
+      </jw-header-main>
+    </jw-header>
 
-          <a ng-href="{{ vm.twitterShareLink }}" target="_blank" class="jw-button jw-button-share">
-            <i class="jwy-icon jwy-icon-twitter"></i>
-          </a>
-
-          <a ng-href="{{ vm.emailShareLink }}" target="_blank" class="jw-button jw-button-share">
-            <i class="jwy-icon jwy-icon-envelop"></i>
-          </a>
-
-          <div class="jw-meta-watchlist">
-            <div class="jw-button jw-button-watchlist {{ vm.inWatchList ? 'is-active': '' }}"
-                ng-click="vm.inWatchList ? vm.removeFromWatchList() : vm.addToWatchList()">
-              <span>{{ vm.inWatchList ? 'Remove from' : 'Add to' }}<br> watchlist</span>
-              <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
-                <i class="jwy-icon jwy-icon1 jwy-icon-{{ vm.inWatchList ? 'min' : 'plus' }}"></i>
-              </i>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="jw-meta-description">
+      {{ vm.item.description }}
     </div>
 
     <div class="jw-row" ng-if="vm.feed.playlist.length > 0">
-      <jw-card-slider feed="vm.feed" featured="false" spacing="12" heading="vm.feedTitle"
+      <jw-card-slider feed="vm.feed" featured="false" spacing="12" heading="vm.feed.title"
           cols="{xs: 2, sm: 2, md: 3, lg: 4, xl: 5}" on-card-click="vm.cardClickHandler"></jw-card-slider>
     </div>
 

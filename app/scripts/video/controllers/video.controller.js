@@ -33,8 +33,8 @@
      * @requires app.core.watchList
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', '$window', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, $window, dataStore, watchProgress, watchlist, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, utils, feed, item) {
 
         var vm      = this,
             lastPos = 0,
@@ -45,7 +45,6 @@
         vm.item              = item;
         vm.feed              = {};
         vm.duration          = 0;
-        vm.feedTitle         = feed.feedid === 'watchlist' ? 'Watchlist' : 'More like this';
         vm.facebookShareLink = composeFacebookLink();
         vm.twitterShareLink  = composeTwitterLink();
         vm.emailShareLink    = composeEmailLink();
@@ -57,8 +56,7 @@
         vm.onTime         = onTime;
         vm.onPlaylistItem = onPlaylistItem;
 
-        vm.backButtonClickHandler = backButtonClickHandler;
-        vm.cardClickHandler       = cardClickHandler;
+        vm.cardClickHandler = cardClickHandler;
 
         vm.addToWatchList      = addToWatchList;
         vm.removeFromWatchList = removeFromWatchList;
@@ -78,8 +76,9 @@
                 aspectratio: '16:9',
                 ph:          4,
                 autostart:   $stateParams.autoStart,
-                playlist:    [generatePlaylistItem(vm.item)],
-                sharing:     false
+                playlist:    generatePlaylist(feed, item),
+                sharing:     false,
+                related:     {}
             };
 
             update();
@@ -96,6 +95,7 @@
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
             vm.feed = {
+                title:    feed.title,
                 playlist: feed.playlist.filter(function (item) {
                     return item.mediaid !== vm.item.mediaid;
                 })
@@ -125,22 +125,31 @@
         }
 
         /**
-         * Generate playlist item from feed item
+         * Generate playlist from feed and current item
          *
-         * @param {Object}      item    Item from feed
+         * @param {app.core.feed}      feed    Feed
+         * @param {app.core.item}      item    Current item
          *
          * @returns {Object} Playlist item
          */
-        function generatePlaylistItem (item) {
+        function generatePlaylist (feed, item) {
 
-            return {
-                mediaid:     item.mediaid,
-                title:       item.title,
-                description: item.description,
-                image:       utils.replaceImageSize(item.image, 1920),
-                sources:     item.sources,
-                tracks:      item.tracks
-            };
+            var indexOfItem = feed.playlist.findIndex(function (playlistItem) {
+                    return playlistItem.mediaid === item.mediaid;
+                }),
+                playlist    = feed.playlist.slice(indexOfItem);
+
+            return playlist.map(function (current) {
+
+                return {
+                    mediaid:     current.mediaid,
+                    title:       current.title,
+                    description: current.description,
+                    image:       utils.replaceImageSize(current.image, 1920),
+                    sources:     current.sources,
+                    tracks:      current.tracks
+                };
+            });
         }
 
         /**
@@ -283,19 +292,6 @@
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
-        }
-
-        /**
-         * Handle click event on back button
-         */
-        function backButtonClickHandler () {
-
-            if ($state.history.length > 1) {
-                $window.history.back();
-            }
-            else {
-                $state.go('root.dashboard');
-            }
         }
 
         /**
