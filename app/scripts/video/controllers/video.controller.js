@@ -166,23 +166,20 @@
                 feedId  = feed.feedid,
                 newItem = dataStore.getItem(mediaId, feedId);
 
-            // item does not exist in current feed. Update title and description but not the url
+            // item does not exist in current feed.
             if (!newItem) {
-                vm.item = event.item;
-                update();
+                // show dialog!
                 return;
             }
 
             // update state, but don't notify
             $state.go('root.video', {
-                feedId:  newItem.feedid,
-                mediaId: newItem.mediaid
-            }, {
-                notify: false
+                feedId:    newItem.feedid,
+                mediaId:   newItem.mediaid,
+                autoStart: true
             });
 
-            vm.item = newItem;
-            update();
+            this.stop();
         }
 
         /**
