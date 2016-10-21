@@ -20,7 +20,9 @@
     </jw-header>
 
     <div class="jw-meta-description">
-      {{ vm.item.description }}
+      <div jw-collapsible-text="4.2em">
+        {{ vm.item.description }}
+      </div>
     </div>
 
     <div class="jw-row" ng-if="vm.feed.playlist.length > 0">
