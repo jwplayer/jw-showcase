@@ -54,35 +54,39 @@
                 var viewHistory = $ionicHistory.viewHistory(),
                     history     = viewHistory.histories[$ionicHistory.currentHistoryId()],
                     stack       = history ? history.stack : [],
-                    stackIndex  = stack.length,
-                    backCount   = 0;
+                    stackIndex  = history.cursor - 1;
 
-                if (stackIndex) {
+                if (viewHistory.backView && viewHistory.backView.stateName !== 'root.video') {
 
-                    while (stackIndex--) {
-                        
+                    $ionicHistory.goBack();
+                    return;
+                }
+
+                if (stackIndex > 0) {
+
+                    while (stackIndex >= 0) {
+
                         // search until dashboard or feed state is found
-                        if (stack[stackIndex].stateName !== 'root.video') {
-                            break;
-                        }
-
-                        backCount -= 1;
-
-                        // all views are root.video
-                        if (stackIndex === 0) {
-
+                        if (stack[stackIndex].stateName !== 'root.video' && stack[stackIndex].stateId !== viewHistory.currentView.stateId) {
                             $ionicViewSwitcher.nextDirection('back');
-                            $state.go('root.dashboard');
+                            stack[stackIndex].go();
                             return;
                         }
-                    }
 
-                    $ionicHistory.goBack(backCount);
+                        stackIndex--;
+                    }
                 }
-                else {
-                    $ionicViewSwitcher.nextDirection('back');
-                    $state.go('root.dashboard');
-                }
+
+                goToDashboard();
+            }
+
+            /**
+             * Go to dashboard state with back transition
+             */
+            function goToDashboard () {
+
+                $ionicViewSwitcher.nextDirection('back');
+                $state.go('root.dashboard');
             }
         }
     }
