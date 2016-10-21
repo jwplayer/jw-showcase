@@ -51,8 +51,33 @@
 
             function backButtonClickHandler () {
 
-                if ($ionicHistory.backView()) {
-                    $ionicHistory.goBack();
+                var viewHistory = $ionicHistory.viewHistory(),
+                    history     = viewHistory.histories[$ionicHistory.currentHistoryId()],
+                    stack       = history ? history.stack : [],
+                    stackIndex  = stack.length,
+                    backCount   = 0;
+
+                if (stackIndex) {
+
+                    while (stackIndex--) {
+                        
+                        // search until dashboard or feed state is found
+                        if (stack[stackIndex].stateName !== 'root.video') {
+                            break;
+                        }
+
+                        backCount -= 1;
+
+                        // all views are root.video
+                        if (stackIndex === 0) {
+
+                            $ionicViewSwitcher.nextDirection('back');
+                            $state.go('root.dashboard');
+                            return;
+                        }
+                    }
+
+                    $ionicHistory.goBack(backCount);
                 }
                 else {
                     $ionicViewSwitcher.nextDirection('back');
