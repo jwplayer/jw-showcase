@@ -21,8 +21,7 @@ $subheader-height: 50px;
 
     &.jw-subheader {
         top: $header-height;
-        height: auto;
-        min-height: $subheader-height;
+        height: $subheader-height;
         padding: 0;
 
         background-color: $black-light;
@@ -62,6 +61,13 @@ $subheader-height: 50px;
 
     &.jw-header-static {
         position: static;
+        height: auto;
+
+        .jw-header-main .jw-header-title {
+            overflow: visible;
+            white-space: normal;
+            word-break: break-all;
+        }
     }
 
     .jw-header-nav {
@@ -91,6 +97,8 @@ $subheader-height: 50px;
 
         .jw-header-title {
             line-height: 1em;
+            overflow: hidden;
+            white-space: nowrap;
 
             &.left {
                 text-align: left;
