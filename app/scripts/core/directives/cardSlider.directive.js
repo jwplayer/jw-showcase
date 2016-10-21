@@ -56,7 +56,6 @@
      * @param {string=}             maxHeight       Slide maximum width relatively to window height.
      * @param {boolean=}            featured        Featured slider flag
      *
-     * @requires app.core.cardSliderCache
      * @requires app.core.utils
      * @example
      *
@@ -67,8 +66,8 @@
      * ```
      */
 
-    cardSliderDirective.$inject = ['$timeout', 'cardSliderCache', 'utils'];
-    function cardSliderDirective ($timeout, cardSliderCache, utils) {
+    cardSliderDirective.$inject = ['$timeout', 'utils'];
+    function cardSliderDirective ($timeout, utils) {
 
         return {
             scope:            {
@@ -144,11 +143,6 @@
                     }, 30);
                 }, true);
 
-                // restore slider state if stored in cardSliderCache service
-                cardSliderCache.get(feedId, function (state) {
-                    index = state.index;
-                });
-
                 $timeout(resize, 50);
             }
 
@@ -158,14 +152,6 @@
             function destroy () {
 
                 window.removeEventListener('resize', resizeDebounced);
-
-                if (!feedId) {
-                    return;
-                }
-
-                cardSliderCache.save(feedId, {
-                    index: index
-                });
             }
 
             /**
