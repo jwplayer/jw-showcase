@@ -21,8 +21,9 @@ $subheader-height: 50px;
 
     &.jw-subheader {
         top: $header-height;
-        height: $subheader-height;
-        padding: ($header-h-padding / 2) 0;
+        height: auto;
+        min-height: $subheader-height;
+        padding: 0;
 
         background-color: $black-light;
 
@@ -31,6 +32,7 @@ $subheader-height: 50px;
         }
 
         .jw-header-title {
+            padding: 5px 0;
             font-size: rem(24px);
             font-weight: bold;
             color: $white;
@@ -63,7 +65,7 @@ $subheader-height: 50px;
     }
 
     .jw-header-nav {
-        @include flex(0 1 $header-nav-width);
+        @include flex(0 0 $header-nav-width);
         @include align-self(center);
         min-width: 70px;
         font-size: rem(32px);
@@ -88,8 +90,7 @@ $subheader-height: 50px;
         }
 
         .jw-header-title {
-            white-space: nowrap;
-            overflow: hidden;
+            line-height: 1em;
 
             &.left {
                 text-align: left;
