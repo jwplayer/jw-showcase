@@ -37,7 +37,7 @@
      * <jw-header></jw-header>
      * ```
      *
-     * @param {string=} logo Location to logo to show in header
+     * @param {object=} [state-class] Toggle class based current state name
      */
 
     headerDirective.$inject = [];
@@ -46,14 +46,37 @@
         return {
             restrict:         'E',
             scope:            {
-                logo: '='
+                stateClass: '='
             },
             controllerAs:     'vm',
             controller:       'HeaderController',
             bindToController: true,
             replace:          true,
-            templateUrl:      'views/core/header.html'
+            transclude:       {
+                left:  '?jwHeaderLeft',
+                main:  'jwHeaderMain',
+                right: '?jwHeaderRight'
+            },
+            templateUrl:      'views/core/header.html',
+            link:             link
         };
+
+        function link (scope, element) {
+
+            scope.$on('$stateChangeSuccess', function (evt, toState) {
+
+                var stateClass = scope.vm.stateClass;
+
+                if (angular.isObject(stateClass)) {
+
+                    Object
+                        .keys(stateClass)
+                        .forEach(function (className) {
+                            element.toggleClass(className, stateClass[className] === toState.name);
+                        });
+                }
+            });
+        }
     }
 
 }());

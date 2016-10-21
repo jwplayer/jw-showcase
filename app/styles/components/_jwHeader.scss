@@ -1,6 +1,6 @@
 $header-height: 80px;
 $header-h-padding: 10px;
-$header-nav-width: 100px;
+$header-nav-width: 90px;
 $subheader-height: 50px;
 
 //
@@ -22,6 +22,7 @@ $subheader-height: 50px;
     &.jw-subheader {
         top: $header-height;
         height: $subheader-height;
+        padding: ($header-h-padding / 2) 0;
 
         background-color: $black-light;
 
@@ -34,6 +35,31 @@ $subheader-height: 50px;
             font-weight: bold;
             color: $white;
         }
+    }
+
+    &.jw-header-transparent {
+        background-color: transparent;
+        pointer-events: none;
+
+        .jw-header-main {
+            display: none;
+        }
+
+        .jw-header-nav {
+            pointer-events: auto;
+
+            .jw-button {
+                color: $white;
+            }
+        }
+
+        .jw-header-nav:last-child {
+            display: none;
+        }
+    }
+
+    &.jw-header-static {
+        position: static;
     }
 
     .jw-header-nav {
@@ -51,23 +77,24 @@ $subheader-height: 50px;
         }
     }
 
-    .jw-header-logo {
+    .jw-header-main {
         @include flex(1 1 auto);
         @include align-self(center);
 
-        img {
+        .jw-header-logo {
             max-width: 100%;
             max-height: $header-height - ($header-h-padding * 2);
             vertical-align: middle;
         }
-    }
 
-    .jw-header-title {
-        @include flex(1 1 auto);
-        @include align-self(center);
+        .jw-header-title {
+            white-space: nowrap;
+            overflow: hidden;
 
-        white-space: nowrap;
-        overflow: hidden;
+            &.left {
+                text-align: left;
+            }
+        }
     }
 }
 

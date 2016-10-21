@@ -1,11 +1,16 @@
 <ion-view>
-  <jw-subheader back-button="true" heading="vm.feed.title"></jw-subheader>
-  <ion-content class="has-subheader">
+  <jw-header class="jw-subheader">
+    <jw-header-left>
+      <jw-header-back-button></jw-header-back-button>
+    </jw-header-left>
+    <jw-header-main>
+      <jw-header-title>{{ vm.feed.title }}</jw-header-title>
+    </jw-header-main>
+  </jw-header>
 
+  <ion-content class="has-subheader">
     <jw-card-grid feed="vm.feed" on-card-click="vm.cardClickHandler" spacing="12"
         cols="{xs:2, sm:2, md:3, lg:4, xl:5}"></jw-card-grid>
-
     <jw-footer></jw-footer>
-
   </ion-content>
 </ion-view>

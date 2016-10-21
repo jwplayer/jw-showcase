@@ -17,7 +17,17 @@
 </head>
 <body class="jw-theme-{{ ::rootVm.config.theme }}">
 
-<jw-header logo="::rootVm.config.bannerImage"></jw-header>
+<jw-header state-class="{'jw-header-transparent': 'root.video'}">
+  <jw-header-left>
+    <jw-header-menu-button></jw-header-menu-button>
+  </jw-header-left>
+  <jw-header-main>
+    <jw-header-logo ng-src="{{ ::rootVm.config.bannerImage }}"></jw-header-logo>
+  </jw-header-main>
+  <jw-header-right>
+    <jw-header-search-button></jw-header-search-button>
+  </jw-header-right>
+</jw-header>
 
 <ion-nav-view></ion-nav-view>
 
@@ -78,9 +88,13 @@
 <script src="scripts/core/directives/cardSlider.directive.js"></script>
 <script src="scripts/core/directives/footer.directive.js"></script>
 <script src="scripts/core/directives/header.directive.js"></script>
+<script src="scripts/core/directives/headerBackButton.directive.js"></script>
+<script src="scripts/core/directives/headerMenuButton.directive.js"></script>
+<script src="scripts/core/directives/headerLogo.directive.js"></script>
+<script src="scripts/core/directives/headerSearchButton.directive.js"></script>
+<script src="scripts/core/directives/headerTitle.directive.js"></script>
 <script src="scripts/core/directives/jwPlayer.directive.js"></script>
 <script src="scripts/core/directives/truncateText.directive.js"></script>
-<script src="scripts/core/directives/subheader.directive.js"></script>
 <script src="scripts/core/services/api.service.js"></script>
 <script src="scripts/core/services/apiConsumer.service.js"></script>
 <script src="scripts/core/services/cardSliderCache.service.js"></script>
