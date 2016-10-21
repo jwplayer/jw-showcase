@@ -25,30 +25,41 @@
      * @name jwHeaderMenuButton
      * @module app.core
      * @restrict E
+     *
+     * @requires app.core.menu
+     *
+     * @param {string=} [icon=jwy-icon-menu] Icon
      */
 
-    headerMenuButtonDirective.$inject = [];
-    function headerMenuButtonDirective () {
+    headerMenuButtonDirective.$inject = ['menu'];
+    function headerMenuButtonDirective (menu) {
 
         return {
-            restrict:   'E',
-            require:    '^jwHeader',
-            scope:      true,
-            template:   '<div class="jw-button jw-button-menu" ng-click="vm.menuButtonClickHandler()"><i class="jwy-icon jwy-icon-menu"></i></div>',
-            replace:    true,
-            transclude: true,
-            link:       link
+            restrict:         'E',
+            require:          '^jwHeader',
+            scope:            {
+                icon: '@'
+            },
+            template:         '<div class="jw-button jw-button-menu" ng-click="vm.menuButtonClickHandler()"><i class="jwy-icon {{ vm.icon || \'jwy-icon-menu\' }}"></i></div>',
+            replace:          true,
+            controller:       angular.noop,
+            controllerAs:     'vm',
+            bindToController: true,
+            transclude:       true,
+            link:             link
         };
 
         function link (scope) {
 
-            function menuButtonClickHandler () {
-                console.log('clicked menu button');
-            }
+            scope.vm.menuButtonClickHandler = menuButtonClickHandler;
 
-            scope.vm = {
-                menuButtonClickHandler: menuButtonClickHandler
-            };
+            /**
+             * Handle click on menu button
+             */
+            function menuButtonClickHandler () {
+
+                menu.toggle();
+            }
         }
     }
 

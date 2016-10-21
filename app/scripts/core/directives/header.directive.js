@@ -54,7 +54,7 @@
             replace:          true,
             transclude:       {
                 left:  '?jwHeaderLeft',
-                main:  'jwHeaderMain',
+                main:  '?jwHeaderMain',
                 right: '?jwHeaderRight'
             },
             templateUrl:      'views/core/header.html',

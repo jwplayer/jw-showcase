@@ -61,7 +61,7 @@ $subheader-height: 50px;
 
     &.jw-header-static {
         position: static;
-        height: auto;
+        width: 100%;
 
         .jw-header-main .jw-header-title {
             overflow: visible;

@@ -1,0 +1,21 @@
+//
+// jwMenu
+// --------------------------------
+
+.jw-menu-popover.popover {
+
+    .item-toggle .toggle {
+        //top: 15px;
+    }
+
+    .item-divider {
+        min-height: 10px;
+    }
+}
+
+@include mobile-only () {
+    .jw-menu-popover.popover {
+        width: 90vw;
+        height: 90vh;
+    }
+}

@@ -24,6 +24,7 @@
 @import 'components/jwHeader';
 @import 'components/jwIcons';
 @import 'components/jwLoading';
+@import 'components/jwMenu';
 @import 'components/jwMeta';
 @import 'components/jwModal';
 @import 'components/jwPlayer';
@@ -47,6 +48,18 @@
 $bar-height: 80px;
 $bar-subheader-height: 40px;
 $link-color: #fff;
+
+$toggle-width: 35px;
+$toggle-height: 20px;
+$toggle-hit-area-expansion: 20px;
+
+$popover-border-radius: 0;
+$popover-border-radius-ios: 0;
+$item-padding: 10px;
+
+$item-border-width: 0;
+$item-divider-bg: transparent;
+$item-divider-padding: 2px;
 
 @import '../../bower_components/ionic/scss/ionic';
 
