@@ -16,18 +16,6 @@
 
 (function () {
 
-    /**
-     * @const MEDIA_QUERIES
-     * @type {Array.<Object>}
-     */
-    var MEDIA_QUERIES = [
-        window.matchMedia('(max-width: 640px)'),
-        window.matchMedia('(min-width: 641px) and (max-width: 960px)'),
-        window.matchMedia('(min-width: 961px) and (max-width: 1280px)'),
-        window.matchMedia('(min-width: 1281px) and (max-width: 1680px)'),
-        window.matchMedia('(min-width: 1681px)')
-    ];
-
     angular
         .module('app.core')
         .directive('jwCardSlider', cardSliderDirective);

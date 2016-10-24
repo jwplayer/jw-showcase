@@ -74,7 +74,6 @@
         function link (scope, element) {
 
             var cols            = 1,
-                width           = 100,
                 debouncedResize = utils.debounce(resize, 200);
 
             activate();
@@ -99,7 +98,8 @@
              */
             function resize () {
 
-                var toCols = scope.vm.cols;
+                var toCols       = scope.vm.cols,
+                    gridsElement = angular.element(element[0].querySelector('.jw-card-grid-cards'));
 
                 if (angular.isObject(toCols)) {
                     toCols = utils.getValueForScreenSize(toCols, 1);
@@ -109,28 +109,9 @@
                     return;
                 }
 
-                cols  = toCols;
-                width = 100 / cols;
+                cols = toCols;
 
-                updateGrid();
-            }
-
-            /**
-             * Update grid
-             */
-            function updateGrid () {
-
-                var correction = scope.vm.spacing - (scope.vm.spacing / cols);
-
-                angular.forEach(element[0].querySelectorAll('.jw-card'), function (card, index) {
-                    card.style.width        = 'calc(' + width + '% - ' + correction + 'px)';
-                    card.style.marginRight  = '';
-                    card.style.marginBottom = scope.vm.spacing + 'px';
-
-                    if ((index + 1) % cols) {
-                        card.style.marginRight = scope.vm.spacing + 'px';
-                    }
-                });
+                gridsElement[0].className = 'jw-card-grid-cards jw-card-grid-' + cols;
             }
         }
     }
