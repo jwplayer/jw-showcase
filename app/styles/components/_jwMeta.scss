@@ -24,6 +24,12 @@
     white-space: normal;
 }
 
+.jw-meta-noContent,
+.jw-meta-noContent:first-child {
+    margin: 2em 0;
+    text-align: center;
+}
+
 //
 // mediaQueries
 // --------------------------------
