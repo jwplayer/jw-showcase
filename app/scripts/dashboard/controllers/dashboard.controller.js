@@ -27,12 +27,14 @@
      * @requires ui.router.state.$state
      * @requires app.core.dataStore
      */
-    DashboardController.$inject = ['$scope', '$state', '$ionicHistory', 'dataStore'];
-    function DashboardController ($scope, $state, $ionicHistory, dataStore) {
+    DashboardController.$inject = ['$scope', '$state', '$ionicHistory', 'dataStore', 'userSettings'];
+    function DashboardController ($scope, $state, $ionicHistory, dataStore, userSettings) {
 
         var vm = this;
 
         vm.dataStore          = dataStore;
+        vm.userSettings       = userSettings;
+
         vm.cardClickHandler   = cardClickHandler;
 
         activate();
