@@ -24,8 +24,8 @@
      * @ngdoc service
      * @name app.core.menu
      */
-    MenuService.$inject = ['$rootScope', '$controller', '$ionicPopover'];
-    function MenuService ($rootScope, $controller, $ionicPopover) {
+    MenuService.$inject = ['$rootScope', '$controller', '$templateCache', '$ionicPopover'];
+    function MenuService ($rootScope, $controller, $templateCache, $ionicPopover) {
 
         var menuPopover,
             menuScope = $rootScope.$new();
@@ -33,25 +33,14 @@
         activate();
 
         return {
-            toggle: toggle
+            toggle: toggle,
+            hide:   hide,
+            show:   show
         };
 
         //////////
 
         function activate () {
-
-            // bind controller to menuScope
-            $controller('MenuController as vm', {$scope: menuScope});
-
-            // load menu popover
-            $ionicPopover
-                .fromTemplateUrl('/views/core/menu.html', {
-                    scope:        menuScope,
-                    positionView: positionView
-                })
-                .then(function (popover) {
-                    menuPopover = popover;
-                });
 
             // hide menu when state changes
             $rootScope.$on('$stateChangeStart', function () {
@@ -81,16 +70,53 @@
          */
         function toggle () {
 
+            if (menuPopover) {
+                hide();
+            }
+            else {
+                show();
+            }
+        }
+
+        /**
+         * Hide menu popover
+         */
+        function hide () {
+
             if (!menuPopover) {
                 return;
             }
 
-            if (menuPopover.isShown()) {
-                menuPopover.hide();
+            menuPopover.remove();
+            menuPopover = null;
+        }
+
+        /**
+         * Show menu popover
+         */
+        function show () {
+
+            if (menuPopover) {
+                return;
             }
-            else {
-                menuPopover.show(document.body);
-            }
+
+            // bind controller to menuScope and inject menu with hide method
+            $controller('MenuController as vm', {
+                $scope: menuScope,
+                menu:   {
+                    hide: hide
+                }
+            });
+
+            // load menu popover
+            menuPopover = $ionicPopover
+                .fromTemplate($templateCache.get('views/core/menu.html'), {
+                    scope:        menuScope,
+                    positionView: positionView,
+                    animation:    'scale-out'
+                });
+
+            menuPopover.show(document.body);
         }
     }
 

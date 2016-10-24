@@ -42,6 +42,7 @@
         this.getItem    = getItem;
         this.hasItem    = hasItem;
         this.restore    = restore;
+        this.clearAll   = clearAll;
 
         ////////////////
 
@@ -137,6 +138,20 @@
 
         /**
          * @ngdoc property
+         * @name app.core.watchProgress#clearAll
+         * @propertyOf app.core.watchProgress
+         *
+         * @description
+         * Remove all items from watchProgress feed and localStorage
+         */
+        function clearAll () {
+
+            dataStore.watchProgressFeed.playlist = [];
+            persist();
+        }
+
+        /**
+         * @ngdoc property
          * @name app.core.watchProgress#persist
          * @propertyOf app.core.watchProgress
          *
@@ -224,7 +239,7 @@
                     return false;
                 }
 
-                // if progress is to small or past 95%
+                // if progress is out range
                 if (item.progress < WATCH_PROGRESS_MIN || item.progress > WATCH_PROGRESS_MAX) {
                     return false;
                 }

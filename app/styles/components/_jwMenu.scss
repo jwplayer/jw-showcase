@@ -3,14 +3,30 @@
 // --------------------------------
 
 .jw-menu-popover.popover {
+    height: 600px;
+    max-height: 100vh;
 
-    .item-toggle .toggle {
-        //top: 15px;
+    &.scale-out {
+        @include transform-origin(46px, 42px);
+        @include transform(scale(0));
+    }
+
+    &.scale-out.ng-enter {
+        @include transition(transform ease-out 300ms);
+    }
+
+    &.scale-out.ng-enter-active {
+        @include transform(scale(1));
     }
 
     .item-divider {
         min-height: 10px;
     }
+
+    .popover-arrow {
+        display: none;
+    }
+
 }
 
 @include mobile-only () {

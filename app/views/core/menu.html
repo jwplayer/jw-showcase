@@ -7,30 +7,21 @@
   <ion-content class="has-header">
     <div class="list">
 
-      <a class="item" ui-sref="root.dashboard()">
+      <a class="item" ui-sref="root.dashboard()" ng-click="vm.menu.hide()">
         Homepage
       </a>
-      <a class="item" ui-sref="root.feed({feedId: 'watchlist'})">
+      <a class="item" ui-sref="root.feed({feedId: 'watchlist'})" ng-click="vm.menu.hide()">
         Saved videos (12)
       </a>
-      <a class="item" ui-sref="root.feed({feedId: 'watchProgress'})">
+      <a class="item" ui-sref="root.feed({feedId: 'watchProgress'})" ng-click="vm.menu.hide()">
         Continue watching (5)
       </a>
 
       <div class="item-divider"></div>
 
-      <div class="item">
-        Action and adventure
-      </div>
-      <div class="item">
-        Comedy
-      </div>
-      <div class="item">
-        Drama
-      </div>
-      <div class="item">
-        Science fiction
-      </div>
+      <a class="item" ng-repeat="feed in vm.feeds" ui-sref="root.feed({feedId: feed.feedid})">
+        {{ feed.title }}
+      </a>
 
       <div class="item-divider"></div>
 
@@ -40,19 +31,19 @@
 
       <div class="item-divider"></div>
 
-      <div class="item">
+      <a class="item" ng-click="vm.clearWatchlist()">
         Clear Saved videos
-      </div>
-      <div class="item">
+      </a>
+      <a class="item" ng-click="vm.clearWatchProgress()">
         Clear Continue watching
-      </div>
+      </a>
 
       <div class="item-divider"></div>
 
-      <ion-toggle ng-model="enableHd">
+      <ion-toggle ng-model="vm.userSettings.hd">
         Enable HD
       </ion-toggle>
-      <ion-toggle ng-model="enableContinueWatching">
+      <ion-toggle ng-model="vm.userSettings.watchProgress">
         Enable Continue watching
       </ion-toggle>
     </div>

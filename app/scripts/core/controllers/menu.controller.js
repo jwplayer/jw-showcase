@@ -26,10 +26,18 @@
      * @name app.core.controller:MenuController
      */
 
-    MenuController.$inject = ['$scope'];
-    function MenuController ($scope) {
+    MenuController.$inject = ['$scope', '$ionicPopup', 'menu', 'dataStore', 'watchlist', 'watchProgress', 'userSettings'];
+    function MenuController ($scope, $ionicPopup, menu, dataStore, watchlist, watchProgress, userSettings) {
 
         var vm = this;
+
+        vm.feeds = [];
+        vm.menu  = menu;
+
+        vm.userSettings = angular.extend({}, userSettings.settings);
+
+        vm.clearWatchlist     = clearWatchlist;
+        vm.clearWatchProgress = clearWatchProgress;
 
         activate();
 
@@ -40,6 +48,80 @@
          */
         function activate () {
 
+            vm.feeds = [];
+
+            if (angular.isArray(dataStore.feeds)) {
+                vm.feeds = dataStore.feeds.slice();
+            }
+
+            if (dataStore.featuredFeed) {
+                vm.feeds.unshift(dataStore.featuredFeed);
+            }
+
+            vm.feeds = vm.feeds.sort(function (a, b) {
+                return a.title > b.title;
+            });
+
+            $scope.$watch('vm.userSettings.hd', function (value) {
+                userSettings.set('hd', value);
+            }, true);
+
+            $scope.$watch('vm.userSettings.watchProgress', function (value) {
+                userSettings.set('watchProgress', value);
+            }, true);
+        }
+
+        /**
+         * Clear watch list
+         */
+        function clearWatchlist () {
+
+            confirmAction(
+                'Are you sure you want to delete your current watch list?',
+                function () {
+                    watchlist
+                        .clearAll();
+                });
+        }
+
+        /**
+         * Clear watch progress
+         */
+        function clearWatchProgress () {
+
+            confirmAction(
+                'Are you sure you want to delete your current watch progress?',
+                function () {
+                    watchProgress
+                        .clearAll();
+                });
+        }
+
+        /**
+         * Show confirm dialog with cancel and yes button
+         *
+         * @param {string}   message    Message to show to user
+         * @param {function} callback   Callback which gets called after the user tapped the yes button
+         */
+        function confirmAction (message, callback) {
+
+            $ionicPopup.show({
+                title:    'Confirm action',
+                subTitle: message,
+                scope:    $scope,
+                buttons:  [
+                    {
+                        text: 'Cancel'
+                    },
+                    {
+                        text:  '<b>Yes</b>',
+                        type:  'button-positive',
+                        onTap: function () {
+                            callback();
+                        }
+                    }
+                ]
+            });
         }
     }
 
