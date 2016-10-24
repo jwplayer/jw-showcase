@@ -11,10 +11,10 @@
         Homepage
       </a>
       <a class="item" ui-sref="root.feed({feedId: 'watchlist'})" ng-click="vm.menu.hide()">
-        Saved videos (12)
+        Saved videos ({{ vm.dataStore.watchlistFeed.playlist.length }})
       </a>
       <a class="item" ui-sref="root.feed({feedId: 'watchProgress'})" ng-click="vm.menu.hide()">
-        Continue watching (5)
+        Continue watching ({{ vm.dataStore.watchProgressFeed.playlist.length }})
       </a>
 
       <div class="item-divider"></div>

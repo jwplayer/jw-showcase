@@ -31,8 +31,9 @@
 
         var vm = this;
 
-        vm.feeds = [];
-        vm.menu  = menu;
+        vm.feeds     = [];
+        vm.menu      = menu;
+        vm.dataStore = dataStore;
 
         vm.userSettings = angular.extend({}, userSettings.settings);
 
