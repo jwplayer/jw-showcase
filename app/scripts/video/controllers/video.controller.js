@@ -30,11 +30,12 @@
      * @requires $window
      * @requires app.core.dataStore
      * @requires app.core.watchProgress
-     * @requires app.core.watchList
+     * @requires app.core.watchlist
+     * @requires app.core.userSettings
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'userSettings', 'utils', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, userSettings, utils, feed, item) {
 
         var vm      = this,
             lastPos = 0,
@@ -188,6 +189,11 @@
          */
         function onPlay (event) {
 
+            // watchProgress is disabled
+            if (false === userSettings.settings.watchProgress) {
+                return;
+            }
+
             if ($stateParams.autoStart) {
                 resumeWatchProgress(this);
                 started = true;
@@ -199,6 +205,19 @@
          * @param event
          */
         function onFirstFrame (event) {
+
+            var levels = this.getQualityLevels();
+
+            // hd turned off
+            // set quality level to lowest quality possible
+            if (false === userSettings.settings.hd) {
+                this.setCurrentQuality(levels.length - 1);
+            }
+
+            // watchProgress is disabled
+            if (false === userSettings.settings.watchProgress) {
+                return;
+            }
 
             if (!$stateParams.autoStart) {
                 resumeWatchProgress(this);
@@ -223,6 +242,11 @@
 
             var position = Math.round(event.position),
                 progress = event.position / event.duration;
+
+            // watchProgress is disabled
+            if (false === userSettings.settings.watchProgress) {
+                return;
+            }
 
             // resume watch progress fail over when duration was 0 on the play or firstFrame event
 
