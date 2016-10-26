@@ -18,27 +18,31 @@
 
     angular
         .module('app.core')
-        .directive('jwHeaderSearchButton', headerSearchButtonDirective);
+        .controller('HeaderMenuButtonController', HeaderMenuButtonController);
 
     /**
-     * @ngdoc directive
-     * @name jwHeaderSearchButton
-     * @module app.core
-     * @restrict E
+     * @ngdoc controller
+     * @name app.core.controller:HeaderMenuButtonController
+     *
+     * @requires app.core.menu
      */
 
-    headerSearchButtonDirective.$inject = [];
-    function headerSearchButtonDirective () {
+    HeaderMenuButtonController.$inject = ['menu'];
+    function HeaderMenuButtonController (menu) {
 
-        return {
-            restrict:         'E',
-            require:          '^jwHeader',
-            templateUrl:      'views/core/headerSearchButton.html',
-            controller:       'HeaderSearchButtonController',
-            controllerAs:     'vm',
-            bindToController: true,
-            replace:          true
-        };
+        var vm   = this;
+
+        vm.menuButtonClickHandler = menuButtonClickHandler;
+
+        ////////////////
+
+        /**
+         * Handle click on menu button
+         */
+        function menuButtonClickHandler () {
+
+            menu.toggle();
+        }
     }
 
-}());
+})();

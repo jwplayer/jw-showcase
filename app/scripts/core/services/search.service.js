@@ -18,27 +18,32 @@
 
     angular
         .module('app.core')
-        .directive('jwHeaderSearchButton', headerSearchButtonDirective);
+        .service('search', searchService);
 
     /**
-     * @ngdoc directive
-     * @name jwHeaderSearchButton
-     * @module app.core
-     * @restrict E
+     * @ngdoc service
+     * @name app.core.searchService
+     *
+     * @requires app.core.api
      */
+    searchService.$inject = ['api'];
+    function searchService (api) {
 
-    headerSearchButtonDirective.$inject = [];
-    function headerSearchButtonDirective () {
+        /**
+         * @ngdoc property
+         *
+         * @type {string}
+         */
+        this.searchPhrase = '';
 
-        return {
-            restrict:         'E',
-            require:          '^jwHeader',
-            templateUrl:      'views/core/headerSearchButton.html',
-            controller:       'HeaderSearchButtonController',
-            controllerAs:     'vm',
-            bindToController: true,
-            replace:          true
-        };
+        /**
+         * @ngdoc property
+         *
+         * @type {boolean}
+         */
+        this.searchBarActive = false;
+
+
     }
 
 }());

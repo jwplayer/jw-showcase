@@ -105,6 +105,60 @@ $subheader-height: 50px;
             }
         }
     }
+
+    .jw-header-search-bar {
+        @include transition(all .5s ease);
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        background: white;
+        padding: 20px;
+        z-index: 1;
+        opacity: 0;
+        overflow: hidden;
+
+        &.is-active {
+            width: 100%;
+            opacity: 1;
+        }
+
+        .jw-header-search-input {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            padding: 0 40px;
+            border-radius: 4px;
+        }
+
+        .jw-header-search-input-cap {
+            position: absolute;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+
+            &:first-child {
+                left: 20px;
+            }
+
+            &:last-child {
+                right: 20px;
+            }
+
+            .jw-button {
+                width: 40px;
+                height: 40px;
+                color: #505050;
+            }
+
+            > .jw-button,
+            > .jwy-icon {
+                line-height: 43px;
+            }
+        }
+    }
 }
 
 @include mobile-only () {

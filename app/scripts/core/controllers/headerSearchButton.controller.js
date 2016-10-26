@@ -18,42 +18,36 @@
 
     angular
         .module('app.core')
-        .controller('RootController', RootController);
+        .controller('HeaderSearchButtonController', HeaderSearchButtonController);
 
     /**
      * @ngdoc controller
-     * @name app.core.controller:RootController
+     * @name app.core.controller:HeaderSearchButtonController
      *
-     * @requires seo
+     * @requires $timeout
+     * @requires app.core.search
      */
 
-    RootController.$inject = ['$scope', '$timeout', 'dataStore', 'seo', 'config'];
-    function RootController ($scope, $timeout, dataStore, seo, config) {
+    HeaderSearchButtonController.$inject = ['$timeout', 'search'];
+    function HeaderSearchButtonController ($timeout, search) {
 
-        var rootVm = this;
+        var vm   = this;
 
-        rootVm.seo       = seo;
-        rootVm.dataStore = dataStore;
-        rootVm.config    = config;
-
-        activate();
+        vm.searchButtonClickHandler = searchButtonClickHandler;
 
         ////////////////
 
         /**
-         * Initialize controller
+         * Handle click event on search button
          */
-        function activate () {
+        function searchButtonClickHandler () {
 
-            seo.initialize();
+            search.searchBarActive = true;
 
-            $scope.$on('$stateChangeSuccess', function () {
-                $timeout(function () {
-                    dataStore.loading = false;
-                }, 1000);
-            });
+            $timeout(function() {
+                document.querySelector('.jw-header-search-input').focus();
+            }, 300);
         }
     }
 
 })();
-

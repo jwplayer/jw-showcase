@@ -1,0 +1,12 @@
+<div class="jw-header-search-bar" ng-class="{'is-active': vm.search.searchBarActive}">
+  <div class="jw-header-search-input-cap">
+    <i class="jwy-icon jwy-icon-search"></i>
+  </div>
+  <input class="jw-header-search-input" type="text" ng-model="vm.search.searchPhrase"
+      ng-change="vm.searchInputChangeHandler()" ng-keyup="vm.searchInputKeyupHandler($event)"/>
+  <div class="jw-header-search-input-cap">
+    <a class="jw-button jw-button-closeSearch" ng-click="vm.closeSearchButtonClickHandler()">
+      <i class="jwy-icon jwy-icon-cross"></i>
+    </a>
+  </div>
+</div>

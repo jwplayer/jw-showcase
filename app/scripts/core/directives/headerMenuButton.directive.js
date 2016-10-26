@@ -40,27 +40,13 @@
             scope:            {
                 icon: '@'
             },
-            template:         '<div class="jw-button jw-button-menu" ng-click="vm.menuButtonClickHandler()"><i class="jwy-icon {{ vm.icon || \'jwy-icon-menu\' }}"></i></div>',
+            templateUrl:      'views/core/headerMenuButton.html',
             replace:          true,
-            controller:       angular.noop,
+            controller:       'HeaderMenuButtonController',
             controllerAs:     'vm',
             bindToController: true,
-            transclude:       true,
-            link:             link
+            transclude:       true
         };
-
-        function link (scope) {
-
-            scope.vm.menuButtonClickHandler = menuButtonClickHandler;
-
-            /**
-             * Handle click on menu button
-             */
-            function menuButtonClickHandler () {
-
-                menu.toggle();
-            }
-        }
     }
 
 }());

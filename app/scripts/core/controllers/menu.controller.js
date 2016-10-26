@@ -15,7 +15,6 @@
  **/
 
 (function () {
-    'use strict';
 
     angular
         .module('app.core')
@@ -110,18 +109,15 @@
                 title:    'Confirm action',
                 subTitle: message,
                 scope:    $scope,
-                buttons:  [
-                    {
-                        text: 'Cancel'
-                    },
-                    {
-                        text:  '<b>Yes</b>',
-                        type:  'button-positive',
-                        onTap: function () {
-                            callback();
-                        }
+                buttons:  [{
+                    text: 'Cancel'
+                }, {
+                    text:  '<b>Yes</b>',
+                    type:  'button-positive',
+                    onTap: function () {
+                        callback();
                     }
-                ]
+                }]
             });
         }
     }

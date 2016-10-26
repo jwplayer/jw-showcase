@@ -23,6 +23,7 @@
   </jw-header-left>
   <jw-header-main>
     <jw-header-logo ng-src="{{ ::rootVm.config.bannerImage }}"></jw-header-logo>
+    <jw-header-search-bar></jw-header-search-bar>
   </jw-header-main>
   <jw-header-right>
     <jw-header-search-button></jw-header-search-button>
@@ -79,6 +80,10 @@
 <script src="scripts/core/controllers/cardMenu.controller.js"></script>
 <script src="scripts/core/controllers/footer.controller.js"></script>
 <script src="scripts/core/controllers/header.controller.js"></script>
+<script src="scripts/core/controllers/headerBackButton.controller.js"></script>
+<script src="scripts/core/controllers/headerMenuButton.controller.js"></script>
+<script src="scripts/core/controllers/headerSearchBar.controller.js"></script>
+<script src="scripts/core/controllers/headerSearchButton.controller.js"></script>
 <script src="scripts/core/controllers/menu.controller.js"></script>
 <script src="scripts/core/controllers/root.controller.js"></script>
 <script src="scripts/core/decorator/state.decorator.js"></script>
@@ -93,6 +98,7 @@
 <script src="scripts/core/directives/headerBackButton.directive.js"></script>
 <script src="scripts/core/directives/headerMenuButton.directive.js"></script>
 <script src="scripts/core/directives/headerLogo.directive.js"></script>
+<script src="scripts/core/directives/headerSearchBar.directive.js"></script>
 <script src="scripts/core/directives/headerSearchButton.directive.js"></script>
 <script src="scripts/core/directives/headerTitle.directive.js"></script>
 <script src="scripts/core/directives/jwPlayer.directive.js"></script>
@@ -104,6 +110,7 @@
 <script src="scripts/core/services/userSettings.service.js"></script>
 <script src="scripts/core/services/utils.service.js"></script>
 <script src="scripts/core/services/menu.service.js"></script>
+<script src="scripts/core/services/search.service.js"></script>
 <script src="scripts/core/services/seo.service.js"></script>
 <script src="scripts/core/services/watchlist.service.js"></script>
 <script src="scripts/core/services/watchProgress.service.js"></script>

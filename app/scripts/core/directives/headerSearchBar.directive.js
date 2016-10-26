@@ -18,23 +18,23 @@
 
     angular
         .module('app.core')
-        .directive('jwHeaderSearchButton', headerSearchButtonDirective);
+        .directive('jwHeaderSearchBar', headerSearchBarDirective);
 
     /**
      * @ngdoc directive
-     * @name jwHeaderSearchButton
+     * @name jwHeaderSearchBar
      * @module app.core
      * @restrict E
      */
 
-    headerSearchButtonDirective.$inject = [];
-    function headerSearchButtonDirective () {
+    headerSearchBarDirective.$inject = [];
+    function headerSearchBarDirective () {
 
         return {
             restrict:         'E',
             require:          '^jwHeader',
-            templateUrl:      'views/core/headerSearchButton.html',
-            controller:       'HeaderSearchButtonController',
+            templateUrl:      'views/core/headerSearchBar.html',
+            controller:       'HeaderSearchBarController',
             controllerAs:     'vm',
             bindToController: true,
             replace:          true

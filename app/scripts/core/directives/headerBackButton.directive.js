@@ -27,8 +27,8 @@
      * @restrict E
      */
 
-    headerBackButtonDirective.$inject = ['$state', '$ionicHistory', '$ionicViewSwitcher'];
-    function headerBackButtonDirective ($state, $ionicHistory, $ionicViewSwitcher) {
+    headerBackButtonDirective.$inject = [];
+    function headerBackButtonDirective () {
 
         return {
             restrict:         'E',
@@ -36,59 +36,11 @@
             scope:            true,
             bindToController: true,
             controllerAs:     'vm',
-            controller:       angular.noop,
-            template:         '<div class="jw-button jw-button-back" ng-click="vm.backButtonClickHandler()"><i class="jwy-icon jwy-icon-double-angle-left"></i></div>',
+            controller:       'HeaderBackButtonController',
+            templateUrl:      'views/core/headerBackButton.html',
             replace:          true,
-            transclude:       true,
-            link:             link
+            transclude:       true
         };
-
-        function link (scope) {
-
-            scope.vm.backButtonClickHandler = backButtonClickHandler;
-
-            ////////////////////////
-
-            function backButtonClickHandler () {
-
-                var viewHistory = $ionicHistory.viewHistory(),
-                    history     = viewHistory.histories[$ionicHistory.currentHistoryId()],
-                    stack       = history ? history.stack : [],
-                    stackIndex  = history.cursor - 1;
-
-                if (viewHistory.backView && viewHistory.backView.stateName !== 'root.video') {
-
-                    $ionicHistory.goBack();
-                    return;
-                }
-
-                if (stackIndex > 0) {
-
-                    while (stackIndex >= 0) {
-
-                        // search until dashboard or feed state is found
-                        if (stack[stackIndex].stateName !== 'root.video' && stack[stackIndex].stateId !== viewHistory.currentView.stateId) {
-                            $ionicViewSwitcher.nextDirection('back');
-                            stack[stackIndex].go();
-                            return;
-                        }
-
-                        stackIndex--;
-                    }
-                }
-
-                goToDashboard();
-            }
-
-            /**
-             * Go to dashboard state with back transition
-             */
-            function goToDashboard () {
-
-                $ionicViewSwitcher.nextDirection('back');
-                $state.go('root.dashboard');
-            }
-        }
     }
 
 }());
