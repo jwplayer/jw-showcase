@@ -67,8 +67,7 @@
                 cols:          '=',
                 featured:      '=',
                 spacing:       '=',
-                onCardClick:   '=',
-                link:          '='
+                onCardClick:   '='
             },
             replace:          true,
             controller:       angular.noop,

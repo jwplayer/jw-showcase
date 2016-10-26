@@ -91,7 +91,8 @@
                 playlist[index].lastWatched = +new Date();
             }
             else {
-                clone.feedid      = clone.$feedid || clone.feedid;
+                clone.$feedid     = clone.$feedid || clone.feedid;
+                clone.feedid      = 'watchProgress';
                 clone.progress    = progress;
                 clone.lastWatched = +new Date();
 
@@ -168,7 +169,7 @@
                 .map(function (item) {
                     return {
                         mediaid:     item.mediaid,
-                        feedid:      item.feedid,
+                        feedid:      item.$feedid,
                         progress:    item.progress,
                         lastWatched: item.lastWatched
                     };

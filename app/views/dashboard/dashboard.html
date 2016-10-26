@@ -21,8 +21,7 @@
 
     <div class="feed">
       <jw-card-slider feed="feed" featured="false" heading="feed.title" cols="{xs: 1, sm: 2, md: 3, lg: 4, xl: 5}"
-          on-card-click="vm.cardClickHandler" spacing="12" ng-repeat="feed in vm.dataStore.feeds"
-          link="true"></jw-card-slider>
+          on-card-click="vm.cardClickHandler" spacing="12" ng-repeat="feed in vm.dataStore.feeds"></jw-card-slider>
     </div>
 
     <div class="watchlist jw-expand-animation" ng-if="vm.dataStore.watchlistFeed.playlist.length > 0">
