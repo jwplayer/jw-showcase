@@ -22,7 +22,7 @@
 
     /**
      * @ngdoc service
-     * @name app.core.searchService
+     * @name app.core.search
      *
      * @requires app.core.api
      */

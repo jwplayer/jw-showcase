@@ -31,6 +31,7 @@
             'app.core',
             'app.dashboard',
             'app.feed',
+            'app.search',
             'app.video'
         ])
         .value('config', {})
