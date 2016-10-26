@@ -27,13 +27,14 @@
      * @requires seo
      */
 
-    RootController.$inject = ['$scope', '$timeout', 'dataStore', 'seo', 'config'];
-    function RootController ($scope, $timeout, dataStore, seo, config) {
+    RootController.$inject = ['$scope', '$timeout', 'dataStore', 'appStore', 'seo', 'config'];
+    function RootController ($scope, $timeout, dataStore, appStore, seo, config) {
 
         var rootVm = this;
 
         rootVm.seo       = seo;
         rootVm.dataStore = dataStore;
+        rootVm.appStore  = appStore;
         rootVm.config    = config;
 
         activate();
@@ -49,7 +50,7 @@
 
             $scope.$on('$stateChangeSuccess', function () {
                 $timeout(function () {
-                    dataStore.loading = false;
+                    appStore.loading = false;
                 }, 1000);
             });
         }

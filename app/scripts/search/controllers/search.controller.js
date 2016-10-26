@@ -20,17 +20,34 @@
         .module('app.search')
         .controller('SearchController', SearchController);
 
-    SearchController.$inject = ['$state', 'search'];
-    function SearchController ($state, search) {
+    SearchController.$inject = ['$scope', '$state', 'dataStore', 'appStore'];
+    function SearchController ($scope, $state, dataStore, appStore) {
 
         var vm = this;
 
-        vm.search = search;
-        vm.feed   = {};
+        vm.feed = dataStore.searchFeed;
 
         vm.cardClickHandler = cardClickHandler;
 
+        activate();
+
         ////////////////////////
+
+        /**
+         * Initialize controller
+         */
+        function activate () {
+
+            // disable searchBar when leaving this view
+            $scope.$on('$ionicView.beforeLeave', function () {
+                appStore.searchBarActive = false;
+            });
+
+            // enable searchBar when entering this view
+            $scope.$on('$ionicView.beforeEnter', function () {
+                appStore.searchBarActive = true;
+            });
+        }
 
         /**
          * Handle click event on cards

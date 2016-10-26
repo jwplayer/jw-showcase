@@ -32,6 +32,15 @@
     apiConsumerService.$inject = ['$q', 'config', 'api', 'dataStore'];
     function apiConsumerService ($q, config, api, dataStore) {
 
+        var self = this;
+
+        /**
+         * @ngdoc property
+         *
+         * @type {boolean}
+         */
+        this.searching = false;
+
         /**
          * @ngdoc method
          * @name app.core.apiConsumer#getFeaturedFeed
@@ -73,6 +82,43 @@
         };
 
         /**
+         * @ngdoc method
+         */
+        this.search = function (searchPhrase) {
+
+            var promise;
+
+            // already searching
+            if (true === self.searching) {
+                $q.reject();
+            }
+
+            // empty searchPhrase
+            if (!self.searchPhrase) {
+                dataStore.searchFeed.playlist = [];
+            }
+
+            self.searching = true;
+
+            promise = api.search(searchPhrase);
+
+            promise
+                .then(function (response) {
+
+                    var allItems = dataStore.getItems();
+
+                    dataStore.searchFeed.playlist = allItems.filter(function (item) {
+                        return response.playlist.findIndex(byMediaId(item.mediaid)) !== -1;
+                    });
+                })
+                .finally(function () {
+                    self.searching = false;
+                });
+
+            return promise;
+        };
+
+        /**
          * Set data in given prop
          * @param propName
          * @returns {function}
@@ -83,6 +129,17 @@
                 dataStore[propName] = data;
                 return data;
             };
+        }
+
+        /**
+         * @param mediaId
+         * @returns {Function}
+         */
+        function byMediaId (mediaId) {
+
+            return function (item) {
+                return item.mediaid === mediaId;
+            }
         }
     }
 

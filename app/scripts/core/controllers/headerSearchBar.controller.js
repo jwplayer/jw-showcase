@@ -24,15 +24,17 @@
      * @ngdoc controller
      * @name app.core.controller:HeaderBackButtonController
      *
-     * @requires app.core.search
+     * @requires $state
+     * @requires app.core.appStore
+     * @requires app.core.apiConsumer
      */
 
-    HeaderSearchBarController.$inject = ['search'];
-    function HeaderSearchBarController (search) {
+    HeaderSearchBarController.$inject = ['$state', 'appStore', 'apiConsumer'];
+    function HeaderSearchBarController ($state, appStore, apiConsumer) {
 
         var vm = this;
 
-        vm.search = search;
+        vm.appStore = appStore;
 
         vm.closeSearchButtonClickHandler = closeSearchButtonClickHandler;
         vm.searchInputChangeHandler      = searchInputChangeHandler;
@@ -45,7 +47,7 @@
          */
         function closeSearchButtonClickHandler () {
 
-            search.searchBarActive = false;
+            appStore.searchBarActive = false;
         }
 
         /**
@@ -53,7 +55,7 @@
          */
         function searchInputChangeHandler () {
 
-            // todo
+            searchAndDisplayResults();
         }
 
         /**
@@ -64,9 +66,32 @@
             // esc
             if (27 === $event.which) {
 
-                search.searchPhrase    = '';
-                search.searchBarActive = false;
+                appStore.searchPhrase    = '';
+                appStore.searchBarActive = false;
             }
+
+            // enter
+            if (13 === $event.which) {
+
+                searchAndDisplayResults();
+            }
+        }
+
+        /**
+         * Get search results and go to search state
+         */
+        function searchAndDisplayResults () {
+
+            console.log(appStore);
+
+            apiConsumer
+                .search(appStore.searchPhrase)
+                .then(function () {
+
+                    if ($state.$current.name !== 'root.search') {
+                        $state.go('root.search');
+                    }
+                });
         }
     }
 

@@ -123,8 +123,6 @@
     run.$inject = ['$rootScope', '$state'];
     function run ($rootScope, $state) {
 
-        window.FastClick.attach(document.body);
-
         $rootScope.$on('$stateChangeError', function (event, toState) {
 
             event.preventDefault();
@@ -138,12 +136,12 @@
         });
     }
 
-    exceptionHandler.$inject = ['dataStore'];
-    function exceptionHandler (dataStore) {
+    exceptionHandler.$inject = ['appStore'];
+    function exceptionHandler (appStore) {
 
         return function (exception) {
-            dataStore.loading = false;
-            dataStore.error   = exception;
+            appStore.loading = false;
+            appStore.error   = exception;
         };
     }
 

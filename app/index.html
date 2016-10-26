@@ -32,7 +32,7 @@
 
 <ion-nav-view></ion-nav-view>
 
-<div class="jw-cover jw-loading" ng-show="rootVm.dataStore.loading">
+<div class="jw-cover jw-loading" ng-show="rootVm.appStore.loading">
   <div class="jw-loading-icon">
     <div class="jw-loading-icon-animation">
       <i class="jwy-icon-buffer"></i>
@@ -40,11 +40,11 @@
   </div>
 </div>
 
-<div class="jw-cover jw-modal ng-cloak" ng-show="rootVm.dataStore.error">
+<div class="jw-cover jw-modal ng-cloak" ng-show="rootVm.appStore.error">
   <div class="jw-modal-container">
     <div class="jw-modal-title">Our apologies, you have found an error!</div>
     <div class="jw-modal-message">
-      {{ rootVm.dataStore.error.message }}
+      {{ rootVm.appStore.error.message }}
     </div>
   </div>
 </div>
@@ -105,12 +105,12 @@
 <script src="scripts/core/directives/truncateText.directive.js"></script>
 <script src="scripts/core/services/api.service.js"></script>
 <script src="scripts/core/services/apiConsumer.service.js"></script>
+<script src="scripts/core/services/appStore.service.js"></script>
 <script src="scripts/core/services/configResolver.service.js"></script>
 <script src="scripts/core/services/dataStore.service.js"></script>
 <script src="scripts/core/services/userSettings.service.js"></script>
 <script src="scripts/core/services/utils.service.js"></script>
 <script src="scripts/core/services/menu.service.js"></script>
-<script src="scripts/core/services/search.service.js"></script>
 <script src="scripts/core/services/seo.service.js"></script>
 <script src="scripts/core/services/watchlist.service.js"></script>
 <script src="scripts/core/services/watchProgress.service.js"></script>

@@ -25,11 +25,11 @@
      * @name app.core.controller:HeaderSearchButtonController
      *
      * @requires $timeout
-     * @requires app.core.search
+     * @requires app.core.appStore
      */
 
-    HeaderSearchButtonController.$inject = ['$timeout', 'search'];
-    function HeaderSearchButtonController ($timeout, search) {
+    HeaderSearchButtonController.$inject = ['$timeout', 'appStore'];
+    function HeaderSearchButtonController ($timeout, appStore) {
 
         var vm   = this;
 
@@ -42,7 +42,7 @@
          */
         function searchButtonClickHandler () {
 
-            search.searchBarActive = true;
+            appStore.searchBarActive = true;
 
             $timeout(function() {
                 document.querySelector('.jw-header-search-input').focus();

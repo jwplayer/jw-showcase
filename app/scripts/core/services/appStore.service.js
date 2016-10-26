@@ -18,23 +18,24 @@
 
     angular
         .module('app.core')
-        .service('search', searchService);
+        .service('appStore', appStore);
 
-    /**
-     * @ngdoc service
-     * @name app.core.search
-     *
-     * @requires app.core.api
-     */
-    searchService.$inject = ['api'];
-    function searchService (api) {
+    appStore.$inject = [];
+    function appStore () {
 
         /**
          * @ngdoc property
          *
-         * @type {string}
+         * @type {boolean}
          */
-        this.searchPhrase = '';
+        this.loading = true;
+
+        /**
+         * @ngdoc property
+         *
+         * @type {Error}
+         */
+        this.error = null;
 
         /**
          * @ngdoc property
@@ -43,7 +44,12 @@
          */
         this.searchBarActive = false;
 
-
+        /**
+         * @ngdoc property
+         *
+         * @type {string}
+         */
+        this.searchPhrase = '';
     }
 
 }());

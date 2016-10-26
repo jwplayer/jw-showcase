@@ -45,7 +45,6 @@
                 autoStart: autoStart
             });
         }
-
     }
 
 })();

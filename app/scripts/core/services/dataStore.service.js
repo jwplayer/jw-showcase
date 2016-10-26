@@ -31,20 +31,6 @@
 
         /**
          * @ngdoc property
-         *
-         * @type {boolean}
-         */
-        this.loading = true;
-
-        /**
-         * @ngdoc property
-         *
-         * @type {Error}
-         */
-        this.error = null;
-
-        /**
-         * @ngdoc property
          * @name app.core.dataStore#featuredFeed
          * @propertyOf app.core.dataStore
          *
@@ -95,7 +81,20 @@
             playlist: []
         };
 
-
+        /**
+         * @ngdoc property
+         * @name app.core.dataStore#searchFeed
+         * @propertyOf app.core.dataStore
+         *
+         * @type {app.core.feed}
+         * @description
+         * The search feed
+         */
+        this.searchFeed = {
+            id:       'search',
+            title:    'Search results',
+            playlist: []
+        };
 
         /**
          * @ngdoc method
@@ -128,6 +127,37 @@
 
         /**
          * @ngdoc method
+         * @name app.core.dataStore#getItems
+         * @methodOf app.core.dataStore
+         *
+         * @description
+         * Return all items
+         *
+         * @returns app.core.item[] All items that are loaded in the dataStore
+         */
+        this.getItems = function () {
+
+            var items = [];
+
+            if (this.featuredFeed) {
+                items = items.concat(this.featuredFeed.playlist);
+            }
+
+            angular.forEach(this.feeds, function (feed) {
+                items = items.concat(feed.playlist);
+            });
+
+            // make items unique by mediaid
+            items = items.filter(function (item, index, collection) {
+                return collection.findIndex(byMediaId(item.mediaid)) === index;
+            });
+
+            return items;
+
+        }.bind(this);
+
+        /**
+         * @ngdoc method
          * @name app.core.dataStore#getFeed
          * @methodOf app.core.dataStore
          *
@@ -156,6 +186,17 @@
 
             return feed ? angular.extend({}, feed) : undefined;
         }.bind(this);
+
+        /**
+         * @param mediaId
+         * @returns {Function}
+         */
+        function byMediaId (mediaId) {
+
+            return function (item) {
+                return item.mediaid === mediaId;
+            }
+        }
     }
 
 }());

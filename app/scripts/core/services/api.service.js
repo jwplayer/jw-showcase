@@ -27,9 +27,10 @@
      *
      * @requires $http
      * @requires $log
+     * @requires app.core.config
      */
-    apiService.$inject = ['$http', '$q'];
-    function apiService ($http, $q) {
+    apiService.$inject = ['$http', '$q', 'config'];
+    function apiService ($http, $q, config) {
 
         /**
          * @ngdoc method
@@ -80,6 +81,44 @@
                 }
 
                 return $q.reject(new Error(message));
+            }
+        };
+
+        /**
+         * @ngdoc method
+         * @name app.core.api#search
+         * @methodOf app.core.api
+         *
+         * @param {string} phrase Search phrase
+         * @description
+         * Get search feed from jw platform with given search phrase
+         *
+         * @resolves {app.core.feed}
+         * @returns {Promise} Promise which be resolved when the request is completed.
+         */
+        this.search = function (phrase) {
+
+            // reject when feedId is empty or no string
+            if (!angular.isString(phrase) || phrase === '') {
+                return $q.reject(new Error('feedId is not given or not an string'));
+            }
+
+            return $http.get('https://content.jwplatform.com/feed.json?feed_id=' + config.searchPlaylist + '&search=' + encodeURIComponent(phrase))
+                .then(searchCompleted, searchFailed);
+
+            function searchCompleted (response) {
+
+                var feed = response.data;
+
+                // ensure playlist key
+                feed.playlist = feed.playlist || [];
+
+                return feed;
+            }
+
+            function searchFailed (response) {
+
+                return $q.reject(new Error('Search failed'));
             }
         };
 
