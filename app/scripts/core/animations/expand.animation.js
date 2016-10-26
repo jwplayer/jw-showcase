@@ -32,11 +32,18 @@
                         height:  element[0].scrollHeight + 'px'
                     });
 
-                    $timeout(done, 300);
+                    $timeout(function () {
+                        element.css('height', 'auto');
+                        done();
+                    }, 300);
                 }, 100);
             },
 
             leave: function (element, done) {
+
+                element.css({
+                    height:  element[0].scrollHeight + 'px'
+                });
 
                 $timeout(function () {
                     element.css({
