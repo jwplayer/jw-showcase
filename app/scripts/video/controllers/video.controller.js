@@ -91,6 +91,13 @@
          */
         function update () {
 
+            var itemIndex = feed.playlist.findIndex(function (current) {
+                    return current.mediaid === item.mediaid;
+                }),
+                playlist  = feed.playlist
+                    .slice(itemIndex)
+                    .concat(feed.playlist.slice(0, itemIndex));
+
             vm.facebookShareLink = composeFacebookLink();
             vm.twitterShareLink  = composeTwitterLink();
 
@@ -98,9 +105,7 @@
 
             vm.feed = {
                 title:    feed.title,
-                playlist: feed.playlist.filter(function (item) {
-                    return item.mediaid !== vm.item.mediaid;
-                })
+                playlist: playlist
             };
 
             watchProgressItem = watchProgress.getItem(vm.item);
