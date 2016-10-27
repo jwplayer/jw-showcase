@@ -33,7 +33,8 @@
 
         var settings = {
             hd:            true,
-            watchProgress: true
+            watchProgress: true,
+            cookies:       false
         };
 
         this.set      = set;

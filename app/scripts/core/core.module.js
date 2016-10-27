@@ -62,6 +62,7 @@
          * @param {app.core.appStore} appStore
          * @param {app.core.config} config
          * @param {app.core.configResolver} configResolver
+         * @param {app.core.cookies} cookies
          * @param {app.core.api} api
          * @param {app.core.apiConsumer} apiConsumer
          * @param {app.core.watchlist} watchlist
@@ -69,8 +70,8 @@
          *
          * @returns {$q.promise}
          */
-        preloadApp.$inject = ['$q', '$state', 'appStore', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist', 'watchProgress', 'userSettings'];
-        function preloadApp ($q, $state, appStore, config, configResolver, api, apiConsumer, watchlist, watchProgress, userSettings) {
+        preloadApp.$inject = ['$q', '$state', 'appStore', 'config', 'configResolver', 'cookies', 'api', 'apiConsumer', 'watchlist', 'watchProgress', 'userSettings'];
+        function preloadApp ($q, $state, appStore, config, configResolver, cookies, api, apiConsumer, watchlist, watchProgress, userSettings) {
 
             var defer = $q.defer();
 
@@ -115,9 +116,13 @@
             //////////////////
 
             function handlePreloadSuccess () {
+
                 watchlist.restore();
                 watchProgress.restore();
                 userSettings.restore();
+
+                cookies.showIfNeeded();
+
                 defer.resolve();
             }
 
