@@ -27,6 +27,10 @@
         @include transition(all 0.3s ease-in-out);
     }
 
+    .list {
+        padding: 10px 0;
+    }
+
     .item-divider {
         min-height: 10px;
     }
