@@ -26,6 +26,11 @@
         return {
             enter: function (element, done) {
 
+                element.css({
+                    opacity: 0,
+                    height:  0
+                });
+
                 $timeout(function () {
                     element.css({
                         opacity: 1,
@@ -42,7 +47,7 @@
             leave: function (element, done) {
 
                 element.css({
-                    height:  element[0].scrollHeight + 'px'
+                    height: element[0].scrollHeight + 'px'
                 });
 
                 $timeout(function () {

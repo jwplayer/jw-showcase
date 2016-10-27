@@ -4,6 +4,4 @@
 
 .jw-expand-animation {
     @include transition(all 0.3s ease);
-    height: 0;
-    opacity: 0;
 }
