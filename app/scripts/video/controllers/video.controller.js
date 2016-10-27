@@ -72,14 +72,15 @@
         function activate () {
 
             vm.playerSettings = {
-                width:       '100%',
-                height:      '100%',
-                aspectratio: '16:9',
-                ph:          4,
-                autostart:   $stateParams.autoStart,
-                playlist:    generatePlaylist(feed, item),
-                sharing:     false,
-                related:     {}
+                width:          '100%',
+                height:         '100%',
+                aspectratio:    '16:9',
+                ph:             4,
+                autostart:      $stateParams.autoStart,
+                playlist:       generatePlaylist(feed, item),
+                sharing:        false,
+                related:        {},
+                visualplaylist: false
             };
 
             update();
