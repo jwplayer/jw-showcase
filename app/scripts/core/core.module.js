@@ -34,14 +34,18 @@
 
         $stateProvider
             .state('root', {
-                abstract:    true,
-                resolve:     {
+                abstract: true,
+                resolve:  {
                     preload: preloadApp
                 }
             })
             .state('root.404', {
-                url:         '/404',
-                templateUrl: 'views/core/404.html'
+                url:   '/404',
+                views: {
+                    '@': {
+                        templateUrl: 'views/core/404.html'
+                    }
+                }
             });
 
         seoProvider
@@ -70,6 +74,11 @@
         function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer, watchlist, watchProgress, userSettings) {
 
             var defer = $q.defer();
+
+            // already preloaded
+            if (!!config.siteName) {
+                return $q.resolve();
+            }
 
             configResolver
                 .getConfig()
@@ -127,7 +136,7 @@
 
             event.preventDefault();
 
-            if (toState.name === 'root.video') {
+            if (toState.name === 'root.feed' || toState.name === 'root.video') {
                 $state.go('root.404');
             }
             else if (toState.name !== 'root.dashboard') {
