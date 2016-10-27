@@ -95,7 +95,9 @@
          */
         function showIfNeeded () {
 
-            if (!userSettings.settings.cookies) {
+            var isBrowser = !window.cordova;
+
+            if (!userSettings.settings.cookies && isBrowser) {
                 show();
             }
         }
