@@ -44,8 +44,8 @@
 
             // hide menu when state changes
             $rootScope.$on('$stateChangeStart', function () {
-                if (menuPopover && menuPopover.isShown()) {
-                    menuPopover.hide();
+                if (menuPopover) {
+                    hide();
                 }
             });
         }
@@ -58,7 +58,6 @@
         function positionView (target, popoverElement) {
 
             popoverElement.css({
-                opacity: 1,
                 margin:  0,
                 top:     0,
                 left:    0
@@ -113,7 +112,8 @@
                 .fromTemplate($templateCache.get('views/core/menu.html'), {
                     scope:        menuScope,
                     positionView: positionView,
-                    animation:    'scale-out'
+                    animation:    'menu-animation',
+                    hideDelay:    300
                 });
 
             menuPopover.show(document.body);

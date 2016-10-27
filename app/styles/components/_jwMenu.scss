@@ -6,17 +6,25 @@
     height: 600px;
     max-height: 100vh;
 
-    &.scale-out {
-        @include transform-origin(46px, 42px);
-        @include transform(scale(0));
+    &.menu-animation {
+        @include transform(translateX(-20%));
+        opacity: 0;
     }
 
-    &.scale-out.ng-enter {
-        @include transition(transform ease-out 300ms);
+    &.menu-animation.ng-enter,
+    &.menu-animation > .ng-enter {
+        @include transition(all 0.3s ease-in-out);
     }
 
-    &.scale-out.ng-enter-active {
-        @include transform(scale(1));
+    &.menu-animation.ng-enter-active,
+    &.menu-animation > .ng-enter-active {
+        @include transform(translateX(0%));
+        opacity: 1;
+    }
+
+    &.menu-animation.ng-leave,
+    &.menu-animation > .ng-leave {
+        @include transition(all 0.3s ease-in-out);
     }
 
     .item-divider {
