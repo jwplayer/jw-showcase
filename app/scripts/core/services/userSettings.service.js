@@ -25,9 +25,11 @@
     /**
      * @ngdoc service
      * @name app.core.userSettings
+     *
+     * @requires app.core.session
      */
-    userSettings.$inject = [];
-    function userSettings () {
+    userSettings.$inject = ['session'];
+    function userSettings (session) {
 
         var settings = {
             hd:            true,
@@ -66,20 +68,11 @@
          * @propertyOf app.core.userSettings
          *
          * @description
-         * Persist user settings to localStorage
+         * Persist user settings to session
          */
         function persist () {
 
-            if (!window.localStorageSupport) {
-                return;
-            }
-
-            try {
-                window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(settings));
-            }
-            catch (e) {
-
-            }
+            session.save(LOCAL_STORAGE_KEY, settings);
         }
 
         /**
@@ -88,27 +81,17 @@
          * @propertyOf app.core.userSettings
          *
          * @description
-         * Restores user settings from localStorage
+         * Restore user settings from session
          */
         function restore () {
 
-            var data,
-                parsed;
+            var data = session.load(LOCAL_STORAGE_KEY);
 
-            if (!window.localStorageSupport) {
-                return;
-            }
+            if (angular.isObject(data)) {
 
-            data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-
-            try {
-                parsed = JSON.parse(data);
-            } catch (e) {
-
-            }
-
-            if (angular.isObject(parsed)) {
-                settings = angular.extend(settings, parsed);
+                angular.forEach(data, function (value, key) {
+                    settings[key] = value;
+                });
             }
         }
     }

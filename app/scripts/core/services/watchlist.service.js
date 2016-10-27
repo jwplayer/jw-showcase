@@ -27,9 +27,10 @@
      * @name app.core.watchlist
      *
      * @requires app.core.dataStore
+     * @requires app.core.session
      */
-    watchlist.$inject = ['dataStore'];
-    function watchlist (dataStore) {
+    watchlist.$inject = ['dataStore', 'session'];
+    function watchlist (dataStore, session) {
 
         this.addItem    = addItem;
         this.hasItem    = hasItem;
@@ -131,17 +132,13 @@
 
             var playlist = dataStore.watchlistFeed.playlist,
                 data     = playlist.map(function (item) {
-                    return {mediaid: item.mediaid, feedid: item.$feedid};
+                    return {
+                        mediaid: item.mediaid,
+                        feedid:  item.$feedid
+                    };
                 });
 
-            if (window.localStorageSupport) {
-                try {
-                    window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-                }
-                catch (e) {
-
-                }
-            }
+            session.save(LOCAL_STORAGE_KEY, data);
         }
 
         /**
@@ -150,12 +147,15 @@
          * @propertyOf app.core.watchlist
          *
          * @description
-         * Clear watchlist and localStorage
+         * Clear watchlist and session
          */
         function clearAll () {
 
+            // empty playlist in dataStore
             dataStore.watchlistFeed.playlist = [];
-            persist();
+
+            // clear data in session
+            session.clear(LOCAL_STORAGE_KEY);
         }
 
         /**
@@ -164,35 +164,19 @@
          * @propertyOf app.core.watchlist
          *
          * @description
-         * Restores watchlist from localStorage
+         * Restores watchlist from session
          */
         function restore () {
 
-            var data, parsed;
+            var data = session.load(LOCAL_STORAGE_KEY, []);
 
-            if (!window.localStorageSupport) {
-                return;
-            }
+            data.map(function (keys) {
+                var item = dataStore.getItem(keys.mediaid, keys.feedid);
 
-            data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-
-            if (!data) {
-                return;
-            }
-
-            try {
-                parsed = JSON.parse(data);
-                parsed.map(function (keys) {
-                    var item = dataStore.getItem(keys.mediaid, keys.feedid);
-
-                    if (item) {
-                        addItem(item);
-                    }
-                });
-            }
-            catch (e) {
-
-            }
+                if (item) {
+                    addItem(item);
+                }
+            });
         }
     }
 })();

@@ -31,8 +31,8 @@
      *
      * @requires app.core.dataStore
      */
-    watchProgress.$inject = ['dataStore'];
-    function watchProgress (dataStore) {
+    watchProgress.$inject = ['dataStore', 'session'];
+    function watchProgress (dataStore, session) {
 
         this.WATCH_PROGRESS_MAX = WATCH_PROGRESS_MAX;
         this.WATCH_PROGRESS_MIN = WATCH_PROGRESS_MIN;
@@ -161,26 +161,16 @@
          */
         function persist () {
 
-            if (!window.localStorageSupport) {
-                return;
-            }
+            var data = dataStore.watchProgressFeed.playlist.map(function (item) {
+                return {
+                    mediaid:     item.mediaid,
+                    feedid:      item.$feedid,
+                    progress:    item.progress,
+                    lastWatched: item.lastWatched
+                };
+            });
 
-            var data = dataStore.watchProgressFeed.playlist
-                .map(function (item) {
-                    return {
-                        mediaid:     item.mediaid,
-                        feedid:      item.$feedid,
-                        progress:    item.progress,
-                        lastWatched: item.lastWatched
-                    };
-                });
-
-            try {
-                window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-            }
-            catch (e) {
-
-            }
+            session.save(LOCAL_STORAGE_KEY, data);
         }
 
         /**
@@ -193,39 +183,23 @@
          */
         function restore () {
 
-            var time = +new Date(),
-                data, parsed;
+            var time = +new Date();
 
-            if (!window.localStorageSupport) {
-                return;
-            }
+            session.load(LOCAL_STORAGE_KEY, [])
+                .filter(isValid)
+                .sort(sortOnLastWatched)
+                .map(function (keys) {
 
-            data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+                    // dataStore#getItem already returns a clone of the item
+                    var item = dataStore.getItem(keys.mediaid, keys.feedid);
 
-            if (!data) {
-                return;
-            }
+                    if (item) {
+                        item.progress    = keys.progress;
+                        item.lastWatched = keys.lastWatched;
 
-            try {
-                parsed = JSON.parse(data);
-                parsed
-                    .filter(isValid)
-                    .sort(sortOnLastWatched)
-                    .map(function (keys) {
-
-                        // dataStore#getItem already returns a clone of the item
-                        var item = dataStore.getItem(keys.mediaid, keys.feedid);
-
-                        if (item) {
-                            item.progress    = keys.progress;
-                            item.lastWatched = keys.lastWatched;
-
-                            dataStore.watchProgressFeed.playlist.push(item);
-                        }
-                    });
-            } catch (e) {
-
-            }
+                        dataStore.watchProgressFeed.playlist.push(item);
+                    }
+                });
 
             /**
              * Test if the given item from localStorage is valid
