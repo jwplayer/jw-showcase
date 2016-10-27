@@ -25,13 +25,9 @@
 
         $stateProvider
             .state('root.search', {
-                url:   '/search',
-                views: {
-                    '@': {
-                        controller:  'SearchController as vm',
-                        templateUrl: 'views/search/search.html'
-                    }
-                }
+                url:         '/search',
+                controller:  'SearchController as vm',
+                templateUrl: 'views/search/search.html'
             });
 
         seoProvider

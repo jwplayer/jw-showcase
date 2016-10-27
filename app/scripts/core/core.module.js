@@ -25,7 +25,6 @@
      */
     angular
         .module('app.core', [])
-        .factory('$exceptionHandler', exceptionHandler)
         .config(config)
         .run(run);
 
@@ -34,18 +33,18 @@
 
         $stateProvider
             .state('root', {
-                abstract: true,
-                resolve:  {
+                abstract:    true,
+                resolve:     {
                     preload: preloadApp
-                }
+                },
+                templateUrl: 'views/core/root.html'
+            })
+            .state('preloadError', {
+                templateUrl: 'views/core/preloadError.html'
             })
             .state('root.404', {
-                url:   '/404',
-                views: {
-                    '@': {
-                        templateUrl: 'views/core/404.html'
-                    }
-                }
+                url:         '/404',
+                templateUrl: 'views/core/404.html'
             });
 
         seoProvider
@@ -60,7 +59,7 @@
          * Preload application data
          *
          * @param {$q} $q
-         * @param {$exceptionHandler} $exceptionHandler
+         * @param {app.core.appStore} appStore
          * @param {app.core.config} config
          * @param {app.core.configResolver} configResolver
          * @param {app.core.api} api
@@ -70,8 +69,8 @@
          *
          * @returns {$q.promise}
          */
-        preloadApp.$inject = ['$q', '$exceptionHandler', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist', 'watchProgress', 'userSettings'];
-        function preloadApp ($q, $exceptionHandler, config, configResolver, api, apiConsumer, watchlist, watchProgress, userSettings) {
+        preloadApp.$inject = ['$q', '$state', 'appStore', 'config', 'configResolver', 'api', 'apiConsumer', 'watchlist', 'watchProgress', 'userSettings'];
+        function preloadApp ($q, $state, appStore, config, configResolver, api, apiConsumer, watchlist, watchProgress, userSettings) {
 
             var defer = $q.defer();
 
@@ -123,7 +122,12 @@
             }
 
             function handlePreloadError (error) {
-                $exceptionHandler(error);
+
+                appStore.loading      = false;
+                appStore.preloadError = error;
+
+                $state.go('preloadError');
+
                 defer.reject();
             }
         }
@@ -136,6 +140,12 @@
 
             event.preventDefault();
 
+            // prevent loop if something is wrong in preloadError or root.404 state
+
+            if (toState.name === 'preloadError' || toState.name === 'root.404') {
+                return;
+            }
+
             if (toState.name === 'root.feed' || toState.name === 'root.video') {
                 $state.go('root.404');
             }
@@ -143,15 +153,6 @@
                 $state.go('root.dashboard');
             }
         });
-    }
-
-    exceptionHandler.$inject = ['appStore'];
-    function exceptionHandler (appStore) {
-
-        return function (exception) {
-            appStore.loading = false;
-            appStore.error   = exception;
-        };
     }
 
 }());

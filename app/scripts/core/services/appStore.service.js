@@ -35,7 +35,7 @@
          *
          * @type {Error}
          */
-        this.error = null;
+        this.preloadError = null;
 
         /**
          * @ngdoc property

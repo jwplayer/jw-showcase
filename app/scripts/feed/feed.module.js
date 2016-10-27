@@ -25,14 +25,10 @@
 
         $stateProvider
             .state('root.feed', {
-                url:   '/feed/:feedId',
-                views: {
-                    '@': {
-                        controller:  'FeedController as vm',
-                        templateUrl: 'views/feed/feed.html'
-                    }
-                },
-                resolve: {
+                url:         '/feed/:feedId',
+                controller:  'FeedController as vm',
+                templateUrl: 'views/feed/feed.html',
+                resolve:     {
                     feed: resolveFeed
                 }
             });
