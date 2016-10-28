@@ -1,3 +1,6 @@
+$default-slider-spacing: 12px;
+$featured-slider-max-width: 900px;
+
 //
 // jwCardSlider
 // --------------------------------
@@ -60,7 +63,7 @@
     // --------------------------------
 
     .jw-card-slider-align {
-        margin: 0 90px;
+        padding: 0 90px;
     }
 
     //
@@ -196,14 +199,35 @@
         font-size: 3em;
     }
 
-    .jw-card-slider-slide:not(.is-visible) {
+    .jw-card-slider-align {
+        max-width: $featured-slider-max-width;
+        margin: 0 auto;
+    }
 
-        .jw-card-container {
-            background: rgba($black, 0.5);
+    .jw-card-slider-list {
+        @for $i from 1 through 10 {
+            &.slides-#{$i} .jw-card-slider-slide {
+                width: 100% / $i;
+            }
+        }
+    }
+
+    .jw-card-slider-slide {
+
+        &:not(.is-visible) {
+            .jw-card-container {
+                background: rgba($black, 0.5);
+            }
+
+            .jw-card-menu-button {
+                display: none;
+            }
         }
 
-        .jw-card-menu-button {
-            display: none;
+        &.is-visible {
+            .jw-card-info {
+                opacity: 1;
+            }
         }
     }
 
@@ -213,12 +237,6 @@
 
         .jw-card-cell {
             padding-bottom: 45px;
-        }
-    }
-
-    .jw-card-slider-slide.is-visible {
-        .jw-card-info {
-            opacity: 1;
         }
     }
 }
@@ -233,17 +251,30 @@
         visibility: hidden;
     }
 
-    .jw-card-slider-slide {
-        margin-bottom: 20px;
+    .jw-card-slider-align {
+        padding: 0 #{90px - $default-slider-spacing / 2} 20px;
     }
 
-    .jw-card-slider-slide.is-visible .jw-card-title {
-        visibility: visible;
+    .jw-card-slider-list {
+        @for $i from 1 through 10 {
+            &.slides-#{$i} .jw-card-slider-slide {
+                width: calc(#{100% / $i} - #{$default-slider-spacing});
+            }
+        }
     }
 
     .jw-card-slider-slide {
         @include single-transition(opacity, 0.2s, ease-in, 0s);
+        margin: 0 $default-slider-spacing / 2;
         opacity: 0.15;
+
+        &.is-visible {
+            opacity: 1;
+        }
+
+        &.is-visible .jw-card-title {
+            visibility: visible;
+        }
 
         &.ng-enter,
         &.ng-leave,
@@ -251,10 +282,6 @@
         &.ng-enter-active {
             @include transition(none !important);
         }
-    }
-
-    .jw-card-slider-slide.is-visible {
-        opacity: 1;
     }
 }
 
@@ -264,17 +291,14 @@
 
 @include mobile-only() {
 
-    .jw-card-slider {
+    .jw-card-slider .jw-card-slider-container {
 
-        .jw-card-slider-container {
+        .jw-card-slider-title {
+            margin: 20px;
+        }
 
-            .jw-card-slider-title {
-                margin: 20px;
-            }
-
-            .jw-card-slider-align {
-                margin: 0 60px 0 20px;
-            }
+        .jw-card-slider-align {
+            padding: 0 60px 0 20px;
         }
     }
 }

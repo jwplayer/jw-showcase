@@ -23,6 +23,7 @@
     /**
      * @ngdoc directive
      * @name app.core.directive:jwCardSlider
+     * @module app.core
      *
      * @description
      * # jwCardSlider
@@ -34,23 +35,23 @@
      * @param {app.core.feed}       feed            Feed which will be displayed in the slider.
      * @param {boolean|string=}     heading         Text which will be displayed in the title or false if no title
      *                                              should be displayed.
-     * @param {number=}             spacing         Spacing between cards.
+     *
      * @param {Object|number=}      cols            How many columns should be visible. Can either be a fixed number or
      *                                              an object with responsive columns (e.g. `{sm: 2, md: 4}`).
      *                                              Available sizes; xs, sm, md, lg and xl.
      *
-     *                                              of visible items.
-     * @param {string=}             maxWidth        Slide maximum width relatively to slider width.
-     * @param {string=}             maxHeight       Slide maximum width relatively to window height.
      * @param {boolean=}            featured        Featured slider flag
+     * @param {boolean=}            watchProgress   Show watch progress in card
+     * @param {function=}           onCardClick     Function which is being called when the user clicks on a card.
      *
+     * @requires $timeout
      * @requires app.core.utils
+     *
      * @example
      *
      * ```
-     * <jw-card-slider feed="vm.feed" spacing="0" cols="1" featured="true"></jw-card-slider>
-     * <jw-card-slider feed="vm.feed" spacing="12" cols="{xs: 2, sm: 3}" featured="false"
-     * heading="'Videos'"></jw-card-slider>
+     * <jw-card-slider feed="vm.feed" cols="1" featured="true"></jw-card-slider>
+     * <jw-card-slider feed="vm.feed" cols="{xs: 2, sm: 3}" featured="false" heading="'Videos'"></jw-card-slider>
      * ```
      */
 
@@ -61,12 +62,9 @@
             scope:            {
                 heading:       '=?',
                 feed:          '=',
-                maxWidth:      '=',
-                maxHeight:     '=',
                 watchProgress: '=',
                 cols:          '=',
                 featured:      '=',
-                spacing:       '=',
                 onCardClick:   '='
             },
             replace:          true,
@@ -84,8 +82,6 @@
                 startCoords     = null,
                 animation       = null,
                 translateX      = 0,
-                slideWidth      = 0,
-                feedId          = scope.vm.feed.feedid,
                 forEach         = angular.forEach,
                 $               = element[0].querySelector.bind(element[0]),
                 resizeDebounced = utils.debounce(resize, 100);
@@ -121,13 +117,6 @@
                 scope.$on('$destroy', destroy);
                 scope.$watch('vm.feed', function () {
                     resizeDebounced();
-                }, true);
-
-                // update feed
-                scope.$watch('vm.feed', function () {
-                    $timeout(function () {
-                        resize();
-                    }, 30);
                 }, true);
 
                 $timeout(resize, 50);
@@ -199,18 +188,12 @@
              */
             function update (animate) {
 
-                var listWidth = $('.jw-card-slider-list').offsetWidth,
-                    offset    = 0;
+                var offset = (index * (100 / cols));
 
-                if (scope.vm.featured) {
-                    offset = (listWidth - slideWidth) / 2;
-                }
+                translateX = offset * -1;
 
-                translateX = (index * (slideWidth + scope.vm.spacing)) * -1;
-                translateX += offset;
-
-                updateSlides();
                 updateIndicator();
+                updateSlides();
 
                 $('.jw-card-slider-button--left').classList[canSlideLeft() ? 'remove' : 'add']('is-disabled');
                 $('.jw-card-slider-button--right').classList[canSlideRight() ? 'remove' : 'add']('is-disabled');
@@ -225,25 +208,15 @@
 
                 forEach($('.jw-card-slider-list').children, function (slide, slideIndex) {
 
-                    var jwCard              = slide.querySelector('.jw-card'),
-                        lastIndex           = index + cols,
+                    var lastIndex           = index + cols,
                         offset              = scope.vm.featured ? 2 : 1,
                         isVisible           = slideIndex >= index && slideIndex < lastIndex,
                         isPosterVisible     = slideIndex >= index - offset && slideIndex < lastIndex + offset,
                         isVisibleFunc       = isVisible ? 'add' : 'remove',
-                        isPosterVisibleFunc = isPosterVisible ? 'add' : 'remove',
-                        isCompactFunc       = slideWidth < 200 ? 'add' : 'remove';
-
-                    slide.style.marginRight = scope.vm.spacing + 'px';
-                    slide.style.width       = slideWidth + 'px';
+                        isPosterVisibleFunc = isPosterVisible ? 'add' : 'remove';
 
                     slide.classList[isVisibleFunc]('is-visible');
                     slide.classList[isPosterVisibleFunc]('is-poster-visible');
-
-                    if (jwCard) {
-                        jwCard.classList[isVisibleFunc]('is-visible');
-                        jwCard.classList[isCompactFunc]('is-compact');
-                    }
                 });
             }
 
@@ -268,45 +241,26 @@
             }
 
             /**
-             * Get window height
-             * @returns {Number}
-             */
-            function getWindowHeight () {
-
-                return window.outerHeight || window.innerHeight;
-            }
-
-            /**
              * Handle resize event
              */
             function resize () {
 
-                var listWidth = $('.jw-card-slider-list').offsetWidth,
-                    toCols    = scope.vm.cols,
-                    percent, maxHeight;
-
-                listWidth += scope.vm.spacing;
+                var slider = $('.jw-card-slider-list'),
+                    toCols = scope.vm.cols,
+                    className;
 
                 if (angular.isObject(toCols)) {
                     toCols = utils.getValueForScreenSize(toCols, 1);
                 }
 
-                cols       = toCols;
-                slideWidth = (listWidth / cols) - scope.vm.spacing;
-
-                // if maxWidth is set, calculate width based on list width
-                if (angular.isString(scope.vm.maxWidth)) {
-                    percent    = parseInt(scope.vm.maxWidth) / 100;
-                    slideWidth = Math.min(listWidth * percent, slideWidth);
+                if (cols === toCols) {
+                    return;
                 }
 
-                // if maxHeight is set, calculate maxWidth based on window.outerHeight.
-                if (angular.isString(scope.vm.maxHeight)) {
-                    percent   = parseInt(scope.vm.maxHeight) / 100;
-                    maxHeight = percent * getWindowHeight();
+                cols      = toCols;
+                className = 'slides-' + cols;
 
-                    slideWidth = Math.min(maxHeight / (9 / 16), slideWidth);
-                }
+                slider.className = 'jw-card-slider-list ' + className;
 
                 update(false);
             }
@@ -337,6 +291,7 @@
                 var coords         = getCoords(event),
                     distance       = startCoords.x - coords.x,
                     deltaX         = Math.abs(distance),
+                    sliderWidth    = $('.jw-card-slider-list').offsetWidth,
                     containerWidth = $('.jw-card-slider-container').offsetWidth;
 
                 // first item
@@ -352,7 +307,9 @@
                     event.preventDefault();
                 }
 
-                moveSlider(translateX - distance, false);
+                var percentageOffset = (distance / sliderWidth) * 100;
+
+                moveSlider(translateX - percentageOffset, false);
             }
 
             /**
@@ -409,12 +366,14 @@
              */
             function moveSlider (offset, animate) {
 
+                var listElement = $('.jw-card-slider-list');
+
                 if (animation && animation._active) {
                     animation.kill();
                 }
 
                 animation = window.TweenLite
-                    .to($('.jw-card-slider-list'), animate ? 0.3 : 0, {x: offset, z: 0.01});
+                    .to(listElement, animate ? 0.3 : 0, {x: offset + '%', z: 0.01});
             }
 
             /**
