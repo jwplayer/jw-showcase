@@ -6,10 +6,39 @@
     display: inline-block;
     position: relative;
 
-    color: $white;
+    overflow: hidden;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
+
+    .jw-button-label {
+        display: inline-block;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .jwy-icon {
+        vertical-align: middle;
+    }
+}
+
+.jw-button-effect {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border-radius: 50%;
+    background-color: rgba($main-color, 0.1);
+    pointer-events: none;
+
+    &.active {
+        animation: button-click-feedback 0.4s forwards;
+    }
 }
 
 .jw-button-default {
@@ -136,5 +165,22 @@
 
     &.is-active {
         @extend %jw-watchlist-dark;
+    }
+}
+
+//
+// jwButton keyframes
+// --------------------------------
+
+@keyframes button-click-feedback {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    40%, 60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.5, 1.5, 1);
     }
 }

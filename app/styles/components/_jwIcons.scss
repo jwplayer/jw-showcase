@@ -47,14 +47,15 @@
     speak: none;
 }
 
-.jwy-icon-cross:before {
-    content: "\e90c";
-}
-.jwy-icon-search:before {
-    content: "\e90d";
-}
+
 .jwy-icon-menu:before {
     content: "\e90b";
+}
+.jwy-icon-search:before {
+    content: "\e90c";
+}
+.jwy-icon-cross:before {
+    content: "\e90d";
 }
 .jwy-icon-playlist-over:before {
     content: "\e90a";
@@ -100,5 +101,8 @@
 }
 .jwy-icon-buffer:before {
     content: "\e601";
+}
+.jwy-icon-wondering:before {
+    content: "\e90e";
 }
 // scss-lint:enable all

@@ -1,7 +1,3 @@
-$header-height: 80px;
-$header-h-padding: 10px;
-$header-nav-width: 90px;
-$subheader-height: 50px;
 
 //
 // jwHeader
@@ -13,10 +9,10 @@ $subheader-height: 50px;
     position: fixed;
     width: 100vw;
     height: $header-height;
-    padding: $header-h-padding 0;
+    padding: 10px 0;
     z-index: 9;
 
-    background-color: $white;
+    background-color: $header-bg-color;
     text-align: center;
 
     &.jw-subheader {
@@ -24,7 +20,7 @@ $subheader-height: 50px;
         height: $subheader-height;
         padding: 0;
 
-        background-color: $black-light;
+        background-color: $subheader-bg-color;
 
         .jw-header-nav .jw-button {
             color: $white;
@@ -73,15 +69,30 @@ $subheader-height: 50px;
     .jw-header-nav {
         @include flex(0 0 $header-nav-width);
         @include align-self(center);
-        min-width: 70px;
+        min-width: $header-nav-width;
         font-size: rem(32px);
+
+        &:first-child {
+            text-align: left;
+            padding-left: 10px;
+
+        }
+
+        &:last-child {
+            padding-right: 10px;
+            text-align: right;
+        }
 
         .jw-button {
             padding: 10px;
 
             vertical-align: middle;
-            color: $black-lighter;
+            color: $main-color;
             font-size: rem(25px);
+
+            &:hover {
+                color: $main-hover-color;
+            }
         }
     }
 
@@ -91,7 +102,7 @@ $subheader-height: 50px;
 
         .jw-header-logo {
             max-width: 100%;
-            max-height: $header-height - ($header-h-padding * 2);
+            max-height: $header-height - 20px;
             vertical-align: middle;
         }
 
@@ -108,61 +119,77 @@ $subheader-height: 50px;
 
     .jw-header-search-bar {
         @include transition(all .5s ease);
-
         position: absolute;
+        height: 100%;
+        width: 0;
         top: 0;
         right: 0;
-        width: 0;
-        height: 100%;
-        background: white;
+        background: $header-bg-color;
+
         padding: 20px;
         z-index: 1;
         opacity: 0;
         overflow: hidden;
+        pointer-events: none;
 
         &.is-active {
             width: 100%;
             opacity: 1;
+            pointer-events: auto;
         }
 
         .jw-header-search-input {
             width: 100%;
-            height: 100%;
-            border: 1px solid #ccc;
-            padding: 0 40px;
-            border-radius: 4px;
+            height: $header-search-height;
+            padding: 0 30px;
+
+            border-bottom: 1px solid $header-search-border-color;
+            border-right: 1px solid lighten($header-search-border-color, 5%);
+            border-radius: 0;
+            font-size: 16px;
         }
 
         .jw-header-search-input-cap {
             position: absolute;
-            top: 20px;
+            top: ($header-height - $header-search-height) / 2;
             width: 40px;
-            height: 40px;
+            height: $header-search-height;
 
             &:first-child {
-                left: 20px;
+                left: 15px;
             }
 
             &:last-child {
-                right: 20px;
+                right: 15px;
             }
 
             .jw-button {
                 width: 40px;
-                height: 40px;
-                color: #505050;
+                height: $header-search-height;
+
+                &:hover {
+                    color: $main-hover-color;
+                }
             }
 
             > .jw-button,
             > .jwy-icon {
-                line-height: 43px;
+                line-height: $header-search-height;
+                color: $main-color;
             }
         }
     }
 }
 
 @include mobile-only () {
-    .jw-header .jw-header-logo h1 {
-        font-size: rem(24px);
+    .jw-header {
+
+        .jw-header-logo h1 {
+            font-size: rem(24px);
+        }
+
+        .jw-header-nav .jw-button-label {
+            display: none;
+        }
     }
 }
