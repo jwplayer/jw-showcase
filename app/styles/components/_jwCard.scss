@@ -222,7 +222,7 @@
 .jw-card.jw-card--default {
     padding-bottom: 39px;
 
-    &.is-visible:not(.jw-card--touch):not(.is-compact):not(.is-more-overlay-open) {
+    &:not(.jw-card--touch):not(.is-compact):not(.is-more-overlay-open) {
 
         .jw-card-container:hover {
             background-color: rgba($black, 0.6);
@@ -280,7 +280,7 @@
 .jw-card.jw-card--featured {
     font-size: 32px;
 
-    &.is-visible:not(.jw-card--touch) {
+    &:not(.jw-card--touch) {
         &.is-active .jw-card-container,
         .jw-card-container:hover {
             background-color: rgba($black, 0.4);

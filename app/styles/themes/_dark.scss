@@ -33,7 +33,7 @@
 
     .jw-card.jw-card--default {
 
-        &.is-visible:not(.jw-card--touch) .jw-card-container:hover {
+        &:not(.jw-card--touch) .jw-card-container:hover {
             .jw-card-info {
                 background-color: $black;
             }
