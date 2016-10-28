@@ -55,7 +55,7 @@
 
             value = window.localStorage.getItem(key);
 
-            if (!angular.isDefined(value)) {
+            if (!angular.isDefined(value) || null == value) {
                 return defaultValue;
             }
 
