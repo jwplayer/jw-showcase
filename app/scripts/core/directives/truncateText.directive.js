@@ -52,7 +52,7 @@
             var suffix                = '...',
                 elementWidth          = 0,
                 elementHeight         = 0,
-                truncateTextDebounced = utils.debounce(truncateText, 250);
+                truncateTextDebounced = utils.debounce(truncateText, 350);
 
             activate();
 
