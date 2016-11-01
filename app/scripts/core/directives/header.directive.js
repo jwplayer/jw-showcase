@@ -49,7 +49,7 @@
                 stateClass: '='
             },
             controllerAs:     'vm',
-            controller:       'HeaderController',
+            controller:       angular.noop,
             bindToController: true,
             replace:          true,
             transclude:       {

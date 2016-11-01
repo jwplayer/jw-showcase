@@ -10,9 +10,9 @@
     <div class="jw-card-table">
       <div class="jw-card-controls jw-card-row">
         <div class="jw-card-cell">
-          <div class="jw-card-play-button jw-button jw-button-play" ng-click="vm.clickHandler($event, true)">
+          <jw-button class="jw-card-play-button jw-button-play" ng-click="vm.clickHandler($event, true)">
             <i class="jwy-icon jwy-icon-play"></i>
-          </div>
+          </jw-button>
           <div class="jw-card-duration jw-card-text">{{ ::vm.duration }}</div>
         </div>
       </div>
@@ -32,16 +32,16 @@
       </div>
     </div>
 
-    <div class="jw-card-menu-button jw-button" ng-click="vm.menuButtonClickHandler($event)" ng-show="!vm.featured" jw-button>
+    <jw-button class="jw-card-menu-button jw-icon-button" ng-click="vm.menuButtonClickHandler($event)" ng-show="!vm.featured">
       <i class="jwy-icon jwy-icon-more jwy-icon-rotate-90"></i>
-    </div>
+    </jw-button>
 
-    <div class="jw-card-watchlist-button jw-button jw-button-watchlist is-active" ng-show="vm.inWatchList"
+    <jw-button class="jw-card-watchlist-button jw-button-watchlist is-active" ng-show="vm.inWatchList"
         ng-click="vm.watchlistClickHandler($event)">
       <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
         <i class="jwy-icon jwy-icon-min"></i>
       </i>
-    </div>
+    </jw-button>
   </div>
 
   <jw-card-menu on-close="vm.closeMenuHandler()" item="vm.item" ng-if="vm.menuVisible"></jw-card-menu>

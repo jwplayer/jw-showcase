@@ -6,8 +6,8 @@
       ng-model="vm.appStore.searchPhrase" ng-model-options="{ debounce: 500 }"
       ng-keyup="vm.searchInputKeyupHandler($event)" ng-change="vm.searchInputChangeHandler()"/>
   <div class="jw-header-search-input-cap">
-    <a class="jw-button jw-button-closeSearch" jw-button ng-click="vm.closeSearchButtonClickHandler()">
+    <jw-button class="jw-icon-button jw-button-closeSearch" ng-click="vm.closeSearchButtonClickHandler()">
       <i class="jwy-icon jwy-icon-cross"></i>
-    </a>
+    </jw-button>
   </div>
 </div>

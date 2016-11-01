@@ -31,17 +31,19 @@
         .jw-display-icon-container > .jw-icon {
             padding-left: 4px;
 
-            color: $radical-red;
+            color: $primary-color;
             font-size: 1.7em;
         }
     }
 }
 
+// scss-lint:disable PseudoElement
 // Hide native chromecast button in video
 // http://stackoverflow.com/a/29780590
 video::-internal-media-controls-overlay-cast-button {
     display: none;
 }
+// scss-lint:enable PseudoElement
 
 //
 // mediaQueries

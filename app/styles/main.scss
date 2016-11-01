@@ -4,6 +4,11 @@
 @import 'base';
 
 //
+// Import Ionic
+// --------------------------------
+@import '../../bower_components/ionic/scss/ionic';
+
+//
 // Import mixins
 // --------------------------------
 @import 'mixins/responsive';
@@ -22,6 +27,7 @@
 @import 'components/jwCollapsibleText';
 @import 'components/jwCookies';
 @import 'components/jwCover';
+@import 'components/jwDialog';
 @import 'components/jwFooter';
 @import 'components/jwHeader';
 @import 'components/jwIcons';
@@ -40,11 +46,6 @@
 @import 'themes/light';
 @import 'themes/dark';
 
-//
-// Import Ionic
-// --------------------------------
-@import '../../bower_components/ionic/scss/ionic';
-
 html,
 body {
     height: 100%;
@@ -58,8 +59,9 @@ body {
     margin: 0 0 20px;
     padding: 0;
 
+    color: $text-color-base;
     font-family: $font-family-base;
-    font-size: $font-size;
+    font-size: $font-size-base;
 
     -webkit-font-smoothing: antialiased;
 

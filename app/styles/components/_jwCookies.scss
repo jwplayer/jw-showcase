@@ -33,9 +33,10 @@
 
     .jw-cookies-title {
         @include flex(0 0 200px);
+        padding-right: 30px;
+
         font-size: rem(32px);
         line-height: rem(32px);
-        padding-right: 30px;
     }
 
     .jw-cookies-explanation {

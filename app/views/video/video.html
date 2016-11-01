@@ -14,14 +14,18 @@
       </jw-header-left>
       <jw-header-main>
         <jw-header-title class="left">
-          {{ vm.item.title }} <span class="jw-meta-duration">{{ vm.duration }}</span>
+          <div class="jw-meta-align">
+            {{ vm.item.title }} <span class="jw-meta-duration">{{ vm.duration }}</span>
+          </div>
         </jw-header-title>
       </jw-header-main>
     </jw-header>
 
     <div class="jw-meta-description">
-      <div jw-collapsible-text="4.2em">
-        {{ vm.item.description }}
+      <div class="jw-meta-align">
+        <div jw-collapsible-text="4.2em">
+          {{ vm.item.description }}
+        </div>
       </div>
     </div>
 

@@ -15,5 +15,5 @@
 }
 
 @function rem($size-in-pixels) {
-    @return #{$size-in-pixels / $font-size}rem;
+    @return #{$size-in-pixels / $font-size-base}rem;
 }

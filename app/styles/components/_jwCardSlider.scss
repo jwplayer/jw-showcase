@@ -43,7 +43,7 @@ $featured-slider-max-width: 900px;
             cursor: pointer;
 
             &:hover {
-                color: $radical-red;
+                color: $primary-color;
             }
 
             > span,
@@ -110,28 +110,25 @@ $featured-slider-max-width: 900px;
         display: block;
         position: absolute;
         top: 50%;
+
+        color: $main-color;
         cursor: pointer;
 
-        color: $black;
-
         &.jw-card-slider-button--left {
-            left: 25px;
+            left: 10px;
         }
 
         &.jw-card-slider-button--right {
-            right: 25px;
+            right: 10px;
         }
 
-        &:hover .jwy-icon {
-            color: $torch-red;
+        &:hover:not(.is-disabled) .jwy-icon {
+            color: $primary-color;
         }
 
         &.is-disabled {
             cursor: default;
-
-            .jwy-icon {
-                color: $cadet-blue;
-            }
+            opacity: 0.3;
         }
 
         .jwy-icon {
@@ -178,7 +175,7 @@ $featured-slider-max-width: 900px;
         }
 
         &.is-active {
-            background-color: $radical-red;
+            background-color: $primary-color;
         }
     }
 }
@@ -189,10 +186,12 @@ $featured-slider-max-width: 900px;
 
 .jw-card-slider.jw-card-slider--featured {
 
-    background: $black-lighter;
-
     .jw-card-slider-button.jw-card-slider-button--right {
         margin-left: 40px;
+    }
+
+    .jw-card-slider-button {
+        color: $white;
     }
 
     .jw-card-slider-button .jwy-icon {

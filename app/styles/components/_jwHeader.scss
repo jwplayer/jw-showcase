@@ -10,10 +10,10 @@
     width: 100vw;
     height: $header-height;
     padding: 10px 0;
-    z-index: 9;
 
     background-color: $header-bg-color;
     text-align: center;
+    z-index: 9;
 
     &.jw-subheader {
         top: $header-height;
@@ -22,15 +22,21 @@
 
         background-color: $subheader-bg-color;
 
+        .jw-header-nav {
+            @include flex(0 0 $subheader-nav-width);
+            min-width: $subheader-nav-width;
+        }
+
         .jw-header-nav .jw-button {
             color: $white;
         }
 
         .jw-header-title {
             padding: 5px 0;
+
+            color: $white;
             font-size: rem(24px);
             font-weight: bold;
-            color: $white;
         }
     }
 
@@ -60,8 +66,8 @@
         width: 100%;
 
         .jw-header-main .jw-header-title {
-            overflow: visible;
             white-space: normal;
+            overflow: visible;
             word-break: break-all;
         }
     }
@@ -73,8 +79,8 @@
         font-size: rem(32px);
 
         &:first-child {
-            text-align: left;
             padding-left: 10px;
+            text-align: left;
 
         }
 
@@ -84,14 +90,12 @@
         }
 
         .jw-button {
-            padding: 10px;
-
-            vertical-align: middle;
             color: $main-color;
             font-size: rem(25px);
+            vertical-align: middle;
 
             &:hover {
-                color: $main-hover-color;
+                color: $primary-color;
             }
         }
     }
@@ -108,8 +112,8 @@
 
         .jw-header-title {
             line-height: 1em;
-            overflow: hidden;
             white-space: nowrap;
+            overflow: hidden;
 
             &.left {
                 text-align: left;
@@ -120,16 +124,17 @@
     .jw-header-search-bar {
         @include transition(all .5s ease);
         position: absolute;
-        height: 100%;
-        width: 0;
         top: 0;
         right: 0;
-        background: $header-bg-color;
-
+        width: 0;
+        height: 100%;
         padding: 20px;
-        z-index: 1;
+
+        background: $header-bg-color;
         opacity: 0;
         overflow: hidden;
+
+        z-index: 1;
         pointer-events: none;
 
         &.is-active {
@@ -144,7 +149,6 @@
             padding: 0 30px;
 
             border-bottom: 1px solid $header-search-border-color;
-            border-right: 1px solid lighten($header-search-border-color, 5%);
             border-radius: 0;
             font-size: 16px;
         }
@@ -156,26 +160,25 @@
             height: $header-search-height;
 
             &:first-child {
-                left: 15px;
+                left: 10px;
             }
 
             &:last-child {
-                right: 15px;
+                right: 10px;
             }
 
             .jw-button {
-                width: 40px;
                 height: $header-search-height;
+            }
 
-                &:hover {
-                    color: $main-hover-color;
-                }
+            .jw-button:hover {
+                color: $primary-color;
             }
 
             > .jw-button,
             > .jwy-icon {
-                line-height: $header-search-height;
                 color: $main-color;
+                line-height: $header-search-height;
             }
         }
     }
@@ -186,6 +189,11 @@
 
         .jw-header-logo h1 {
             font-size: rem(24px);
+        }
+
+        .jw-header-nav {
+            @include flex(0 0 $subheader-nav-width);
+            min-width: $subheader-nav-width;
         }
 
         .jw-header-nav .jw-button-label {

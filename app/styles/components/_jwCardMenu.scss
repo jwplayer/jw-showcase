@@ -47,8 +47,11 @@
         margin: 0 10px 10px;
         text-align: center;
 
+        .jw-button {
+            min-width: 80%;
+        }
+
         &:last-child .jw-button {
-            color: $gray-darker;
             font-weight: normal;
         }
     }

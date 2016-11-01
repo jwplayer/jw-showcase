@@ -28,30 +28,35 @@
     jwButton.$inject = [];
     function jwButton () {
         return {
-            link:     link,
-            restrict: 'A'
+            link:       link,
+            restrict:   'E',
+            priority:   300,
+            template:   '<a class="jw-button" ng-transclude></a>',
+            replace:    true,
+            transclude: true
         };
 
         function link (scope, element) {
 
-            element.on('click', function (event) {
+            element.on('mousedown', function (event) {
 
-                var rect   = element[0].getBoundingClientRect(),
-                    effect = angular.element(element[0].querySelector('.jw-button-effect'));
+                var effectElement = angular.element('<span class="jw-button-effect"></span>');
 
-                effect.css({
-                    top:  event.pageY - rect.top + 'px',
-                    left: event.pageX - rect.left + 'px'
+                angular.element(document.body).append(effectElement);
+
+                effectElement.css({
+                    top:  event.pageY + 'px',
+                    left: event.pageX + 'px'
                 });
 
-                effect.addClass('active');
+                effectElement.addClass('active');
 
                 setTimeout(function () {
-                    effect.removeClass('active');
-                }, 300);
+                    effectElement.remove();
+                }, 310);
             });
 
-            element.append('<span class="jw-button-effect"></span>');
+            // element.append('<span class="jw-button-effect"></span>');
         }
     }
 

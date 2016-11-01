@@ -15,17 +15,26 @@
     vertical-align: middle;
 }
 
-.jw-meta-description {
-    padding: 1.5em 90px;
+.jw-meta-align {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-    background-color: $gray-darker;
+.jw-meta-description {
+    padding: 1.5em $subheader-nav-width;
+
+    background-color: $meta-description-bg-color;
     color: $white;
     line-height: 1.4em;
     white-space: normal;
+
+    .jw-collapsible-text-content::after {
+        @include background-image(linear-gradient(transparent, rgba($meta-description-bg-color, 0.8)));
+    }
 }
 
-.jw-meta-noContent,
-.jw-meta-noContent:first-child {
+.jw-meta-feed-title,
+.jw-meta-feed-title:first-child {
     margin: 2em 0;
     text-align: center;
 }

@@ -1,47 +1,33 @@
 
 .jw-theme-light {
 
-    .pane, .view {
-        background-color: $white-darker;
+    .pane,
+    .view {
+        background-color: $light-color;
     }
 
     .featured {
-        background-color: $white;
+        background-color: $featured-slider-bg-color;
     }
 
     .jw-card-slider-title .jw-link,
     .jw-card-slider-title > div,
     .jw-card-grid-title {
-        color: $pickled-bluewood;
+        color: $main-color;
     }
 
     .jw-card-slider {
 
         &.jw-card-slider--default {
-            border-bottom: 1px solid $cadet-blue;
+            border-bottom: 1px solid rgba($main-color, 0.2);
         }
 
         &.jw-card-slider--default.jw-card-slider-button {
             color: $black;
         }
-
-        &.jw-card-slider--featured .jw-card-slider-button {
-            color: $white;
-        }
     }
 
     .jw-card.jw-card--default {
-
-        &:not(.jw-card--touch) .jw-card-container:hover {
-            .jw-card-info {
-                background-color: $black;
-            }
-
-            .jw-card-title,
-            .jw-card-description {
-                color: $white-off;
-            }
-        }
 
         .jw-card-info {
             background-color: $white;
@@ -51,9 +37,5 @@
         .jw-card-description {
             color: $black;
         }
-    }
-
-    .jw-card-alt {
-        color: $gray-darker;
     }
 }

@@ -6,7 +6,7 @@
 
     &.expanded {
 
-        .jw-collapsible-text-content:after {
+        .jw-collapsible-text-content::after {
             display: none;
         }
 
@@ -16,7 +16,7 @@
     }
 
     &.inactive {
-        .jw-collapsible-text-content:after,
+        .jw-collapsible-text-content::after,
         .jw-collapsible-text-toggle {
             display: none;
         }
@@ -24,18 +24,18 @@
 
     .jw-collapsible-text-content {
         @include transition(max-height 0.3s ease 0s);
+
         position: relative;
         overflow: hidden;
 
-        &:after {
-            content: '';
+        &::after {
             position: absolute;
             right: 0;
             bottom: 0;
             left: 0;
             height: 1.4em;
 
-            @include background-image(linear-gradient(transparent, rgba($gray-darker, 0.8)));
+            content: '';
         }
     }
 

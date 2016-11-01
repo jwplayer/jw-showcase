@@ -1,20 +1,17 @@
 
 .jw-theme-dark {
 
-    .pane, .view {
-        background-color: $shark;
+    .pane,
+    .view {
+        background-color: $dark-color;
     }
 
     .featured {
-        background-color: $black-lighter;
+        background-color: $featured-slider-bg-color;
     }
 
     .jw-card .jw-card-title {
         color: $white;
-    }
-
-    .jw-card-alt {
-        color: $gray;
     }
 
     .jw-card-slider.jw-card-slider--default {
@@ -33,19 +30,8 @@
 
     .jw-card.jw-card--default {
 
-        &:not(.jw-card--touch) .jw-card-container:hover {
-            .jw-card-info {
-                background-color: $black;
-            }
-
-            .jw-card-title,
-            .jw-card-description {
-                color: $white;
-            }
-        }
-
         .jw-card-info {
-            background-color: $mine-shaft;
+            background-color: $dark-color;
         }
 
         .jw-card-title,

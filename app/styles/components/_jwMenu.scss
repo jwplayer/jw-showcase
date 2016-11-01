@@ -27,18 +27,38 @@
         @include transition(all 0.3s ease-in-out);
     }
 
-    .list {
-        padding: 10px 0;
+    .jw-header-nav .jw-button-label {
+        display: none;
     }
 
-    .item-divider {
-        min-height: 10px;
+    .jw-menu-list {
+        margin: 0 5px 20px 55px;
+
+        .jw-button {
+            width: 100%;
+            min-height: 30px;
+
+            color: $main-color;
+            line-height: 30px;
+            text-align: left;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        .item-toggle {
+            color: $main-color;
+        }
+
+        .divider {
+            height: 20px;
+        }
     }
 
     .popover-arrow {
         display: none;
     }
-
 }
 
 @include mobile-only () {

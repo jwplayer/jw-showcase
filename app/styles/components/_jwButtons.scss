@@ -6,14 +6,24 @@
     display: inline-block;
     position: relative;
 
-    overflow: hidden;
-    line-height: 1;
+    min-height: 40px;
+    padding: 0 10px;
+
+    color: $white;
+
+    line-height: 40px;
+    text-align: center;
     text-decoration: none;
     cursor: pointer;
+    overflow: hidden;
+
+    &.jw-icon-button {
+        min-width: 40px;
+    }
 
     .jw-button-label {
         display: inline-block;
-        font-size: 14px;
+        font-size: rem(14px);
         vertical-align: middle;
     }
 
@@ -22,49 +32,47 @@
     }
 }
 
-.jw-button-effect {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    width: 40px;
-    height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
-    border-radius: 50%;
-    background-color: rgba($main-color, 0.1);
-    pointer-events: none;
+.jw-button-primary,
+.jw-button-primary.activated {
+    background: $primary-color;
+    color: $white;
+    font-weight: bold;
 
-    &.active {
-        animation: button-click-feedback 0.4s forwards;
+    &:hover {
+        color: $white;
     }
 }
 
-.jw-button-default {
-    padding: 5px 20px;
+.jw-button-light,
+.jw-button-light.activated {
+    background: $light-color;
+    color: $text-color;
 
-    border-radius: 5px;
-    background: $radical-red;
+    &:hover {
+        color: $text-color;
+    }
+}
+
+.jw-button-clear,
+.jw-button-clear.activated {
+    color: $text-color;
+
+    &:hover {
+        color: $text-color;
+    }
+}
+
+.jw-button-dark,
+.jw-button-dark.activated {
+    background: $dark-color;
     color: $white;
     font-weight: bold;
+
+    &:hover {
+        color: $white;
+    }
 }
 
-.jw-button-transparent {
-    padding: 5px 20px;
-
-    background: transparent;
-    color: $black;
-    font-weight: bold;
-}
-
-.jw-button-positive {
-    padding: 5px 20px;
-
-    background: $radical-red;
-    color: $white;
-    font-weight: bold;
-}
 
 //
 // jwButtonPlay
@@ -80,34 +88,9 @@
     .jwy-icon-play {
         @include center-self(50%, 54%);
 
-        color: $radical-red;
+        color: $primary-color;
         font-size: 1.4em;
     }
-}
-
-//
-// jwButtonBack
-// --------------------------------
-
-.jw-button-back {
-    .jwy-icon-double-angle-left {
-        font-size: rem(32px);
-    }
-}
-
-//
-// jwButtonShare
-// --------------------------------
-
-.jw-button-share {
-    padding: 12px;
-
-    border-radius: 50%;
-    background: $mine-shaft;
-}
-
-.jw-button-share > .jwy-icon {
-    font-size: 26px;
 }
 
 //
@@ -126,7 +109,7 @@
 
 %jw-watchlist-dark {
     .jwy-icon-stack {
-        color: $radical-red;
+        color: $primary-color;
 
         .jwy-icon {
             color: $white;
@@ -159,7 +142,7 @@
         @extend %jw-watchlist-white;
 
         &:hover .jwy-icon-stack .jwy-icon {
-            color: $radical-red;
+            color: $primary-color;
         }
     }
 
@@ -169,18 +152,43 @@
 }
 
 //
-// jwButton keyframes
+// jwButtonEffect
+// --------------------------------
+
+.jw-button-effect {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+
+    border-radius: 50%;
+    background-color: rgba($main-color, 0.1);
+    opacity: 0;
+    z-index: 99999;
+    pointer-events: none;
+
+    &.active {
+        animation: button-click-feedback 0.4s forwards;
+    }
+}
+
+//
+// jwButton effect keyframes
 // --------------------------------
 
 @keyframes button-click-feedback {
     0% {
         transform: scale3d(0.3, 0.3, 1);
     }
+
     40%, 60% {
         opacity: 1;
     }
+
     100% {
-        opacity: 0;
         transform: scale3d(1.5, 1.5, 1);
+        opacity: 0;
     }
 }

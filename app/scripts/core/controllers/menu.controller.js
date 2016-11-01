@@ -25,8 +25,8 @@
      * @name app.core.controller:MenuController
      */
 
-    MenuController.$inject = ['$scope', '$ionicPopup', 'menu', 'dataStore', 'watchlist', 'watchProgress', 'userSettings'];
-    function MenuController ($scope, $ionicPopup, menu, dataStore, watchlist, watchProgress, userSettings) {
+    MenuController.$inject = ['$scope', 'confirm', 'menu', 'dataStore', 'watchlist', 'watchProgress', 'userSettings'];
+    function MenuController ($scope, confirm, menu, dataStore, watchlist, watchProgress, userSettings) {
 
         var vm = this;
 
@@ -76,9 +76,10 @@
          */
         function clearWatchlist () {
 
-            confirmAction(
-                'Are you sure you want to delete your current watch list?',
-                function () {
+            confirm
+                .show('Are you sure you want to delete your current watch list?')
+                .then(function () {
+
                     watchlist
                         .clearAll();
                 });
@@ -89,36 +90,13 @@
          */
         function clearWatchProgress () {
 
-            confirmAction(
-                'Are you sure you want to delete your current watch progress?',
-                function () {
+            confirm
+                .show('Are you sure you want to delete your current watch progress?')
+                .then(function () {
+
                     watchProgress
                         .clearAll();
                 });
-        }
-
-        /**
-         * Show confirm dialog with cancel and yes button
-         *
-         * @param {string}   message    Message to show to user
-         * @param {function} callback   Callback which gets called after the user tapped the yes button
-         */
-        function confirmAction (message, callback) {
-
-            $ionicPopup.show({
-                title:    'Confirm action',
-                subTitle: message,
-                scope:    $scope,
-                buttons:  [{
-                    text: 'Cancel'
-                }, {
-                    text:  '<b>Yes</b>',
-                    type:  'button-positive',
-                    onTap: function () {
-                        callback();
-                    }
-                }]
-            });
         }
     }
 
