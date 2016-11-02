@@ -27,8 +27,7 @@
     MenuService.$inject = ['$rootScope', '$controller', '$templateCache', '$ionicPopover'];
     function MenuService ($rootScope, $controller, $templateCache, $ionicPopover) {
 
-        var menuPopover,
-            menuScope = $rootScope.$new();
+        var menuPopover;
 
         activate();
 
@@ -58,9 +57,9 @@
         function positionView (target, popoverElement) {
 
             popoverElement.css({
-                margin:  0,
-                top:     0,
-                left:    0
+                margin: 0,
+                top:    0,
+                left:   0
             });
         }
 
@@ -86,8 +85,7 @@
                 return;
             }
 
-            menuPopover.remove();
-            menuPopover = null;
+            menuPopover.hide();
         }
 
         /**
@@ -95,9 +93,13 @@
          */
         function show () {
 
+            var menuScope;
+
             if (menuPopover) {
                 return;
             }
+
+            menuScope = $rootScope.$new();
 
             // bind controller to menuScope and inject menu with hide method
             $controller('MenuController as vm', {
@@ -116,7 +118,13 @@
                     hideDelay:    300
                 });
 
-            menuPopover.show(document.body);
+            menuScope.$on('popover.hidden', function() {
+                menuPopover.remove();
+                menuPopover = null;
+            });
+
+            menuPopover
+                .show(document.body);
         }
     }
 
