@@ -103,9 +103,7 @@ $bar-height: $header-height;
 $bar-subheader-height: $subheader-height;
 $link-color: #fff;
 
-$toggle-width: 35px;
-$toggle-height: 20px;
-$toggle-hit-area-expansion: 20px;
+$toggle-off-bg-color: $disabled-color;
 
 $popover-backdrop-bg-active: rgba($black, 0.3);
 $popover-border-radius: 0;

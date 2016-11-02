@@ -47,12 +47,30 @@
             }
         }
 
-        .item-toggle {
-            color: $main-color;
-        }
-
         .divider {
             height: 20px;
+        }
+    }
+
+    .item-toggle {
+        color: $main-color;
+
+        .toggle {
+            top: 11px;
+        }
+
+        .track .handle {
+            top: 3px;
+            border: 1px solid $disabled-color;
+        }
+
+        input:checked + .track {
+            background-color: $main-color;
+        }
+
+        input:checked + .track .handle {
+            border-color: $white;
+            background-color: $primary-color;
         }
     }
 
