@@ -82,8 +82,6 @@
          */
         function searchAndDisplayResults () {
 
-            console.log(appStore);
-
             apiConsumer
                 .search(appStore.searchPhrase)
                 .then(function () {
