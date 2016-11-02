@@ -21,10 +21,25 @@
       </jw-header-main>
     </jw-header>
 
-    <div class="jw-meta-description">
-      <div class="jw-meta-align">
-        <div jw-collapsible-text="4.2em">
-          {{ vm.item.description }}
+    <div class="jw-meta-container">
+      <div class="jw-meta-align jw-meta-row">
+        <div class="jw-meta-description">
+          <div jw-collapsible-text="4.2em">
+            {{ vm.item.description }}
+          </div>
+        </div>
+        <div class="jw-meta-controls">
+          <jw-button class="jw-button-watchlist" ng-click="vm.watchlistClickHandler()" ng-class="{'is-active': vm.inWatchList}">
+            <span class="jw-button-label">{{ vm.inWatchList ? 'Unsave video' : 'Save video' }}</span> <i class="jwy-icon jwy-icon-banner jwy-icon-stack">
+            <i class="jwy-icon jwy-icon-{{ vm.inWatchList ? 'min' : 'plus' }}"></i>
+          </i>
+          </jw-button>
+
+          <jw-button class="jw-button-share" ng-click="vm.shareClickHandler($event)">
+            <span class="jw-button-label">Share</span> <i class="jwy-icon jwy-icon-circle jwy-icon-stack">
+            <i class="jwy-icon jwy-icon-share"></i>
+          </i>
+          </jw-button>
         </div>
       </div>
     </div>

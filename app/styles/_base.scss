@@ -21,9 +21,14 @@ $light-color: #eee !default;
 $dark-color: #363636 !default;
 $disabled-color: #d7dce5 !default;
 
+$success-color: #393;
+
 $black: #000;
 $white: #fff;
 $gray: #999;
+
+$facebook: #3b5998;
+$twitter: #55acee;
 
 //
 // Base
@@ -69,7 +74,7 @@ $card-text-color: #4a4a4a !default;
 // --------------------------------
 
 $card-toast-removed-bg-color: $primary-color !default;
-$card-toast-added-bg-color: #393 !default;
+$card-toast-added-bg-color: $success-color !default;
 
 //
 // Card slider

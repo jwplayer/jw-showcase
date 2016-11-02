@@ -21,6 +21,12 @@
         min-width: 40px;
     }
 
+    &.jw-button-block {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+    }
+
     .jw-button-label {
         display: inline-block;
         font-size: rem(14px);
@@ -28,6 +34,8 @@
     }
 
     .jwy-icon {
+        position: relative;
+        top: 1px;
         vertical-align: middle;
     }
 }
@@ -40,6 +48,18 @@
 
     &:hover {
         color: $white;
+    }
+}
+
+.jw-button-hollow,
+.jw-button-hollow.activated {
+    border: 1px solid lighten($main-color, 60%);
+    background: transparent;
+    color: $primary-color;
+    font-weight: bold;
+
+    &:hover {
+        color: $primary-color;
     }
 }
 
@@ -73,6 +93,27 @@
     }
 }
 
+.jw-button-facebook,
+.jw-button-twitter,
+.jw-button-mail {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1.8em;
+}
+
+.jw-button-facebook {
+    background-color: $facebook;
+}
+
+.jw-button-twitter {
+    background-color: $twitter;
+}
+
+.jw-button-mail {
+    background-color: $dark-color;
+}
 
 //
 // jwButtonPlay
@@ -102,7 +143,7 @@
         color: $white;
 
         .jwy-icon {
-            color: $black;
+            color: $main-color;
         }
     }
 }
@@ -119,25 +160,6 @@
 
 .jw-button-watchlist {
 
-    vertical-align: middle;
-
-    > span {
-        display: inline-block;
-
-        text-align: right;
-        vertical-align: middle;
-    }
-
-    .jwy-icon-stack {
-        vertical-align: middle;
-    }
-
-    .jwy-icon {
-        @include transition(color .1s ease);
-        margin-top: -1px;
-        font-size: 1em;
-    }
-
     &:not(.is-active) {
         @extend %jw-watchlist-white;
 
@@ -148,6 +170,27 @@
 
     &.is-active {
         @extend %jw-watchlist-dark;
+    }
+
+    .jwy-icon {
+        @include transition(color .1s ease);
+        font-size: rem(32px);
+    }
+}
+
+.jw-button-share {
+
+    &:hover .jwy-icon-stack .jwy-icon {
+        color: $primary-color;
+    }
+
+    .jwy-icon-stack .jwy-icon {
+        @include transition(color .1s ease);
+        color: $main-color;
+    }
+
+    .jwy-icon {
+        font-size: rem(32px);
     }
 }
 

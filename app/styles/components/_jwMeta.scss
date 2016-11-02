@@ -20,7 +20,7 @@
     margin: 0 auto;
 }
 
-.jw-meta-description {
+.jw-meta-container {
     padding: 1.5em $subheader-nav-width;
 
     background-color: $meta-description-bg-color;
@@ -31,6 +31,19 @@
     .jw-collapsible-text-content::after {
         @include background-image(linear-gradient(transparent, rgba($meta-description-bg-color, 0.8)));
     }
+}
+
+.jw-meta-row {
+    @include display-flex();
+}
+
+.jw-meta-description {
+    @include flex(1 1 auto);
+    padding-right: 50px;
+}
+
+.jw-meta-controls {
+    @include flex(0 0 auto);
 }
 
 .jw-meta-feed-title,
@@ -45,7 +58,29 @@
 
 @include mobile-only () {
 
-    .jw-meta-description {
+    .jw-meta-container {
         padding: 1.5em 20px;
     }
+
+    .jw-meta-description {
+        padding-right: 0;
+    }
+
+    .jw-meta-row {
+        @include flex-direction(column);
+    }
+
+    .jw-meta-controls {
+        text-align: center;
+    }
+}
+
+@include tablet-and-larger () {
+
+    .jw-meta-controls .jw-button {
+        display: block;
+        text-align: right;
+        white-space: nowrap;
+    }
+
 }

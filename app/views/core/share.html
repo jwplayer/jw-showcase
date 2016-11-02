@@ -1,0 +1,18 @@
+<ion-popover-view class="jw-share">
+  <div class="jw-share-buttons">
+    <jw-button class="jw-icon-button jw-button-facebook" ng-href="{{ vm.facebookShareLink }}" target="_blank">
+      <i class="jwy-icon jwy-icon-facebook"></i>
+    </jw-button>
+    <jw-button class="jw-icon-button jw-button-twitter" ng-href="{{ vm.twitterShareLink }}" target="_blank">
+      <i class="jwy-icon jwy-icon-twitter"></i>
+    </jw-button>
+    <jw-button class="jw-icon-button jw-button-mail" ng-href="{{ vm.emailShareLink }}">
+      <i class="jwy-icon jwy-icon-envelop"></i>
+    </jw-button>
+  </div>
+  <div class="jw-share-buttons jw-share-link">
+    <jw-button class="jw-button-hollow jw-button-block" ng-click="vm.copyUrl()">
+      <span class="jw-button-label{{ vm.copyResult.success ? ' jw-text-success' : '' }}">{{ vm.copyResult.text || 'Copy link' }}</span>
+    </jw-button>
+  </div>
+</ion-popover-view>

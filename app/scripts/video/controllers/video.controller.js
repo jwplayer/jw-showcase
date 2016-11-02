@@ -34,8 +34,8 @@
      * @requires app.core.userSettings
      * @requires app.core.utils
      */
-    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'userSettings', 'utils', 'feed', 'item'];
-    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, userSettings, utils, feed, item) {
+    VideoController.$inject = ['$state', '$stateParams', '$location', 'dataStore', 'watchProgress', 'watchlist', 'userSettings', 'utils', 'share', 'feed', 'item'];
+    function VideoController ($state, $stateParams, $location, dataStore, watchProgress, watchlist, userSettings, utils, share, feed, item) {
 
         var vm      = this,
             lastPos = 0,
@@ -43,13 +43,10 @@
             started = false,
             watchProgressItem;
 
-        vm.item              = item;
-        vm.feed              = {};
-        vm.duration          = 0;
-        vm.facebookShareLink = composeFacebookLink();
-        vm.twitterShareLink  = composeTwitterLink();
-        vm.emailShareLink    = composeEmailLink();
-        vm.inWatchList       = false;
+        vm.item        = item;
+        vm.feed        = {};
+        vm.duration    = 0;
+        vm.inWatchList = false;
 
         vm.onPlay         = onPlay;
         vm.onComplete     = onComplete;
@@ -57,10 +54,9 @@
         vm.onTime         = onTime;
         vm.onPlaylistItem = onPlaylistItem;
 
-        vm.cardClickHandler = cardClickHandler;
-
-        vm.addToWatchList      = addToWatchList;
-        vm.removeFromWatchList = removeFromWatchList;
+        vm.cardClickHandler      = cardClickHandler;
+        vm.shareClickHandler     = shareClickHandler;
+        vm.watchlistClickHandler = watchlistClickHandler;
 
         activate();
 
@@ -98,9 +94,6 @@
                     .slice(itemIndex)
                     .concat(feed.playlist.slice(0, itemIndex));
 
-            vm.facebookShareLink = composeFacebookLink();
-            vm.twitterShareLink  = composeTwitterLink();
-
             vm.duration = utils.getVideoDurationByItem(vm.item);
 
             vm.feed = {
@@ -111,24 +104,6 @@
             watchProgressItem = watchProgress.getItem(vm.item);
 
             vm.inWatchList = watchlist.hasItem(vm.item);
-        }
-
-        /**
-         * Add current item to watchlist
-         */
-        function addToWatchList () {
-
-            watchlist.addItem(vm.item);
-            vm.inWatchList = true;
-        }
-
-        /**
-         * Remove current item from watchlist
-         */
-        function removeFromWatchList () {
-
-            watchlist.removeItem(vm.item);
-            vm.inWatchList = false;
         }
 
         /**
@@ -307,6 +282,33 @@
         }
 
         /**
+         * Handle click event on watchlist button
+         */
+        function watchlistClickHandler () {
+
+            if (watchlist.hasItem(vm.item)) {
+                watchlist.removeItem(vm.item);
+                vm.inWatchList = false;
+            }
+            else {
+                watchlist.addItem(vm.item);
+                vm.inWatchList = true;
+            }
+        }
+
+        /**
+         * Handle click event on share button
+         * @param $event
+         */
+        function shareClickHandler ($event) {
+
+            share.show({
+                target: $event.target,
+                item:   item
+            });
+        }
+
+        /**
          * Handle click event on card
          *
          * @param {Object}      item        Clicked item
@@ -319,47 +321,6 @@
                 mediaId:   item.mediaid,
                 autoStart: autoStart
             });
-        }
-
-        /**
-         * Compose a Facebook share link with the current URL
-         *
-         * @returns {string}
-         */
-        function composeFacebookLink () {
-
-            var facebookShareLink = 'https://www.facebook.com/sharer/sharer.php?p[url]={url}';
-
-            return facebookShareLink
-                .replace('{url}', encodeURIComponent($location.absUrl()));
-        }
-
-        /**
-         * Compose a Twitter share link with the current URL and title
-         *
-         * @returns {string}
-         */
-        function composeTwitterLink () {
-
-            var twitterShareLink = 'http://twitter.com/share?text={text}&amp;url={url}';
-
-            return twitterShareLink
-                .replace('{url}', encodeURIComponent($location.absUrl()))
-                .replace('{text}', encodeURIComponent(item.title));
-        }
-
-        /**
-         * Compose a Email share link with the current URL and title
-         *
-         * @returns {string}
-         */
-        function composeEmailLink () {
-
-            var twitterShareLink = 'mailto:?subject={subject}&body={url}';
-
-            return twitterShareLink
-                .replace('{url}', encodeURIComponent($location.absUrl()))
-                .replace('{subject}', encodeURIComponent(item.title));
         }
     }
 

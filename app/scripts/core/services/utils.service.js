@@ -46,6 +46,7 @@
         this.debounce               = debounce;
         this.getValueForScreenSize  = getValueForScreenSize;
         this.replaceImageSize       = replaceImageSize;
+        this.copyToClipboard        = copyToClipboard;
 
         ////////////////////////
 
@@ -217,6 +218,46 @@
             }
 
             return url;
+        }
+
+        /**
+         * Copy given string to the clipboard via a hidden input element
+         *
+         * @param {string} text Text to be copied into the clipboard
+         * @returns {boolean} Returns true if the text was copied successful
+         */
+        function copyToClipboard (text) {
+
+            var inputElement = angular.element('<input type="text" />'),
+                success = false;
+
+            inputElement.css({
+                position: 'absolute',
+                left:     '-1000px',
+                fontSize: '12px'
+            });
+
+            inputElement.val(text);
+
+            angular.element(document.body).append(inputElement);
+
+            if (inputElement[0] && inputElement[0].select) {
+
+                inputElement[0].select();
+
+                try {
+                    document.execCommand('copy');
+                    success = true;
+                }
+                catch (error) {
+                }
+
+                inputElement[0].blur();
+            }
+
+            inputElement.remove();
+
+            return success;
         }
     }
 }());
