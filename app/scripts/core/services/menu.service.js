@@ -24,8 +24,8 @@
      * @ngdoc service
      * @name app.core.menu
      */
-    MenuService.$inject = ['$rootScope', '$controller', '$templateCache', '$ionicPopover'];
-    function MenuService ($rootScope, $controller, $templateCache, $ionicPopover) {
+    MenuService.$inject = ['$rootScope', '$timeout', '$controller', '$templateCache', '$ionicPopover'];
+    function MenuService ($rootScope, $timeout, $controller, $templateCache, $ionicPopover) {
 
         var menuPopover;
 
@@ -118,9 +118,12 @@
                     hideDelay:    300
                 });
 
-            menuScope.$on('popover.hidden', function() {
-                menuPopover.remove();
-                menuPopover = null;
+            menuScope.$on('popover.hidden', function(event, popover) {
+
+                $timeout(function () {
+                    menuPopover.remove();
+                    menuPopover = null;
+                }, popover.hideDelay);
             });
 
             menuPopover
