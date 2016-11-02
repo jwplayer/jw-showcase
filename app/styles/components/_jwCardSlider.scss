@@ -185,6 +185,7 @@ $featured-slider-max-width: 900px;
 // --------------------------------
 
 .jw-card-slider.jw-card-slider--featured {
+    background-color: $featured-slider-bg-color;
 
     .jw-card-slider-button.jw-card-slider-button--right {
         margin-left: 40px;
