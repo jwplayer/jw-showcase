@@ -11,7 +11,7 @@
     }
 
     .jw-card-slider.jw-card-slider--default {
-        border-bottom: 1px solid $black;
+        border-bottom: 1px solid darken($dark-color, 5%);
     }
 
     .jw-card-slider .jw-card-slider-button {
@@ -27,7 +27,7 @@
     .jw-card.jw-card--default {
 
         .jw-card-info {
-            background-color: $dark-color;
+            background-color: $black;
         }
 
         .jw-card-title,
