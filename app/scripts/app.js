@@ -27,10 +27,8 @@
             'ngSanitize',
             'ngTouch',
             'ui.router',
-            'app.core',
-            'app.dashboard',
-            'app.feed',
-            'app.video'
+            'ionic',
+            'jwShowcase'
         ])
         .value('config', {})
         .config(config);
