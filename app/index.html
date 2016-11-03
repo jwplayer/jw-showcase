@@ -38,14 +38,65 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="bower_components/ionic/js/ionic.js"></script>
 <script src="bower_components/ionic/js/ionic-angular.js"></script>
+
+<script src="bower_components/jw-showcase-lib/js/jwShowcase.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/core.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/animations/expand.animation.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/card.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/cardMenu.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/cookies.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/footer.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/headerBackButton.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/headerMenuButton.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/headerSearchBar.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/headerSearchButton.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/menu.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/root.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/share.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/button.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/card.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/cardGrid.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/cardMenu.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/cardPoster.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/cardSlider.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/collapsibleText.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/footer.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/header.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerBackButton.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerMenuButton.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerLogo.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerSearchBar.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerSearchButton.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/headerTitle.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/jwPlayer.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/truncateText.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/api.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/apiConsumer.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/appStore.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/configResolver.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/confirm.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/cookies.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/dataStore.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/userSettings.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/utils.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/menu.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/seo.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/session.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/share.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/watchlist.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/watchProgress.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/dashboard/dashboard.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/dashboard/controllers/dashboard.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/feed/feed.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/feed/controllers/feed.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/search/search.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/search/controllers/search.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/video/video.module.js"></script>
+<script src="bower_components/jw-showcase-lib/js/video/controllers/video.controller.js"></script>
 <!-- endbuild -->
 
 <script>
-  // make search depth defaulting to 20 instead of 10
-  ionic.DomUtil.$getParentOrSelfWithClass = ionic.DomUtil.getParentOrSelfWithClass;
-  ionic.DomUtil.getParentOrSelfWithClass = function (elem, className, depth) {
-    return ionic.DomUtil.$getParentOrSelfWithClass(elem, className, depth || 20);
-  };
+  window.configLocation = './config.json';
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -53,9 +104,5 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/templates.js"></script>
 <!-- endbuild -->
-
-<script>
-  window.configLocation = './config.json';
-</script>
 </body>
 </html>
