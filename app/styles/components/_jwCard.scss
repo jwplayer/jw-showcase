@@ -56,6 +56,7 @@
         @include single-transition(background, 0.2s, ease, 0s);
         background: rgba($black, 0.1);
         cursor: pointer;
+        overflow: hidden;
     }
 
     .jw-card-table {
