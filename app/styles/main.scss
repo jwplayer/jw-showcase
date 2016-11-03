@@ -1,79 +1,10 @@
+
 //
-// Import base first since it contains all variables and Compass dependencies
+// Import Base
 // --------------------------------
-@import 'base';
+@import '../../bower_components/jw-showcase-lib/scss/main';
 
 //
 // Import Ionic
 // --------------------------------
 @import '../../bower_components/ionic/scss/ionic';
-
-//
-// Import mixins
-// --------------------------------
-@import 'mixins/responsive';
-@import 'mixins/utils';
-
-//
-// Import components
-// --------------------------------
-@import 'components/jwAnimations';
-@import 'components/jwButtons';
-@import 'components/jwCard';
-@import 'components/jwCardGrid';
-@import 'components/jwCardMenu';
-@import 'components/jwCardPoster';
-@import 'components/jwCardSlider';
-@import 'components/jwCollapsibleText';
-@import 'components/jwCookies';
-@import 'components/jwCover';
-@import 'components/jwDialog';
-@import 'components/jwFooter';
-@import 'components/jwHeader';
-@import 'components/jwIcons';
-@import 'components/jwLoading';
-@import 'components/jwMenu';
-@import 'components/jwMeta';
-@import 'components/jwModal';
-@import 'components/jwPlayer';
-@import 'components/jwShare';
-@import 'components/jwText';
-@import 'components/jwVideo';
-@import 'components/jwVideoContainer';
-@import 'components/jwView';
-
-//
-// Import themes
-// --------------------------------
-@import 'themes/light';
-@import 'themes/dark';
-
-html,
-body {
-    height: 100%;
-    min-height: 100%;
-}
-
-body {
-    @include user-select(none);
-
-    min-width: 320px;
-    margin: 0 0 20px;
-    padding: 0;
-
-    color: $text-color-base;
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-
-    -webkit-font-smoothing: antialiased;
-
-    overflow: hidden;
-
-    img {
-        border: 0;
-    }
-
-    * {
-        @include box-sizing(border-box);
-    }
-}
