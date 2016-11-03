@@ -1,5 +1,5 @@
 {
-  "name": "jwshowcase",
+  "name": "jw-showcase",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
