@@ -14,7 +14,18 @@ module.exports = {
                 'images/{,*/}*.{jpg,gif,png,svg}',
                 'styles/fonts/{,*/}*.*'
             ]
+        }, {
+            expand: true,
+            cwd:    'bower_components/jw-showcase-lib/fonts',
+            dest:   '<%= config.dist %>/fonts',
+            src:    '*'
         }]
+    },
+    icons:  {
+        expand: true,
+        cwd:    'bower_components/jw-showcase-lib/fonts',
+        dest:   '.tmp/fonts/',
+        src:    '*'
     },
     styles: {
         expand: true,
