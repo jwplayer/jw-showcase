@@ -4,10 +4,10 @@ linters:
     width: 4
 
   NestingDepth:
-    max_depth: 4
+    max_depth: 5
 
   SelectorDepth:
-    max_depth: 4
+    max_depth: 5
 
   MergeableSelector:
     enabled: false
