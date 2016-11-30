@@ -2,7 +2,9 @@ module.exports = function (grunt) {
 
     var fs       = require('fs'),
         url      = require('url'),
-        template = require('lodash.template');
+        template = require('lodash.template'),
+        pkg      = require(process.cwd() + '/package.json'),
+        libPkg   = require(process.cwd() + '/bower_components/jw-showcase-lib/package.json');
 
     function compile (src, dest, configLocation) {
 
@@ -10,6 +12,9 @@ module.exports = function (grunt) {
             baseUrl  = grunt.option('url') || '/',
             urlParts = url.parse(baseUrl),
             html, compiler;
+
+        config.version = pkg.version;
+        config.libVersion = libPkg.version;
 
         html = fs.readFileSync(src).toString();
 
