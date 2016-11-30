@@ -27,11 +27,10 @@
             'ngSanitize',
             'ngTouch',
             'ui.router',
-            'app.core',
-            'app.dashboard',
-            'app.feed',
-            'app.video'
+            'ionic',
+            'jwShowcase'
         ])
+        .constant('WEB_VERSION', '3.0.0-rc.1')
         .value('config', {})
         .config(config);
 
