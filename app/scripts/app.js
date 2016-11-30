@@ -30,6 +30,7 @@
             'ionic',
             'jwShowcase'
         ])
+        .constant('WEB_VERSION', '3.0.0-rc.1')
         .value('config', {})
         .config(config);
 
