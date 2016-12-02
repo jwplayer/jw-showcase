@@ -6,6 +6,7 @@
     "bannerImage": "images/logo.png",
     "footerText": "Powered by JW Player",
     "backgroundColor": "",
+    "enableContinueWatching": true,
     "searchPlaylist": "r3MhKJyA",
     "recommendationsPlaylist": "wZuMVmMk",
     "featuredPlaylist": "lrYLc95e",
