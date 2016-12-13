@@ -30,8 +30,6 @@ You can use JW Showcase with other content delivery platforms (or your own CDN),
 
 Topics for general users:
 
-Topics for general users:
-
 * [Getting Started](https://github.com/jwplayer/jw-showcase/wiki/Getting-Started)
 * [Deploying JW Showcase](https://github.com/jwplayer/jw-showcase/wiki/Deploying-jw-showcase)
 * [Search engines and social sharing](https://github.com/jwplayer/jw-showcase/wiki/Search-engines-and-social-sharing)
@@ -61,3 +59,5 @@ Topics for advanced users:
 ## Support and Bug Reporting 
 
 To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
+
+v3.0.0-rc.2
