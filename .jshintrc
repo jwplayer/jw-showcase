@@ -53,6 +53,7 @@
     "node": true,
 
     "globals": {
+        "WebVTT": false,
         "angular": false,
         "jwplayer": false,
         "$": false
