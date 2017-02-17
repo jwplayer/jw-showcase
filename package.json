@@ -4,7 +4,7 @@
   "version": "3.0.1",
   "dependencies": {},
   "repository": {
-      "url": "https://github.com/jwplayer/jw-showcase.git"
+    "url": "https://github.com/jwplayer/jw-showcase.git"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -36,6 +36,7 @@
     "load-grunt-tasks": "^3.1.0",
     "lodash.template": "^4.2.5",
     "phantomjs-prebuilt": "^2.1.7",
+    "pre-commit": "^1.2.2",
     "protractor": "^3.3.0",
     "protractor-cucumber-framework": "^0.5.0",
     "selenium-webdriver": "^2.53.2",
@@ -46,6 +47,12 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "test": "grunt test"
-  }
+    "test": "grunt test",
+    "jshint": "jshint -c .jshintrc app/scripts",
+    "scss-lint": "scss-lint -c .scss-lint.yml app/styles"
+  },
+  "pre-commit": [
+      "jshint",
+      "scss-lint"
+  ]
 }
