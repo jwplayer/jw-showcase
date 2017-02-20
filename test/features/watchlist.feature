@@ -13,20 +13,26 @@ Feature: Watchlist
     And I wait until the page has been loaded
     When I click on the card menu button of the first card
     And I click on the add to watchlist button in the card menu
+    Then there should be 1 video in the watchlist
+
+  @desktop @tablet @mobile
+  Scenario: Remove button should be visible if the item is saved in the watchlist
+    Given I am still on the "index" page
+    And I wait until the page has been loaded
+    When I click on the card menu button of the first card
     Then the card menu should show a remove from watchlist button
-    And there should be 1 video in the watchlist
 
   @desktop @tablet @mobile
   Scenario: Remove video from watchlist via the card menu
     Given I am still on the "index" page
     When I click on the remove from watchlist button in the card menu
+    And I click on the card menu button of the first card
     Then the card menu should show an add to watchlist button
 
   @desktop @tablet @mobile
   Scenario: There should be a remove from watchlist button visible in the card top left corner
     Given I am still on the "index" page
     When I click on the add to watchlist button in the card menu
-    And I click on the close button in the card menu
     Then the remove from watchlist button should be visible in the card
 
   @desktop @tablet @mobile
@@ -37,18 +43,18 @@ Feature: Watchlist
 
   @desktop @tablet @mobile
   Scenario: Add video to watchlist via the add to watchlist button on the video page
-    Given I go to the "/video/WXu7kuaW/DqGECHhT" page
+    Given I go to the "/list/WXu7kuaW/video/DqGECHhT" page
     And I wait until the page has been loaded
-    When I click on the add to watchlist button on the video page
+    When I click on the watchlist button in the video toolbar
     And wait for 1 seconds
-    Then the remove from watchlist button should be visible on the video page
+    Then the remove from watchlist button should be visible on the video toolbar
 
   @desktop @tablet @mobile
   Scenario: Remove video from watchlist via the remove from watchlist button on the video page
-    Given I am still on the "/video/WXu7kuaW/DqGECHhT" page
-    When I click on the remove from watchlist button on the video page
+    Given I am still on the "/list/WXu7kuaW/video/DqGECHhT" page
+    When I click on the watchlist button in the video toolbar
     And wait for 1 seconds
-    Then the add to watchlist button should be visible on the video page
+    Then the add to watchlist button should be visible on the video toolbar
 
   @desktop @tablet @mobile
   Scenario: Watch video from the watchlist in the index page
@@ -58,12 +64,6 @@ Feature: Watchlist
       | Iyfst4Se | lrYLc95e |
     And I go to the "index" page
     And I wait until the page has been loaded
-    When I click on the first card in the watchlist slider
-    Then I should navigate to the "/video/watchlist/Iyfst4Se" page
-
-  @desktop @tablet @mobile
-  Scenario: Slider below video should show remaining video's in watchlist
-    Given I am still on the "/video/watchlist/Iyfst4Se" page
-    When I do nothing
-    Then I should see the watchlist below the video
-    And there should be 1 video in the watchlist below the video
+    When I scroll to the watchlist slider
+    And I click on the first card in the watchlist slider
+    Then I should navigate to the "/list/lrYLc95e/video/Iyfst4Se/spotlight" page

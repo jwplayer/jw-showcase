@@ -1,0 +1,898 @@
+{
+    "title": "Default Recommendations Feed",
+    "kind": "FEED",
+    "description": "",
+    "playlist": [
+        {
+            "mediaid": "mFJOL68I",
+            "description": "It\u2019s the beginning of the summer. In a village in the north of Turkey, Lale and her four sisters come home from school, innocently playing with boys. The supposed debauchery of their games causes a scandal with unintended consequences. The family home slowly turns into a prison, classes on housework and cooking replace school, and marriages begin to be arranged. The five sisters, driven by the same desire for freedom, fight back against the limits imposed on them.",
+            "pubdate": 1449848295,
+            "tags": "drama",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/mFJOL68I-320.jpg",
+            "title": "Mustang",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/mFJOL68I.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/mFJOL68I-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/mFJOL68I-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/mFJOL68I-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/mFJOL68I-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/mFJOL68I-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/mFJOL68I-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/mFJOL68I",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=mFJOL68I",
+            "duration": 120
+        },
+        {
+            "mediaid": "Iyfst4Se",
+            "description": "Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d\u2019Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world\u2019s oldest and most trusted institutions.",
+            "pubdate": 1449848296,
+            "tags": "drama",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/Iyfst4Se-320.jpg",
+            "title": "Spotlight",
+            "feedid": "wZuMVmMk",
+            "custom": {
+                "client": "cinedigm",
+                "junction_id": "asdfsdf"
+            },
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/Iyfst4Se.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/Iyfst4Se-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/Iyfst4Se-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/Iyfst4Se-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/Iyfst4Se-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/Iyfst4Se-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "captions",
+                    "file": "https:\/\/content.jwplatform.com\/tracks\/Tlfho8GX.vtt",
+                    "label": "Untitled Captions Track"
+                },
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/Iyfst4Se-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/Iyfst4Se",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=Iyfst4Se",
+            "duration": 151
+        },
+        {
+            "mediaid": "92XQ91bP",
+            "description": "Star Wars: The Force Awakens opens in theaters December 18, 2015. Star Wars: The Force Awakens is directed by J.J. Abrams from a screenplay by Lawrence Kasdan & Abrams, and features a cast including actors John Boyega, Daisy Ridley, Adam Driver, Oscar Isaac, Andy Serkis, Academy Award winner Lupita Nyong\u2019o, Gwendoline Christie, Crystal Clarke, Pip Andersen, Domhnall Gleeson, and Max von Sydow.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun, science fiction",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/92XQ91bP-320.jpg",
+            "title": "Star Wars: The Force Awakens",
+            "feedid": "wZuMVmMk",
+            "custom": {
+                "nvgid": "qwfgqgfwqfgaqf"
+            },
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/92XQ91bP.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/92XQ91bP-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/92XQ91bP",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=92XQ91bP",
+            "duration": 138
+        },
+        {
+            "mediaid": "FV4n0UaB",
+            "description": "Will Smith stars in Concussion, a dramatic thriller based on the incredible true David vs. Goliath story of American immigrant Dr. Bennet Omalu, the brilliant forensic neuropathologist who made the first discovery of CTE, a football-related brain trauma, in a pro player and fought for the truth to be known. Omalu\u2019s emotional quest puts him at dangerous odds with one of the most powerful institutions in the world.",
+            "pubdate": 1449848295,
+            "tags": "drama, thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/FV4n0UaB-320.jpg",
+            "title": "Concussion",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/FV4n0UaB.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/FV4n0UaB-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/FV4n0UaB-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/FV4n0UaB-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/FV4n0UaB-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/FV4n0UaB-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/FV4n0UaB-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/FV4n0UaB",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=FV4n0UaB",
+            "duration": 148
+        },
+        {
+            "mediaid": "127Vi5Xd",
+            "description": "In an adaptation of Patricia Highsmith\u2019s seminal novel The Price of Salt, CAROL follows two women from very different backgrounds who find themselves in an unexpected love affair in 1950s New York. As conventional norms of the time challenge their undeniable attraction, an honest story emerges to reveal the resilience of the heart in the face of change.",
+            "pubdate": 1449848295,
+            "tags": "drama, romance",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/127Vi5Xd-320.jpg",
+            "title": "Carol",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/127Vi5Xd.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/127Vi5Xd-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/127Vi5Xd-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/127Vi5Xd-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/127Vi5Xd-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/127Vi5Xd-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/127Vi5Xd-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/127Vi5Xd",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=127Vi5Xd",
+            "duration": 90
+        },
+        {
+            "mediaid": "RKWC0dVe",
+            "description": "EYE IN THE SKY stars Helen Mirren as Colonel Katherine Powell, a UK-based military officer in command of a top-secret drone operation to capture terrorists in Kenya. Through remote surveillance and on-the-ground intel, Powell discovers that the targets are planning a suicide bombing, and the mission escalates from \u201ccapture\u201d to \u201ckill.\u201d But as American pilot Steve Watts (Aaron Paul) is about to engage, a nine-year old girl enters the kill zone, triggering an international dispute reaching the highest levels of US and British government over the moral, political, and personal implications of modern warfare.",
+            "pubdate": 1449848295,
+            "tags": "drama, thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/RKWC0dVe-320.jpg",
+            "title": "Eye in the Sky",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/RKWC0dVe.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RKWC0dVe-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RKWC0dVe-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RKWC0dVe-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RKWC0dVe-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RKWC0dVe-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/RKWC0dVe-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/RKWC0dVe",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=RKWC0dVe",
+            "duration": 147
+        },
+        {
+            "mediaid": "uNXCVIsW",
+            "description": "Touched With Fire stars Katie Homes and Luke Kirby as two poets with bipolar disorder whose art is fueled by their emotional extremes. When they meet in a treatment facility, their chemistry is instant and intense driving each other's mania to new heights. They pursue their passion which breaks outside the bounds of sanity, swinging them from fantastical highs to tormented lows until they ultimately must choose between sanity and love.",
+            "pubdate": 1449848296,
+            "tags": "drama",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/uNXCVIsW-320.jpg",
+            "title": "Touched with Fire",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/uNXCVIsW.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/uNXCVIsW-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/uNXCVIsW-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/uNXCVIsW-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/uNXCVIsW-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/uNXCVIsW-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/uNXCVIsW-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/uNXCVIsW",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=uNXCVIsW",
+            "duration": 138
+        },
+        {
+            "mediaid": "RltV8MtT",
+            "description": "The talents of three of the world\u2019s greatest storytellers\u2014Roald Dahl, Walt Disney and Steven Spielberg\u2014finally unite to bring Dahl\u2019s beloved classic \u201cThe BFG\u201d to life. Directed by Spielberg, Disney\u2019s \u201cThe BFG\u201d tells the imaginative story of a young girl and the Giant who introduces her to the wonders and perils of Giant Country.",
+            "pubdate": 1449848296,
+            "tags": "fantasy, action and adventure and fun",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/RltV8MtT-320.jpg",
+            "title": "The BFG",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/RltV8MtT.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/RltV8MtT-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/RltV8MtT",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=RltV8MtT",
+            "duration": 110
+        },
+        {
+            "mediaid": "LjBvF1FX",
+            "description": "Set in the world of NYC publishing, a young book editor is forced to confront a troubling part of her past when a bestselling author re-enters her life.",
+            "pubdate": 1449848296,
+            "tags": "drama",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/LjBvF1FX-320.jpg",
+            "title": "The Girl in the Book",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/LjBvF1FX.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/LjBvF1FX-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/LjBvF1FX-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/LjBvF1FX-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/LjBvF1FX-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/LjBvF1FX-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/LjBvF1FX-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/LjBvF1FX",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=LjBvF1FX",
+            "duration": 137
+        },
+        {
+            "mediaid": "easrc7er",
+            "description": "After the earth-shattering revelations of INSURGENT, Tris must escape with Four and go beyond the wall enclosing Chicago. For the first time ever, they will leave the only city and family they have ever known in order to find a peaceful solution for their embroiled city. Once outside, old discoveries are quickly rendered meaningless with the revelation of shocking new truths.",
+            "pubdate": 1449848295,
+            "tags": "fantasy, action and adventure and fun",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/easrc7er-320.jpg",
+            "title": "The Divergent Series: Allegiant",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/easrc7er.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/easrc7er-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/easrc7er",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=easrc7er",
+            "duration": 134
+        },
+        {
+            "mediaid": "rfmZrDyS",
+            "description": "Four friends stumble into a deal too good to refuse. But when the investment goes bad, they learn that part of their funding came from a notoriously ruthless crime boss\u2026 and it\u2019s payback time. Now, they must successfully kidnap a family member of a rival kingpin in order to erase the life-threatening debt. In way over their heads, if they can complete the assigned task without screwing up, they just might escape with their lives.",
+            "pubdate": 1449848295,
+            "tags": "thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/rfmZrDyS-320.jpg",
+            "title": "Criminal Activities",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/rfmZrDyS.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/rfmZrDyS-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/rfmZrDyS-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/rfmZrDyS-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/rfmZrDyS-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/rfmZrDyS-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/rfmZrDyS-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/rfmZrDyS",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=rfmZrDyS",
+            "duration": 125
+        },
+        {
+            "mediaid": "lUGmHThO",
+            "description": "When a detective (Keanu Reeves) starts to investigate his partner\u2019s shocking death, he uncovers disturbing evidence of police corruption and a dangerous secret involving an unlikely young woman (Ana De Armas).",
+            "pubdate": 1449848295,
+            "tags": "thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/lUGmHThO-320.jpg",
+            "title": "Exposed",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/lUGmHThO.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/lUGmHThO-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/lUGmHThO-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/lUGmHThO-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/lUGmHThO-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/lUGmHThO-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/lUGmHThO-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/lUGmHThO",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=lUGmHThO",
+            "duration": 120
+        },
+        {
+            "mediaid": "xdhO4tVg",
+            "description": "A newly married couple (Dakota Fanning and Theo James) are forced to navigate the all-consuming interest of a powerful, mysterious, and possessive philanthropist (brilliantly played by Richard Gere).",
+            "pubdate": 1449848295,
+            "tags": "thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/xdhO4tVg-320.jpg",
+            "title": "The Benefactor",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/xdhO4tVg.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/xdhO4tVg-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/xdhO4tVg-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/xdhO4tVg-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/xdhO4tVg-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/xdhO4tVg-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/xdhO4tVg-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/xdhO4tVg",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=xdhO4tVg",
+            "duration": 133
+        },
+        {
+            "mediaid": "ghZEPsKo",
+            "description": "Jack (Henry Rollins) is in a rut. His existence has been whittled down to sleeping and watching TV, and he sees the human race as little more than meat with a pulse. When Jack suddenly finds his long-lost daughter taken by the city\u2019s crime syndicate, he must combat his inner demons as he embarks on a bloody war path to seek revenge and save her.",
+            "pubdate": 1449848295,
+            "tags": "drama, thriller",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/ghZEPsKo-320.jpg",
+            "title": "He Never Died",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/ghZEPsKo.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ghZEPsKo-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ghZEPsKo-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ghZEPsKo-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ghZEPsKo-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ghZEPsKo-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/ghZEPsKo-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/ghZEPsKo",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=ghZEPsKo",
+            "duration": 134
+        },
+        {
+            "mediaid": "sky4zhJe",
+            "description": "When a man meets a young girl in a parking lot he attempts to help her avoid a bleak destiny by initiating her into the beauty of the outside world. The journey shakes them in ways neither expects.",
+            "pubdate": 1449848295,
+            "tags": "drama",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/sky4zhJe-320.jpg",
+            "title": "Lamb",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/sky4zhJe.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/sky4zhJe-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/sky4zhJe-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/sky4zhJe-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/sky4zhJe-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/sky4zhJe-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/sky4zhJe-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/sky4zhJe",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=sky4zhJe",
+            "duration": 120
+        },
+        {
+            "mediaid": "wVwRwdZR",
+            "description": "Four small-town losers stumble across an alien crash site containing an incredible battle suit. One round of bickering and a quick scuffle later, they each find themselves wearing a piece of the suit, which has genetically bound itself to them. Now, they must work together as one to save humanity.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun, science fiction, comedy",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/wVwRwdZR-320.jpg",
+            "title": "Lazer Team",
+            "feedid": "wZuMVmMk",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/wVwRwdZR.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/wVwRwdZR-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/wVwRwdZR",
+            "recommendations": "\/\/content.jwplatform.com\/feed.json?feed_id=wZuMVmMk&related_media_id=wVwRwdZR",
+            "duration": 149
+        }
+    ],
+    "feedid": "wZuMVmMk"
+}

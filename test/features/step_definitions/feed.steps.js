@@ -16,14 +16,6 @@
 
 var stepsDefinition = function () {
 
-    this.When(/^I click on the header back button$/, function (callback) {
-
-        browser
-            .findElement(by.css('.jw-header .jw-button'))
-            .click()
-            .then(callback);
-    });
-
     this.When(/^I click on the first video in the grid overview$/, function (callback) {
 
         browser
@@ -32,13 +24,23 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
-    this.Then(/^the header title should be "([^"]*)"$/, function (title, callback) {
+    this.Then(/^the title in the toolbar should be "([^"]*)"$/, function (title, callback) {
 
         browser
-            .findElement(by.css('.jw-header .jw-header-title'))
+            .findElement(by.css('.jw-toolbar .jw-toolbar-title'))
             .getText()
             .then(function (text) {
                 expect(text).to.equal(title);
+                callback();
+            });
+    });
+
+    this.Then(/^the feed not found page should be visible$/, function (callback) {
+
+        browser
+            .getCurrentUrl()
+            .then(function (url) {
+                expect(url).to.equal(browser.baseUrl + '/feed-not-found');
                 callback();
             });
     });

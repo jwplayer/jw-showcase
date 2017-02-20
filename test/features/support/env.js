@@ -39,7 +39,7 @@ var configure = function () {
                     browser.browserName = capabilities.get('browserName');
                 });
         }
-    })
+    });
 };
 
 module.exports = configure;
