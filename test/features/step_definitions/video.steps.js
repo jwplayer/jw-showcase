@@ -61,14 +61,31 @@ var stepsDefinition = function () {
 
         browser
             .executeAsyncScript(function (callback) {
-                var called = false;
-                jwplayer().on('time', function (evt) {
-                    if (!called && evt.position > 2) {
-                        called = true;
+                jwplayer().on('time', function onTime (evt) {
+                    if (evt.position > 1) {
+                        jwplayer().off('time', onTime);
                         callback();
                     }
                 });
             })
+            .then(callback);
+    });
+
+    this.When(/^I seek to the end of video$/, function (callback) {
+
+        browser
+            .executeScript(function () {
+                jwplayer().seek(jwplayer().getDuration());
+            })
+            .then(callback);
+    });
+
+    this.When(/^I seek to (\d+) seconds/, function (position, callback) {
+
+        browser
+            .executeScript(function (pos) {
+                jwplayer().seek(pos);
+            }, [position])
             .then(callback);
     });
 
@@ -80,15 +97,6 @@ var stepsDefinition = function () {
                 expect(url).to.equal(browser.baseUrl + '/video-not-found');
                 callback();
             });
-    });
-
-    this.Then(/^seek to the end of video$/, function (callback) {
-
-        browser
-            .executeScript(function () {
-                jwplayer().seek(jwplayer().getDuration());
-            })
-            .then(callback);
     });
 
     this.Then(/^I move my mouse over the video$/, function (callback) {
