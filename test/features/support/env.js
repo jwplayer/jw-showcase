@@ -25,7 +25,8 @@ var configure = function () {
         browser.executeScript(function () {
             try {
                 window.localStorage.clear();
-            }catch(e) {}
+            } catch (e) {
+            }
         });
 
     });
@@ -39,7 +40,17 @@ var configure = function () {
                     browser.browserName = capabilities.get('browserName');
                 });
         }
-    })
+    });
+
+    // set default config to config.json in fixtures directory
+    this.Before(function () {
+
+        return browser.addMockModule('app', function () {
+            angular.module('app').run(function () {
+                window.configLocation = './fixtures/config/config.json';
+            });
+        });
+    });
 };
 
 module.exports = configure;

@@ -100,7 +100,7 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/the video progress of mediaid "([^"]*)" and feedid "([^"]*)" should be removed/, function (mediaid, feedid, callback) {
+    this.Then(/the video progress of mediaid "([^"]*)" and feedid "([^"]*)" should not be saved/, function (mediaid, feedid, callback) {
 
         browser
             .executeScript(function () {
@@ -152,7 +152,7 @@ var stepsDefinition = function () {
 
     this.Then(/the first card in "Continue watching" slider should show "([^"]*)" watch progress/, function (width, callback) {
 
-        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card .jw-card-watch-progress-indicator'))
+        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card .jw-card-watch-progress'))
             .getAttribute('style')
             .then(function (style) {
                 expect(style).to.contains('width: ' + width);

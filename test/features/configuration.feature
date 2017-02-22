@@ -12,7 +12,7 @@ Feature: Configuration
 
   @mobile @tablet @desktop
   Scenario: I use a custom config file
-    Given I set configLocation to "./fixtures/customConfig.json"
+    Given I set configLocation to "./fixtures/config/customConfig.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then the logo should use "/fixtures/jwplayer-logo.png" as src
@@ -23,14 +23,14 @@ Feature: Configuration
 
   @mobile @tablet @desktop
   Scenario: I use an invalid config file
-    Given I set configLocation to "./fixtures/invalidConfig.json"
+    Given I set configLocation to "./fixtures/config/invalidConfig.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then I should see an error with message "Failed to load config file"
 
   @mobile @tablet @desktop
   Scenario: I use an non existing config file
-    Given I set configLocation to "./fixtures/thisfileisnothere.json"
+    Given I set configLocation to "./fixtures/config/notthere.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then I should see an error with message "Failed to load config file"
@@ -55,17 +55,3 @@ Feature: Configuration
     And I go to the "index" page
     When I do nothing
     Then the default sliders should not be visible
-
-  @mobile @tablet @desktop
-  Scenario: I use an wrong feedId in featuredPlaylist
-    Given I set configLocation to "./fixtures/wrongFeaturedPlaylistConfig.json"
-    And I go to the "index" page
-    When I do nothing
-    Then I should see an error with message "Feed with id `11223344` does not exist"
-
-  @mobile @tablet @desktop
-  Scenario: I use an wrong feedId in playlists
-    Given I set configLocation to "./fixtures/wrongPlaylistsConfig.json"
-    And I go to the "index" page
-    When I do nothing
-    Then I should see an error with message "Feed with id `55667788` does not exist"

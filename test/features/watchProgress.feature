@@ -8,20 +8,24 @@ Feature: Watch progress
 
   @desktop @tablet @mobile
   Scenario: Save video watch progress while playing video
-    Given I go to the "/video/lrYLc95e/Iyfst4Se" page
+    Given I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
     And I wait until the page has been loaded
     When I start video playback
     And I wait until the video starts playing
+    And I seek to 30 seconds
     Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should be saved
 
   @desktop @tablet @mobile
   Scenario: Remove video watch progress after 95% watch time
-    Given I go to the "/video/lrYLc95e/Iyfst4Se" page
+    Given I have the following saved watch progress:
+      | mediaid  | feedid   | progress | lastWatched | offset |
+      | Iyfst4Se | lrYLc95e | 0.75     | now         | 0      |
+    And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
     And I wait until the page has been loaded
     When I start video playback
-    And seek to the end of video
+    And I seek to the end of video
     And wait for 2 seconds
-    Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should be removed
+    Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should not be saved
 
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page
@@ -60,9 +64,10 @@ Feature: Watch progress
   Scenario: Start video at last known position
     Given I have the following saved watch progress:
       | mediaid  | feedid   | progress | lastWatched   | offset |
-      | LjBvF1FX | lrYLc95e | 0.75     | now           | -10    |
-    And I go to the "/video/lrYLc95e/LjBvF1FX" page
+      | LjBvF1FX | lrYLc95e | 0.5      | now           | -10    |
+    And I go to the "/list/lrYLc95e/video/LjBvF1FX/" page
     When I wait until the page has been loaded
     And I start video playback
-    And wait for 1 seconds
-    Then the video progress should be greater than 75%
+    And I wait until the video starts playing
+    And wait for 2 seconds
+    And the video progress should be greater than 50%

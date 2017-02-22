@@ -36,18 +36,10 @@ var stepsDefinition = function () {
                 }
 
                 browser
-                    .findElement(by.css('.jwplayer .jw-display-icon-container'))
+                    .findElement(by.css('.jwplayer .jw-icon-display'))
                     .click()
                     .then(delay(callback, 2000));
             });
-    });
-
-    this.When(/^I click on the navigate back chevron$/, function (callback) {
-
-        browser
-            .findElement(by.css('.jw-button-back'))
-            .click()
-            .then(delay(callback, 2000));
     });
 
     this.When(/^I click on the mobile video viewport$/, function (callback) {
@@ -69,10 +61,9 @@ var stepsDefinition = function () {
 
         browser
             .executeAsyncScript(function (callback) {
-                var called = false;
-                jwplayer().on('time', function (evt) {
-                    if (!called && evt.position > 2) {
-                        called = true;
+                jwplayer().on('time', function onTime (evt) {
+                    if (evt.position > 1) {
+                        jwplayer().off('time', onTime);
                         callback();
                     }
                 });
@@ -80,23 +71,32 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
-    this.Then(/^the 404 page should be visible$/, function (callback) {
-
-        browser
-            .getCurrentUrl()
-            .then(function (url) {
-                expect(url).to.equal(browser.baseUrl + '/404');
-                callback();
-            });
-    });
-
-    this.Then(/^seek to the end of video$/, function (callback) {
+    this.When(/^I seek to the end of video$/, function (callback) {
 
         browser
             .executeScript(function () {
                 jwplayer().seek(jwplayer().getDuration());
             })
             .then(callback);
+    });
+
+    this.When(/^I seek to (\d+) seconds/, function (position, callback) {
+
+        browser
+            .executeScript(function (pos) {
+                jwplayer().seek(pos);
+            }, [position])
+            .then(callback);
+    });
+
+    this.Then(/^the video not found page should be visible$/, function (callback) {
+
+        browser
+            .getCurrentUrl()
+            .then(function (url) {
+                expect(url).to.equal(browser.baseUrl + '/video-not-found');
+                callback();
+            });
     });
 
     this.Then(/^I move my mouse over the video$/, function (callback) {
@@ -124,35 +124,6 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^the "([^"]*)" share button should contain the correct href$/, function (type, callback) {
-
-        var nth,
-            url;
-
-        switch (type) {
-        case 'facebook':
-            nth = 1;
-            url = FACEBOOK_SHARE_URL;
-            break;
-        case 'twitter':
-            nth = 2;
-            url = TWITTER_SHARE_URL;
-            break;
-        case 'email':
-            nth = 3;
-            url = EMAIL_SHARE_URL;
-            break;
-        }
-
-        browser
-            .findElement(by.css('.jw-button-share:nth-child(' + nth + ')'))
-            .getAttribute('href')
-            .then(function (elementHref) {
-                expect(elementHref).to.contain(url);
-                callback();
-            });
-    });
-
     this.Then(/^the index loads$/, function (callback) {
 
         browser
@@ -174,10 +145,10 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^the video description should show the duration$/, function (callback) {
+    this.Then(/^the video details should show the duration$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-meta .jw-meta-duration'))
+            .findElement(by.css('.jw-video-details .jw-video-duration'))
             .getText()
             .then(function (txt) {
                 var text = txt.trim().split(' ');
@@ -190,11 +161,7 @@ var stepsDefinition = function () {
     this.Then(/^the play icon should be visible$/, function (callback) {
 
         browser
-            .sleep(1000);
-
-        browser
-            .findElement(by.css('.jw-display-icon-container'))
-            .findElement(by.css('.jw-icon-display'))
+            .findElement(by.css('.jw-display-icon-container .jw-icon-display'))
             .isDisplayed()
             .then(function (isDisplayed) {
                 expect(isDisplayed).to.equal(true);
@@ -205,7 +172,7 @@ var stepsDefinition = function () {
     this.Then(/^the video title and description should be visible$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-meta'))
+            .findElement(by.css('.jw-video-details'))
             .isDisplayed()
             .then(function (isDisplayed) {
                 expect(isDisplayed).to.equal(true);
