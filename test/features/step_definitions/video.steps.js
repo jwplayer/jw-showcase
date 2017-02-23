@@ -136,12 +136,23 @@ var stepsDefinition = function () {
 
     this.Then(/^the related videos title is shown$/, function (callback) {
 
-        browser
-            .findElement(by.css('.jw-card-slider-title'))
-            .getAttribute('innerText')
-            .then(function (txt) {
-                expect(txt.trim()).to.equal('More like this (7)');
-                callback();
+        scrollToElement('.jw-row[ng-if="vm.feed"]')
+            .then(function () {
+                browser
+                    .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+                    .findElement(by.css('.jw-card-slider-flag-default'))
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .getText()
+                    .then(function (title) {
+
+                        // title can contain an icon and multiple whitespaces
+                        title = title
+                            .replace(/\s{2,}/g, ' ')
+                            .trim();
+
+                        expect(title).to.equal('More like this (9)');
+                        callback();
+                    });
             });
     });
 

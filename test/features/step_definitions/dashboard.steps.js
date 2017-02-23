@@ -263,6 +263,12 @@ var stepsDefinition = function () {
             .findElement(by.css('.jw-card-slider-title'))
             .getText()
             .then(function (title) {
+
+                // title can contain an icon and multiple whitespaces
+                title = title
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
+
                 expect(title).to.equal(expectedTitle);
                 callback();
             });

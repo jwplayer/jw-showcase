@@ -27,4 +27,4 @@ Feature: Feed page
   Scenario: Watch video from the overview
     Given I go to the "/list/WXu7kuaW" page
     When I click on the first video in the grid overview
-    Then I should navigate to the "/list/WXu7kuaW/video/DqGECHhT/the-bfg" page
+    Then I should navigate to the "/list/WXu7kuaW/video/DqGECHhT/central-intelligence" page
