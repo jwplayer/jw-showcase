@@ -31,7 +31,7 @@ module.exports = function (grunt) {
         'clean:reports',
         'compass',
         'ngtemplates:server',
-        'template:server',
+        'template:serverE2E',
         'copy:icons',
         'connect:test'
     ]);

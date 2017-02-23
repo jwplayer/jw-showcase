@@ -30,7 +30,7 @@
             'ionic',
             'jwShowcase'
         ])
-        .constant('WEB_VERSION', '3.0.1')
+        .constant('WEB_VERSION', '3.1.0-beta')
         .config(config);
 
     config.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];

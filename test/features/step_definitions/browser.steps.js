@@ -64,10 +64,13 @@ var stepsDefinition = function () {
 
     this.When(/^I click on the back button in the toolbar$/, function (callback) {
 
-        browser
-            .findElement(by.css('.jw-toolbar .jw-button-back'))
-            .click()
-            .then(callback);
+        scrollToElement('.jw-toolbar')
+            .then(function () {
+                browser
+                    .findElement(by.css('.jw-toolbar .jw-button-back'))
+                    .click()
+                    .then(callback);
+            });
     });
 
     this.Then(/^I should navigate to the "([^"]*)" page/, function (arg1, callback) {

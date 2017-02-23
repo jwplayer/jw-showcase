@@ -85,14 +85,14 @@ Feature: Dashboard page
   Scenario: As a user I want to see the title with video count of the feed
     Given I am still on the "index" page
     When I wait until the page has been loaded
-    Then the title of the first default slider should be "Featured Trailers  (7)"
+    Then the title of the first default slider should be "Featured Trailers (8)"
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the title with video count of the feed
     Given I am still on the "index" page
     And I scroll to the second default slider
     When I wait until the page has been loaded
-    Then the title of the second default slider should be "Comedy  (5)"
+    Then the title of the second default slider should be "Comedy (5)"
 
   @desktop
   Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
