@@ -3,6 +3,7 @@
     "camelcase": true,
     "curly": true,
     "eqeqeq": true,
+    "esversion": 6,
     "forin": true,
     "freeze": true,
     "immed": true,
@@ -16,12 +17,12 @@
     "plusplus": false,
     "quotmark": "single",
     "undef": true,
-    "unused": true,
+    "unused": false,
     "strict": false,
-    "maxparams": 8,
-    "maxdepth": 2,
-    "maxstatements": 34,
-    "maxcomplexity": 5,
+    "maxparams": 20,
+    "maxdepth": 5,
+    "maxstatements": 40,
+    "maxcomplexity": 8,
     "maxlen": 120,
     "asi": false,
     "boss": false,
@@ -53,8 +54,10 @@
     "node": true,
 
     "globals": {
+        "WebVTT": false,
         "angular": false,
         "jwplayer": false,
-        "$": false
+        "$": false,
+        "ionic": false
     }
 }

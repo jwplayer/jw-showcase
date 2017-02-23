@@ -31,7 +31,7 @@ var stepsDefinition = function () {
     this.Then(/^the logo should use "([^"]*)" as src$/, function (arg1, callback) {
 
         browser
-            .findElement(by.css('.jw-header-logo > img'))
+            .findElement(by.css('.jw-header-logo'))
             .getAttribute('src')
             .then(function (src) {
                 expect(src).to.contain(arg1);
@@ -63,8 +63,9 @@ var stepsDefinition = function () {
     this.Then(/^the footer text should be "([^"]*)"$/, function (arg1, callback) {
 
         browser
-            .findElement(by.css('.jw-footer'))
-            .getText()
+            .executeScript(function () {
+                return document.querySelector('.jw-footer > p').textContent;
+            })
             .then(function (content) {
                 expect(content).to.equal(arg1);
                 callback();
@@ -78,6 +79,50 @@ var stepsDefinition = function () {
             .getAttribute('class')
             .then(function (classNames) {
                 expect(classNames).to.contain('jw-theme-' + arg1);
+                callback();
+            });
+    });
+
+    this.Then(/^the featured slider should not be visible/, function (callback) {
+
+        browser
+            .findElement(by.css('.featured .jw-card-slider.jw-card-slider-flag-featured'))
+            .then(function () {
+                expect(true).to.equal(false);
+                callback();
+            }, function () {
+                expect(false).to.equal(false);
+                callback();
+            });
+    });
+
+    this.Then(/^the default sliders should not be visible/, function (callback) {
+
+        browser
+            .findElements(by.css('.feed .jw-card-slider-flag-default'))
+            .then(function (elements) {
+                expect(elements.length).to.equal(0);
+                callback();
+            });
+    });
+
+    this.Then(/^the featured items should not be visible/, function (callback) {
+
+        browser
+            .findElements(by.css('.featured .jw-card-flag-featured'))
+            .then(function (elements) {
+                expect(elements.length).to.equal(0);
+                callback();
+            });
+    });
+
+    this.Then(/^I should see an error with message "([^"]*)"/, function (arg1, callback) {
+
+        browser
+            .findElement(by.css('.jw-modal-message'))
+            .getText()
+            .then(function (textContent) {
+                expect(textContent).to.equal(arg1);
                 callback();
             });
     });

@@ -1,0 +1,323 @@
+{
+    "description": "Comedy playlist description.",
+    "playlist": [
+        {
+            "description": "\u201cThe Nice Guys\u201d takes place in 1970s Los Angeles, when down-on-his-luck private eye Holland March (Gosling) and hired enforcer Jackson Healy (Crowe) must work together to solve the case of a missing girl and the seemingly unrelated death of a porn star. During their investigation, they uncover a shocking conspiracy that reaches up to the highest circles of power.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,comedy",
+            "image": "//content.jwplatform.com/thumbs/co3rxpv9-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/co3rxpv9.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/co3rxpv9-AgylS15n.mp4",
+                    "duration": 153,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/co3rxpv9-8LSW5F2t.mp4",
+                    "duration": 153,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/co3rxpv9-PA9rXzRh.mp4",
+                    "duration": 153,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/co3rxpv9-p3ZNjGCa.mp4",
+                    "duration": 153,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/co3rxpv9-pSu3VlhO.m4a",
+                    "duration": 153,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/co3rxpv9-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/co3rxpv9",
+            "duration": 153,
+            "mediaid": "co3rxpv9",
+            "title": "The Nice Guys",
+            "custom": {}
+        },
+        {
+            "description": "For their fifth fully-animated feature-film collaboration, Illumination Entertainment and Universal Pictures present The Secret Life of Pets, a comedy about the lives our pets lead after we leave for work or school each day.",
+            "pubdate": 1449848296,
+            "tags": "comedy",
+            "image": "//content.jwplatform.com/thumbs/4yN3Zspm-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/4yN3Zspm.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-AgylS15n.mp4",
+                    "duration": 97,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-8LSW5F2t.mp4",
+                    "duration": 97,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-PA9rXzRh.mp4",
+                    "duration": 97,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-p3ZNjGCa.mp4",
+                    "duration": 97,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-pSu3VlhO.m4a",
+                    "duration": 97,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/4yN3Zspm-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/4yN3Zspm",
+            "duration": 97,
+            "mediaid": "4yN3Zspm",
+            "title": "The Secret Life of Pets",
+            "custom": {}
+        },
+        {
+            "description": "The story follows a one-time bullied geek who grew up to be a lethal CIA agent (Johnson), coming home for his high school reunion. Claiming to be on a top-secret case, he enlists the help of the former \u201cbig man on campus\u201d (Hart), now an accountant who misses his glory days. But before the staid numbers-cruncher realizes what he\u2019s getting into, it\u2019s too late to get out, as his increasingly unpredictable new friend drags him through a world of shoot-outs, double-crosses and espionage that could get them both killed in more ways than he can count.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun,comedy",
+            "image": "//content.jwplatform.com/thumbs/DqGECHhT-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/DqGECHhT.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-AgylS15n.mp4",
+                    "duration": 109,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-8LSW5F2t.mp4",
+                    "duration": 109,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-PA9rXzRh.mp4",
+                    "duration": 109,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-p3ZNjGCa.mp4",
+                    "duration": 109,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-pSu3VlhO.m4a",
+                    "duration": 109,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/DqGECHhT-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/DqGECHhT",
+            "duration": 109,
+            "mediaid": "DqGECHhT",
+            "title": "Central Intelligence",
+            "custom": {}
+        },
+        {
+            "description": "After a lifetime of being overlooked and ignored, a woman of a certain age finds her world turned upside down by a handsome new co-worker and a self-help seminar that inspires her to take a chance on love in Hello, My Name is Doris, a witty and compassionate late-life coming-of-age-story. When Doris Miller (Sally Field) meets John Fremont (Max Greenfield), her company\u2019s hip new art director, sparks fly\u2014at least for Doris.",
+            "pubdate": 1449848295,
+            "tags": "comedy",
+            "image": "//content.jwplatform.com/thumbs/dNx9iB5T-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/dNx9iB5T.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/dNx9iB5T-AgylS15n.mp4",
+                    "duration": 149,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/dNx9iB5T-8LSW5F2t.mp4",
+                    "duration": 149,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/dNx9iB5T-PA9rXzRh.mp4",
+                    "duration": 149,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/dNx9iB5T-p3ZNjGCa.mp4",
+                    "duration": 149,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/dNx9iB5T-pSu3VlhO.m4a",
+                    "duration": 149,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/dNx9iB5T-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/dNx9iB5T",
+            "duration": 149,
+            "mediaid": "dNx9iB5T",
+            "title": "Hello My Name is Doris",
+            "custom": {}
+        },
+        {
+            "description": "Four small-town losers stumble across an alien crash site containing an incredible battle suit. One round of bickering and a quick scuffle later, they each find themselves wearing a piece of the suit, which has genetically bound itself to them. Now, they must work together as one to save humanity.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun,comedy,science fiction",
+            "image": "//content.jwplatform.com/thumbs/wVwRwdZR-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/wVwRwdZR.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/wVwRwdZR-AgylS15n.mp4",
+                    "duration": 149,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/wVwRwdZR-8LSW5F2t.mp4",
+                    "duration": 149,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/wVwRwdZR-PA9rXzRh.mp4",
+                    "duration": 149,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/wVwRwdZR-p3ZNjGCa.mp4",
+                    "duration": 149,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/wVwRwdZR-pSu3VlhO.m4a",
+                    "duration": 149,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/wVwRwdZR-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/wVwRwdZR",
+            "duration": 149,
+            "mediaid": "wVwRwdZR",
+            "title": "Lazer Team",
+            "custom": {}
+        }
+    ],
+    "title": "Comedy",
+    "kind": "dynamic",
+    "feedid": "Q352cyuc"
+}

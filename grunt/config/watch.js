@@ -1,7 +1,7 @@
 module.exports = {
     js:         {
         files:   ['<%= config.app %>/scripts/**/*.js', 'bower_components/jw-showcase-lib/js/**/*.js'],
-        tasks:   ['newer:jshint:all'],
+        tasks:   [],
         options: {
             livereload: '<%= connect.options.livereload %>'
         }

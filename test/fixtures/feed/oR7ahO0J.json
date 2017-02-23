@@ -1,0 +1,442 @@
+{
+    "title": "Action and Adventure",
+    "kind": "DYNAMIC",
+    "description": "Action and adventure playlist description.",
+    "playlist": [
+        {
+            "mediaid": "co3rxpv9",
+            "description": "\u201cThe Nice Guys\u201d takes place in 1970s Los Angeles, when down-on-his-luck private eye Holland March (Gosling) and hired enforcer Jackson Healy (Crowe) must work together to solve the case of a missing girl and the seemingly unrelated death of a porn star. During their investigation, they uncover a shocking conspiracy that reaches up to the highest circles of power.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun, comedy, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/co3rxpv9-320.jpg",
+            "title": "The Nice Guys",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/co3rxpv9.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/co3rxpv9-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/co3rxpv9-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/co3rxpv9-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/co3rxpv9-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/co3rxpv9-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/co3rxpv9-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/co3rxpv9",
+            "duration": 153
+        },
+        {
+            "mediaid": "92XQ91bP",
+            "description": "Star Wars: The Force Awakens opens in theaters December 18, 2015. Star Wars: The Force Awakens is directed by J.J. Abrams from a screenplay by Lawrence Kasdan & Abrams, and features a cast including actors John Boyega, Daisy Ridley, Adam Driver, Oscar Isaac, Andy Serkis, Academy Award winner Lupita Nyong\u2019o, Gwendoline Christie, Crystal Clarke, Pip Andersen, Domhnall Gleeson, and Max von Sydow.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun, science fiction, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/92XQ91bP-320.jpg",
+            "title": "Star Wars: The Force Awakens",
+            "feedid": "oR7ahO0J",
+            "custom": {
+                "nvgid": "qwfgqgfwqfgaqf"
+            },
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/92XQ91bP.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/92XQ91bP-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/92XQ91bP-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/92XQ91bP",
+            "duration": 138
+        },
+        {
+            "mediaid": "RltV8MtT",
+            "description": "The talents of three of the world\u2019s greatest storytellers\u2014Roald Dahl, Walt Disney and Steven Spielberg\u2014finally unite to bring Dahl\u2019s beloved classic \u201cThe BFG\u201d to life. Directed by Spielberg, Disney\u2019s \u201cThe BFG\u201d tells the imaginative story of a young girl and the Giant who introduces her to the wonders and perils of Giant Country.",
+            "pubdate": 1449848296,
+            "tags": "fantasy, action and adventure and fun, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/RltV8MtT-320.jpg",
+            "title": "The BFG",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/RltV8MtT.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/RltV8MtT-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/RltV8MtT-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/RltV8MtT",
+            "duration": 110
+        },
+        {
+            "mediaid": "ulIvytGU",
+            "description": "Mankind faces a new threat as Batman (Ben Affleck) embarks on a personal vendetta against Superman (Henry Cavill).",
+            "pubdate": 1449848295,
+            "tags": "fantasy, action and adventure and fun, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/ulIvytGU-320.jpg",
+            "title": "Batman v Superman: Dawn of Justice",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/ulIvytGU.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ulIvytGU-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ulIvytGU-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ulIvytGU-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ulIvytGU-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/ulIvytGU-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/ulIvytGU-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/ulIvytGU",
+            "duration": 181
+        },
+        {
+            "mediaid": "wVwRwdZR",
+            "description": "Four small-town losers stumble across an alien crash site containing an incredible battle suit. One round of bickering and a quick scuffle later, they each find themselves wearing a piece of the suit, which has genetically bound itself to them. Now, they must work together as one to save humanity.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun, science fiction, comedy, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/wVwRwdZR-320.jpg",
+            "title": "Lazer Team",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/wVwRwdZR.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/wVwRwdZR-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/wVwRwdZR-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/wVwRwdZR",
+            "duration": 149
+        },
+        {
+            "mediaid": "hAZEPou7",
+            "description": "Ethan and team take on their most impossible mission yet, eradicating the Syndicate\u2014an international rogue organization as highly skilled as they are, committed to destroying the IMF.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/hAZEPou7-320.jpg",
+            "title": "Mission Impossible: Rogue Nation",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/hAZEPou7.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/hAZEPou7-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/hAZEPou7-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/hAZEPou7-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/hAZEPou7-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/hAZEPou7-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/hAZEPou7-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/hAZEPou7",
+            "duration": 151
+        },
+        {
+            "mediaid": "easrc7er",
+            "description": "After the earth-shattering revelations of INSURGENT, Tris must escape with Four and go beyond the wall enclosing Chicago. For the first time ever, they will leave the only city and family they have ever known in order to find a peaceful solution for their embroiled city. Once outside, old discoveries are quickly rendered meaningless with the revelation of shocking new truths.",
+            "pubdate": 1449848295,
+            "tags": "fantasy, action and adventure and fun",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/easrc7er-320.jpg",
+            "title": "The Divergent Series: Allegiant",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/easrc7er.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/easrc7er-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/easrc7er-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/easrc7er",
+            "duration": 134
+        },
+        {
+            "mediaid": "DqGECHhT",
+            "description": "The story follows a one-time bullied geek who grew up to be a lethal CIA agent (Johnson), coming home for his high school reunion. Claiming to be on a top-secret case, he enlists the help of the former \u201cbig man on campus\u201d (Hart), now an accountant who misses his glory days. But before the staid numbers-cruncher realizes what he\u2019s getting into, it\u2019s too late to get out, as his increasingly unpredictable new friend drags him through a world of shoot-outs, double-crosses and espionage that could get them both killed in more ways than he can count.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun, comedy, trailer",
+            "image": "https:\/\/content.jwplatform.com\/thumbs\/DqGECHhT-320.jpg",
+            "title": "Central Intelligence",
+            "feedid": "oR7ahO0J",
+            "custom": {},
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application\/vnd.apple.mpegurl",
+                    "file": "https:\/\/content.jwplatform.com\/manifests\/DqGECHhT.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/DqGECHhT-AgylS15n.mp4",
+                    "height": 180
+                },
+                {
+                    "width": 480,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/DqGECHhT-8LSW5F2t.mp4",
+                    "height": 270
+                },
+                {
+                    "width": 720,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/DqGECHhT-PA9rXzRh.mp4",
+                    "height": 406
+                },
+                {
+                    "width": 1280,
+                    "type": "video\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/DqGECHhT-p3ZNjGCa.mp4",
+                    "height": 720
+                },
+                {
+                    "type": "audio\/mp4",
+                    "file": "https:\/\/content.jwplatform.com\/videos\/DqGECHhT-pSu3VlhO.m4a"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnail",
+                    "file": "https:\/\/content.jwplatform.com\/strips\/DqGECHhT-120.vtt"
+                }
+            ],
+            "link": "https:\/\/content.jwplatform.com\/previews\/DqGECHhT",
+            "duration": 109
+        }
+    ],
+    "feedid": "oR7ahO0J"
+}

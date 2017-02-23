@@ -47,7 +47,7 @@ var stepsDefinition = function () {
 
         browser
             .waitForAngular()
-            .then(delay(callback, 2000));
+            .then(delay(callback, 500));
     });
 
     this.When(/^I do nothing$/, function (callback) {
@@ -60,6 +60,17 @@ var stepsDefinition = function () {
         browser
             .sleep(seconds * 1000)
             .then(callback);
+    });
+
+    this.When(/^I click on the back button in the toolbar$/, function (callback) {
+
+        scrollToElement('.jw-toolbar')
+            .then(function () {
+                browser
+                    .findElement(by.css('.jw-toolbar .jw-button-back'))
+                    .click()
+                    .then(callback);
+            });
     });
 
     this.Then(/^I should navigate to the "([^"]*)" page/, function (arg1, callback) {

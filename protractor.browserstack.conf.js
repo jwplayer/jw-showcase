@@ -106,7 +106,7 @@ function createCapabilities (capabilities, tags) {
     capabilities['browserstack.local'] = true;
 
     capabilities.project = pkg.name;
-    capabilities.build   = pkg.version;
+    capabilities.build   = env.BROWSERSTACK_BUILD || pkg.version;
 
     capabilities.cucumberOpts = {
         format: 'json:./test/reports/' + composeReportName(capabilities) + '.json'

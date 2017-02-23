@@ -1,0 +1,525 @@
+{
+    "description": "Featured Trailers playlist description.",
+    "playlist": [
+        {
+            "description": "The story follows a one-time bullied geek who grew up to be a lethal CIA agent (Johnson), coming home for his high school reunion. Claiming to be on a top-secret case, he enlists the help of the former \u201cbig man on campus\u201d (Hart), now an accountant who misses his glory days. But before the staid numbers-cruncher realizes what he\u2019s getting into, it\u2019s too late to get out, as his increasingly unpredictable new friend drags him through a world of shoot-outs, double-crosses and espionage that could get them both killed in more ways than he can count.",
+            "pubdate": 1449848295,
+            "tags": "action and adventure and fun,comedy",
+            "image": "//content.jwplatform.com/thumbs/DqGECHhT-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/DqGECHhT.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-AgylS15n.mp4",
+                    "duration": 109,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-8LSW5F2t.mp4",
+                    "duration": 109,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-PA9rXzRh.mp4",
+                    "duration": 109,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-p3ZNjGCa.mp4",
+                    "duration": 109,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/DqGECHhT-pSu3VlhO.m4a",
+                    "duration": 109,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/DqGECHhT-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/DqGECHhT",
+            "duration": 109,
+            "mediaid": "DqGECHhT",
+            "title": "Central Intelligence",
+            "custom": {}
+        },
+        {
+            "description": "The talents of three of the world\u2019s greatest storytellers\u2014Roald Dahl, Walt Disney and Steven Spielberg\u2014finally unite to bring Dahl\u2019s beloved classic \u201cThe BFG\u201d to life. Directed by Spielberg, Disney\u2019s \u201cThe BFG\u201d tells the imaginative story of a young girl and the Giant who introduces her to the wonders and perils of Giant Country.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,fantasy",
+            "image": "//content.jwplatform.com/thumbs/RltV8MtT-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/RltV8MtT.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-AgylS15n.mp4",
+                    "duration": 110,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-8LSW5F2t.mp4",
+                    "duration": 110,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-PA9rXzRh.mp4",
+                    "duration": 110,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-p3ZNjGCa.mp4",
+                    "duration": 110,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-pSu3VlhO.m4a",
+                    "duration": 110,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/RltV8MtT-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/RltV8MtT",
+            "duration": 110,
+            "mediaid": "RltV8MtT",
+            "title": "The BFG",
+            "custom": {}
+        },
+        {
+            "description": "When a detective (Keanu Reeves) starts to investigate his partner\u2019s shocking death, he uncovers disturbing evidence of police corruption and a dangerous secret involving an unlikely young woman (Ana De Armas).",
+            "pubdate": 1449848295,
+            "tags": "thriller",
+            "image": "//content.jwplatform.com/thumbs/lUGmHThO-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/lUGmHThO.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/lUGmHThO-AgylS15n.mp4",
+                    "duration": 120,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/lUGmHThO-8LSW5F2t.mp4",
+                    "duration": 120,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/lUGmHThO-PA9rXzRh.mp4",
+                    "duration": 120,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/lUGmHThO-p3ZNjGCa.mp4",
+                    "duration": 120,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/lUGmHThO-pSu3VlhO.m4a",
+                    "duration": 120,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/lUGmHThO-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/lUGmHThO",
+            "duration": 120,
+            "mediaid": "lUGmHThO",
+            "title": "Exposed",
+            "custom": {}
+        },
+        {
+            "description": "Star Wars: The Force Awakens opens in theaters December 18, 2015. Star Wars: The Force Awakens is directed by J.J. Abrams from a screenplay by Lawrence Kasdan & Abrams, and features a cast including actors John Boyega, Daisy Ridley, Adam Driver, Oscar Isaac, Andy Serkis, Academy Award winner Lupita Nyong\u2019o, Gwendoline Christie, Crystal Clarke, Pip Andersen, Domhnall Gleeson, and Max von Sydow.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,science fiction",
+            "image": "//content.jwplatform.com/thumbs/92XQ91bP-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/92XQ91bP.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/92XQ91bP-AgylS15n.mp4",
+                    "duration": 138,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/92XQ91bP-8LSW5F2t.mp4",
+                    "duration": 138,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/92XQ91bP-PA9rXzRh.mp4",
+                    "duration": 138,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/92XQ91bP-p3ZNjGCa.mp4",
+                    "duration": 138,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/92XQ91bP-pSu3VlhO.m4a",
+                    "duration": 138,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/92XQ91bP-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/92XQ91bP",
+            "duration": 138,
+            "mediaid": "92XQ91bP",
+            "title": "Star Wars: The Force Awakens",
+            "nvgid": "qwfgqgfwqfgaqf",
+            "custom": {
+                "nvgid": "qwfgqgfwqfgaqf"
+            }
+        },
+        {
+            "description": "In an adaptation of Patricia Highsmith\u2019s seminal novel The Price of Salt, CAROL follows two women from very different backgrounds who find themselves in an unexpected love affair in 1950s New York. As conventional norms of the time challenge their undeniable attraction, an honest story emerges to reveal the resilience of the heart in the face of change.",
+            "pubdate": 1449848295,
+            "tags": "drama,romance",
+            "image": "//content.jwplatform.com/thumbs/127Vi5Xd-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/127Vi5Xd.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/127Vi5Xd-AgylS15n.mp4",
+                    "duration": 90,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/127Vi5Xd-8LSW5F2t.mp4",
+                    "duration": 90,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/127Vi5Xd-PA9rXzRh.mp4",
+                    "duration": 90,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/127Vi5Xd-p3ZNjGCa.mp4",
+                    "duration": 90,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/127Vi5Xd-pSu3VlhO.m4a",
+                    "duration": 90,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/127Vi5Xd-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/127Vi5Xd",
+            "duration": 90,
+            "mediaid": "127Vi5Xd",
+            "title": "Carol",
+            "custom": {}
+        },
+        {
+            "description": "For their fifth fully-animated feature-film collaboration, Illumination Entertainment and Universal Pictures present The Secret Life of Pets, a comedy about the lives our pets lead after we leave for work or school each day.",
+            "pubdate": 1449848296,
+            "tags": "comedy",
+            "image": "//content.jwplatform.com/thumbs/4yN3Zspm-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/4yN3Zspm.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-AgylS15n.mp4",
+                    "duration": 97,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-8LSW5F2t.mp4",
+                    "duration": 97,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-PA9rXzRh.mp4",
+                    "duration": 97,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-p3ZNjGCa.mp4",
+                    "duration": 97,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/4yN3Zspm-pSu3VlhO.m4a",
+                    "duration": 97,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/4yN3Zspm-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/4yN3Zspm",
+            "duration": 97,
+            "mediaid": "4yN3Zspm",
+            "title": "The Secret Life of Pets",
+            "custom": {}
+        },
+        {
+            "description": "Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d\u2019Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world\u2019s oldest and most trusted institutions.",
+            "pubdate": 1449848296,
+            "tags": "drama",
+            "image": "//content.jwplatform.com/thumbs/Iyfst4Se-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/Iyfst4Se.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/Iyfst4Se-AgylS15n.mp4",
+                    "duration": 151,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/Iyfst4Se-8LSW5F2t.mp4",
+                    "duration": 151,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/Iyfst4Se-PA9rXzRh.mp4",
+                    "duration": 151,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/Iyfst4Se-p3ZNjGCa.mp4",
+                    "duration": 151,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/Iyfst4Se-pSu3VlhO.m4a",
+                    "duration": 151,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "captions",
+                    "file": "//assets-jpcust.jwpsrv.com/tracks/Tlfho8GX.vtt",
+                    "label": "Untitled Captions Track"
+                },
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/Iyfst4Se-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/Iyfst4Se",
+            "duration": 151,
+            "mediaid": "Iyfst4Se",
+            "title": "Spotlight",
+            "junction_id": "asdfsdf",
+            "custom": {
+                "client": "cinedigm",
+                "junction_id": "asdfsdf"
+            },
+            "client": "cinedigm"
+        },
+        {
+            "description": "The talents of three of the world\u2019s greatest storytellers\u2014Roald Dahl, Walt Disney and Steven Spielberg\u2014finally unite to bring Dahl\u2019s beloved classic \u201cThe BFG\u201d to life. Directed by Spielberg, Disney\u2019s \u201cThe BFG\u201d tells the imaginative story of a young girl and the Giant who introduces her to the wonders and perils of Giant Country.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,fantasy",
+            "image": "//content.jwplatform.com/thumbs/RltV8MtT-720.jpg",
+            "sources": [
+                {
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "//content.jwplatform.com/manifests/RltV8MtT.m3u8"
+                },
+                {
+                    "height": 180,
+                    "width": 320,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-AgylS15n.mp4",
+                    "duration": 110,
+                    "label": "H.264 320px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 270,
+                    "width": 480,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-8LSW5F2t.mp4",
+                    "duration": 110,
+                    "label": "H.264 480px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 406,
+                    "width": 720,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-PA9rXzRh.mp4",
+                    "duration": 110,
+                    "label": "H.264 720px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": 720,
+                    "width": 1280,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-p3ZNjGCa.mp4",
+                    "duration": 110,
+                    "label": "H.264 1280px",
+                    "type": "video/mp4"
+                },
+                {
+                    "height": -1,
+                    "width": -1,
+                    "file": "//content.jwplatform.com/videos/RltV8MtT-pSu3VlhO.m4a",
+                    "duration": 110,
+                    "label": "AAC Audio",
+                    "type": "audio/mp4"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "//content.jwplatform.com/strips/RltV8MtT-120.vtt"
+                }
+            ],
+            "link": "//content.jwplatform.com/previews/RltV8MtT",
+            "duration": 110,
+            "mediaid": "RltV8MtT",
+            "title": "The BFG",
+            "custom": {}
+        }
+    ],
+    "title": "Featured Trailers",
+    "kind": "manual",
+    "feedid": "WXu7kuaW"
+}

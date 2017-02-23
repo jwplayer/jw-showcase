@@ -26,15 +26,24 @@ module.exports = function (grunt) {
         runProtractorTasks();
     });
 
+    grunt.registerTask('test:server', [
+        'clean:server',
+        'clean:reports',
+        'compass',
+        'ngtemplates:server',
+        'template:serverE2E',
+        'copy:icons',
+        'connect:test'
+    ]);
+
     function runProtractorTasks () {
 
+        if (grunt.option('no-server')) {
+            return grunt.task.run(['protractor:run']);
+        }
+
         grunt.task.run([
-            'clean:server',
-            'clean:reports',
-            'compass',
-            'ngtemplates:server',
-            'template:server',
-            'connect:test',
+            'test:server',
             'protractor:run'
         ]);
     }

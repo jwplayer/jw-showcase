@@ -1,10 +1,10 @@
 {
   "name": "jw-showcase",
   "description": "JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.",
-  "version": "3.0.1",
+  "version": "3.1.0-beta",
   "dependencies": {},
   "repository": {
-      "url": "https://github.com/jwplayer/jw-showcase.git"
+    "url": "https://github.com/jwplayer/jw-showcase.git"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -23,15 +23,12 @@
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-cssmin": "^0.12.0",
     "grunt-contrib-htmlmin": "^0.4.0",
-    "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.12.2",
-    "grunt-newer": "^1.1.0",
     "grunt-protractor-runner": "^3.2.0",
     "grunt-usemin": "^3.0.0",
     "jasmine-core": "^2.4.1",
-    "jshint-stylish": "^1.0.0",
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
@@ -39,6 +36,7 @@
     "load-grunt-tasks": "^3.1.0",
     "lodash.template": "^4.2.5",
     "phantomjs-prebuilt": "^2.1.7",
+    "pre-commit": "^1.2.2",
     "protractor": "^3.3.0",
     "protractor-cucumber-framework": "^0.5.0",
     "selenium-webdriver": "^2.53.2",
@@ -49,6 +47,12 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "test": "grunt test"
-  }
+    "test": "grunt test",
+    "jshint": "jshint -c .jshintrc app/scripts",
+    "scss-lint": "scss-lint -c .scss-lint.yml app/styles"
+  },
+  "pre-commit": [
+      "jshint",
+      "scss-lint"
+  ]
 }
