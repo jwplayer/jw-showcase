@@ -42,7 +42,7 @@ exports.config = {
 function createCapabilities (capabilities, tags) {
 
     capabilities.cucumberOpts = {
-        format: 'json:./test/reports/e2e.' + capabilities.browserName + '.json'
+        format: 'json:./test/reports/' + composeReportName(capabilities) + '.json'
     };
 
     if (tags) {
@@ -50,4 +50,28 @@ function createCapabilities (capabilities, tags) {
     }
 
     return capabilities;
+}
+
+/**
+ * Compose report name based on given capabilities object
+ *
+ * @param   {Object}    capabilities    Capabilities
+ *
+ * @returns {string} Report name
+ */
+function composeReportName (capabilities) {
+
+    /*jshint camelcase: false */
+    var os = capabilities.os || 'host',
+        osVersion = capabilities.os_version || '',
+        browser = capabilities.browser || capabilities.browserName || 'default',
+        browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
+
+        name = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
+
+    if (capabilities.device) {
+        name = capabilities.device + ' ' + name;
+    }
+
+    return name;
 }
