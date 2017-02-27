@@ -164,7 +164,7 @@ var stepsDefinition = function () {
             .then(function (txt) {
                 var text = txt.trim().split(' ');
                 expect(text[1]).to.equal('min');
-                expect(text[0]).not.to.be.NaN;
+                expect(isNaN(text[0])).to.equal(false);
                 callback();
             });
     });
