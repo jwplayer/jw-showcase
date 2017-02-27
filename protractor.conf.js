@@ -26,6 +26,11 @@ exports.config = {
     specs: [
         'test/features/*.feature'
     ]
+
+    onPrepare: function() {
+        /* global browser */
+        browser.driver.manage().window().maximize();
+    }
 };
 
 /**

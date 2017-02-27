@@ -27,6 +27,11 @@ exports.config = {
         'test/features/*.feature'
     ],
 
+    onPrepare: function() {
+        /* global browser */
+        browser.driver.manage().window().maximize();
+    },
+
     multiCapabilities: [
 
         //
