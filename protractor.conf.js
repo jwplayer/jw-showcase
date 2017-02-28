@@ -25,7 +25,7 @@ exports.config = {
 
     specs: [
         'test/features/*.feature'
-    ]
+    ],
 
     onPrepare: function() {
         /* global browser */
