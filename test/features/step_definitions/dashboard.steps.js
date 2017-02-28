@@ -16,13 +16,19 @@
 
 var stepsDefinition = function () {
 
-    this.Given(/^I scroll to the first default slider$/, function (callback) {
+    this.When(/^I scroll to the featured default slider$/, function (callback) {
 
-        scrollToElement('.feed .jw-card-slider-flag-default:first-child')
+        scrollToElement('.featured .jw-card-slider-flag-featured')
             .then(callback);
     });
 
-    this.Given(/^I scroll to the second default slider$/, function (callback) {
+    this.When(/^I scroll to the first default slider$/, function (callback) {
+
+        scrollToElement('.feed .jw-card-slider-flag-default:nth-child(1)')
+            .then(callback);
+    });
+
+    this.When(/^I scroll to the second default slider$/, function (callback) {
 
         scrollToElement('.feed .jw-card-slider-flag-default:nth-child(2)')
             .then(callback);
@@ -234,13 +240,16 @@ var stepsDefinition = function () {
 
     this.Then(/^the titles of the items should be visible/, function (callback) {
 
-        browser
-            .findElement(by.css('.feed .jw-card-slider-flag-default:first-child'))
-            .findElement(by.css('.jw-card-slider-slide:first-child .jw-card-title'))
-            .isDisplayed()
-            .then(function (isDisplayed) {
-                expect(isDisplayed).to.equal(true);
-                callback();
+        scrollToElement('.feed .jw-card-slider-flag-default:first-child')
+            .then(function () {
+                browser
+                    .findElement(by.css('.feed .jw-card-slider-flag-default:first-child'))
+                    .findElement(by.css('.jw-card-slider-slide:first-child .jw-card-title'))
+                    .isDisplayed()
+                    .then(function (isDisplayed) {
+                        expect(isDisplayed).to.equal(true);
+                        callback();
+                    });
             });
     });
 

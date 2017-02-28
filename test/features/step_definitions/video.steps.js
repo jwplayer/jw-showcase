@@ -20,6 +20,12 @@ var EMAIL_SHARE_URL    = 'mailto:';
 
 var stepsDefinition = function () {
 
+    this.When(/^I scroll to the related slider$/, function (callback) {
+
+        scrollToElement('.jw-row[ng-if="vm.recommendationsFeed"]')
+            .then(callback);
+    });
+
     this.When(/^I start video playback$/, function (callback) {
 
         browser

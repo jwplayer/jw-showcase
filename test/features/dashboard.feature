@@ -39,16 +39,17 @@ Feature: Dashboard page
   @mobile @tablet
   Scenario: As a user I want to be able to navigate forward through a featured feed by swiping
     Given I go to the "index" page
-    And I scroll to the first default slider
     When I wait until the page has been loaded
+    And I scroll to the first default slider
     And I swipe left in the first default slider
     Then the first item in the featured slider should not be visible
 
   @mobile @tablet
   Scenario: As a user I want to be able to navigate backward through the featured feed by swiping
     Given I am still on the "index" page
+    When I wait until the page has been loaded
     And I scroll to the first default slider
-    When I swipe right in the first default slider
+    And I swipe right in the first default slider
     Then the first item in the featured slider should be visible
 
   @tablet @desktop
@@ -63,42 +64,39 @@ Feature: Dashboard page
     When I do nothing
     Then the indicator should highlight the first bullet
 
-  @tablet @desktop
-  Scenario: As a user I want to see the title and description of the visible item in the featured feed
-    Given I am still on the "index" page
-    When I do nothing
-    Then the title and description should be visible in the featured slider
-
   @mobile @tablet @desktop
-  Scenario: As a user I want to see the title of the visible items in the default feeds
-    Given I go to the "index" page
-    When I wait until the page has been loaded
-    Then the titles of the items should be visible
-
-  @mobile @tablet @desktop
-  Scenario: As a user I want to see the playlist title of the default
+  Scenario: As a user I want to see the title with video count of the first default slider
     Given I am still on the "index" page
     When I wait until the page has been loaded
-    Then I should see the title of the first default slider
-
-  @mobile @tablet @desktop
-  Scenario: As a user I want to see the title with video count of the feed
-    Given I am still on the "index" page
-    When I wait until the page has been loaded
+    And I scroll to the first default slider
     Then the title of the first default slider should be "Featured Trailers (8)"
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to see the title with video count of the feed
+  Scenario: As a user I want to see the title with video count of the second default slider
     Given I am still on the "index" page
     And I scroll to the second default slider
     When I wait until the page has been loaded
     Then the title of the second default slider should be "Comedy (5)"
 
+  @mobile @tablet @desktop
+  Scenario: As a user I want to see the title of the items in the default sliders
+    Given I go to the "index" page
+    When I wait until the page has been loaded
+    And I scroll to the first default slider
+    Then the titles of the items should be visible
+
+  @tablet @desktop
+  Scenario: As a user I want to see the title and description of the visible item in the featured feed
+    Given I am still on the "index" page
+    When I wait until the page has been loaded
+    And I scroll to the featured default slider
+    Then the title and description should be visible in the featured slider
+
   @desktop
   Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
     Given I am still on the "index" page
-    And I scroll to the first default slider
-    When I move my mouse to the first item in the default slider
+    When I scroll to the first default slider
+    And I move my mouse to the first item in the default slider
     Then I should see the description in the default slider
     And I should see the duration in the default slider
 
