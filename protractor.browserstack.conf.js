@@ -139,8 +139,8 @@ function composeReportName (capabilities) {
 
     /*jshint camelcase: false */
     var os = capabilities.os,
-        osVersion = capabilities.os_version,
-        browser = capabilities.browser,
+        osVersion = capabilities.os_version || '',
+        browser = capabilities.browser || capabilities.browserName || 'default',
         browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
 
         name = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
