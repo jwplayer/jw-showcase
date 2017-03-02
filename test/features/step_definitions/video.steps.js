@@ -56,6 +56,31 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
+    this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the more like this slider$/, function (num, callback) {
+
+        browser
+            .findElements(by.css('.jw-card-slider[feed="vm.feed"] .jw-card-slider-slide.is-visible'))
+            .then(function (elements) {
+
+                if (!elements[num - 1]){
+                    callback();
+                }
+
+                elements[num - 1]
+                    .click()
+                    .then(callback);
+            });
+    });
+
+    this.When(/^I start playing the next playlist item$/, function (callback) {
+
+        browser
+            .executeScript(function () {
+                jwplayer().playlistNext();
+            })
+            .then(callback);
+    });
+
     this.When(/^I wait until the overlay disappears$/, function (callback) {
 
         browser
@@ -74,6 +99,12 @@ var stepsDefinition = function () {
                     }
                 });
             })
+            .then(callback);
+    });
+
+    this.When(/^I scroll to the more like this slider$/, function (callback) {
+
+        scrollToElement('.jw-card-slider[feed="vm.feed"]')
             .then(callback);
     });
 
