@@ -42,29 +42,29 @@ exports.config = {
         createCapabilities({
             'browserName': 'firefox',
             'os':          'OS X',
-            'os_version':  'El Capitan'
+            'os_version':  'Sierra'
         }, ['@desktop']),
 
         // latest Chrome
         createCapabilities({
             'browserName': 'chrome',
             'os':          'OS X',
-            'os_version':  'El Capitan'
+            'os_version':  'Sierra'
         }, ['@desktop']),
 
         // latest Safari
         createCapabilities({
             'browserName': 'safari',
             'os':          'OS X',
-            'os_version':  'El Capitan'
+            'os_version':  'Sierra'
         }, ['@desktop']),
 
-        // Safari 8
+        // Safari 9.1
         createCapabilities({
             'browserName': 'safari',
-            'browser_version': '8.0',
+            'browser_version': '9.1',
             'os':          'OS X',
-            'os_version':  'Yosemite'
+            'os_version':  'El Capitan'
         }, ['@desktop']),
 
         //
@@ -92,7 +92,6 @@ exports.config = {
             'os':          'WINDOWS',
             'os_version':  '10'
         }, ['@desktop'])
-
     ]
 };
 
