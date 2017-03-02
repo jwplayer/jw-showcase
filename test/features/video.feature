@@ -34,6 +34,7 @@ Feature: Video page
   Scenario: As a user I want to see the More like this title
     Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I wait until the page has been loaded
+    And I scroll to the related slider
     Then the related videos title is shown
 
   @mobile @tablet @desktop

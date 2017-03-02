@@ -20,6 +20,12 @@ var EMAIL_SHARE_URL    = 'mailto:';
 
 var stepsDefinition = function () {
 
+    this.When(/^I scroll to the related slider$/, function (callback) {
+
+        scrollToElement('.jw-row[ng-if="vm.recommendationsFeed"]')
+            .then(callback);
+    });
+
     this.When(/^I start video playback$/, function (callback) {
 
         browser
@@ -164,7 +170,7 @@ var stepsDefinition = function () {
             .then(function (txt) {
                 var text = txt.trim().split(' ');
                 expect(text[1]).to.equal('min');
-                expect(text[0]).not.to.be.NaN;
+                expect(isNaN(text[0])).to.equal(false);
                 callback();
             });
     });

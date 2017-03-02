@@ -27,6 +27,11 @@ exports.config = {
         'test/features/*.feature'
     ],
 
+    onPrepare: function() {
+        /* global browser */
+        browser.driver.manage().window().maximize();
+    },
+
     multiCapabilities: [
 
         //
@@ -132,23 +137,17 @@ function createCapabilities (capabilities, tags) {
  */
 function composeReportName (capabilities) {
 
-    var name = 'e2e.',
-        keys = ['os', 'os_version', 'browserName', 'browser', 'browserVersion', 'browser_version'];
+    /*jshint camelcase: false */
+    var os = capabilities.os,
+        osVersion = capabilities.os_version || '',
+        browser = capabilities.browser || capabilities.browserName || 'default',
+        browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
+
+        name = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
 
     if (capabilities.device) {
-        name += capabilities.device;
-    }
-    else {
-
-        name += keys
-            .map(function (key) {
-                return capabilities[key];
-            })
-            .filter(function (value) {
-                return typeof value === 'string';
-            })
-            .join('.');
+        name = capabilities.device + ' ' + name;
     }
 
-    return name.toLowerCase();
+    return name;
 }
