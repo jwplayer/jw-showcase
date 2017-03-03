@@ -60,6 +60,17 @@ var stepsDefinition = function () {
             });
     });
 
+    this.Then(/^the canonical path should be "([^"]*)"$/, function (path, callback) {
+
+        browser
+            .findElement(by.css('link[rel=canonical]'))
+            .getAttribute('href')
+            .then(function (href) {
+                expect(href).to.equal(browser.baseUrl + path);
+                callback();
+            });
+    });
+
     this.Then(/^the footer text should be "([^"]*)"$/, function (arg1, callback) {
 
         browser
