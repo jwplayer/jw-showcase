@@ -121,3 +121,13 @@ Feature: Dashboard page
     And I click the play icon in the visible item in the featured slider
     Then I should navigate to the "video" page
     And the video should be playing
+
+  @desktop
+  Scenario: As a user I want to be able to disable the featured text overlay
+    Given I set configLocation to "./fixtures/config/enableFeaturedText.json"
+    And I go to the "index" page
+    When I wait until the page has been loaded
+    Then the card title should be hidden in the featured slider
+    And the card description should be hidden in the featured slider
+
+  # 
