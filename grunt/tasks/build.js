@@ -10,7 +10,6 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'usemin',
-        'htmlmin',
         'template:dist'
     ]);
 };
