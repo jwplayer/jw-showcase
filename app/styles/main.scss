@@ -3,3 +3,7 @@
 // Import Base
 // --------------------------------
 @import '../../bower_components/jw-showcase-lib/scss/main';
+
+.no-js .jw-loading {
+    display: none;
+}

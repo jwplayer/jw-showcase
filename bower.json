@@ -8,7 +8,8 @@
     "angular-ui-router": "~0.3.0",
     "gsap": "~1.18.4",
     "vtt.js": "mozilla/vtt.js#0.13.0",
-    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.1.0"
+    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.1.0",
+    "sw-toolbox": "^3.6.1"
   },
   "devDependencies": {
     "angular-mocks": "1.5.8"

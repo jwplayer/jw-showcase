@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="app" ng-controller="RootController as rootVm">
+<html class="no-js">
 <head>
   <!-- <%= version %>, lib <%= libVersion %> -->
   <base href="<%= path %>">
@@ -11,15 +11,22 @@
   <meta property="og:description" content="<%= description %>">
   <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/social-image.jpg<% } %>">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fff">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script type="application/ld+json" id="schema"></script>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="canonical" href="<% if (url !== '/') { %><%= url %><% } %>">
+  <link rel="manifest" href="manifest.json">
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body class="jw-theme-{{ ::rootVm.config.theme }}">
+<body class="jw-theme-{{ ::rootVm.config.theme }} jw-flag-loading-config" ng-app="app"
+    ng-controller="RootController as rootVm">
+
+<noscript>
+  <div>To make use of this website please make sure JavaScript is enabled.</div>
+</noscript>
 
 <jw-header ng-if="rootVm.config.enableHeader"></jw-header>
 <ui-view></ui-view>
@@ -32,6 +39,25 @@
     </div>
   </div>
 </div>
+
+<div class="jw-offline-message">
+  You appear to be offline.
+</div>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+            registration.onupdatefound = function () {
+                console.log('ServiceWorker update found, installing...');
+            };
+        });
+    }
+</script>
+
+<script>
+    // remove no-js class
+    document.documentElement.classList.remove('no-js');
+</script>
 
 <!-- build:js(.) scripts/vendor.js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -87,6 +113,7 @@
 <script src="bower_components/jw-showcase-lib/js/core/services/history.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/userSettings.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/utils.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/offline.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/player.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/popup.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/preload.service.js"></script>
