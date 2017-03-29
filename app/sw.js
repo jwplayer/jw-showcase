@@ -1,21 +1,19 @@
 /* globals self,caches,importScripts,RangedResponse,toolbox */
 
-importScripts('./sw-toolbox.js');
-importScripts('./ranged-request.js');
+importScripts('sw-toolbox.js');
+importScripts('ranged-request.js');
 
 toolbox.options.cache.name = 'jw-showcase-v1';
 
 toolbox.precache([
-    '',
-    'index.html',
-    'config.json',
-    'styles/main.css',
-    'fonts/icons.eot',
-    'fonts/icons.svg',
-    'fonts/icons.ttf',
-    'fonts/icons.woff',
-    'scripts/scripts.js',
-    'scripts/vendor.js',
+    '/',
+    '/index.html',
+    '/config.json',
+    '/styles/main.css',
+    '/fonts/icons.eot',
+    '/fonts/icons.svg',
+    '/fonts/icons.ttf',
+    '/fonts/icons.woff',
     /* inject:compiled */
 ]);
 
@@ -28,8 +26,6 @@ toolbox.router.default = function (request) {
         return RangedResponse.create(request);
     }
 
-    console.log(request.url);
-
     return toolbox.cacheFirst(request);
 };
 
@@ -37,12 +33,13 @@ self.onmessage = function (e) {
 
     var data = JSON.parse(e.data);
 
-    console.log(data);
-
     if (navigator.onLine && data.type === 'prefetchPlayer') {
         prefetchPlayer(data.version);
     }
 };
+
+self.addEventListener('install', function (event) { return event.waitUntil(self.skipWaiting()); });
+self.addEventListener('activate', function (event) { return event.waitUntil(self.clients.claim()); });
 
 /**
  * @todo this should happen sooner, find a way to obtain latest player version?
@@ -50,7 +47,7 @@ self.onmessage = function (e) {
  */
 function prefetchPlayer (version) {
 
-    var base = 'http://ssl.p.jwpcdn.com/player/v/' + version;
+    var base = '//ssl.p.jwpcdn.com/player/v/' + version;
 
     prefetchUrl(base + '/provider.html5.js');
     prefetchUrl(base + '/jwpsrv.js');
