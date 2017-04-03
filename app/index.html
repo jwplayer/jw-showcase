@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script type="application/ld+json" id="schema"></script>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="canonical" href="<% if (url !== '/') { %><%= url %><% } %>">
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -21,7 +21,9 @@
 </head>
 <body class="jw-theme-{{ ::rootVm.config.theme }}">
 
+<jw-header ng-if="rootVm.config.enableHeader"></jw-header>
 <ui-view></ui-view>
+<jw-footer></jw-footer>
 
 <div class="jw-cover jw-loading" ng-show="rootVm.appStore.loading">
   <div class="jw-loading-icon">
@@ -40,8 +42,7 @@
 <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
 <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 <script src="bower_components/vtt.js/lib/vtt.js"></script>
-<script src="bower_components/ionic/js/ionic.js"></script>
-<script src="bower_components/ionic/js/ionic-angular.js"></script>
+<script src="bower_components/ua-parser-js/src/ua-parser.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/polyfills.js"></script>
 <script src="bower_components/jw-showcase-lib/js/jwShowcase.module.js"></script>
@@ -50,7 +51,7 @@
 
 <script src="bower_components/jw-showcase-lib/js/core/controllers/cardMenu.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/cookies.controller.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/controllers/menu.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/confirm.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/root.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/share.controller.js"></script>
 
@@ -60,6 +61,8 @@
 <script src="bower_components/jw-showcase-lib/js/core/components/header.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/headerMenu.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/search.component.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/components/sidebar.component.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/components/sidebarLayout.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/toolbar.component.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/core/directives/button.directive.js"></script>
@@ -69,9 +72,11 @@
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardSlider.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardPoster.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/collapsibleText.directive.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/directives/jwPlayer.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/markdown.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/lazyLoad.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/player.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/toggle.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/view.directive.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/core/filters/videoDuration.filter.js"></script>
 
@@ -79,19 +84,25 @@
 <script src="bower_components/jw-showcase-lib/js/core/services/apiConsumer.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/appStore.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/configResolver.service.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/services/confirm.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/cookies.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/dataStore.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/feedModel.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/history.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/userSettings.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/utils.service.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/services/menu.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/player.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/popup.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/platform.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/preload.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/seo.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/session.service.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/services/share.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/sidebar.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/watchlist.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/watchProgress.service.js"></script>
+
+<script src="bower_components/jw-showcase-lib/js/core/listeners/stateChangeStart.listener.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/listeners/stateChangeError.listener.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/listeners/stateChangeSuccess.listener.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/error/error.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/error/controllers/error.controller.js"></script>
@@ -112,7 +123,7 @@
 <!-- endbuild -->
 
 <script>
-  window.configLocation = './config.json';
+    window.configLocation = './config.json';
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->

@@ -27,7 +27,6 @@
             'ngSanitize',
             'ngTouch',
             'ui.router',
-            'ionic',
             'jwShowcase'
         ])
         .constant('WEB_VERSION', '3.1.0')
