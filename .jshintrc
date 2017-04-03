@@ -58,6 +58,7 @@
         "angular": false,
         "jwplayer": false,
         "$": false,
-        "ionic": false
+        "ionic": false,
+        "UAParser": false
     }
 }
