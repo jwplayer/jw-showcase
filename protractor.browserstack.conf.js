@@ -1,10 +1,12 @@
-var pkg = require('./package.json'),
-    env = process.env;
+var browserstack = require('browserstack-local'),
+    pkg          = require('./package.json'),
+    env          = process.env,
+    local;
 
 exports.config = {
 
     allScriptsTimeout: 20000,
-    getPageTimeout: 20000,
+    getPageTimeout:    20000,
 
     baseUrl: 'http://localhost:9001',
 
@@ -27,9 +29,30 @@ exports.config = {
         'test/features/*.feature'
     ],
 
-    onPrepare: function() {
+    onPrepare: function () {
         /* global browser */
         browser.driver.manage().window().maximize();
+    },
+
+    beforeLaunch: function () {
+
+        return new Promise(function (resolve, reject) {
+            local = new browserstack.Local();
+            local.start({
+                'key': env.BROWSERSTACK_KEY || env.BS_AUTHKEY
+            }, function (error) {
+                if (error) {
+                    return reject(error);
+                }
+                resolve();
+            });
+        });
+    },
+
+    afterLaunch: function () {
+        return new Promise(function (resolve, reject) {
+            local.stop(resolve);
+        });
     },
 
     multiCapabilities: [
@@ -61,10 +84,10 @@ exports.config = {
 
         // Safari 9.1
         createCapabilities({
-            'browserName': 'safari',
+            'browserName':     'safari',
             'browser_version': '9.1',
-            'os':          'OS X',
-            'os_version':  'El Capitan'
+            'os':              'OS X',
+            'os_version':      'El Capitan'
         }, ['@desktop']),
 
         //
@@ -137,12 +160,12 @@ function createCapabilities (capabilities, tags) {
 function composeReportName (capabilities) {
 
     /*jshint camelcase: false */
-    var os = capabilities.os,
-        osVersion = capabilities.os_version || '',
-        browser = capabilities.browser || capabilities.browserName || 'default',
+    var os             = capabilities.os,
+        osVersion      = capabilities.os_version || '',
+        browser        = capabilities.browser || capabilities.browserName || 'default',
         browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
 
-        name = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
+        name           = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
 
     if (capabilities.device) {
         name = capabilities.device + ' ' + name;
