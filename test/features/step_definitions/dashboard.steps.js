@@ -318,6 +318,28 @@ var stepsDefinition = function () {
                 callback();
             });
     });
+
+    this.Then(/^the card title should be hidden in the featured slider$/, function (callback) {
+
+        browser
+            .findElement(by.css('.featured .jw-card-slider-featured .jw-card-slider-slide.is-visible .jw-card-title'))
+            .isDisplayed()
+            .then(function (displayed) {
+                expect(displayed).to.equal(false);
+                callback();
+            });
+    });
+
+    this.Then(/^the card description should be hidden in the featured slider$/, function (callback) {
+
+        browser
+            .findElement(by.css('.featured .jw-card-slider-featured .jw-card-slider-slide.is-visible .jw-card-description'))
+            .isDisplayed()
+            .then(function (displayed) {
+                expect(displayed).to.equal(false);
+                callback();
+            });
+    });
 };
 
 module.exports = stepsDefinition;

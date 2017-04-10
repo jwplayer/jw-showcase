@@ -57,10 +57,7 @@ module.exports = function () {
                 var element = document.querySelector(selector);
 
                 if (element) {
-                    angular.element(document.querySelector(".ionic-scroll"))
-                        .scope()
-                        .scrollCtrl
-                        .scrollTo(0, element.offsetTop);
+                    document.body.scrollTop = element.offsetTop;
                 }
             }, selector);
     };
