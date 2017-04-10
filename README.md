@@ -13,6 +13,7 @@ To see an example of JW Showcase in action, see [tv.jwplayer.com](http://tv.jwpl
 - Populates your site's media content using JSON feeds. If you are using JW Platform, this happens auto-magically based on playlists that you specify. Using feeds from other sources will require you to hack the source code.
 - Video titles, descriptions and hero images are populated from JW Platform JSON feed metadata.
 - Playback of HLS video content from the JW Platform CDN. You can add external URLs (for example, URLS from your own server or CDN) to your playlists in the Content section of your JW Player account dashboard, but they must be HLS streams (`.m3u8` files).
+- Support for live video streams (must be registered as external .m3u8 URLs in your JW Dashboard).
 - Customize the user interface with your own branding. The default app is configured for JW Player branding and content but you can easily change this to use your own assets by modifying the `config.json` file. Advanced customization is possible (for example, editing the CSS files), but you will need to modify the source code and [build from source](https://github.com/jwplayer/jw-showcase/wiki/Building-from-the-Source-Code).
 - Site-wide video search and related video recommedations powered by [JW Recommendations](https://support.jwplayer.com/customer/portal/articles/2191721-jw-recommendations).
 - Basic playback analytics reporting to your JW Dashboard.
@@ -60,4 +61,4 @@ Topics for advanced users:
 
 To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
 
-v3.1.0
+v3.2.0-beta
