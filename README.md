@@ -60,4 +60,4 @@ Topics for advanced users:
 
 To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
 
-v3.1.0
+v3.2.0-beta
