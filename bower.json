@@ -7,9 +7,8 @@
     "angular-touch": "1.5.8",
     "angular-ui-router": "~0.3.0",
     "gsap": "~1.18.4",
-    "vtt.js": "mozilla/vtt.js#0.13.0",
     "ua-parser-js": "^0.7.12",
-    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.2.0-beta"
+    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.2.0"
   },
   "devDependencies": {
     "angular-mocks": "1.5.8"
