@@ -73,6 +73,7 @@ RangedResponse.create = function (request) {
                     headers: response.headers
                 });
 
+                slicedResponse.headers.set('X-Ranged-Request', '1');
                 slicedResponse.headers.set('Content-Length', slicedBuffer.byteLength);
                 slicedResponse.headers.set('Content-Range', ['bytes ', start, '-', end - 1, '/',
                     buffer.byteLength].join(''));

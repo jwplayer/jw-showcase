@@ -1,4 +1,7 @@
 
+$header-bg-color: #000;
+$header-color: #fff;
+
 //
 // Import Base
 // --------------------------------
@@ -6,4 +9,18 @@
 
 .no-js .jw-loading {
     display: none;
+}
+
+.jw-sidebar {
+
+    background: $header-bg-color;
+
+    .jw-sidebar-content .jw-button,
+    .jw-sidebar-content .jw-sidebar-label {
+        color: $header-color;
+    }
+}
+
+.jw-search-input {
+    color: $white;
 }

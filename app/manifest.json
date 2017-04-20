@@ -1,11 +1,11 @@
 {
-  "name": "JW Showcase",
-  "short_name": "JW Showcase",
+  "name": "Fast Company",
+  "short_name": "Fast Company",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fff",
-  "theme_color": "#fff",
-  "description": "JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "description": "Fast Company inspires a new breed of innovative and creative thought leaders who are actively inventing the future of business.",
   "icons": [{
     "src": "images/icon-128x128.png",
     "sizes": "128x128",
