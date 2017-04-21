@@ -70,12 +70,12 @@ function prefetchPlayer (version) {
 
     var base = '//ssl.p.jwpcdn.com/player/v/' + version;
 
-    prefetchUrl(base + '/provider.html5.js');
-    prefetchUrl(base + '/provider.cast.js');
-    prefetchUrl(base + '/jwpsrv.js');
-    prefetchUrl(base + '/related.js');
-    prefetchUrl(base + '/jw-icons.woff');
-    prefetchUrl(base + '/jw-icons.ttf');
+    toolbox.cache(base + '/provider.html5.js');
+    toolbox.cache(base + '/provider.cast.js');
+    toolbox.cache(base + '/jwpsrv.js');
+    toolbox.cache(base + '/related.js');
+    toolbox.cache(base + '/jw-icons.woff');
+    toolbox.cache(base + '/jw-icons.ttf');
 }
 
 function prefetchConfig (config) {
@@ -88,20 +88,10 @@ function prefetchConfig (config) {
     }
 
     feeds.forEach(function (feedId) {
-        prefetchUrl(base + '/v2/playlists/' + feedId);
+        toolbox.cache(base + '/v2/playlists/' + feedId);
     });
 
     if (config.bannerImage) {
-        prefetchUrl(config.bannerImage.toString());
+        toolbox.cache(config.bannerImage.toString());
     }
-}
-
-function prefetchUrl (url) {
-    return caches.open(toolbox.options.cache.name).then(function (cache) {
-        return fetch(url).then(function (response) {
-            return cache.put(url, response.clone()).then(function () {
-                return response;
-            });
-        });
-    });
 }
