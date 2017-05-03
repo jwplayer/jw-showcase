@@ -1,0 +1,33 @@
+{
+    "version": "2",
+    "player": "EaWLUQqw",
+    "theme": "dark",
+    "siteName": "Custom siteName",
+    "description": "Custom description",
+    "footerText": "Custom footer",
+    "searchPlaylist": "r3MhKJyA",
+    "recommendationsPlaylist": "wZuMVmMk",
+    "options": {
+        "backgroundColor": "#ff0000",
+        "enableContinueWatching": true,
+        "enableHeader": true
+    },
+    "content": [
+        {
+            "playlistId": "lrYLc95e",
+            "featured": true
+        },
+        {
+            "playlistId": "WXu7kuaW"
+        },
+        {
+            "playlistId": "Q352cyuc"
+        },
+        {
+            "playlistId": "oR7ahO0J"
+        }
+    ],
+    "assets": {
+        "banner": "fixtures/jwplayer-logo.png"
+    }
+}
