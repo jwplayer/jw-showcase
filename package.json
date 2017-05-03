@@ -30,6 +30,7 @@
     "grunt-protractor-runner": "^3.2.0",
     "grunt-usemin": "^3.0.0",
     "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.4",
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
