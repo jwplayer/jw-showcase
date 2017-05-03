@@ -51,7 +51,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "test": "grunt test",
+    "test": "grunt test:unit",
     "jshint": "jshint -c .jshintrc app/scripts",
     "scss-lint": "scss-lint -c .scss-lint.yml app/styles"
   },
