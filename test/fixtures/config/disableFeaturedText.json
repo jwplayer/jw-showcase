@@ -9,14 +9,14 @@
     "recommendationsPlaylist": "wZuMVmMk",
     "options": {
         "backgroundColor": "",
-        "highlightColor": "",
         "enableContinueWatching": true,
         "enableHeader": true
     },
     "content": [
         {
             "playlistId": "lrYLc95e",
-            "featured": true
+            "featured": true,
+            "enableText": false
         },
         {
             "playlistId": "WXu7kuaW"
@@ -32,4 +32,3 @@
         "banner": "images/logo.png"
     }
 }
-

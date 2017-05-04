@@ -9,7 +9,6 @@
     "recommendationsPlaylist": "wZuMVmMk",
     "options": {
         "backgroundColor": "",
-        "highlightColor": "",
         "enableContinueWatching": true,
         "enableHeader": true
     },
@@ -32,4 +31,3 @@
         "banner": "images/logo.png"
     }
 }
-

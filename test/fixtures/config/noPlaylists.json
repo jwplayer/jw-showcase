@@ -9,7 +9,6 @@
     "recommendationsPlaylist": "wZuMVmMk",
     "options": {
         "backgroundColor": "",
-        "highlightColor": "",
         "enableContinueWatching": true,
         "enableHeader": true
     },
@@ -17,19 +16,9 @@
         {
             "playlistId": "lrYLc95e",
             "featured": true
-        },
-        {
-            "playlistId": "WXu7kuaW"
-        },
-        {
-            "playlistId": "Q352cyuc"
-        },
-        {
-            "playlistId": "oR7ahO0J"
         }
     ],
     "assets": {
         "banner": "images/logo.png"
     }
 }
-
