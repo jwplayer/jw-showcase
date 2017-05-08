@@ -10,14 +10,14 @@ toolbox.options.cache.name = 'jw-showcase-v1';
 
 toolbox.precache([
     '/',
-    '/config.json',
-    '/manifest.json',
-    '/favicon.ico',
-    '/styles/main.css',
-    '/fonts/icons.eot',
-    '/fonts/icons.svg',
-    '/fonts/icons.ttf',
-    '/fonts/icons.woff',
+    'config.json',
+    'manifest.json',
+    'favicon.ico',
+    'styles/main.css',
+    'fonts/icons.eot',
+    'fonts/icons.svg',
+    'fonts/icons.ttf',
+    'fonts/icons.woff',
     /* inject:scripts */
 ]);
 

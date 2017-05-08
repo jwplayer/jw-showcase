@@ -1,7 +1,8 @@
 module.exports = function (grunt) {
 
     var hosted = grunt.option('hosted'),
-        tasks = [
+        pwa    = grunt.option('pwa'),
+        tasks  = [
             'clean:dist',
             'ngtemplates',
             'useminPrepare',
@@ -14,9 +15,12 @@ module.exports = function (grunt) {
             'template:dist'
         ];
 
+    if (pwa) {
+        tasks.push('copy:pwa', 'serviceworker');
+    }
+
     if (hosted) {
-        grunt.config.set('config.dist', 'hosted');
-        tasks = tasks.concat(['hosted']);
+        tasks.push('hosted');
     }
 
     grunt.registerTask('build', tasks);

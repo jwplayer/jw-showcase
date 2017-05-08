@@ -17,11 +17,13 @@ module.exports = function (grunt) {
         config.version    = pkg.version;
         config.libVersion = libPkg.version;
 
+        config.pwa = grunt.option('pwa');
+
         html = fs.readFileSync(src).toString();
 
         if (injectNgMocks) {
             var pos = html.indexOf('<!-- build:js({.tmp,app}) scripts/scripts.js -->');
-            html = html.substr(0, pos) + ngMocksInclude + '\n\n' + html.substr(pos);
+            html    = html.substr(0, pos) + ngMocksInclude + '\n\n' + html.substr(pos);
         }
 
         compiler = template(html);
@@ -52,6 +54,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('template:dist', function () {
         var dist = grunt.config.get('config.dist');
-        compile(dist + '/index.html', dist+ '/index.html', dist + '/config.json');
+        compile(dist + '/index.html', dist + '/index.html', dist + '/config.json');
     });
 };

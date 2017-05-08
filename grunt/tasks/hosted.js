@@ -20,35 +20,32 @@ module.exports = function (grunt) {
 
     grunt.registerTask('hosted', function () {
 
-        var prefix = grunt.option('prefix') || 'a',
-            output = 'hosted/' + prefix,
+        var prefix   = grunt.option('prefix') || 'a',
+            fromDist = grunt.config.get('config.dist'),
+            toDist   = fromDist + '/' + prefix,
             html, sw, application;
 
-        fs.mkdirSync(output);
+        fs.mkdirSync(toDist);
 
         // move assets
-        fs.renameSync('hosted/fonts', output + '/fonts');
-        fs.renameSync('hosted/scripts', output + '/scripts');
-        fs.renameSync('hosted/styles', output + '/styles');
-        fs.renameSync('hosted/images', output + '/images');
-        fs.renameSync('hosted/favicon.ico', output + '/favicon.ico');
+        fs.renameSync(fromDist + '/fonts', toDist + '/fonts');
+        fs.renameSync(fromDist + '/scripts', toDist + '/scripts');
+        fs.renameSync(fromDist + '/styles', toDist + '/styles');
+        fs.renameSync(fromDist + '/images', toDist + '/images');
+        fs.renameSync(fromDist + '/favicon.ico', toDist + '/favicon.ico');
 
-        fs.renameSync('hosted/sw.js', output + '/sw.js');
-        fs.renameSync('hosted/ranged-request.js', output + '/ranged-request.js');
-        fs.renameSync('hosted/sw-toolbox.js', output + '/sw-toolbox.js');
+        ifExists(fromDist + '/sw.js', toDist + '/sw.js', fs.renameSync);
+        ifExists(fromDist + '/ranged-request.js', toDist + '/ranged-request.js', fs.renameSync);
+        ifExists(fromDist + '/sw-toolbox.js', toDist + '/sw-toolbox.js', fs.renameSync);
 
-        // test only
-        // fs.renameSync('hosted/config.json', output + '/config.json');
-        // fs.renameSync('hosted/manifest.json', output + '/manifest.json');
+        ifExists(fromDist + '/manifest.json', fs.unlinkSync);
 
-        fs.unlinkSync('hosted/config.json');
-        fs.unlinkSync('hosted/manifest.json');
-
-        fs.unlinkSync('hosted/.htaccess');
-        fs.unlinkSync('hosted/robots.txt');
+        fs.unlinkSync(fromDist + '/config.json');
+        fs.unlinkSync(fromDist + '/.htaccess');
+        fs.unlinkSync(fromDist + '/robots.txt');
 
         // update index html
-        html = fs.readFileSync('hosted/index.html').toString();
+        html = fs.readFileSync(fromDist + '/index.html').toString();
 
         html = html.replace(/scripts\//g, prefix + '/scripts/');
         html = html.replace(/styles\//g, prefix + '/styles/');
@@ -56,32 +53,28 @@ module.exports = function (grunt) {
         html = html.replace('favicon.ico', prefix + '/favicon.ico');
         html = html.replace('sw.js', prefix + '/sw.js');
 
-        // enable PWA for hosted build
-        html = html.replace('window.enablePwa = false;', 'window.enablePwa = true;');
-
-        fs.writeFileSync('hosted/index.html', html);
-
-        // update sw.js
-        sw = fs.readFileSync(output + '/sw.js').toString();
-        sw = sw.replace('/* inject:scripts */',
-            '\'/scripts/scripts.js\',' +
-            '\'/scripts/application.js\',' +
-            '\'/scripts/vendor.1.js\',' +
-            '\'/scripts/vendor.2.js\''
-        );
-
-        fs.writeFileSync(output + '/sw.js', sw);
+        fs.writeFileSync(fromDist + '/index.html', html);
 
         // update application.js
-        application = fs.readFileSync(output + '/scripts/application.js').toString();
+        application = fs.readFileSync(toDist + '/scripts/application.js').toString();
 
         application = application.replace(/\{url:"\/list/g, '{url:"/' + prefix + '/list');
         application = application.replace(/\{url:"\/search/g, '{url:"/' + prefix + '/search');
         application = application.replace(/\{url:"\/video-not-found'/g, '{url:"/' + prefix + '/video-not-found');
         application = application.replace(/\{url:"\/list-not-found'/g, '{url:"/' + prefix + '/list-not-found');
 
-        fs.writeFileSync(output + '/scripts/application.js', application);
+        fs.writeFileSync(toDist + '/scripts/application.js', application);
     });
+
+    function ifExists () {
+
+        var args = Array.prototype.slice.call(arguments),
+            fn   = args.pop();
+
+        if (fs.existsSync(args[0])) {
+            fn.apply(this, args);
+        }
+    }
 
     function deleteFolderRecursive (path) {
         if (fs.existsSync(path)) {

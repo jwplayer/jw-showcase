@@ -22,9 +22,22 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
 
+  <% if (pwa) { %>
   <!-- Progressive Web App -->
   <meta name="theme-color" content="#fff">
   <link rel="manifest" href="manifest.json">
+  <script>
+      window.enablePwa = true;
+
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('sw.js').then(function (registration) {
+              registration.onupdatefound = function () {
+                  console.log('ServiceWorker update found, installing...');
+              };
+          });
+      }
+  </script>
+  <% } %>
 
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -51,18 +64,6 @@
 <div class="jw-offline-message">
   You appear to be offline. <a ng-click="rootVm.reconnect()">Retry</a>
 </div>
-
-<script>
-    window.enablePwa = true;
-
-    if (window.enablePwa && 'serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(function (registration) {
-            registration.onupdatefound = function () {
-                console.log('ServiceWorker update found, installing...');
-            };
-        });
-    }
-</script>
 
 <!-- build:js(.) scripts/vendor.1.js -->
 <script src="bower_components/angular/angular.js"></script>

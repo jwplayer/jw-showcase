@@ -1,4 +1,5 @@
 var modRewrite = require('connect-modrewrite');
+var serveStatic = require('serve-static');
 
 module.exports = function (grunt) {
     return {
@@ -13,16 +14,12 @@ module.exports = function (grunt) {
                 middleware: function (connect) {
                     return [
                         modRewrite(['^[^\\.]*$ /index.html [L]']),
-                        connect.static('.tmp'),
+                        serveStatic('.tmp'),
                         connect().use(
                             '/bower_components',
-                            connect.static('./bower_components')
+                            serveStatic('./bower_components')
                         ),
-                        connect().use(
-                            '/app/styles',
-                            connect.static('./app/styles')
-                        ),
-                        connect.static('./app')
+                        serveStatic('./app')
                     ];
                 }
             }
@@ -35,13 +32,13 @@ module.exports = function (grunt) {
                 middleware: function (connect) {
                     return [
                         modRewrite(['^[^\\.]*$ /index.html [L]']),
-                        connect.static('.tmp'),
-                        connect.static('test'),
+                        serveStatic('.tmp'),
+                        serveStatic('test'),
                         connect().use(
                             '/bower_components',
-                            connect.static('./bower_components')
+                            serveStatic('./bower_components')
                         ),
-                        connect.static('./app')
+                        serveStatic('./app')
                     ];
                 }
             }

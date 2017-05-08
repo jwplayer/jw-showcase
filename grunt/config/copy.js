@@ -9,11 +9,9 @@ module.exports = {
                 '*.{ico,png,txt}',
                 '.htaccess',
                 'config.json',
-                'manifest.json',
                 '*.html',
-                '*.js',
                 'fonts/{,*/}*',
-                'images/{,*/}*.{jpg,gif,png,svg}',
+                'images/*.{jpg,gif,png,svg}',
                 'styles/fonts/{,*/}*.*'
             ]
         }, {
@@ -21,6 +19,19 @@ module.exports = {
             cwd:    'bower_components/jw-showcase-lib/fonts',
             dest:   '<%= config.dist %>/fonts',
             src:    '*'
+        }]
+    },
+    pwa: {
+        files: [{
+            expand: true,
+            dot:    true,
+            cwd:    '<%= config.app %>',
+            dest:   '<%= config.dist %>',
+            src:    [
+                'images/*/*.{jpg,gif,png,svg}',
+                'manifest.json',
+                '*.js'
+            ]
         }, {
             expand: true,
             cwd:    'bower_components/sw-toolbox',
