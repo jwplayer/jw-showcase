@@ -11,3 +11,4 @@ test/reports
 !test/reports/.gitkeep
 
 protractor.lab.conf.js
+/hosted

@@ -35,6 +35,7 @@
     function config ($urlRouterProvider, $locationProvider, $httpProvider) {
 
         $httpProvider.defaults.cache = true;
+        $httpProvider.useApplyAsync(true);
 
         $locationProvider
             .html5Mode(true);
