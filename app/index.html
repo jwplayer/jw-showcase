@@ -39,7 +39,8 @@
   </script>
   <% } %>
 
-  <!-- build:css(.tmp) styles/main.css -->
+  <!-- build:css(.tmp,.) styles/main.css -->
+  <link rel="stylesheet" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
@@ -77,6 +78,7 @@
 <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
 <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 <script src="bower_components/ua-parser-js/src/ua-parser.js"></script>
+<script src="bower_components/add-to-homescreen/src/addtohomescreen.js"></script>
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/application.js -->
@@ -162,6 +164,11 @@
 
 <script>
     window.configLocation = './config.json';
+
+    // show add to homescreen when PWA is disabled
+    if (!(window.enablePwa && 'serviceWorker' in navigator)) {
+        addToHomescreen({appID: 'jwshowcase.addtohome'});
+    }
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
