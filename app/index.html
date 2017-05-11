@@ -9,7 +9,7 @@
   <meta name="description" content="<%= description %>">
   <meta property="og:title" content="<%= siteName %>">
   <meta property="og:description" content="<%= description %>">
-  <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/social-image.png<% } %>">
+  <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/icon-256x256.png<% } %>">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
@@ -20,7 +20,7 @@
 
   <!-- Safari web app -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="images/icon-152x152.png">
 
   <% if (pwa) { %>
   <!-- Progressive Web App -->
@@ -39,7 +39,8 @@
   </script>
   <% } %>
 
-  <!-- build:css(.tmp) styles/main.css -->
+  <!-- build:css(.tmp,.) styles/main.css -->
+  <link rel="stylesheet" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
@@ -77,6 +78,7 @@
 <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
 <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 <script src="bower_components/ua-parser-js/src/ua-parser.js"></script>
+<script src="bower_components/add-to-homescreen/src/addtohomescreen.js"></script>
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/application.js -->
@@ -162,6 +164,11 @@
 
 <script>
     window.configLocation = './config.json';
+
+    // show add to homescreen when PWA is disabled
+    if (!(window.enablePwa && 'serviceWorker' in navigator)) {
+        addToHomescreen({appID: 'jwshowcase.addtohome'});
+    }
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->

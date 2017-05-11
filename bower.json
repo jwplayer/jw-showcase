@@ -9,7 +9,8 @@
     "gsap": "~1.18.4",
     "ua-parser-js": "^0.7.12",
     "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.2.0",
-    "sw-toolbox": "^3.6.1"
+    "sw-toolbox": "^3.6.1",
+    "add-to-homescreen": "^3.2.3"
   },
   "devDependencies": {
     "angular-mocks": "1.6.4"

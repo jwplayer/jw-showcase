@@ -1,0 +1,27 @@
+//
+// Add to home
+// --------------------------------
+
+.ath-container {
+    background-color: $white;
+    box-shadow: none;
+
+    &.ath-icon::before {
+        background-color: $white;
+        background-size: 40%;
+    }
+
+    &.ath-ios.ath-phone::after {
+        background: $white;
+        box-shadow: none;
+    }
+
+    .ath-application-icon {
+        width: 4em;
+        height: 4em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
