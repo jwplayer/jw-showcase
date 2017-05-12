@@ -47,7 +47,7 @@ var configure = function () {
 
         return browser.addMockModule('app', function () {
             angular.module('app').run(function () {
-                window.configLocation = './fixtures/config/config.json';
+                window.configLocation = './fixtures/config/default.json';
             });
         });
     });

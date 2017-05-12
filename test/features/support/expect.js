@@ -20,5 +20,5 @@ var chai           = require('chai'),
 module.exports = function () {
 
     chai.use(chaiAsPromised);
-    root.expect = chai.expect;
+    global.expect = chai.expect;
 };

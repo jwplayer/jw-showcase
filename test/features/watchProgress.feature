@@ -58,7 +58,7 @@ Feature: Watch progress
     Given I have a saved watchProgress of 31 days old with mediaid "Iyfst4Se" and feedid "lrYLc95e"
     And I go to the "index" page
     When I wait until the page has been loaded
-    Then the "Continue watching" slider should not be visible
+    Then the "Continue watching" slider should be hidden
 
   @desktop @tablet @mobile
   Scenario: Start video at last known position

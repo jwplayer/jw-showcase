@@ -42,7 +42,7 @@ var stepsDefinition = function () {
                 }
 
                 browser
-                    .findElement(by.css('.jwplayer .jw-icon-display'))
+                    .findElement(by.css('.jwplayer .jw-video'))
                     .click()
                     .then(delay(callback, 2000));
             });
