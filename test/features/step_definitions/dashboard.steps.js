@@ -29,7 +29,7 @@ var stepsDefinition = function () {
 
     this.When(/^I scroll to the (\d+)(?:st|nd|th|rd) default slider$/, function (slider, callback) {
 
-        var element = browser
+        browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
                 return scrollToElement(sliders[slider - 1])
