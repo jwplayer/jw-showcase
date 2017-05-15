@@ -1,11 +1,6 @@
 module.exports = function (grunt) {
 
     grunt.registerTask('test:unit', [
-        'clean:server',
-        'compass',
-        'ngtemplates:server',
-        'template:server',
-        'connect:test',
         'karma'
     ]);
 
@@ -32,7 +27,7 @@ module.exports = function (grunt) {
         'compass',
         'ngtemplates:server',
         'template:serverE2E',
-        'copy:icons',
+        'copy:server',
         'connect:test'
     ]);
 

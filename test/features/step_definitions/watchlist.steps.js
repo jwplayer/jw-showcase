@@ -31,45 +31,65 @@ var stepsDefinition = function () {
     this.When(/^I click on the card menu button of the first card$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child .jw-card-menu-button'))
-            .click()
-            .then(delay(callback, 1200));
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide.first .jw-card-menu-button'))
+                    .click()
+                    .then(delay(callback, 1200));
+            });
     });
 
     this.When(/^I click on the add to watchlist button in the card menu$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-button[ng-click="vm.saveButtonClickHandler()"]'))
-            .click()
-            .then(delay(callback, 1200));
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide.first'))
+                    .findElement(by.css('.jw-button[ng-click="vm.saveButtonClickHandler()"]'))
+                    .click()
+                    .then(delay(callback, 1200));
+            });
     });
 
     this.When(/^I click on the remove from watchlist button in the card menu$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-button[ng-click="vm.unsaveButtonClickHandler()"]'))
-            .click()
-            .then(delay(callback, 1200));
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide.first'))
+                    .findElement(by.css('.jw-button[ng-click="vm.unsaveButtonClickHandler()"]'))
+                    .click()
+                    .then(delay(callback, 1200));
+            });
     });
 
     this.When(/^I click on the close button in the card menu$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-button[ng-click="vm.closeButtonClickHandler()"]'))
-            .click()
-            .then(delay(callback, 1200));
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide.first'))
+                    .findElement(by.css('.jw-button[ng-click="vm.closeButtonClickHandler()"]'))
+                    .click()
+                    .then(delay(callback, 1200));
+            });
     });
 
     this.When(/^I click on the remove from watchlist button in the card$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-card-watchlist-button'))
-            .click()
-            .then(delay(callback, 1200));
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide.first'))
+                    .findElement(by.css('.jw-card-watchlist-button'))
+                    .click()
+                    .then(delay(callback, 1200));
+            });
     });
 
     this.When(/^I click on the watchlist button in the video toolbar$/, function (callback) {
@@ -83,61 +103,69 @@ var stepsDefinition = function () {
     this.When(/^I click on the first card in the watchlist slider$/, function (callback) {
 
         browser
-            .findElement(by.css('.watchlist .jw-card-slider-slide:first-child .jw-card'))
+            .findElement(by.css('.jw-feed-saved-videos .jw-card-slider-slide:first-child .jw-card'))
             .click()
             .then(delay(callback, 1200));
     });
 
-    this.Given(/^I scroll to the watchlist slider$/, function (callback) {
+    this.When(/^I scroll to the watchlist slider$/, function (callback) {
 
-        scrollToElement('.watchlist .jw-card-slider')
+        var element = browser
+            .findElement(by.css('.jw-feed-saved-videos'));
+
+        scrollToElement(element)
             .then(callback);
     });
 
-    this.Then(/^the card menu should show a remove from watchlist button$/, function (callback) {
+    this.Then(/^the card menu remove from watchlist button should be (visible|hidden)$/, function (visible, callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-button[ng-click="vm.unsaveButtonClickHandler()"]'))
-            .then(function () {
-                expect(true).to.equal(true);
-                callback();
-            }, function () {
-                expect(true).to.equal(false);
-                callback();
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide:first-child'))
+                    .findElements(by.css('.jw-button[ng-click="vm.unsaveButtonClickHandler()"]'))
+                    .then(function (elements) {
+                        expect(!!elements.length).to.equal(visible === 'visible');
+                        callback();
+                    });
             });
     });
 
-    this.Then(/^the card menu should show an add to watchlist button$/, function (callback) {
+    this.Then(/^the card menu add to watchlist button should be (visible|hidden)$/, function (visible, callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-button[ng-click="vm.saveButtonClickHandler()"]'))
-            .then(function () {
-                expect(true).to.equal(true);
-                callback();
-            }, function () {
-                expect(true).to.equal(false);
-                callback();
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+
+                return sliders[0]
+                    .findElement(by.css('.jw-card-slider-slide:first-child'))
+                    .findElements(by.css('.jw-button[ng-click="vm.saveButtonClickHandler()"]'))
+                    .then(function (elements) {
+                        expect(!!elements.length).to.equal(visible === 'visible');
+                        callback();
+                    });
             });
     });
 
     this.Then(/^there should be 1 video in the watchlist$/, function (callback) {
 
         browser
-            .findElements(by.css('.watchlist .jw-card-slider-slide'))
+            .findElements(by.css('.jw-feed-saved-videos .jw-card-slider-slide'))
             .then(function (cards) {
                 expect(cards.length).to.equal(1);
                 callback();
             });
     });
 
-    this.Then(/^the watchlist should be hidden$/, function (callback) {
+    this.Then(/^the watchlist should be (hidden|visible)$/, function (visible, callback) {
 
         browser
-            .findElements(by.css('.watchlist .jw-card-slider'))
-            .then(function (sliders) {
-                expect(sliders.length).to.equal(0);
+            .findElement(by.css('.jw-feed-saved-videos'))
+            .isElementPresent(by.css('.jw-card-slider'))
+            .then(function (present) {
+                expect(present).to.equal(visible === 'visible');
                 callback();
             });
     });
@@ -145,12 +173,15 @@ var stepsDefinition = function () {
     this.Then(/^the remove from watchlist button should be visible in the card$/, function (callback) {
 
         browser
-            .findElement(by.css('.feed .jw-card-slider:nth-child(1) .jw-card-slider-slide:first-child'))
-            .findElement(by.css('.jw-card-watchlist-button'))
-            .isDisplayed()
-            .then(function (displayed) {
-                expect(displayed).to.equal(true);
-                callback();
+            .findElements(by.css('.jw-card-slider-flag-default:not(.jw-feed-continue-watching)'))
+            .then(function (sliders) {
+                return sliders[0]
+                    .findElement(by.css('.jw-card-watchlist-button'))
+                    .isDisplayed()
+                    .then(function (displayed) {
+                        expect(displayed).to.equal(true);
+                        callback();
+                    });
             });
     });
 
@@ -158,10 +189,9 @@ var stepsDefinition = function () {
 
         browser
             .findElement(by.css('.jw-toolbar-video .jw-button-watchlist'))
-            .getText()
-            .then(function (text) {
-                text = text.replace('\n', ' ');
-                expect(text).to.equal('Unsave video');
+            .isElementPresent(by.css('.jwy-icon-min'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });
@@ -170,10 +200,9 @@ var stepsDefinition = function () {
 
         browser
             .findElement(by.css('.jw-toolbar-video .jw-button-watchlist'))
-            .getText()
-            .then(function (text) {
-                text = text.replace('\n', ' ');
-                expect(text).to.equal('Save video');
+            .isElementPresent(by.css('.jwy-icon-plus'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });

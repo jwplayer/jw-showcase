@@ -36,13 +36,13 @@ var stepsDefinition = function () {
                 if (className.indexOf('jw-flag-touch') !== -1) {
                     return browser
                         .touchActions()
-                        .tap(element(by.css('.jwplayer .jw-video')))
+                        .tap(element(by.css('.jwplayer .jw-icon-display')))
                         .perform()
                         .then(delay(callback, 2000));
                 }
 
                 browser
-                    .findElement(by.css('.jwplayer .jw-icon-display'))
+                    .findElement(by.css('.jwplayer .jw-video'))
                     .click()
                     .then(delay(callback, 2000));
             });

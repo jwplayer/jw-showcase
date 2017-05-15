@@ -16,7 +16,7 @@
 
 module.exports = function () {
 
-    root.isCurrentUrl = function (path, success, error) {
+    global.isCurrentUrl = function (path, success, error) {
 
         var fullUrl = browser.baseUrl + path;
 
@@ -25,7 +25,7 @@ module.exports = function () {
             .then(function (currentUrl) {
 
                 if (fullUrl === currentUrl) {
-                    setTimeout(success, 1000);
+                    setTimeout(success, 100);
                 }
                 else {
                     error();
@@ -33,9 +33,7 @@ module.exports = function () {
             });
     };
 
-    root.navigateToPage = function (path, callback, attempt) {
-
-        attempt = attempt || 1;
+    global.navigateToPage = function (path, callback, attempt) {
 
         browser
             .get(path)
@@ -50,19 +48,20 @@ module.exports = function () {
             });
     };
 
-    root.scrollToElement = function (selector) {
+    global.scrollToElement = function (element) {
 
         return browser
-            .executeScript(function (selector) {
-                var element = document.querySelector(selector);
+            .executeScript(function (element) {
+
+                var header = document.querySelector('.jw-header');
 
                 if (element) {
-                    document.body.scrollTop = element.offsetTop;
+                    document.body.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
                 }
-            }, selector);
+            }, element);
     };
 
-    root.delay = function (fn, time) {
+    global.delay = function (fn, time) {
         return function () {
             setTimeout(fn, time);
         };

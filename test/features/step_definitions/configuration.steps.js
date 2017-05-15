@@ -20,6 +20,7 @@ var stepsDefinition = function () {
 
         browser
             .addMockModule('app', function (configLocation) {
+                window.addToHomescreen = angular.noop;
                 angular.module('app').run(function () {
                     window.configLocation = configLocation;
                 });

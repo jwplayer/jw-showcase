@@ -11,7 +11,7 @@ module.exports = {
                 'config.json',
                 '*.html',
                 'fonts/{,*/}*',
-                'images/{,*/}*.{jpg,gif,png,svg}',
+                'images/*.{jpg,gif,png,svg}',
                 'styles/fonts/{,*/}*.*'
             ]
         }, {
@@ -21,11 +21,36 @@ module.exports = {
             src:    '*'
         }]
     },
-    icons:  {
-        expand: true,
-        cwd:    'bower_components/jw-showcase-lib/fonts',
-        dest:   '.tmp/fonts/',
-        src:    '*'
+    pwa: {
+        files: [{
+            expand: true,
+            dot:    true,
+            cwd:    '<%= config.app %>',
+            dest:   '<%= config.dist %>',
+            src:    [
+                'images/*/*.{jpg,gif,png,svg}',
+                'manifest.json',
+                '*.js'
+            ]
+        }, {
+            expand: true,
+            cwd:    'bower_components/sw-toolbox',
+            src:    'sw-toolbox.js',
+            dest:   '<%= config.dist %>'
+        }]
+    },
+    server: {
+        files: [{
+            expand: true,
+            cwd:    'bower_components/jw-showcase-lib/fonts',
+            dest:   '.tmp/fonts/',
+            src:    '*'
+        }, {
+            expand: true,
+            cwd:    'bower_components/sw-toolbox',
+            src:    'sw-toolbox.js',
+            dest:   '.tmp/'
+        }]
     },
     styles: {
         expand: true,

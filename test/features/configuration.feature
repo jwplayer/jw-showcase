@@ -12,7 +12,7 @@ Feature: Configuration
 
   @mobile @tablet @desktop
   Scenario: I use a custom config file
-    Given I set configLocation to "./fixtures/config/customConfig.json"
+    Given I set configLocation to "./fixtures/config/custom.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then the logo should use "/fixtures/jwplayer-logo.png" as src
@@ -23,7 +23,7 @@ Feature: Configuration
 
   @mobile @tablet @desktop
   Scenario: I use an invalid config file
-    Given I set configLocation to "./fixtures/config/invalidConfig.json"
+    Given I set configLocation to "./fixtures/config/invalid.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then I should see an error with message "Failed to load config file"
@@ -37,21 +37,21 @@ Feature: Configuration
 
   @tablet @desktop
   Scenario: I don't want to use the featured slider
-    Given I set configLocation to "./fixtures/noFeaturedPlaylistConfig.json"
+    Given I set configLocation to "./fixtures/config/noFeaturedPlaylist.json"
     And I go to the "index" page
     When I do nothing
     Then the featured slider should not be visible
 
   @mobile
   Scenario: I don't want to use the featured slider
-    Given I set configLocation to "./fixtures/noFeaturedPlaylistConfig.json"
+    Given I set configLocation to "./fixtures/config/noFeaturedPlaylist.json"
     And I go to the "index" page
     When I do nothing
     Then the featured items should not be visible
 
   @mobile @tablet @desktop
   Scenario: I don't want to use the default sliders
-    Given I set configLocation to "./fixtures/noPlaylistsConfig.json"
+    Given I set configLocation to "./fixtures/config/noPlaylists.json"
     And I go to the "index" page
     When I do nothing
     Then the default sliders should not be visible

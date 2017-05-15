@@ -8,20 +8,20 @@ Feature: Dashboard page
   @tablet @desktop
   Scenario: As a user I want to see the featured slider
     Given I go to the "index" page
-    When I do nothing
+    When I wait until the page has been loaded
     Then the featured slider should be visible
 
   @mobile
   Scenario: As a user I want to see featured items
     Given I go to the "index" page
-    When I do nothing
+    When I wait until the page has been loaded
     Then there should be featured items visible
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the default sliders
     Given I am still on the "index" page
-    When I do nothing
-    Then there should be "3" default sliders visible
+    When I wait until the page has been loaded
+    Then there should be 3 default sliders visible
 
   @tablet @desktop
   Scenario: As a user I want to be able to navigate forward through the featured feed
@@ -37,53 +37,49 @@ Feature: Dashboard page
     Then the first item in the featured slider should be visible
 
   @mobile @tablet
-  Scenario: As a user I want to be able to navigate forward through a featured feed by swiping
+  Scenario: As a user I want to be able to navigate forward through a default feed by swiping
     Given I go to the "index" page
     When I wait until the page has been loaded
-    And I scroll to the first default slider
-    And I swipe left in the first default slider
-    Then the first item in the featured slider should not be visible
+    And I scroll to the 1st default slider
+    And I swipe left in the 1st default slider
+    Then the first item in the 1st default slider should not be visible
 
   @mobile @tablet
-  Scenario: As a user I want to be able to navigate backward through the featured feed by swiping
+  Scenario: As a user I want to be able to navigate backward through the default feed by swiping
     Given I am still on the "index" page
     When I wait until the page has been loaded
-    And I scroll to the first default slider
-    And I swipe right in the first default slider
-    Then the first item in the featured slider should be visible
+    And I scroll to the 1st default slider
+    And I swipe right in the 1st default slider
+    Then the first item in the 1st default slider should be visible
 
   @tablet @desktop
   Scenario: As a user I want to see when I can't slide to the left
-    Given I am still on the "index" page
-    When I do nothing
-    Then the "left" arrow in the first default slider should be disabled
-
-  @tablet @desktop
-  Scenario: As a user I want to see the active indicator in the featured slider
-    Given I am still on the "index" page
-    When I do nothing
-    Then the indicator should highlight the first bullet
+    Given I go to the "index" page
+    When I wait until the page has been loaded
+    Then the left arrow in the 1st default slider should be disabled
+    And the left arrow in the 2nd default slider should be disabled
+    And the left arrow in the 3th default slider should be disabled
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the title with video count of the first default slider
     Given I am still on the "index" page
     When I wait until the page has been loaded
-    And I scroll to the first default slider
-    Then the title of the first default slider should be "Featured Trailers (8)"
+    And I scroll to the 1st default slider
+    Then the title of the 1st default slider should be "Featured Trailers (8)"
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the title with video count of the second default slider
     Given I am still on the "index" page
-    And I scroll to the second default slider
+    And I scroll to the 2nd default slider
     When I wait until the page has been loaded
-    Then the title of the second default slider should be "Comedy (5)"
+    Then the title of the 2nd default slider should be "Comedy (5)"
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see the title of the items in the default sliders
     Given I go to the "index" page
     When I wait until the page has been loaded
-    And I scroll to the first default slider
-    Then the titles of the items should be visible
+    And I scroll to the 2nd default slider
+    Then the card titles should be visible in the 1st default slider
 
   @tablet @desktop
   Scenario: As a user I want to see the title and description of the visible item in the featured feed
@@ -95,10 +91,10 @@ Feature: Dashboard page
   @desktop
   Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
     Given I am still on the "index" page
-    When I scroll to the first default slider
-    And I move my mouse to the first item in the default slider
-    Then I should see the description in the default slider
-    And I should see the duration in the default slider
+    When I scroll to the 1st default slider
+    And I move my mouse to the first item in the 1st default slider
+    Then I should see the description in the first item of the 1st default slider
+    And I should see the duration in the first item of the 1st default slider
 
   @mobile
   Scenario: As a user I want to be able to navigate to the video page by clicking on the first featured item
@@ -124,10 +120,22 @@ Feature: Dashboard page
 
   @desktop
   Scenario: As a user I want to be able to disable the featured text overlay
-    Given I set configLocation to "./fixtures/config/enableFeaturedText.json"
+    Given I set configLocation to "./fixtures/config/disableFeaturedText.json"
     And I go to the "index" page
     When I wait until the page has been loaded
     Then the card title should be hidden in the featured slider
     And the card description should be hidden in the featured slider
 
-  # 
+  @desktop
+  Scenario: As a user I want to be able to disable text in a default slider
+    Given I set configLocation to "./fixtures/config/disableDefaultText.json"
+    And I go to the "index" page
+    When I wait until the page has been loaded
+    Then the card titles should be hidden in the 1st default slider
+
+  @desktop
+  Scenario: As a user I want to be able to disable text in a default slider
+    Given I set configLocation to "./fixtures/config/disableDefaultTitle.json"
+    And I go to the "index" page
+    When I wait until the page has been loaded
+    Then the title of the 1st default slider should be hidden

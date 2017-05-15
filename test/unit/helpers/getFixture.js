@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Longtail Ad Solutions Inc.
+ * Copyright 2017 Longtail Ad Solutions Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,13 @@
  * governing permissions and limitations under the License.
  **/
 
-var chai           = require('chai'),
-    chaiAsPromised = require('chai-as-promised');
+function getFixture (name) {
 
-module.exports = function () {
+    if (!window.__fixtures__) {
+        throw new Error('window.__fixtures__ isn\'t set. Is karma-json-fixtures-preprocessor installed?');
+    }
 
-    chai.use(chaiAsPromised);
-    global.expect = chai.expect;
-};
+    return window.__fixtures__[name];
+}
+
+module.exports = getFixture;

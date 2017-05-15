@@ -69,6 +69,15 @@ var stepsDefinition = function () {
         callback();
     });
 
+    this.When(/^I scroll to the watchProgress slider$/, function (callback) {
+
+        var element = browser
+            .findElement(by.css('.jw-feed-continue-watching'));
+
+        scrollToElement(element)
+            .then(callback);
+    });
+
     this.Then(/I log the watchProgress/, function () {
 
         browser
@@ -112,47 +121,40 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/the "Continue watching" slider should not be visible/, function (callback) {
+    this.Then(/the "Continue watching" slider should be (visible|hidden)/, function (visible, callback) {
 
         browser
-            .findElements(by.css('.watchProgress'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(0);
-                callback();
-            });
-    });
-
-    this.Then(/the "Continue watching" slider should be visible/, function (callback) {
-
-        browser
-            .findElements(by.css('.watchProgress'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(1);
+            .findElement(by.css('.jw-feed-continue-watching'))
+            .isElementPresent(by.css('.jw-card-slider'))
+            .then(function (present) {
+                expect(present).to.equal(visible === 'visible');
                 callback();
             });
     });
 
     this.Then(/the "Continue watching" slider should contain (\d+) cards/, function (count, callback) {
 
-        browser
-            .findElements(by.css('.watchProgress .jw-card'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(parseInt(count));
+
+        element(by.css('.jw-feed-continue-watching .jw-card-slider'))
+            .evaluate('feed')
+            .then(function (feed) {
+                expect(feed.playlist.length).to.equal(parseInt(count));
                 callback();
             });
     });
 
     this.Then(/the first card in "Continue watching" slider should have mediaid "([^"]*)"/, function (mediaid, callback) {
 
-        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card')).evaluate('item').then(function (item) {
-            expect(item.mediaid).to.equal(mediaid);
-            callback();
-        });
+        element(by.css('.jw-feed-continue-watching .jw-card-slider-slide.first .jw-card')).evaluate('item')
+            .then(function (item) {
+                expect(item.mediaid).to.equal(mediaid);
+                callback();
+            });
     });
 
     this.Then(/the first card in "Continue watching" slider should show "([^"]*)" watch progress/, function (width, callback) {
 
-        element(by.css('.watchProgress .jw-card-slider-slide:first-child .jw-card .jw-card-watch-progress'))
+        element(by.css('.jw-feed-continue-watching .jw-card-slider-slide.first .jw-card .jw-card-watch-progress'))
             .getAttribute('style')
             .then(function (style) {
                 expect(style).to.contains('width: ' + width);

@@ -9,19 +9,51 @@
   <meta name="description" content="<%= description %>">
   <meta property="og:title" content="<%= siteName %>">
   <meta property="og:description" content="<%= description %>">
-  <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/social-image.jpg<% } %>">
+  <meta property="og:image" content="<% if (url !== '/') { %><%= url %>images/icon-256x256.png<% } %>">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <script type="application/ld+json" id="schema"></script>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="canonical" href="<% if (url !== '/') { %><%= url %><% } %>">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json" id="schema"></script>
+
+  <!-- Safari web app -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="images/icon-152x152.png">
+
+  <% if (pwa) { %>
+  <!-- Progressive Web App -->
+  <meta name="theme-color" content="#fff">
+  <link rel="manifest" href="manifest.json">
+  <script>
+      window.enablePwa = /^https/.test(window.location.href);
+
+      if (window.enablePwa && 'serviceWorker' in navigator) {
+          navigator.serviceWorker.register('sw.js').then(function (registration) {
+              registration.onupdatefound = function () {
+                  console.log('ServiceWorker update found, installing...');
+              };
+          });
+      }
+  </script>
+  <% } %>
+
+  <!-- build:css(.) styles/vendor.css -->
+  <link rel="stylesheet" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
+  <!-- endbuild -->
+
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
 <body class="jw-theme-{{ ::rootVm.config.theme }} jw-flag-loading-config">
 
-<jw-header ng-if="rootVm.config.enableHeader"></jw-header>
+<noscript>
+  <div>To make use of this website please make sure JavaScript is enabled.</div>
+</noscript>
+
+<jw-header ng-if="rootVm.config.options.enableHeader"></jw-header>
 <ui-view></ui-view>
 <jw-footer></jw-footer>
 
@@ -33,8 +65,15 @@
   </div>
 </div>
 
-<!-- build:js(.) scripts/vendor.js -->
+<div class="jw-offline-message">
+  You appear to be offline. <a ng-click="rootVm.reconnect()">Retry</a>
+</div>
+
+<!-- build:js(.) scripts/vendor.1.js -->
 <script src="bower_components/angular/angular.js"></script>
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.2.js -->
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -42,7 +81,10 @@
 <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
 <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
 <script src="bower_components/ua-parser-js/src/ua-parser.js"></script>
+<script src="bower_components/add-to-homescreen/src/addtohomescreen.js"></script>
+<!-- endbuild -->
 
+<!-- build:js(.) scripts/application.js -->
 <script src="bower_components/jw-showcase-lib/js/polyfills.js"></script>
 <script src="bower_components/jw-showcase-lib/js/vtt.js"></script>
 <script src="bower_components/jw-showcase-lib/js/jwShowcase.module.js"></script>
@@ -90,6 +132,7 @@
 <script src="bower_components/jw-showcase-lib/js/core/services/history.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/userSettings.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/utils.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/serviceWorker.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/player.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/popup.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/platform.service.js"></script>

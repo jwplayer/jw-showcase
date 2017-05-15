@@ -15,8 +15,9 @@ module.exports = function (grunt) {
     require('load-grunt-config')(grunt, {
         configPath: path.join(process.cwd(), 'grunt/config'),
         data:       {
-            config: config,
-            pkg:    require('./package.json')
+            configFile: 'protractor.conf.js',
+            config:     config,
+            pkg:        require('./package.json')
         }
     });
 

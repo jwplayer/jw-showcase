@@ -8,26 +8,35 @@ Feature: Watchlist
   It should be possible to watch a video from the watchlist
 
   @desktop @tablet @mobile
-  Scenario: Save video to watchlist via the card menu
+  Scenario: Watchlist should not be visible when there are no saved videos
     Given I go to the "index" page
     And I wait until the page has been loaded
-    When I click on the card menu button of the first card
+    When I scroll to the watchlist slider
+    Then the watchlist should be hidden
+
+  @desktop @tablet @mobile
+  Scenario: Save video to watchlist via the card menu
+    Given I am still on the "index" page
+    And I wait until the page has been loaded
+    When I scroll to the 1st default slider
+    And I click on the card menu button of the first card
     And I click on the add to watchlist button in the card menu
     Then there should be 1 video in the watchlist
+    And the watchlist should be visible
 
   @desktop @tablet @mobile
   Scenario: Remove button should be visible if the item is saved in the watchlist
     Given I am still on the "index" page
     And I wait until the page has been loaded
     When I click on the card menu button of the first card
-    Then the card menu should show a remove from watchlist button
+    Then the card menu remove from watchlist button should be visible
 
   @desktop @tablet @mobile
   Scenario: Remove video from watchlist via the card menu
     Given I am still on the "index" page
     When I click on the remove from watchlist button in the card menu
     And I click on the card menu button of the first card
-    Then the card menu should show an add to watchlist button
+    Then the card menu add to watchlist button should be visible
 
   @desktop @tablet @mobile
   Scenario: There should be a remove from watchlist button visible in the card top left corner
