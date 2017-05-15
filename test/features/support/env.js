@@ -46,6 +46,7 @@ var configure = function () {
     this.Before(function () {
 
         return browser.addMockModule('app', function () {
+            window.addToHomescreen = angular.noop;
             angular.module('app').run(function () {
                 window.configLocation = './fixtures/config/default.json';
             });

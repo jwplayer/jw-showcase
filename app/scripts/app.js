@@ -29,7 +29,8 @@
             'ui.router',
             'jwShowcase'
         ])
-        .config(config);
+        .config(config)
+        .run(run);
 
     config.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];
     function config ($urlRouterProvider, $locationProvider, $httpProvider) {
@@ -42,6 +43,15 @@
 
         $urlRouterProvider
             .otherwise('/');
+    }
+
+    run.$inject = [];
+    function run () {
+
+        // show add to homescreen when PWA is disabled
+        if (!(window.enablePwa && 'serviceWorker' in navigator)) {
+            window.addToHomescreen({appID: 'jwshowcase.addtohome'});
+        }
     }
 
 }());

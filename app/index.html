@@ -167,11 +167,6 @@
 
 <script>
     window.configLocation = './config.json';
-
-    // show add to homescreen when PWA is disabled
-    if (!(window.enablePwa && 'serviceWorker' in navigator)) {
-        addToHomescreen({appID: 'jwshowcase.addtohome'});
-    }
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
