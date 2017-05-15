@@ -1,7 +1,7 @@
 {
   "name": "jw-showcase",
   "description": "JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.",
-  "version": "3.2.0",
+  "version": "3.3.0-beta",
   "dependencies": {},
   "repository": {
     "url": "https://github.com/jwplayer/jw-showcase.git"
