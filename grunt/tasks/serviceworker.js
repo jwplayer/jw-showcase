@@ -29,8 +29,11 @@ module.exports = function (grunt) {
             '\'scripts/scripts.js\',' +
             '\'scripts/application.js\',' +
             '\'scripts/vendor.1.js\',' +
-            '\'scripts/vendor.2.js\''
+            '\'scripts/vendor.2.js\',' +
+            '\'styles/vendor.css\''
         );
+
+        sw = sw.replace(/[ ]+'config\.json',\n/, '');
 
         fs.writeFileSync(dist + '/sw.js', sw);
     });
