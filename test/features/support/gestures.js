@@ -21,10 +21,10 @@ module.exports = function () {
         return browser
             .executeScript(function (element, direction) {
 
-                var fromX   = 200,
-                    fromY   = 200,
-                    toX     = 200,
-                    toY     = 200;
+                var fromX = 200,
+                    fromY = 100,
+                    toX   = 200,
+                    toY   = 100;
 
                 switch (direction) {
                 case 'left':
@@ -59,5 +59,4 @@ module.exports = function () {
 
             }, element, direction);
     };
-
 };

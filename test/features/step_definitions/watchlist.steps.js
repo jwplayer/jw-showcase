@@ -108,7 +108,7 @@ var stepsDefinition = function () {
             .then(delay(callback, 1200));
     });
 
-    this.Given(/^I scroll to the watchlist slider$/, function (callback) {
+    this.When(/^I scroll to the watchlist slider$/, function (callback) {
 
         var element = browser
             .findElement(by.css('.jw-feed-saved-videos'));
@@ -189,10 +189,9 @@ var stepsDefinition = function () {
 
         browser
             .findElement(by.css('.jw-toolbar-video .jw-button-watchlist'))
-            .getText()
-            .then(function (text) {
-                text = text.replace('\n', ' ');
-                expect(text).to.equal('Unsave video');
+            .isElementPresent(by.css('.jwy-icon-min'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });
@@ -201,10 +200,9 @@ var stepsDefinition = function () {
 
         browser
             .findElement(by.css('.jw-toolbar-video .jw-button-watchlist'))
-            .getText()
-            .then(function (text) {
-                text = text.replace('\n', ' ');
-                expect(text).to.equal('Save video');
+            .isElementPresent(by.css('.jwy-icon-plus'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });

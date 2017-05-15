@@ -32,11 +32,9 @@ var stepsDefinition = function () {
         var element = browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                return sliders[slider - 1].findElement(by.css('.jw-card-slider-container'));
+                return scrollToElement(sliders[slider - 1])
+                    .then(callback);
             });
-
-        scrollToElement(element)
-            .then(callback);
     });
 
     this.When(/^I click the (right|left) arrow in the featured slider$/, function (direction, callback) {
@@ -49,14 +47,17 @@ var stepsDefinition = function () {
 
     this.When(/^I swipe (left|right) in the (\d+)(?:st|nd|th|rd) default slider/, function (direction, slider, callback) {
 
-        var element = browser
+        browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                return sliders[slider - 1].findElement(by.css('.jw-card-slider-container'));
-            });
+                return sliders[slider - 1]
+                    .findElement(by.css('.jw-card-slider-align'))
+                    .then(function (element) {
 
-        swipe(element, 'left')
-            .then(delay(callback, 1000));
+                        return swipe(element, direction)
+                            .then(delay(callback, 1000));
+                    });
+            });
     });
 
     this.When(/^I click the first item in the featured slider$/, function (callback) {
@@ -158,7 +159,7 @@ var stepsDefinition = function () {
             .then(function (sliders) {
 
                 sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-slide'))
+                    .findElement(by.css('.jw-card-slider-slide.' + item))
                     .getAttribute('class')
                     .then(function (classNames) {
 

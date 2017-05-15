@@ -35,6 +35,7 @@ Feature: Watch progress
       | Iyfst4Se | lrYLc95e | 0.5      | now         | 0      |
     And I go to the "index" page
     When I wait until the page has been loaded
+    And I scroll to the watchProgress slider
     Then the "Continue watching" slider should be visible
     And the "Continue watching" slider should contain 2 cards
     And the first card in "Continue watching" slider should have mediaid "Iyfst4Se"

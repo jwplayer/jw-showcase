@@ -37,24 +37,24 @@ Feature: Dashboard page
     Then the first item in the featured slider should be visible
 
   @mobile @tablet
-  Scenario: As a user I want to be able to navigate forward through a featured feed by swiping
+  Scenario: As a user I want to be able to navigate forward through a default feed by swiping
     Given I go to the "index" page
     When I wait until the page has been loaded
     And I scroll to the 1st default slider
     And I swipe left in the 1st default slider
-    Then the first item in the featured slider should not be visible
+    Then the first item in the 1st default slider should not be visible
 
   @mobile @tablet
-  Scenario: As a user I want to be able to navigate backward through the featured feed by swiping
+  Scenario: As a user I want to be able to navigate backward through the default feed by swiping
     Given I am still on the "index" page
     When I wait until the page has been loaded
     And I scroll to the 1st default slider
     And I swipe right in the 1st default slider
-    Then the first item in the featured slider should be visible
+    Then the first item in the 1st default slider should be visible
 
   @tablet @desktop
   Scenario: As a user I want to see when I can't slide to the left
-    Given I am still on the "index" page
+    Given I go to the "index" page
     When I wait until the page has been loaded
     Then the left arrow in the 1st default slider should be disabled
     And the left arrow in the 2nd default slider should be disabled
