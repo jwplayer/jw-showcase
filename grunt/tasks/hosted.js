@@ -51,7 +51,8 @@ module.exports = function (grunt) {
         html = html.replace(/styles\//g, prefix + '/styles/');
         html = html.replace('./config.json', prefix + '/config.json');
         html = html.replace('favicon.ico', prefix + '/favicon.ico');
-        html = html.replace('sw.js', prefix + '/sw.js');
+        html = html.replace('sw.js\'', prefix + '/sw.js\', {scope: \'/\'}');
+        html = html.replace('manifest.json', prefix + '/manifest.json');
 
         fs.writeFileSync(fromDist + '/index.html', html);
 
