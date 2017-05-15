@@ -5,8 +5,8 @@ const OFFLINE_VIDEO_REGEX = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
 importScripts('sw-toolbox.js');
 importScripts('ranged-request.js');
 
-toolbox.options.debug      = true;
-toolbox.options.cache.name = 'jw-showcase-v1';
+toolbox.options.debug      = false;
+toolbox.options.cache.name = 'jw-showcase-v3.2.0';
 
 toolbox.precache([
     '/',
