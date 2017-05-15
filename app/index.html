@@ -27,9 +27,9 @@
   <meta name="theme-color" content="#fff">
   <link rel="manifest" href="manifest.json">
   <script>
-      window.enablePwa = true;
+      window.enablePwa = /^https/.test(window.location.href);
 
-      if ('serviceWorker' in navigator) {
+      if (window.enablePwa && 'serviceWorker' in navigator) {
           navigator.serviceWorker.register('sw.js').then(function (registration) {
               registration.onupdatefound = function () {
                   console.log('ServiceWorker update found, installing...');
