@@ -5,7 +5,7 @@
 - Updated AngularJS to 1.6.4
 - Updated dark theme
 - Added add to homescreen plugin
-- Added support for PWA builds
+- Added [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) support
 - Enabled casting in player
 - Fixed continue watching sorting in IE
 - Fixed video auto scroll in Firefox
