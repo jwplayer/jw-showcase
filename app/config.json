@@ -11,6 +11,7 @@
         "backgroundColor": "",
         "highlightColor": "",
         "enableContinueWatching": true,
+        "enableCookieNotice": false,
         "enableHeader": true
     },
     "content": [
