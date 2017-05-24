@@ -1,0 +1,101 @@
+## 3.3.0 (May 24 2017)
+
+**New in this release:**
+- Updated to a new configuration model, see below for more details.
+- Updated AngularJS to 1.6.4
+- Updated dark theme
+- Added add to homescreen plugin
+- Added support for PWA builds
+- Enabled casting in player
+- Fixed continue watching sorting in IE
+- Fixed video auto scroll in Firefox
+
+**Configuration update**
+
+The configuration model has been updated to version 2. Previous configurations are still supported, but we 
+recommend updating your configuration to version 2. Support of the previous configuration will most likely be removed 
+in the next major release.
+
+See the [example config](https://github.com/jwplayer/jw-showcase/blob/master/app/config.json) and [configuration wiki](https://github.com/jwplayer/jw-showcase/wiki/Getting-Started#configuration-parameters) for all available options.
+
+## 3.2.0 (Apr 20 2017)
+
+**New in this release:**
+- Improved overall performance
+- Added schema.org VideoObject tags to improve SEO
+- Fixed player captions
+- Fixed vtt.js error in Safari
+- Fixed lazy load not always loading images in viewport
+- Removed featured slider dot indicator
+
+## 3.1.0 (Mar 3 2017)
+
+**New in this release:**
+- Optimized load time by loading the content playlists from JW Platform asynchronously.
+- Sliders only render a minimum amount of cards to increase render time.
+- Using v2 JW playlist endpoint to significantly decrease the playlist load time.
+- Added lazy load to only load images that are currently visible.
+- Added 'thumbstrip on mouseover' in Featured slider.
+- Show thumb image of closest watch position in "Continue watching" slider.
+- Disabled cookie notice by default, this can be re-enabled by adding `"enableCookieNotice": true` in the config.json.
+- Updated page URL structure to include truncated video title, which improves SEO ranking.
+- Added canonical META tag.
+- Added `enableFeaturedText` option to enable/disable title and description text overlay in Featured slider.
+- Added `enableHeader` option to enable/disable the site header (banner image, hamburger menu, etc), making it easier to embed a Showcase inside another web page.
+- Added `enableJsScroll` option to enable/disable Javascript scrolling for the main content.
+- Refactored the code to enable easier UI customization. See the documentation at [Customizing JW Showcase](https://github.com/jwplayer/jw-showcase/wiki/Customizing-JW-Showcase).
+- Added lightweight markdown support for item descriptions. Currently supported: bold, italic and hyperlinks. To use, edit the video's description metadata in JW Dashboard.
+
+**Example Markdown:**
+
+```
+*this is italic*
+**this is bold**
+[Link to JW Player](http://jwplayer.com "Title text")
+```
+
+## 3.0.1 (Jan 26 2017)
+
+**New in this release:**
+- Fixed JWPlayer display icons being stacked vertically in some cases.
+
+## 3.0.0 (Dec 16 2016)
+
+**New in this release:**
+- Implemented a top-level "hamburger" style menu (issue #18 ) for easier navigation.
+- Added a configuration option (enableContinueWatching, true or false) to globally disable the Continue Watching shelf (Issue #56 ).
+- Added a "conserve bandwidth" setting for users who want to use less video data on mobile networks.
+- Implemented site Search functionality (Issue #33 ). Users will only see the Search box if you specify a `searchPlaylist` ID in your `config.json`. This feature is powered by JW Recommendations and requires a JW Recommendations entitlement. For more information, see https://support.jwplayer.com/customer/portal/articles/2191721-jw-recommendations.
+- Implemented a Related Videos shelf. Users will only see the Related Videos shelf if you specify a `recommendationsPlaylist` ID in your `config.json`. This feature is powered by JW Recommendations and requires a JW Recommendations entitlement. For more information, see https://support.jwplayer.com/customer/portal/articles/2191721-jw-recommendations.
+- Re-architected the code to consolidate core Showcase functionality into a central library, (`jw-showcase-lib`, integrated as a Bower component).
+- Fixed a number of bugs and added some minor features. See https://github.com/jwplayer/jw-showcase/issues?q=is%3Aissue+milestone%3A%22Q4+2016%22+is%3Aclosed
+
+## 2.0.0 Saved videos and Continue watching (Sep 23 2016)
+
+**New in this release:**
+- A "watch list" feature for users to save videos for watching later. A separate list for "continue watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., the lists do not sync across user's devices). 
+- A new grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
+- Thumbnail images in shelves are loaded on-demand instead of all on page load, saving substantial user bandwidth and improving page load speed.
+- Improved the UX of video descriptions (moved below the video instead of as a player overlay).
+- Implemented the new JW Player "Up Next" recommendations UX.
+
+We also fixed a few bugs. For details, see the [closed issues for the 2.0 milestone](https://github.com/jwplayer/jw-showcase/milestone/2?closed=1)
+
+## 1.1.0 Design update (Jul 29 2016) 
+
+**Page design changes:**
+- In the Home page, the top carousel poster image in focus is now centered instead of offset to the left.
+- In the View page, the height of the video's poster image has been reduced to show more of the "More like this" shelf.
+- Made improvements to video description text area (cleaner text overflow and show/hide behavior).
+- Shelves/playlists now include the number of content items in the list (Issue #1 ).
+- On desktop browsers, uses 1920-wide poster images instead of 720 (issue #7 ).
+
+**Miscellaneous:**
+- Fixed issue #22
+- Fixed issue #4 
+- Updated package.json with Apache license to fix grunt build warning ("EPACKAGEJSON jwshowcase@1.0.0 No license field").
+
+## 1.0.0 Initial release (Jun 24 2016) 
+
+First release of the JW Showcase video web site builder. For instructions on setting up your JW Showcase site, see 
+the [Wiki](https://github.com/jwplayer/jw-showcase/wiki).
