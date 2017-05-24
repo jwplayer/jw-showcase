@@ -30,7 +30,7 @@ var stepsDefinition = function () {
             .findElement(by.css('.jw-toolbar .jw-toolbar-title'))
             .getText()
             .then(function (text) {
-                expect(text).to.equal(title);
+                expect(text.trim()).to.equal(title);
                 callback();
             });
     });

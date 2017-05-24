@@ -66,4 +66,12 @@ module.exports = function () {
             setTimeout(fn, time);
         };
     };
+
+    global.clickElement = function (selector, callback) {
+        return browser
+            .executeScript(function (cssSelector) {
+                document.querySelector(cssSelector)
+                    .click();
+            }, selector);
+    };
 };

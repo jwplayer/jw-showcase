@@ -21,9 +21,9 @@ var stepsDefinition = function () {
         browser
             .findElement(by.css('.jw-card-slider-flag-featured .jw-card-slider-container'))
             .then(function (element) {
-                scrollToElement(element)
-                    .then(callback);
-            });
+                return scrollToElement(element);
+            })
+            .then(callback);
     });
 
 
@@ -32,9 +32,9 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                return scrollToElement(sliders[slider - 1])
-                    .then(callback);
-            });
+                return scrollToElement(sliders[slider - 1]);
+            })
+            .then(callback);
     });
 
     this.When(/^I click the (right|left) arrow in the featured slider$/, function (direction, callback) {
@@ -50,34 +50,53 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                return sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-align'))
-                    .then(function (element) {
-
-                        return swipe(element, direction)
-                            .then(delay(callback, 1000));
-                    });
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-align'));
+            })
+            .then(function (element) {
+                return swipe(element, direction).then(delay(callback, 1000));
             });
     });
 
     this.When(/^I click the first item in the featured slider$/, function (callback) {
 
+        // element is not intractable
+        if (browser.browserName === 'firefox') {
+            clickElement('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-container')
+                .then(delay(callback, 1000));
+            return;
+        }
+
         browser
             .findElement(by.css('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible'))
+            .findElement(by.css('.jw-card .jw-card-container'))
             .click()
             .then(delay(callback, 1000));
     });
 
     this.When(/^I click the play icon in the visible item in the featured slider$/, function (callback) {
 
+        // element is not intractable
+        if (browser.browserName === 'firefox') {
+            clickElement('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-play-button')
+                .then(delay(callback, 1000));
+            return;
+        }
+
         browser
-            .findElement(by.css('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible'))
-            .findElement(by.css('.jw-card-play-button'))
-            .click()
+            .executeScript(function () {
+                document
+                    .querySelector('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card')
+                    .classList.add('jw-card-flag-active');
+            })
+            .then(function () {
+                return browser
+                    .findElement(by.css('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible'))
+                    .findElement(by.css('.jw-card-play-button'))
+                    .click();
+            })
             .then(delay(callback, 1000));
     });
 
-    // @todo
     this.When(/^I click the first featured item in the dashboard/, function (callback) {
 
         browser
@@ -88,16 +107,19 @@ var stepsDefinition = function () {
 
     this.When(/^I move my mouse to the first item in the (\d+)(?:st|nd|th|rd) default slider$/, function (slider, callback) {
 
-        if ('safari' === browser.browserName) {
+        if (/safari|firefox/i.test(browser.browserName)) {
             return callback(null, 'pending');
         }
 
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-slide.first'));
+            })
+            .then(function (element) {
                 return browser
                     .actions()
-                    .mouseMove(sliders[slider - 1].findElement(by.css('.jw-card-slider-slide.first')))
+                    .mouseMove(element)
                     .perform()
                     .then(delay(callback, 500));
             });
@@ -157,20 +179,17 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-slide.' + item)).getAttribute('class');
+            })
+            .then(function (classNames) {
 
-                sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-slide.' + item))
-                    .getAttribute('class')
-                    .then(function (classNames) {
+                if (!not) {
+                    expect(classNames).to.contain('is-visible');
+                    return callback();
+                }
 
-                        if (!not) {
-                            expect(classNames).to.contain('is-visible');
-                            return callback();
-                        }
-
-                        expect(classNames).not.to.contain('is-visible');
-                        callback();
-                    });
+                expect(classNames).not.to.contain('is-visible');
+                callback();
             });
     });
 
@@ -190,13 +209,12 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-button-flag-' + direction))
-                    .getAttribute('class')
-                    .then(function (classNames) {
-                        expect(classNames).to.contain('is-disabled');
-                        callback();
-                    });
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-button-flag-' + direction))
+                    .getAttribute('class');
+            })
+            .then(function (classNames) {
+                expect(classNames).to.contain('is-disabled');
+                callback();
             });
     });
 
@@ -214,20 +232,20 @@ var stepsDefinition = function () {
 
     this.Then(/^the card titles should be (visible|hidden) in the (\d+)(?:st|nd|th|rd) default slider$/, function (visible, slider, callback) {
 
+        var element;
+
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                var element = sliders[slider - 1];
-                scrollToElement(element)
-                    .then(function () {
-                        return element
-                            .findElement(by.css('.jw-card-slider-slide.first .jw-card-title'))
-                            .isDisplayed()
-                            .then(function (isDisplayed) {
-                                expect(isDisplayed).to.equal(visible === 'visible');
-                                callback();
-                            });
-                    });
+                element = sliders[slider - 1];
+                return scrollToElement(element);
+            })
+            .then(function () {
+                return element.findElement(by.css('.jw-card-slider-slide.first .jw-card-info')).isDisplayed();
+            })
+            .then(function (isDisplayed) {
+                expect(isDisplayed).to.equal(visible === 'visible');
+                callback();
             });
     });
 
@@ -236,13 +254,11 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-title'))
-                    .isDisplayed()
-                    .then(function (isDisplayed) {
-                        expect(isDisplayed).to.equal(visible === 'visible');
-                        callback();
-                    });
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-title')).isDisplayed();
+            })
+            .then(function (isDisplayed) {
+                expect(isDisplayed).to.equal(visible === 'visible');
+                callback();
             });
     });
 
@@ -251,19 +267,17 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider-flag-default'))
             .then(function (sliders) {
-                return sliders[slider - 1]
-                    .findElement(by.css('.jw-card-slider-title'))
-                    .getText()
-                    .then(function (title) {
+                return sliders[slider - 1].findElement(by.css('.jw-card-slider-title')).getText();
+            })
+            .then(function (title) {
 
-                        // title can contain an icon and multiple whitespaces
-                        title = title
-                            .replace(/\s{2,}/g, ' ')
-                            .trim();
+                // title can contain an icon and multiple whitespaces
+                title = title
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
 
-                        expect(title).to.equal(expectedTitle);
-                        callback();
-                    });
+                expect(title).to.equal(expectedTitle);
+                callback();
             });
     });
 
@@ -274,11 +288,11 @@ var stepsDefinition = function () {
             .then(function (sliders) {
                 return sliders[slider - 1]
                     .findElement(by.css('.jw-card-slider-slide.first .jw-card-description'))
-                    .isDisplayed()
-                    .then(function (isDisplayed) {
-                        expect(isDisplayed).to.equal(true);
-                        callback();
-                    });
+                    .isDisplayed();
+            })
+            .then(function (isDisplayed) {
+                expect(isDisplayed).to.equal(true);
+                callback();
             });
     });
 
@@ -289,11 +303,11 @@ var stepsDefinition = function () {
             .then(function (sliders) {
                 return sliders[slider - 1]
                     .findElement(by.css('.jw-card-slider-slide.first .jw-card-duration'))
-                    .isDisplayed()
-                    .then(function (isDisplayed) {
-                        expect(isDisplayed).to.equal(true);
-                        callback();
-                    });
+                    .isDisplayed();
+            })
+            .then(function (isDisplayed) {
+                expect(isDisplayed).to.equal(true);
+                callback();
             });
 
     });

@@ -33,13 +33,15 @@ var configure = function () {
 
     this.Before(function () {
 
-        if (!browser.browserName) {
-            return browser
-                .getCapabilities()
-                .then(function (capabilities) {
-                    browser.browserName = capabilities.get('browserName');
-                });
+        if (browser.browserName) {
+            return;
         }
+
+        return browser
+            .getCapabilities()
+            .then(function (capabilities) {
+                browser.browserName = capabilities.get('browserName');
+            });
     });
 
     // set default config to config.json in fixtures directory
