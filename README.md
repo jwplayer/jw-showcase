@@ -21,6 +21,7 @@ To see an example of JW Showcase in action, see [tv.jwplayer.com](http://tv.jwpl
 - A "Watchlist" feature for users to save videos for watching later. A separate list for "Continue Watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., lists do not sync across user's browsers or devices). The Continue Watching list can be disabled in your Showcase `config.json` file.
 - A grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
 - Social sharing options for Facebook, Twitter and email.
+- Option to build your Showcase as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) when building from the source code.
 
 ### Unsupported Features
 
