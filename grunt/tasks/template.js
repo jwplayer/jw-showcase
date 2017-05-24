@@ -23,7 +23,8 @@ module.exports = function (grunt) {
 
         if (injectNgMocks) {
             var pos = html.indexOf('<!-- build:js({.tmp,app}) scripts/scripts.js -->');
-            html    = html.substr(0, pos) + ngMocksInclude + '\n\n' + html.substr(pos);
+            html    = html.substr(0, pos) + ngMocksInclude + '\n\n' +
+                '<script>window.name = "NG_DEFER_BOOTSTRAP!" + window.name;</script>' + '\n\n' + html.substr(pos);
         }
 
         compiler = template(html);

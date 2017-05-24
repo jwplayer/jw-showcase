@@ -134,7 +134,7 @@ var stepsDefinition = function () {
             .findElement(by.css('.jw-modal-message'))
             .getText()
             .then(function (textContent) {
-                expect(textContent).to.equal(arg1);
+                expect(textContent.trim()).to.equal(arg1);
                 callback();
             });
     });

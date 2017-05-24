@@ -5,8 +5,8 @@ var browserstack = require('browserstack-local'),
 
 exports.config = {
 
-    allScriptsTimeout: 20000,
-    getPageTimeout:    20000,
+    allScriptsTimeout: 30000,
+    getPageTimeout:    30000,
 
     baseUrl: 'http://localhost:9001',
 
@@ -39,7 +39,8 @@ exports.config = {
         return new Promise(function (resolve, reject) {
             local = new browserstack.Local();
             local.start({
-                'key': env.BROWSERSTACK_KEY || env.BS_AUTHKEY
+                'force': true,
+                'key':   env.BROWSERSTACK_KEY || env.BS_AUTHKEY
             }, function (error) {
                 if (error) {
                     return reject(error);
@@ -84,10 +85,10 @@ exports.config = {
 
         // Safari 9.1
         createCapabilities({
-            'browserName':     'safari',
-            'browser_version': '9.1',
-            'os':              'OS X',
-            'os_version':      'El Capitan'
+            'browserName': 'safari',
+            'version':     '9.1',
+            'os':          'OS X',
+            'os_version':  'El Capitan'
         }, ['@desktop']),
 
         //
@@ -96,10 +97,10 @@ exports.config = {
 
         // Internet Explorer 11
         createCapabilities({
-            'browserName':     'internet explorer',
-            'browser_version': '11',
-            'os':              'WINDOWS',
-            'os_version':      '10'
+            'browserName': 'internet explorer',
+            'version':     '11',
+            'os':          'WINDOWS',
+            'os_version':  '10'
         }, ['@desktop']),
 
         // latest Chrome
@@ -128,9 +129,14 @@ exports.config = {
  */
 function createCapabilities (capabilities, tags) {
 
-    capabilities['browserstack.user']  = env.BROWSERSTACK_USER || env.BS_USERNAME;
-    capabilities['browserstack.key']   = env.BROWSERSTACK_KEY || env.BS_AUTHKEY;
-    capabilities['browserstack.local'] = true;
+    capabilities['browserstack.user']             = env.BROWSERSTACK_USER || env.BS_USERNAME;
+    capabilities['browserstack.key']              = env.BROWSERSTACK_KEY || env.BS_AUTHKEY;
+    capabilities['browserstack.local']            = true;
+
+    // Selenium 3.4.0 does not work great with IE11
+    if (capabilities.browserName !== 'internet explorer') {
+        capabilities['browserstack.selenium_version'] = '3.4.0';
+    }
 
     capabilities.project = pkg.name;
     capabilities.build   = env.BROWSERSTACK_BUILD || pkg.version;
@@ -163,7 +169,7 @@ function composeReportName (capabilities) {
     var os             = capabilities.os,
         osVersion      = capabilities.os_version || '',
         browser        = capabilities.browser || capabilities.browserName || 'default',
-        browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
+        browserVersion = capabilities.browserVersion || capabilities.version || 'latest',
 
         name           = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
 

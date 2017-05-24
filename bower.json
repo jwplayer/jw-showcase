@@ -8,7 +8,7 @@
     "angular-ui-router": "~0.3.0",
     "gsap": "~1.18.4",
     "ua-parser-js": "^0.7.12",
-    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.3.0-beta",
+    "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.3.0",
     "sw-toolbox": "^3.6.1",
     "add-to-homescreen": "^3.2.3"
   },

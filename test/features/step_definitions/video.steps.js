@@ -22,7 +22,9 @@ var stepsDefinition = function () {
 
     this.When(/^I scroll to the related slider$/, function (callback) {
 
-        scrollToElement('.jw-row[ng-if="vm.recommendationsFeed"]')
+        browser
+            .findElement(by.css('.jw-row[ng-if="vm.recommendationsFeed"]'))
+            .then(scrollToElement)
             .then(callback);
     });
 
@@ -37,23 +39,23 @@ var stepsDefinition = function () {
                     return browser
                         .touchActions()
                         .tap(element(by.css('.jwplayer .jw-icon-display')))
-                        .perform()
-                        .then(delay(callback, 2000));
+                        .perform();
+                }
+
+                // ie doesn't start the video with a click
+                if (className.indexOf('jw-ie') !== -1) {
+                    return browser
+                        .executeScript(function () {
+                            jwplayer().play(true);
+                        })
+                        .then(callback);
                 }
 
                 browser
                     .findElement(by.css('.jwplayer .jw-video'))
-                    .click()
-                    .then(delay(callback, 2000));
-            });
-    });
-
-    this.When(/^I click on the mobile video viewport$/, function (callback) {
-
-        browser
-            .findElement(by.css('video'))
-            .click()
-            .then(callback);
+                    .click();
+            })
+            .then(delay(callback, 2000));
     });
 
     this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the more like this slider$/, function (num, callback) {
@@ -61,15 +63,11 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-card-slider[feed="vm.feed"] .jw-card-slider-slide.is-visible'))
             .then(function (elements) {
-
-                if (!elements[num - 1]){
-                    callback();
-                }
-
-                elements[num - 1]
-                    .click()
-                    .then(callback);
-            });
+                return elements[num - 1]
+                    .findElement(by.css('.jw-card-container'))
+                    .click();
+            })
+            .then(callback);
     });
 
     this.When(/^I start playing the next playlist item$/, function (callback) {
@@ -104,7 +102,9 @@ var stepsDefinition = function () {
 
     this.When(/^I scroll to the more like this slider$/, function (callback) {
 
-        scrollToElement('.jw-card-slider[feed="vm.feed"]')
+        browser
+            .findElement(by.css('.jw-card-slider[feed="vm.feed"]'))
+            .then(scrollToElement)
             .then(callback);
     });
 
@@ -120,10 +120,11 @@ var stepsDefinition = function () {
     this.When(/^I seek to (\d+) seconds/, function (position, callback) {
 
         browser
-            .executeScript(function (pos) {
+            .executeAsyncScript(function (pos, callback) {
+                jwplayer().once('seeked', callback);
                 jwplayer().seek(pos);
             }, [position])
-            .then(callback);
+            .then(delay(callback, 200));
     });
 
     this.Then(/^the video not found page should be visible$/, function (callback) {
@@ -134,19 +135,6 @@ var stepsDefinition = function () {
                 expect(url).to.equal(browser.baseUrl + '/video-not-found');
                 callback();
             });
-    });
-
-    this.Then(/^I move my mouse over the video$/, function (callback) {
-
-        if ('safari' === browser.browserName) {
-            return callback(null, 'pending');
-        }
-
-        element(by.css('.jwplayer'))
-            .actions()
-            .mouseMove(el)
-            .perform()
-            .then(delay(callback, 2000));
     });
 
     this.Then(/^the video player is ready$/, function (callback) {
@@ -173,23 +161,25 @@ var stepsDefinition = function () {
 
     this.Then(/^the related videos title is shown$/, function (callback) {
 
-        scrollToElement('.jw-row[ng-if="vm.feed"]')
+        browser
+            .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+            .then(scrollToElement)
             .then(function () {
-                browser
+                return browser
                     .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
                     .findElement(by.css('.jw-card-slider-flag-default'))
                     .findElement(by.css('.jw-card-slider-title'))
-                    .getText()
-                    .then(function (title) {
+                    .getText();
+            })
+            .then(function (title) {
 
-                        // title can contain an icon and multiple whitespaces
-                        title = title
-                            .replace(/\s{2,}/g, ' ')
-                            .trim();
+                // title can contain an icon and multiple whitespaces
+                title = title
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
 
-                        expect(title).to.equal('More like this (9)');
-                        callback();
-                    });
+                expect(title).to.equal('More like this (9)');
+                callback();
             });
     });
 

@@ -28,7 +28,11 @@ var stepsDefinition = function () {
         browser
             .addMockModule('app', function (watchProgress) {
                 angular.module('app').run(function () {
-                    window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                    try {
+                        window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                    }
+                    catch (e) {
+                    }
                 });
             }, data);
 
@@ -62,7 +66,12 @@ var stepsDefinition = function () {
             .addMockModule('app', function (watchProgress) {
                 window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
                 angular.module('app').run(function () {
-                    window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                    try {
+                        window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(watchProgress));
+                    }
+                    catch (e) {
+
+                    }
                 });
             }, hashes);
 

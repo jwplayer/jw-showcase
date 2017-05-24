@@ -66,7 +66,7 @@ Feature: Video page
     When I wait until the page has been loaded
     And I scroll to the more like this slider
     And I click on the 2nd visible card in the more like this slider
-    And wait for 1 seconds
+    And wait for 2 seconds
     Then the title should be "The Girl in the Book - JW Showcase"
     And the description should be "Set in the world of NYC publishing, a young book editor is forced to confront a troubling part of her past when a bestselling author re-enters her life."
     And the canonical path should be "/list/lrYLc95e/video/LjBvF1FX/the-girl-in-the-book"
