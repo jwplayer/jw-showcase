@@ -19,6 +19,10 @@ module.exports = {
             cwd:    'bower_components/jw-showcase-lib/fonts',
             dest:   '<%= config.dist %>/fonts',
             src:    '*'
+        }, {
+            expand: true,
+            dest:   '<%= config.dist %>',
+            src:    ['README.md', 'CHANGELOG.md']
         }]
     },
     pwa: {
