@@ -12,7 +12,8 @@
         "highlightColor": "",
         "enableContinueWatching": true,
         "enableCookieNotice": false,
-        "enableHeader": true
+        "enableHeader": true,
+        "enableTags": false
     },
     "content": [
         {
