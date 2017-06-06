@@ -14,7 +14,7 @@
  * governing permissions and limitations under the License.
  **/
 
-describe('Service: configResolver', function () {
+describe('configResolver', function () {
 
     var configs    = {
             default:             getFixture('config/default'),
@@ -38,35 +38,27 @@ describe('Service: configResolver', function () {
         throw new Error('This function should not have been called');
     }
 
-    beforeEach(function () {
-        module(
-            'ngAnimate',
-            'ngSanitize',
-            'ngTouch',
-            'ui.router',
-            'jwShowcase.core'
-        );
-    });
+    beforeEach(module(
+        'ngAnimate',
+        'ngSanitize',
+        'ngTouch',
+        'ui.router',
+        'jwShowcase.core'
+    ));
 
-    beforeEach(function () {
-        try {
-            inject(function (_$httpBackend_, _$timeout_, _configResolver_) {
+    beforeEach(inject(function (_$httpBackend_, _$timeout_, _configResolver_) {
 
-                $httpBackend   = _$httpBackend_;
-                $timeout       = _$timeout_;
-                configResolver = _configResolver_;
+        $httpBackend   = _$httpBackend_;
+        $timeout       = _$timeout_;
+        configResolver = _configResolver_;
 
-                // set config location
-                window.configLocation = 'config.json';
+        // set config location
+        window.configLocation = 'config.json';
 
-                window.config = null;
-            });
-        } catch (e) {
-            console.log(e.message);
-        }
-    });
+        window.config = null;
+    }));
 
-    describe('when using `getConfig`', function () {
+    describe('getConfig()', function () {
 
         var request;
 
@@ -116,7 +108,8 @@ describe('Service: configResolver', function () {
             configResolver
                 .getConfig()
                 .then(notToBeCalled, function (e) {
-                    expect(e.message).toEqual('The config file is missing the following properties: player, theme, siteName, description');
+                    expect(e.message)
+                        .toEqual('The config file is missing the following properties: player, theme, siteName, description');
                 });
 
             $httpBackend.flush();
@@ -125,12 +118,12 @@ describe('Service: configResolver', function () {
         it('should reject content is not an array', function () {
 
             request.respond(200, {
-                "version": "2",
-                "player": "N8axwZHA",
-                "theme": "light",
-                "siteName": "JW Showcase",
+                "version":     "2",
+                "player":      "N8axwZHA",
+                "theme":       "light",
+                "siteName":    "JW Showcase",
                 "description": "desc",
-                "content": false
+                "content":     false
             });
 
             configResolver
@@ -143,7 +136,7 @@ describe('Service: configResolver', function () {
         });
     });
 
-    describe('when using `getConfig` with a deprecated config', function () {
+    describe('getConfig() with a deprecated config', function () {
 
         var request;
 
@@ -219,14 +212,13 @@ describe('Service: configResolver', function () {
 
         it('should reject when missing required fields', function () {
 
-            request.respond(200, {
-
-            });
+            request.respond(200, {});
 
             configResolver
                 .getConfig()
                 .then(notToBeCalled, function (e) {
-                    expect(e.message).toEqual('The config file is missing the following properties: player, theme, siteName, description');
+                    expect(e.message)
+                        .toEqual('The config file is missing the following properties: player, theme, siteName, description');
                 });
 
             $httpBackend.flush();
@@ -235,11 +227,11 @@ describe('Service: configResolver', function () {
         it('should reject when playlist is not an array', function () {
 
             request.respond(200, {
-                "player": "N8axwZHA",
-                "theme": "light",
-                "siteName": "JW Showcase",
+                "player":      "N8axwZHA",
+                "theme":       "light",
+                "siteName":    "JW Showcase",
                 "description": "desc",
-                "playlists": false
+                "playlists":   false
             });
 
             configResolver
@@ -254,10 +246,10 @@ describe('Service: configResolver', function () {
         it('should reject when featuredPlaylist is not a string', function () {
 
             request.respond(200, {
-                "player": "N8axwZHA",
-                "theme": "light",
-                "siteName": "JW Showcase",
-                "description": "desc",
+                "player":           "N8axwZHA",
+                "theme":            "light",
+                "siteName":         "JW Showcase",
+                "description":      "desc",
                 "featuredPlaylist": false
             });
 
@@ -269,10 +261,9 @@ describe('Service: configResolver', function () {
 
             $httpBackend.flush();
         });
-
     });
 
-    describe('when using `getConfig` and window.config', function () {
+    describe('getConfig() with window.config defined', function () {
 
         it('should resolve with the window.config object', function () {
 
@@ -283,7 +274,6 @@ describe('Service: configResolver', function () {
 
             $timeout.flush();
         });
-
     });
 
 });
