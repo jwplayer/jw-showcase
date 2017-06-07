@@ -10,7 +10,8 @@
     "ua-parser-js": "^0.7.12",
     "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.3.0",
     "sw-toolbox": "^3.6.1",
-    "add-to-homescreen": "^3.2.3"
+    "add-to-homescreen": "^3.2.3",
+    "angular-aria": "^1.6.4"
   },
   "devDependencies": {
     "angular-mocks": "1.6.4"
