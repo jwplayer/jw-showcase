@@ -13,7 +13,11 @@
         "enableContinueWatching": true,
         "enableCookieNotice": false,
         "enableHeader": true,
-        "enableTags": false
+        "enableTags": false,
+        "rightRail" : {
+            "enabled": true,
+            "title": "Dit is een test"
+        }
     },
     "content": [
         {
