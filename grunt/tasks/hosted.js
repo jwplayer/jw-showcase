@@ -60,6 +60,7 @@ module.exports = function (grunt) {
         application = fs.readFileSync(toDist + '/scripts/application.js').toString();
 
         application = application.replace(/\{url:"\/list/g, '{url:"/' + prefix + '/list');
+        application = application.replace(/\{url:"\/tag/g, '{url:"/' + prefix + '/tag');
         application = application.replace(/\{url:"\/search/g, '{url:"/' + prefix + '/search');
         application = application.replace(/\{url:"\/video-not-found'/g, '{url:"/' + prefix + '/video-not-found');
         application = application.replace(/\{url:"\/list-not-found'/g, '{url:"/' + prefix + '/list-not-found');
