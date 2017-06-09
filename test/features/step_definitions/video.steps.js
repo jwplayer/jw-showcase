@@ -70,6 +70,30 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
+    this.When(/^I expand the video description$/, function (callback) {
+
+        browser
+            .findElements(by.css('.jw-collapsible-text-toggle .jw-button'))
+            .then(function (elements) {
+
+                if (!elements.length) {
+                    return callback();
+                }
+
+                return elements[0]
+                    .click()
+                    .then(delay(callback, 300));
+            });
+    });
+
+    this.When(/^I click the first video tag$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-video-tags li:first-child .jw-video-tag'))
+            .click()
+            .then(callback);
+    });
+
     this.When(/^I start playing the next playlist item$/, function (callback) {
 
         browser
@@ -252,6 +276,17 @@ var stepsDefinition = function () {
             })
             .then(function (currentProgress) {
                 expect(currentProgress).to.be.greaterThan(progress);
+                callback();
+            });
+    });
+
+    this.Then(/^the video tags should be visible$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-video-details'))
+            .isElementPresent(by.css('.jw-video-tags'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });
