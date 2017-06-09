@@ -118,6 +118,26 @@ var stepsDefinition = function () {
             });
     });
 
+    this.Then(/^the siderail should not be visible/, function (callback) {
+
+        browser
+            .findElements(by.css('.jw-side-rail'))
+            .then(function (elements) {
+                expect(elements.length).to.equal(0);
+                callback();
+            });
+    });
+
+    this.Then(/^the siderail should be visible/, function (callback) {
+
+        browser
+            .findElements(by.css('.jw-side-rail'))
+            .then(function (elements) {
+                expect(elements.length).to.equal(1);
+                callback();
+            });
+    });
+
     this.Then(/^the featured items should not be visible/, function (callback) {
 
         browser
