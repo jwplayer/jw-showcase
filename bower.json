@@ -11,7 +11,7 @@
     "jw-showcase-lib": "jwplayer/jw-showcase-lib#3.3.0",
     "sw-toolbox": "^3.6.1",
     "add-to-homescreen": "^3.2.3",
-    "iscroll": "~5.2.0"
+    "iscroll": "~5.2.0",
     "angular-aria": "^1.6.4"
   },
   "devDependencies": {
