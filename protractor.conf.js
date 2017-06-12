@@ -18,7 +18,7 @@ exports.config = {
     multiCapabilities: [
         createCapabilities({
             browserName: 'chrome'
-        }, ['@new'])
+        }, ['@desktop'])
     ],
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
