@@ -80,3 +80,20 @@ Feature: Video page
     Then the title should be "Touched with Fire - JW Showcase"
     And the description should be "Touched With Fire stars Katie Homes and Luke Kirby as two poets with bipolar disorder whose art is fueled by their emotional extremes. When they meet in a treatment facility, their chemistry is instant and intense driving each other's mania to new heights. They pursue their passion which breaks outside the bounds of sanity, swinging them from fantastical highs to tormented lows until they ultimately must choose between sanity and love."
     And the canonical path should be "/list/lrYLc95e/video/uNXCVIsW/touched-with-fire"
+
+  @desktop @tablet @mobile
+  Scenario: As a user I want to see tags below the video description when enabled
+    Given I set configLocation to "fixtures/config/enableTags.json"
+    And I go to the "/list/lrYLc95e/video/LjBvF1FX/" page
+    When I wait until the page has been loaded
+    And I expand the video description
+    Then the video tags should be visible
+
+  @desktop @tablet @mobile
+  Scenario: As a user I want to be able to click a tag in the video description
+    Given I set configLocation to "fixtures/config/enableTags.json"
+    And I go to the "/list/lrYLc95e/video/LjBvF1FX/" page
+    When I wait until the page has been loaded
+    And I expand the video description
+    And I click the first video tag
+    Then I should navigate to the "/tag/drama" page

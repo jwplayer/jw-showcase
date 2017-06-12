@@ -23,6 +23,7 @@
      */
     angular
         .module('app', [
+            'ngAria',
             'ngAnimate',
             'ngSanitize',
             'ngTouch',

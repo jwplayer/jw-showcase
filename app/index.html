@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="app" ng-controller="RootController as rootVm">
+<html lang="en" ng-app="app" ng-controller="RootController as rootVm">
 <head>
   <!-- <%= version %>, lib <%= libVersion %> -->
   <base href="<%= path %>">
@@ -47,7 +47,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body class="jw-theme-{{ ::rootVm.config.theme }} jw-flag-loading-config">
+<body class="jw-theme-{{ ::rootVm.config.theme }} jw-flag-loading-config jw-flag-no-focus">
 
 <noscript>
   <div>To make use of this website please make sure JavaScript is enabled.</div>
@@ -74,6 +74,7 @@
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/vendor.2.js -->
+<script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -114,6 +115,7 @@
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardGrid.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardMenu.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardSlider.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/click.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardPoster.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/collapsibleText.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/markdown.directive.js"></script>
