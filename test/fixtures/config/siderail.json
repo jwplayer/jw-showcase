@@ -12,8 +12,7 @@
         "enableContinueWatching": true,
         "enableHeader": true,
         "rightRail" : {
-            "enabled": true,
-            "title": "This is a custom test title"
+            "enabled": true
         }
     },
     "content": [

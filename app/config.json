@@ -15,8 +15,7 @@
         "enableHeader": true,
         "enableTags": false,
         "rightRail" : {
-            "enabled": true,
-            "title": "Dit is een test"
+            "enabled": false
         }
     },
     "content": [

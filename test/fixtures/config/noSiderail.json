@@ -13,7 +13,6 @@
         "enableHeader": true,
         "rightRail" : {
             "enabled": false,
-            "title": "This is a custom test title"
         }
     },
     "content": [

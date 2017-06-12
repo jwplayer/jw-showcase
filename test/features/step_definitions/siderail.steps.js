@@ -30,7 +30,7 @@ var stepsDefinition = function () {
     this.Then(/^the siderail title should be visible$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-side-rail-title'))
+            .findElement(by.css('.jw-side-rail-header'))
             .isDisplayed()
             .then(function (isDisplayed) {
                 expect(isDisplayed).to.equal(true);
@@ -43,17 +43,18 @@ var stepsDefinition = function () {
         browser
             .findElements(by.css('.jw-side-rail-item'))
             .then(function (elements) {
-                expect(elements.length).to.equal(4);
+                expect(elements.length).to.equal(9);
                 callback();
             });
     });
 
-    this.Then(/^the (\d+)st siderailitem should have a poster$/, function (number, callback) {
+    this.Then(/^the (\d+)st siderailitem should have a image$/, function (number, callback) {
 
         browser
-            .findElements(by.css('.jw-side-rail-poster'))
-            .get(number)
-            .isDisplayed()
+            .findElements(by.css('.jw-side-rail-item-image'))
+            .then(function (elements) {
+                return elements[number].isDisplayed();
+            })
             .then(function (isDisplayed) {
                 expect(isDisplayed).to.equal(true);
                 callback();
@@ -63,9 +64,10 @@ var stepsDefinition = function () {
     this.Then(/^the (\d+)st siderailitem should have a title$/, function (number, callback) {
 
         browser
-            .findElement(by.css('.jw-side-rail-title'))
-            .get(number)
-            .isDisplayed()
+            .findElements(by.css('.jw-side-rail-item-title'))
+            .then(function (elements) {
+                return elements[number].isDisplayed();
+            })
             .then(function (isDisplayed) {
                 expect(isDisplayed).to.equal(true);
                 callback();

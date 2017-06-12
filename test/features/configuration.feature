@@ -56,23 +56,17 @@ Feature: Configuration
     When I do nothing
     Then the default sliders should not be visible
 
-    @mobile @tablet @desktop @new
-    Scenario: I don't want to use the right siderail
-        Given I set configLocation to "./fixtures/config/noSiderail.json"
-        And I go directly to the "/list/lrYLc95e/video/Iyfst4Se/" page
-        When I do nothing
-        Then the siderail should not be visible
 
-    @mobile @tablet @desktop @new
-    Scenario: I want to use the right siderail
-        Given I set configLocation to "./fixtures/config/siderail.json"
-        And I go directly to the "/list/lrYLc95e/video/Iyfst4Se/" page
-        When I do nothing
-        Then the siderail should be visible
+  @mobile @tablet @desktop
+  Scenario: I don't want to use the right siderail
+      Given I set configLocation to "./fixtures/config/noSiderail.json"
+      And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
+      When I wait until the page has been loaded
+      Then the siderail should not be visible
 
-    @mobile @tablet @desktop @new
-    Scenario: I want to use a custom title for the right siderail
-        Given I set configLocation to "./fixtures/config/siderail.json"
-        And I go directly to the "/list/lrYLc95e/video/Iyfst4Se/" page
-        When I do nothing
-        Then the siderail title should be "This is a custom test title"
+  @mobile @tablet @desktop
+  Scenario: I want to use the right siderail
+      Given I set configLocation to "./fixtures/config/siderail.json"
+      And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
+      When I wait until the page has been loaded
+      Then the siderail should be visible
