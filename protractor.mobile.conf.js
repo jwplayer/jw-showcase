@@ -106,8 +106,8 @@ function createCapabilities (capabilities, tags) {
 function composeReportName (capabilities) {
 
     /*jshint camelcase: false */
-    var os             = capabilities.os,
-        osVersion      = capabilities.os_version || '',
+    var os             = capabilities.platformName,
+        osVersion      = capabilities.platformVersion || '',
         browser        = capabilities.browser || capabilities.browserName || 'default',
         browserVersion = capabilities.browserVersion || capabilities.version || 'latest',
 
