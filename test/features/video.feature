@@ -31,7 +31,14 @@ Feature: Video page
     Then the video title and description should be visible
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to see the More like this title
+  Scenario: As a user I want to see the Next Up title
+    Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
+    When I wait until the page has been loaded
+    And I scroll to the next up slider
+    Then the next up title is shown
+
+  @mobile @tablet @desktop
+  Scenario: As a user I want to see the Related Videos title
     Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I wait until the page has been loaded
     And I scroll to the related slider
@@ -64,8 +71,8 @@ Feature: Video page
   Scenario: As a user I want to see the right title and metadata after I click on the next item
     Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I wait until the page has been loaded
-    And I scroll to the more like this slider
-    And I click on the 2nd visible card in the more like this slider
+    And I scroll to the next up slider
+    And I click on the 2nd visible card in the next up slider
     And wait for 2 seconds
     Then the title should be "The Girl in the Book - JW Showcase"
     And the description should be "Set in the world of NYC publishing, a young book editor is forced to confront a troubling part of her past when a bestselling author re-enters her life."

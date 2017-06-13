@@ -58,7 +58,7 @@ var stepsDefinition = function () {
             .then(delay(callback, 2000));
     });
 
-    this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the more like this slider$/, function (num, callback) {
+    this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the next up slider$/, function (num, callback) {
 
         browser
             .findElements(by.css('.jw-card-slider[feed="vm.feed"] .jw-card-slider-slide.is-visible'))
@@ -124,7 +124,7 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
-    this.When(/^I scroll to the more like this slider$/, function (callback) {
+    this.When(/^I scroll to the next up slider$/, function (callback) {
 
         browser
             .findElement(by.css('.jw-card-slider[feed="vm.feed"]'))
@@ -183,14 +183,14 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^the related videos title is shown$/, function (callback) {
+    this.Then(/^the next up title is shown$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+            .findElement(by.css('.jw-row[ng-if="vm.activeFeed && !vm.hasRightRail"]'))
             .then(scrollToElement)
             .then(function () {
                 return browser
-                    .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+                    .findElement(by.css('.jw-row[ng-if="vm.activeFeed && !vm.hasRightRail"]'))
                     .findElement(by.css('.jw-card-slider-flag-default'))
                     .findElement(by.css('.jw-card-slider-title'))
                     .getText();
@@ -202,7 +202,31 @@ var stepsDefinition = function () {
                     .replace(/\s{2,}/g, ' ')
                     .trim();
 
-                expect(title).to.equal('More like this (9)');
+                expect(title).to.equal(/^Next Up/);
+                callback();
+            });
+    });
+
+    this.Then(/^the related videos title is shown$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
+            .then(scrollToElement)
+            .then(function () {
+                return browser
+                    .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
+                    .findElement(by.css('.jw-card-slider-flag-default'))
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .getText();
+            })
+            .then(function (title) {
+
+                // title can contain an icon and multiple whitespaces
+                title = title
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
+
+                expect(title).to.match(/^Related Videos/);
                 callback();
             });
     });
