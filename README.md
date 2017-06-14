@@ -9,7 +9,7 @@ To see an example of JW Showcase in action, see [tv.jwplayer.com](http://tv.jwpl
 ## Supported Features
 
 - Works with any JW Player edition, from Free to Enterprise (note that usage will count against your monthly JW streaming limits). Only cloud-hosted JW Players are supported.
-- Looks great on any device. The Showcase repsonsive UI automatically optimizes itself for desktop, tablet or mobile screens.
+- Looks great on any device. The Showcase responsive UI automatically optimizes itself for desktop, tablet and mobile screens.
 - Populates your site's media content using JSON feeds. If you are using JW Platform, this happens auto-magically based on playlists that you specify. Using feeds from other sources will require you to hack the source code.
 - Video titles, descriptions and hero images are populated from JW Platform JSON feed metadata.
 - Playback of HLS video content from the JW Platform CDN. You can add external URLs (for example, URLS from your own server or CDN) to your playlists in the Content section of your JW Player account dashboard, but they must be HLS streams (`.m3u8` files).
@@ -62,4 +62,4 @@ Topics for advanced users:
 
 To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
 
-v3.3.0
+v3.4.0-beta

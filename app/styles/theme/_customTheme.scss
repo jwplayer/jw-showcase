@@ -1,0 +1,31 @@
+//
+// With this file you can create a custom theme for JW Showcase.
+//
+// 1. uncomment @import "theme/customTheme"; in main.scss
+// 2. change the theme-name to your liking
+// 3. overwrite any variable listed in the theme mixin file.
+// 4. change the theme in config.json to match your theme-name from below
+// 5. serve or build Showcase (serve will reload as you make changes)
+//
+// Most variables are using a base color by default. For example, if you only want to change the JW Showcase red color
+// you only have to change the `$primary-color`. All components using this color will then change to your chosen color.
+//
+// But if you want to get rough and use a different color for each component, choose to overwrite the component
+// specific variable. For example, the loading spinner color is named `$loading-color` or the arrow in the card slider
+// is named `$card-slider-button-color`.
+//
+
+.#{theme-name('custom')} {
+
+    // import theme mixin
+    @import '../../../bower_components/jw-showcase-lib/scss/mixins/theme';
+
+    // overwrite any variable defined in theme mixin
+
+    // $primary-color: yellow;
+    // $secondary-color: #ff00ff;
+    // $success-color: rgb(0, 0, 0);
+
+    // create theme rules
+    @include theme();
+}
