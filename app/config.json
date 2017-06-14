@@ -16,7 +16,13 @@
         "enableTags": false,
         "rightRail" : {
             "enabled": false
-        }
+        },
+        "useSigning": false,
+        "useAuthentication": false,
+        "authenticationRequired": false,
+        "authenticationProviders": null,
+        "restrictedDomains": false,
+        "firebase": false
     },
     "content": [
         {
