@@ -1,5 +1,4 @@
 var browserstack = require('browserstack-local'),
-    localtunnel  = require('localtunnel'),
     pkg          = require('./package.json'),
     env          = process.env;
 

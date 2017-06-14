@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 
         ngrok.connect(9001, function (error, url) {
             if (error) {
-                return reject(error);
+                throw error;
             }
 
             grunt.log.writeln('> Local tunnel running on ' + url + '!');
