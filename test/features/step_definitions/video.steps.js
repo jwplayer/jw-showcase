@@ -23,7 +23,7 @@ var stepsDefinition = function () {
     this.When(/^I scroll to the related slider$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-row[ng-if="vm.recommendationsFeed"]'))
+            .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
             .then(scrollToElement)
             .then(callback);
     });
@@ -61,7 +61,7 @@ var stepsDefinition = function () {
     this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the next up slider$/, function (num, callback) {
 
         browser
-            .findElements(by.css('.jw-card-slider[feed="vm.feed"] .jw-card-slider-slide.is-visible'))
+            .findElements(by.css('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible'))
             .then(function (elements) {
                 return elements[num - 1]
                     .findElement(by.css('.jw-card-container'))
@@ -127,7 +127,7 @@ var stepsDefinition = function () {
     this.When(/^I scroll to the next up slider$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-card-slider[feed="vm.feed"]'))
+            .findElement(by.css('.jw-card-slider[feed="vm.extraFeed"]'))
             .then(scrollToElement)
             .then(callback);
     });
