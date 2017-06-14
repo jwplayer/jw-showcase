@@ -202,7 +202,7 @@ var stepsDefinition = function () {
                     .replace(/\s{2,}/g, ' ')
                     .trim();
 
-                expect(title).to.equal(/^Next Up/);
+                expect(title).to.match(/^Next Up/);
                 callback();
             });
     });
