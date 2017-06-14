@@ -12,7 +12,8 @@
     "sw-toolbox": "^3.6.1",
     "add-to-homescreen": "^3.2.3",
     "iscroll": "~5.2.0",
-    "angular-aria": "^1.6.4"
+    "angular-aria": "^1.6.4",
+    "angularfire": "^2.3.0"
   },
   "devDependencies": {
     "angular-mocks": "1.6.4"
