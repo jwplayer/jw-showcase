@@ -21,7 +21,7 @@ module.exports = {
     },
     server:  {
         options: {
-            sourcemap: true
+            sourcemap: false
         }
     }
 };

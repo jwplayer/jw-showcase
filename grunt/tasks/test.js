@@ -1,3 +1,5 @@
+var ngrok = require('ngrok');
+
 module.exports = function (grunt) {
 
     grunt.registerTask('test:unit', [
@@ -19,6 +21,32 @@ module.exports = function (grunt) {
     grunt.registerTask('test:protractor:browserstack', function () {
         grunt.config.set('configFile', 'protractor.browserstack.conf.js');
         runProtractorTasks();
+    });
+
+    grunt.registerTask('test:protractor:mobile', function () {
+        grunt.config.set('configFile', 'protractor.mobile.conf.js');
+
+        if (!process.env.JENKINS_URL) {
+            return runProtractorTasks();
+        }
+
+        var done = this.async();
+
+        grunt.log.writeln('> Starting local tunnel...')
+
+        ngrok.connect(9001, function (error, url) {
+            if (error) {
+                throw error;
+            }
+
+            grunt.log.writeln('> Local tunnel running on ' + url + '!');
+
+            grunt.config.set('protractor.options.args', {baseUrl: url});
+
+            runProtractorTasks();
+
+            done();
+        });
     });
 
     grunt.registerTask('test:server', [

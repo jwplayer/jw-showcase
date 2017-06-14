@@ -23,7 +23,7 @@ var stepsDefinition = function () {
     this.When(/^I scroll to the related slider$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-row[ng-if="vm.recommendationsFeed"]'))
+            .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
             .then(scrollToElement)
             .then(callback);
     });
@@ -58,15 +58,39 @@ var stepsDefinition = function () {
             .then(delay(callback, 2000));
     });
 
-    this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the more like this slider$/, function (num, callback) {
+    this.When(/^I click on the (\d+)(?:st|nd|rd|th) visible card in the next up slider$/, function (num, callback) {
 
         browser
-            .findElements(by.css('.jw-card-slider[feed="vm.feed"] .jw-card-slider-slide.is-visible'))
+            .findElements(by.css('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible'))
             .then(function (elements) {
                 return elements[num - 1]
                     .findElement(by.css('.jw-card-container'))
                     .click();
             })
+            .then(callback);
+    });
+
+    this.When(/^I expand the video description$/, function (callback) {
+
+        browser
+            .findElements(by.css('.jw-collapsible-text-toggle .jw-button'))
+            .then(function (elements) {
+
+                if (!elements.length) {
+                    return callback();
+                }
+
+                return elements[0]
+                    .click()
+                    .then(delay(callback, 300));
+            });
+    });
+
+    this.When(/^I click the first video tag$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-video-tags li:first-child .jw-video-tag'))
+            .click()
             .then(callback);
     });
 
@@ -100,10 +124,10 @@ var stepsDefinition = function () {
             .then(callback);
     });
 
-    this.When(/^I scroll to the more like this slider$/, function (callback) {
+    this.When(/^I scroll to the next up slider$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-card-slider[feed="vm.feed"]'))
+            .findElement(by.css('.jw-card-slider[feed="vm.extraFeed"]'))
             .then(scrollToElement)
             .then(callback);
     });
@@ -159,14 +183,14 @@ var stepsDefinition = function () {
             });
     });
 
-    this.Then(/^the related videos title is shown$/, function (callback) {
+    this.Then(/^the next up title is shown$/, function (callback) {
 
         browser
-            .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+            .findElement(by.css('.jw-row[ng-if="vm.activeFeed && !vm.hasRightRail"]'))
             .then(scrollToElement)
             .then(function () {
                 return browser
-                    .findElement(by.css('.jw-row[ng-if="vm.feed"]'))
+                    .findElement(by.css('.jw-row[ng-if="vm.activeFeed && !vm.hasRightRail"]'))
                     .findElement(by.css('.jw-card-slider-flag-default'))
                     .findElement(by.css('.jw-card-slider-title'))
                     .getText();
@@ -178,7 +202,31 @@ var stepsDefinition = function () {
                     .replace(/\s{2,}/g, ' ')
                     .trim();
 
-                expect(title).to.equal('More like this (9)');
+                expect(title).to.match(/^Next Up/);
+                callback();
+            });
+    });
+
+    this.Then(/^the related videos title is shown$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
+            .then(scrollToElement)
+            .then(function () {
+                return browser
+                    .findElement(by.css('.jw-row[ng-if="vm.extraFeed"]'))
+                    .findElement(by.css('.jw-card-slider-flag-default'))
+                    .findElement(by.css('.jw-card-slider-title'))
+                    .getText();
+            })
+            .then(function (title) {
+
+                // title can contain an icon and multiple whitespaces
+                title = title
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
+
+                expect(title).to.match(/^Related Videos/);
                 callback();
             });
     });
@@ -252,6 +300,17 @@ var stepsDefinition = function () {
             })
             .then(function (currentProgress) {
                 expect(currentProgress).to.be.greaterThan(progress);
+                callback();
+            });
+    });
+
+    this.Then(/^the video tags should be visible$/, function (callback) {
+
+        browser
+            .findElement(by.css('.jw-video-details'))
+            .isElementPresent(by.css('.jw-video-tags'))
+            .then(function (present) {
+                expect(present).to.equal(true);
                 callback();
             });
     });

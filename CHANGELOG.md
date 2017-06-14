@@ -1,3 +1,19 @@
+## 3.4.0-beta (June 14 2017)
+
+**New in this release:**
+- Updated light theme
+- Updated dark theme
+- Added blue theme
+- Added side rail playlist to video page.
+- Improve readability for screen readers
+- Improve accessibility when using keyboard only
+- Add support for upcoming thumbstrip format
+- Added support for listing video tags
+- Add page for listing all videos with a specific tag
+- Add support for highlightColor from config
+- Add option to change player playlist to recommendations playlist
+- Update theme structure allowing you to customize themes more easy.
+
 ## 3.3.0 (May 24 2017)
 
 **New in this release:**
