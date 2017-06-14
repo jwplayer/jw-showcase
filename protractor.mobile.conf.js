@@ -42,11 +42,11 @@ exports.config = {
             sessionName:        'Automation test session',
             sessionDescription: '',
             deviceOrientation:  'portrait',
-            captureScreenshots: true,
+            captureScreenshots: false,
             browserName:        'safari',
             deviceGroup:        'KOBITON',
-            deviceName:         'iPhone 7',
-            platformVersion:    '10.0.2',
+            deviceName:         'iPhone 6s',
+            platformVersion:    '10.1.1',
             platformName:       'iOS'
         }, ['@mobile']),
 
