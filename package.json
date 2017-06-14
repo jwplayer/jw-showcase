@@ -38,7 +38,6 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.1.0",
-    "localtunnel": "^1.8.3",
     "lodash.template": "^4.2.5",
     "ngrok": "^2.2.9",
     "phantomjs-prebuilt": "^2.1.7",
