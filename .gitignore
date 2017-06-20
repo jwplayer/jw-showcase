@@ -12,3 +12,4 @@ test/reports
 
 protractor.lab.conf.js
 /hosted
+functions/service-account.json
