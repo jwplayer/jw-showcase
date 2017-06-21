@@ -1,18 +1,22 @@
+## 3.4.0 (June 26 2017)
+
+- Added a 2:3 aspect ratio option for thumbnail images
+
 ## 3.4.0-beta (June 14 2017)
 
 **New in this release:**
 - Updated light theme
 - Updated dark theme
-- Added blue theme
-- Added side rail playlist to video page.
+- Added a new "blue" theme
+- Added right side rail playlist to video watch page (displays the video's parent playlist to the right of the video player instead of as a shelf; can also be populated with JW Recommendations by specifying the useRecommendationPlaylist option in your config.json).
 - Improve readability for screen readers
-- Improve accessibility when using keyboard only
-- Add support for upcoming thumbstrip format
-- Added support for listing video tags
+- Improve accessibility when using keyboard only (tab and arrow key navigation)
+- Add support for upcoming JW thumbstrip format
+- Added support for including clickable tags in video descriptions
 - Add page for listing all videos with a specific tag
-- Add support for highlightColor from config
-- Add option to change player playlist to recommendations playlist
-- Update theme structure allowing you to customize themes more easy.
+- Add support for highlightColor from config.json
+- Update theme structure allowing you to customize themes more easily
+- Added configuration options for changing the aspect ratio of a shelf's thumbnail images ("aspectRatio") and the number of images displayed in the shelf ("cols")
 
 ## 3.3.0 (May 24 2017)
 
