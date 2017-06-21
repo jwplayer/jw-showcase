@@ -21,7 +21,7 @@ To see an example of JW Showcase in action, see [tv.jwplayer.com](http://tv.jwpl
 - A "Watchlist" feature for users to save videos for watching later. A separate list for "Continue Watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., lists do not sync across user's browsers or devices). The Continue Watching list can be disabled in your Showcase `config.json` file.
 - A grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
 - Social sharing options for Facebook, Twitter and email.
-- Option to build your Showcase as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) when building from the source code.
+- Option to build your Showcase as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) when building from the source code. For instructions, see [Building a Progressive Web App with Showcase](https://github.com/jwplayer/jw-showcase/wiki/Building-a-Progressive-Web-App-with-Showcase) in the [Wiki](https://github.com/jwplayer/jw-showcase/wiki).
 
 ### Unsupported Features
 
@@ -29,6 +29,8 @@ To see an example of JW Showcase in action, see [tv.jwplayer.com](http://tv.jwpl
 - Self-hosted JW Players
 
 ## Instructions for Using JW Showcase
+
+All the documentation for Showcase is in our [Github Wiki](https://github.com/jwplayer/jw-showcase/wiki).
 
 Topics for general users:
 
@@ -55,7 +57,7 @@ Topics for advanced users:
 4. Create one or more video playlist(s) in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/content/playlists) and record their eight-character playlist IDs.
 5. Configure your site by editing the `config.json` file in the directory where you extracted the JW Showcase release files.
     - Use the player key from the previously step in the `player` field.
-    - Use playlist IDs for the `featuredPlaylist` and `playlists` key.
+    - Use playlist IDs for the 'playlistId` keys in the `content` array.
 6. Visit your site.
 
 ## Support and Bug Reporting 
