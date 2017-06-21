@@ -1,3 +1,9 @@
+## 3.4.0 (June 21 2017)
+
+**New in this release**
+- Added 3:2 aspectratio
+- Fixed lazyload not always working
+
 ## 3.4.0-beta (June 14 2017)
 
 **New in this release:**
