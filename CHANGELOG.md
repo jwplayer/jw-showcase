@@ -1,6 +1,7 @@
-## 3.4.0 (June 26 2017)
+## 3.4.0 (June 21 2017)
 
 - Added a 2:3 aspect ratio option for thumbnail images
+- Fixed issue with lazy loading
 
 ## 3.4.0-beta (June 14 2017)
 
