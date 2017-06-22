@@ -11,36 +11,33 @@
         "backgroundColor": "",
         "highlightColor": "",
         "enableContinueWatching": true,
-		"useRecommendationPlaylist": false,
+        "useRecommendationPlaylist": false,
         "enableCookieNotice": false,
         "enableHeader": true,
         "enableTags": false,
-        "rightRail" : {
+        "rightRail": {
             "enabled": true
         }
     },
     "content": [
         {
             "playlistId": "WXu7kuaW",
-			"featured": true,
-			"enableText": false
+            "featured": true,
+            "enableText": false
         },
         {
             "playlistId": "lrYLc95e",
-			"aspectratio": "23",
-			"cols": 6
+            "aspectratio": "23",
+            "cols": {"xs": 2, "sm": 3, "md": 4, "lg": 5, "xl": 6}
         },
         {
-            "playlistId": "Q352cyuc",
-			"cols": 5
+            "playlistId": "Q352cyuc"
         },
         {
-            "playlistId": "oR7ahO0J",
-			"cols": 5
+            "playlistId": "oR7ahO0J"
         }
     ],
     "assets": {
         "banner": "images/logo.png"
     }
 }
-
