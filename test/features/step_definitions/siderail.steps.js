@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Longtail Ad Solutions Inc.
+ * Copyright 2017 Longtail Ad Solutions Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,65 +14,66 @@
  * governing permissions and limitations under the License.
  **/
 
-var stepsDefinition = function () {
+const
+    {defineSupportCode} = require('cucumber');
 
-    this.Then(/^the siderail title should be "([^"]*)"$/, function (text, callback) {
+defineSupportCode(function ({Given, When, Then}) {
 
-        browser
-            .findElement(by.css('.jw-side-rail-title'))
-            .getText()
-            .then(function (textContent) {
-                expect(textContent.trim()).to.equal(text);
-                callback();
-            });
+    //
+    // Given steps
+    //
+
+    //
+    // When steps
+    //
+
+    When('I click the {ordinal} item in the siderail', function (num) {
+        return $$('.jw-side-rail .jw-side-rail-item').get(num - 1).click();
     });
 
-    this.Then(/^the siderail title should be visible$/, function (callback) {
+    //
+    // Then steps
+    //
 
-        browser
-            .findElement(by.css('.jw-side-rail-header'))
-            .isDisplayed()
-            .then(function (isDisplayed) {
-                expect(isDisplayed).to.equal(true);
-                callback();
-            });
+    Then('the siderail should be visible', function () {
+        return expect($$('.jw-side-rail').count()).to.eventually.equal(1);
     });
 
-    this.Then(/^there should be siderailitems in the siderail$/, function (callback) {
-
-        browser
-            .findElements(by.css('.jw-side-rail-item'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(9);
-                callback();
-            });
+    Then('the siderail should not be visible', function () {
+        return expect($$('.jw-side-rail').count()).to.eventually.equal(0);
     });
 
-    this.Then(/^the (\d+)st siderailitem should have a image$/, function (number, callback) {
-
-        browser
-            .findElements(by.css('.jw-side-rail-item-image'))
-            .then(function (elements) {
-                return elements[number].isDisplayed();
-            })
-            .then(function (isDisplayed) {
-                expect(isDisplayed).to.equal(true);
-                callback();
-            });
+    Then('the siderail title should be {stringInDoubleQuotes}', function (title) {
+        return expect($('.jw-side-rail .jw-side-rail-header').getText()).to.eventually.equal(title);
     });
 
-    this.Then(/^the (\d+)st siderailitem should have a title$/, function (number, callback) {
-
-        browser
-            .findElements(by.css('.jw-side-rail-item-title'))
-            .then(function (elements) {
-                return elements[number].isDisplayed();
-            })
-            .then(function (isDisplayed) {
-                expect(isDisplayed).to.equal(true);
-                callback();
-            });
+    Then('the siderail should contain {int} items', function (num) {
+        return expect($$('.jw-side-rail .jw-side-rail-item').count()).to.eventually.equal(num);
     });
-};
 
-module.exports = stepsDefinition;
+    Then('the {ordinal} item in the siderail should be hidden', function (num) {
+        return expect($$('.jw-side-rail .jw-side-rail-item').get(num - 1).isDisplayed())
+            .to.eventually.equal(false);
+    });
+
+    Then('the image src of the {ordinal} item in the siderail should contain {stringInDoubleQuotes}', function (num, src) {
+        return expect($$('.jw-side-rail .jw-side-rail-item-image').get(num - 1).getAttribute('src'))
+            .to.eventually.contain(src);
+    });
+
+    Then('the title of the {ordinal} item in the siderail should be {stringInDoubleQuotes}', function (num, title) {
+        return expect($$('.jw-side-rail .jw-side-rail-item-title').get(num - 1).getText())
+            .to.eventually.equal(title);
+    });
+
+    Then('the next up slider should be hidden', function () {
+        return expect($$('jw-card-slider[feed="vm.activeFeed"]').count())
+            .to.eventually.equal(0);
+    });
+
+    Then('the next up slider should be visible', function () {
+        return expect($('jw-card-slider[feed="vm.activeFeed"]').isDisplayed())
+            .to.eventually.equal(true);
+    });
+
+});

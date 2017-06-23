@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Longtail Ad Solutions Inc.
+ * Copyright 2017 Longtail Ad Solutions Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,150 +14,47 @@
  * governing permissions and limitations under the License.
  **/
 
-var stepsDefinition = function () {
+const
+    {defineSupportCode} = require('cucumber');
 
-    this.Given(/^I set configLocation to "([^"]*)"$/, function (arg1, callback) {
+defineSupportCode(function ({Given, When, Then}) {
 
-        browser
-            .addMockModule('app', function (configLocation) {
-                window.addToHomescreen = angular.noop;
-                angular.module('app').run(function () {
-                    window.configLocation = configLocation;
-                });
-            }, arg1);
+    //
+    // Given steps
+    //
 
-        callback();
+    Given('I set the configLocation to {stringInDoubleQuotes}', function (configLocation) {
+        return browser
+            .addMockModule('app', `angular.module('app').run(function () {window.configLocation="${configLocation}";});`);
     });
 
-    this.Then(/^the logo should use "([^"]*)" as src$/, function (arg1, callback) {
+    //
+    // When steps
+    //
 
-        browser
-            .findElement(by.css('.jw-header-logo'))
-            .getAttribute('src')
-            .then(function (src) {
-                expect(src).to.contain(arg1);
-                callback();
-            });
+    //
+    // Then steps
+    //
+
+    Then('the logo should use {stringInDoubleQuotes} as src', function (src) {
+        let regex = new RegExp(`${src}$`);
+        return expect($('.jw-header-logo').getAttribute('src')).to.eventually.match(regex);
     });
 
-    this.Then(/^the title should be "([^"]*)"$/, function (arg1, callback) {
-
-        browser
-            .getTitle()
-            .then(function (title) {
-                expect(title).to.equal(arg1);
-                callback();
-            });
+    Then('the theme should be {stringInDoubleQuotes}', function (theme) {
+        return expect($('body').getAttribute('class')).to.eventually.contain(`jw-theme-${theme}`);
     });
 
-    this.Then(/^the description should be "([^"]*)"$/, function (arg1, callback) {
-
-        browser
-            .findElement(by.css('meta[name=description]'))
-            .getAttribute('content')
-            .then(function (content) {
-                expect(content).to.equal(arg1);
-                callback();
-            });
+    Then('the footer text should be {stringInDoubleQuotes}', function (text) {
+        return expect($('.jw-footer').getText()).to.eventually.equal(text);
     });
 
-    this.Then(/^the canonical path should be "([^"]*)"$/, function (path, callback) {
-
-        browser
-            .findElement(by.css('link[rel=canonical]'))
-            .getAttribute('href')
-            .then(function (href) {
-                expect(href).to.equal(browser.baseUrl + path);
-                callback();
-            });
+    Then('the error page is shown', function () {
+        return expect($('.jw-modal-message').isPresent()).to.eventually.equal(true);
     });
 
-    this.Then(/^the footer text should be "([^"]*)"$/, function (arg1, callback) {
-
-        browser
-            .executeScript(function () {
-                return document.querySelector('.jw-footer > p').textContent;
-            })
-            .then(function (content) {
-                expect(content).to.equal(arg1);
-                callback();
-            });
+    Then('the error page displays the following message {stringInDoubleQuotes}', function (message) {
+        return expect($('.jw-modal-message').getText()).to.eventually.equal(message);
     });
 
-    this.Then(/^the theme should be "([^"]*)"$/, function (arg1, callback) {
-
-        browser
-            .findElement(by.tagName('body'))
-            .getAttribute('class')
-            .then(function (classNames) {
-                expect(classNames).to.contain('jw-theme-' + arg1);
-                callback();
-            });
-    });
-
-    this.Then(/^the featured slider should not be visible/, function (callback) {
-
-        browser
-            .findElement(by.css('.featured .jw-card-slider.jw-card-slider-flag-featured'))
-            .then(function () {
-                expect(true).to.equal(false);
-                callback();
-            }, function () {
-                expect(false).to.equal(false);
-                callback();
-            });
-    });
-
-    this.Then(/^the default sliders should not be visible/, function (callback) {
-
-        browser
-            .findElements(by.css('.feed .jw-card-slider-flag-default'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(0);
-                callback();
-            });
-    });
-
-    this.Then(/^the siderail should not be visible/, function (callback) {
-
-        browser
-            .findElements(by.css('.jw-side-rail'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(0);
-                callback();
-            });
-    });
-
-    this.Then(/^the siderail should be visible/, function (callback) {
-
-        browser
-            .findElements(by.css('.jw-side-rail'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(1);
-                callback();
-            });
-    });
-
-    this.Then(/^the featured items should not be visible/, function (callback) {
-
-        browser
-            .findElements(by.css('.featured .jw-card-flag-featured'))
-            .then(function (elements) {
-                expect(elements.length).to.equal(0);
-                callback();
-            });
-    });
-
-    this.Then(/^I should see an error with message "([^"]*)"/, function (arg1, callback) {
-
-        browser
-            .findElement(by.css('.jw-modal-message'))
-            .getText()
-            .then(function (textContent) {
-                expect(textContent.trim()).to.equal(arg1);
-                callback();
-            });
-    });
-};
-
-module.exports = stepsDefinition;
+});

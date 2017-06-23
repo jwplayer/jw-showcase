@@ -14,20 +14,21 @@
  * governing permissions and limitations under the License.
  **/
 
-module.exports = function TakeScreenshot () {
+const
+    {defineSupportCode} = require('cucumber');
 
-    this.After(function (scenario, callback) {
+defineSupportCode(function ({After}) {
 
-        if (!scenario.isFailed()) {
-            return callback();
+    After(function (scenario) {
+
+        const world = this;
+
+        if (scenario.isFailed()) {
+            return browser
+                .takeScreenshot()
+                .then(function (png) {
+                    world.attach(png, 'image/png');
+                });
         }
-
-        browser
-            .takeScreenshot()
-            .then(function (png) {
-                var decodedImage = new Buffer(png, 'base64').toString('binary');
-                scenario.attach(decodedImage, 'image/png');
-                callback();
-            });
     });
-};
+});

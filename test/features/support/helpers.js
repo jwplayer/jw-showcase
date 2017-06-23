@@ -14,64 +14,35 @@
  * governing permissions and limitations under the License.
  **/
 
-module.exports = function () {
+const
+    {defineSupportCode} = require('cucumber');
 
-    global.isCurrentUrl = function (path, success, error) {
+defineSupportCode(function () {
 
-        var fullUrl = browser.baseUrl + path;
-
-        browser
-            .getCurrentUrl()
-            .then(function (currentUrl) {
-
-                if (fullUrl === currentUrl) {
-                    setTimeout(success, 100);
-                }
-                else {
-                    error();
-                }
-            });
-    };
-
-    global.navigateToPage = function (path, callback, attempt) {
-
-        browser
-            .get(path)
-            .then(function () {
-
-                isCurrentUrl(path, callback, function () {
-
-                    if (attempt < 3) {
-                        navigateToPage(path, callback, attempt + 1);
-                    }
-                });
-            });
+    global.delay = function (time) {
+        return function () {
+            return browser.sleep(time);
+        };
     };
 
     global.scrollToElement = function (element) {
 
-        return browser
-            .executeScript(function (element) {
-
-                var header = document.querySelector('.jw-header');
-
-                if (element) {
-                    document.body.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
-                }
-            }, element);
+        return browser.executeScript(function (element) {
+            var header = document.querySelector('.jw-header');
+            if (element) {
+                document.body.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
+            }
+        }, element.getWebElement());
     };
 
-    global.delay = function (fn, time) {
-        return function () {
-            setTimeout(fn, time);
-        };
-    };
+    global.navigateToPath = function (page) {
 
-    global.clickElement = function (selector, callback) {
-        return browser
-            .executeScript(function (cssSelector) {
-                document.querySelector(cssSelector)
-                    .click();
-            }, selector);
+        return browser.get(page).then(function () {
+            return browser.wait(function () {
+                return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
+                    return val === true;
+                });
+            });
+        });
     };
-};
+});
