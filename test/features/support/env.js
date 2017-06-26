@@ -27,7 +27,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
         typeName:    'ordinal'
     });
 
-    setDefaultTimeout(5 * 1000);
+    setDefaultTimeout(20 * 1000);
 
     After(function () {
 
