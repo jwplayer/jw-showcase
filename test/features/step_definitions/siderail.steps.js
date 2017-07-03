@@ -62,7 +62,13 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the title of the {ordinal} item in the siderail should be {stringInDoubleQuotes}', function (num, title) {
-        return expect($$('.jw-side-rail .jw-side-rail-item-title').get(num - 1).getText())
+        function trim(text) {
+            return text.replace(/\s/g, '');
+        }
+
+        title = trim(title);
+
+        return expect($$('.jw-side-rail .jw-side-rail-item-title').get(num - 1).getText().then(trim))
             .to.eventually.equal(title);
     });
 

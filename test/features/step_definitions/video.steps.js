@@ -17,7 +17,9 @@
 const
     {defineSupportCode} = require('cucumber');
 
+
 defineSupportCode(function ({Given, When, Then}) {
+
 
     //
     // Given steps
@@ -58,7 +60,9 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the {ordinal} visible card in the next up slider', function (num) {
-        return $$('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible').get(num - 1).click();
+        const cardElement = $$('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible .jw-card');
+
+        return cardElement.get(num - 1).click();
     });
 
     When('I expand the video description', function () {
@@ -92,7 +96,13 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video title is {stringInDoubleQuotes}', function (title) {
-        return expect($('.jw-video-details .jw-video-title').getText()).to.eventually.equal(title);
+        function trim(text) {
+            return text.replace(/\s/g, '');
+        }
+
+        title = trim(title);
+
+        return expect($('.jw-video-details .jw-video-title').getText().then(trim)).to.eventually.equal(title);
     });
 
     Then('the video description is:', function (description) {

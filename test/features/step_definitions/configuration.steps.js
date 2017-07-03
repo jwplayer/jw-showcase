@@ -46,7 +46,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the footer text should be {stringInDoubleQuotes}', function (text) {
-        return expect($('.jw-footer').getText()).to.eventually.equal(text);
+        return expect($('.jw-footer > p').getText()).to.eventually.equal(text);
     });
 
     Then('the error page is shown', function () {
@@ -54,7 +54,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the error page displays the following message {stringInDoubleQuotes}', function (message) {
-        return expect($('.jw-modal-message').getText()).to.eventually.equal(message);
+        return expect($('.jw-modal-message').getText()).to.eventually.contain(message);
     });
 
 });

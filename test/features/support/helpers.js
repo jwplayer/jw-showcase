@@ -35,12 +35,47 @@ defineSupportCode(function () {
         }, element.getWebElement());
     };
 
+    function mockHoverPseudoElement () {
+        var cssRules = [];
+        if (document.styleSheets[2].cssRules) {
+            cssRules = document.styleSheets[2].cssRules
+        } else if (document.styleSheets[2].rules) {
+            cssRules = document.styleSheets[2].rules
+        }
+
+        var hovers = []
+
+        for (rule in cssRules) {
+            var theRule = cssRules[rule];
+            if(theRule.cssText && theRule.cssText.indexOf(':hover') !== -1) {
+                hovers.push(theRule.cssText.replace(':hover', '.hover'));
+
+            }
+        }
+
+        var css = hovers.join(';'),
+            head = document.head || document.getElementsByTagName('head')[0],
+            style = document.createElement('style');
+
+        style.type = 'text/css';
+        if (style.styleSheet){
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+
+        head.appendChild(style);
+    }
+
+
     global.navigateToPath = function (page) {
 
         return browser.get(page).then(function () {
             return browser.wait(function () {
                 return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
-                    return val === true;
+                    return browser.executeScript(mockHoverPseudoElement).then(() => {
+                        return val === true;
+                    });
                 });
             });
         });
