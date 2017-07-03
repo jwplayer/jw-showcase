@@ -17,7 +17,6 @@
 const
     {defineSupportCode} = require('cucumber');
 
-
 defineSupportCode(function ({Given, When, Then}) {
 
 
@@ -60,9 +59,15 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the {ordinal} visible card in the next up slider', function (num) {
-        const cardElement = $$('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible .jw-card');
+        const cardElement = $$('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-slide.is-visible .jw-card')
+            .get(num - 1);
 
-        return cardElement.get(num - 1).click();
+        // safari does not trigger an actual click on the first click command
+        if (this.browserName === 'safari') {
+            return cardElement.click().click();
+        }
+
+        return cardElement.click();
     });
 
     When('I expand the video description', function () {
@@ -96,7 +101,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video title is {stringInDoubleQuotes}', function (title) {
-        function trim(text) {
+        function trim (text) {
             return text.replace(/\s/g, '');
         }
 
@@ -106,7 +111,8 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video description is:', function (description) {
-        return expect($('.jw-video-details .jw-video-description .jw-markdown').getText()).to.eventually.equal(description);
+        return expect($('.jw-video-details .jw-video-description .jw-markdown').getText()).to.eventually
+            .equal(description);
     });
 
     Then('the video duration label is {stringInDoubleQuotes}', function (duration) {
@@ -114,11 +120,13 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the next up title is shown', function () {
-        return expect($('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-title').isDisplayed()).to.eventually.equal(true);
+        return expect($('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-title').isDisplayed()).to.eventually
+            .equal(true);
     });
 
     Then('the related videos title is shown', function () {
-        return expect($('.jw-card-slider[feed="vm.extraFeed"] .jw-card-slider-title').isDisplayed()).to.eventually.equal(true);
+        return expect($('.jw-card-slider[feed="vm.extraFeed"] .jw-card-slider-title').isDisplayed()).to.eventually
+            .equal(true);
     });
 
     Then('the video tags should be visible', function () {

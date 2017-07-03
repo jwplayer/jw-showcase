@@ -36,19 +36,19 @@ defineSupportCode(function ({When, Then}) {
     });
 
     When('I move my mouse to the first item in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first');
+        const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card');
 
         if (/safari|firefox/i.test(this.browserName)) {
-            return 'pending';
+            return browser.executeScript(function (element) {
+                element.classList.add('hover');
+            }, firstCardSlide.getWebElement());
         }
 
         return browser
             .actions()
             .mouseMove(firstCardSlide)
-            .perform()
-            .then(delay(500));
+            .perform();
     });
-
 
     When(' I click the first featured item in the dashboard', function () {
         return $$('.jw-card-flag-featured').get(0).click();
@@ -133,12 +133,12 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('I should see the description in the first item of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-description').isDisplayed())
+        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-description').isDisplayed())
             .to.eventually.equal(true);
     });
 
     Then('I should see the duration in the first item of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-duration').isDisplayed())
+        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-duration').isDisplayed())
             .to.eventually.equal(true);
     });
 

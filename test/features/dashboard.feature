@@ -94,7 +94,7 @@ Feature: Dashboard page
     @desktop
     Scenario: As a user I want to be able to navigate to the video page and start the video by clicking on the item play icon
         Given I go to the "index" page
-        When I move my mouse to the visible item in the "featured" slider
+        When I move my mouse to the first item in the 1st "featured" slider
         And I click the play icon in the visible item in the featured slider
         Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
         And the video should be playing

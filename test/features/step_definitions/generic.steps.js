@@ -79,7 +79,14 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the first video in the grid overview', function () {
-        return $$('.jw-card-grid .jw-card').get(0).click();
+        const card = $$('.jw-card-grid .jw-card').get(0);
+
+        // safari does not trigger an actual click on the first click command
+        if (this.browserName === 'safari') {
+            return card.click().click();
+        }
+
+        return card.click();
     });
 
     When('I seek to {int} seconds in the video', function (seconds) {
@@ -88,6 +95,14 @@ defineSupportCode(function ({Given, When, Then}) {
 
     When('I pause the page', function (seconds) {
         return browser.pause();
+    });
+
+    When('I wait until the page is {stringInDoubleQuotes}', function (page) {
+        return browser.wait(function () {
+            return browser.getCurrentUrl().then(function (url) {
+                return url.indexOf(page) !== -1;
+            })
+        });
     });
 
     //

@@ -33,7 +33,7 @@ Feature: Video page
     Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I scroll to the related videos slider
     Then the related videos title is shown
-#
+
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to navigate back to the dashboard by clicking the back button
     Given I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
@@ -62,7 +62,7 @@ Feature: Video page
     Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I scroll to the next up slider
     And I click on the 2nd visible card in the next up slider
-    And wait for 2 seconds
+    And I wait until the page is "/list/lrYLc95e/video/LjBvF1FX/the-girl-in-the-book"
     Then the page title should be "The Girl in the Book - JW Showcase"
     And the description should be:
     """
