@@ -36,12 +36,14 @@ defineSupportCode(function ({When, Then}) {
     });
 
     When('I move my mouse to the first item in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card');
+        const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1)
+            .$('.jw-card-slider-slide.first .jw-card');
 
         if (/safari|firefox/i.test(this.browserName)) {
-            return browser.executeScript(function (element) {
-                element.classList.add('hover');
-            }, firstCardSlide.getWebElement());
+            return browser
+                .executeScript(function (element) {
+                    element.classList.add('hover');
+                }, firstCardSlide.getWebElement());
         }
 
         return browser
@@ -59,7 +61,11 @@ defineSupportCode(function ({When, Then}) {
     });
 
     When('I click the play icon in the visible item in the featured slider', function () {
-        return $$(`.jw-card-slider-flag-featured .is-visible`).get(0).$('.jw-card-play-button').click();
+        const element = $$(`.jw-card-slider-flag-featured`).get(0)
+            .$('.jw-card-slider-slide.is-visible .jw-card-play-button');
+
+        // play icon is not interactable in Firefox
+        return clickHelper(element);
     });
 
     //
@@ -101,18 +107,20 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('the {stringInDoubleQuotes} arrow in the {ordinal} {stringInDoubleQuotes} slider should be disabled', function (side, num, type) {
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`).getAttribute('class'))
+        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`)
+            .getAttribute('class'))
             .to.eventually.contain('is-disabled');
     });
 
     Then('the {stringInDoubleQuotes} arrow in the {ordinal} {stringInDoubleQuotes} slider should not be disabled', function (side, num, type) {
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`).getAttribute('class'))
+        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`)
+            .getAttribute('class'))
             .to.eventually.not.contain('is-disabled');
     });
 
     Then('the title of the {ordinal} {stringInDoubleQuotes} slider should be {stringInDoubleQuotes}', function (num, type, title) {
 
-        function trim(text) {
+        function trim (text) {
             return text.replace(/\s/g, '');
         }
 
@@ -123,7 +131,8 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('the card titles should be visible in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card-info').isDisplayed())
+        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card-info')
+            .isDisplayed())
             .to.eventually.equal(true);
     });
 
@@ -148,7 +157,8 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('the card description should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description`).isDisplayed())
+        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description`)
+            .isDisplayed())
             .to.eventually.equal(false);
     });
 

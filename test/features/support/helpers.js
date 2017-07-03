@@ -35,6 +35,17 @@ defineSupportCode(function () {
         }, element.getWebElement());
     };
 
+    global.clickHelper = function (element) {
+
+        if (browser.browserName.toLowerCase() === 'firefox') {
+            return browser.executeScript(function (elem) {
+                elem.click();
+            }, element.getWebElement());
+        }
+
+        return element.click();
+    };
+
     function mockHoverPseudoElement () {
 
         var cssRules = [],

@@ -51,7 +51,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
         return browser
             .getCapabilities()
             .then(function (capabilities) {
-                world.browserName = capabilities.get('browserName');
+                browser.browserName = world.browserName = capabilities.get('browserName');
             });
     });
 

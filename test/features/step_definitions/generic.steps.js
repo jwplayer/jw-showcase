@@ -101,7 +101,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return browser.wait(function () {
             return browser.getCurrentUrl().then(function (url) {
                 return url.indexOf(page) !== -1;
-            })
+            });
         });
     });
 
