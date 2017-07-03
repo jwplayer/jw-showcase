@@ -62,7 +62,7 @@ defineSupportCode(function () {
 
         for (rule in cssRules) {
             var theRule = cssRules[rule];
-            if (theRule.cssText && theRule.cssText.indexOf(':hover') !== -1) {
+            if (theRule instanceof window.CSSStyleRule && theRule.cssText && theRule.cssText.indexOf(':hover') !== -1) {
                 hovers.push(theRule.cssText.replace(':hover', '.hover'));
             }
         }
@@ -85,7 +85,7 @@ defineSupportCode(function () {
                     return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
                         return val === true;
                     });
-                })
+                });
             })
             .then(function () {
                 return browser.executeScript(mockHoverPseudoElement);
