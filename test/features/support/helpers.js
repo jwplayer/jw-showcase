@@ -46,6 +46,22 @@ defineSupportCode(function () {
         return element.click();
     };
 
+    global.mouseMove = function (element) {
+
+        if (/safari|firefox/i.test(browser.browserName)) {
+
+            return browser
+                .executeScript(function (elem) {
+                    elem.classList.add('hover');
+                }, element.getWebElement());
+        }
+
+        return browser
+            .actions()
+            .mouseMove(element)
+            .perform();
+    };
+
     function mockHoverPseudoElement () {
 
         var cssRules = [],

@@ -39,17 +39,8 @@ defineSupportCode(function ({When, Then}) {
         const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1)
             .$('.jw-card-slider-slide.first .jw-card');
 
-        if (/safari|firefox/i.test(this.browserName)) {
-            return browser
-                .executeScript(function (element) {
-                    element.classList.add('hover');
-                }, firstCardSlide.getWebElement());
-        }
-
-        return browser
-            .actions()
-            .mouseMove(firstCardSlide)
-            .perform();
+        // mouseMove not supported in Firefox and Safari
+        return mouseMove(firstCardSlide);
     });
 
     When(' I click the first featured item in the dashboard', function () {
