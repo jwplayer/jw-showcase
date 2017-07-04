@@ -11,6 +11,7 @@
         "backgroundColor": "",
         "highlightColor": "",
         "enableContinueWatching": true,
+        "useRecommendationPlaylist": false,
         "enableCookieNotice": false,
         "enableHeader": true,
         "enableTags": false,
@@ -26,11 +27,14 @@
     },
     "content": [
         {
-            "playlistId": "lrYLc95e",
-            "featured": true
+            "playlistId": "WXu7kuaW",
+            "featured": true,
+            "enableText": false
         },
         {
-            "playlistId": "WXu7kuaW"
+            "playlistId": "lrYLc95e",
+            "aspectratio": "23",
+            "cols": {"xs": 2, "sm": 3, "md": 4, "lg": 5, "xl": 6}
         },
         {
             "playlistId": "Q352cyuc"
@@ -43,4 +47,3 @@
         "banner": "images/logo.png"
     }
 }
-

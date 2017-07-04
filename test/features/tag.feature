@@ -7,18 +7,17 @@ Feature: Tag page
   @mobile @tablet @desktop
   Scenario: Tag title is displayed in the header
     Given I go to the "/tag/drama" page
-    And I wait until the page has been loaded
-    When I do nothing
-    Then the title in the toolbar should be "drama"
+    Then the subheader title should be "drama"
 
   @mobile @tablet @desktop
   Scenario: Navigate back via the header `back button`
     Given I am still on the "/tag/drama" page
     When I click on the back button in the toolbar
-    Then I should navigate to the "index" page
+    Then the page should be "index"
 
   @mobile @tablet @desktop
   Scenario: Watch video from the overview
     Given I go to the "/tag/drama" page
     When I click on the first video in the grid overview
-    Then I should navigate to the "/list/lrYLc95e/video/Iyfst4Se/spotlight" page
+    And I wait until the page is "/list/lrYLc95e/video/Iyfst4Se/spotlight"
+    Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
