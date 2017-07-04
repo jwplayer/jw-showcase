@@ -105,6 +105,11 @@ defineSupportCode(function ({Given, When, Then}) {
         });
     });
 
+    When('I press the {stringInDoubleQuotes} key', function (key) {
+        let keycode = protractor.Key[key.toUpperCase()];
+        return browser.actions().sendKeys(keycode).perform();
+    });
+
     //
     // Then steps
     //

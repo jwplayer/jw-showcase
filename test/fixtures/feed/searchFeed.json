@@ -1,125 +1,574 @@
 {
-    "title": "product-demo-search",
-    "kind": "SEARCH",
-    "description": "",
     "playlist": [
         {
-            "mediaid": "DqGECHhT",
-            "description": "The story follows a one-time bullied geek who grew up to be a lethal CIA agent (Johnson), coming home for his high school reunion. Claiming to be on a top-secret case, he enlists the help of the former \u201cbig man on campus\u201d (Hart), now an accountant who misses his glory days. But before the staid numbers-cruncher realizes what he\u2019s getting into, it\u2019s too late to get out, as his increasingly unpredictable new friend drags him through a world of shoot-outs, double-crosses and espionage that could get them both killed in more ways than he can count.",
-            "pubdate": 1449848295,
-            "tags": "action and adventure and fun, comedy",
-            "image": "https:\/\/cdn.jwplayer.com\/thumbs\/DqGECHhT-320.jpg",
-            "title": "Central Intelligence",
+            "mediaid": "Iyfst4Se",
+            "description": "Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d\u2019Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world\u2019s oldest and most trusted institutions.",
+            "pubdate": 1449848296,
+            "tags": "drama,trailer",
+            "junction_id": "asdfsdf",
+            "image": "https://cdn.jwplayer.com/thumbs/Iyfst4Se-720.jpg",
+            "title": "Spotlight",
             "feedid": "r3MhKJyA",
-            "custom": {},
             "sources": [
                 {
                     "width": 1280,
-                    "type": "application\/vnd.apple.mpegurl",
-                    "file": "https:\/\/cdn.jwplayer.com\/manifests\/DqGECHhT.m3u8",
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/Iyfst4Se.m3u8",
                     "height": 720
                 },
                 {
                     "width": 320,
-                    "type": "video\/mp4",
-                    "file": "https:\/\/cdn.jwplayer.com\/videos\/DqGECHhT-AgylS15n.mp4",
-                    "height": 180
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Iyfst4Se-AgylS15n.mp4",
+                    "label": "H.264 320px"
                 },
                 {
                     "width": 480,
-                    "type": "video\/mp4",
-                    "file": "https:\/\/cdn.jwplayer.com\/videos\/DqGECHhT-8LSW5F2t.mp4",
-                    "height": 270
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Iyfst4Se-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
                 },
                 {
                     "width": 720,
-                    "type": "video\/mp4",
-                    "file": "https:\/\/cdn.jwplayer.com\/videos\/DqGECHhT-PA9rXzRh.mp4",
-                    "height": 406
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Iyfst4Se-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
                 },
                 {
                     "width": 1280,
-                    "type": "video\/mp4",
-                    "file": "https:\/\/cdn.jwplayer.com\/videos\/DqGECHhT-p3ZNjGCa.mp4",
-                    "height": 720
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Iyfst4Se-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
                 },
                 {
-                    "type": "audio\/mp4",
-                    "file": "https:\/\/cdn.jwplayer.com\/videos\/DqGECHhT-pSu3VlhO.m4a"
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Iyfst4Se-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
                 }
             ],
             "tracks": [
                 {
-                    "kind": "thumbnail",
-                    "file": "https:\/\/cdn.jwplayer.com\/strips\/DqGECHhT-120.vtt"
+                    "kind": "captions",
+                    "file": "https://cdn.jwplayer.com/tracks/Tlfho8GX.vtt",
+                    "label": "Untitled Captions Track"
+                },
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/Iyfst4Se-120.vtt"
                 }
             ],
-            "link": "https:\/\/cdn.jwplayer.com\/previews\/DqGECHhT",
-            "duration": 109
+            "client": "cinedigm",
+            "link": "https://cdn.jwplayer.com/previews/Iyfst4Se",
+            "duration": 151
         },
         {
-            "description": "\u201cThe Nice Guys\u201d takes place in 1970s Los Angeles, when down-on-his-luck private eye Holland March (Gosling) and hired enforcer Jackson Healy (Crowe) must work together to solve the case of a missing girl and the seemingly unrelated death of a porn star. During their investigation, they uncover a shocking conspiracy that reaches up to the highest circles of power.",
+            "mediaid": "uNXCVIsW",
+            "description": "Touched With Fire stars Katie Homes and Luke Kirby as two poets with bipolar disorder whose art is fueled by their emotional extremes. When they meet in a treatment facility, their chemistry is instant and intense driving each other's mania to new heights. They pursue their passion which breaks outside the bounds of sanity, swinging them from fantastical highs to tormented lows until they ultimately must choose between sanity and love.",
             "pubdate": 1449848296,
-            "tags": "action and adventure and fun,comedy",
-            "image": "//cdn.jwplayer.com/thumbs/co3rxpv9-720.jpg",
+            "tags": "drama,trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/uNXCVIsW-720.jpg",
+            "title": "Touched with Fire",
+            "feedid": "r3MhKJyA",
             "sources": [
                 {
-                    "type": "application/vnd.apple.mpegurl",
-                    "file": "//cdn.jwplayer.com/manifests/co3rxpv9.m3u8"
-                },
-                {
-                    "height": 180,
-                    "width": 320,
-                    "file": "//cdn.jwplayer.com/videos/co3rxpv9-AgylS15n.mp4",
-                    "duration": 153,
-                    "label": "H.264 320px",
-                    "type": "video/mp4"
-                },
-                {
-                    "height": 270,
-                    "width": 480,
-                    "file": "//cdn.jwplayer.com/videos/co3rxpv9-8LSW5F2t.mp4",
-                    "duration": 153,
-                    "label": "H.264 480px",
-                    "type": "video/mp4"
-                },
-                {
-                    "height": 406,
-                    "width": 720,
-                    "file": "//cdn.jwplayer.com/videos/co3rxpv9-PA9rXzRh.mp4",
-                    "duration": 153,
-                    "label": "H.264 720px",
-                    "type": "video/mp4"
-                },
-                {
-                    "height": 720,
                     "width": 1280,
-                    "file": "//cdn.jwplayer.com/videos/co3rxpv9-p3ZNjGCa.mp4",
-                    "duration": 153,
-                    "label": "H.264 1280px",
-                    "type": "video/mp4"
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/uNXCVIsW.m3u8",
+                    "height": 720
                 },
                 {
-                    "height": -1,
-                    "width": -1,
-                    "file": "//cdn.jwplayer.com/videos/co3rxpv9-pSu3VlhO.m4a",
-                    "duration": 153,
-                    "label": "AAC Audio",
-                    "type": "audio/mp4"
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/uNXCVIsW-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/uNXCVIsW-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/uNXCVIsW-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "width": 1280,
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/uNXCVIsW-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/uNXCVIsW-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
                 }
             ],
             "tracks": [
                 {
                     "kind": "thumbnails",
-                    "file": "//cdn.jwplayer.com/strips/co3rxpv9-120.vtt"
+                    "file": "https://cdn.jwplayer.com/strips/uNXCVIsW-120.vtt"
                 }
             ],
-            "link": "//cdn.jwplayer.com/previews/co3rxpv9",
-            "duration": 153,
+            "link": "https://cdn.jwplayer.com/previews/uNXCVIsW",
+            "duration": 138
+        },
+        {
+            "mediaid": "LjBvF1FX",
+            "description": "Set in the world of NYC publishing, a young book editor is forced to confront a troubling part of her past when a bestselling author re-enters her life.",
+            "pubdate": 1449848296,
+            "tags": "drama,trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/LjBvF1FX-720.jpg",
+            "title": "The Girl in the Book",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/LjBvF1FX.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/LjBvF1FX-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/LjBvF1FX-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/LjBvF1FX-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "width": 1280,
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/LjBvF1FX-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/LjBvF1FX-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/LjBvF1FX-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/LjBvF1FX",
+            "duration": 137
+        },
+        {
+            "mediaid": "Q9NURBag",
+            "description": "A nerdish store owner is revived out of cryo-stasis, transported to a future world inhabited by post-utopian aristocrats and their artificially intelligent butlers, to fight an oppressive government. Directed by and starring Woody Allen, this 1973 absurdist sci-fi farce is a classic example of the tension between Jerry Lewis inspired physical comedy and the juvenile philosophical neurosis of a prolific filmmaker on the rise.",
+            "pubdate": 1489243456,
+            "tags": "trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/Q9NURBag-720.jpg",
+            "title": "sleeper",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 720,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/Q9NURBag.m3u8",
+                    "height": 540
+                },
+                {
+                    "width": 320,
+                    "height": 240,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Q9NURBag-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 360,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Q9NURBag-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 540,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Q9NURBag-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Q9NURBag-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/Q9NURBag-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/Q9NURBag",
+            "duration": 133
+        },
+        {
+            "mediaid": "Vi8G4uXz",
+            "description": "Directed by Stanley Kubrick.  A useless cad wins the heart of a rich widow and assumes her dead husband's aristocratic position in 18th-century England.",
+            "pubdate": 1489231361,
+            "tags": "drama,trailer,europe",
+            "image": "https://cdn.jwplayer.com/thumbs/Vi8G4uXz-720.jpg",
+            "title": "Barry Lyndon",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 720,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/Vi8G4uXz.m3u8",
+                    "height": 536
+                },
+                {
+                    "width": 320,
+                    "height": 238,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Vi8G4uXz-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 358,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Vi8G4uXz-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 536,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Vi8G4uXz-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/Vi8G4uXz-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/Vi8G4uXz-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/Vi8G4uXz",
+            "duration": 131
+        },
+        {
+            "mediaid": "QYgO4kau",
+            "description": "While on a trip to Paris with his fianc\u00e9e's family, a nostalgic screenwriter finds himself mysteriously transported to the 1920s everyday at midnight.  Staring Owen Wilson and Rachel McAdams.  Directed by Woody Allen, released in 2011",
+            "pubdate": 1489228674,
+            "tags": "comedy,trailer,absurdist,woody allen",
+            "image": "https://cdn.jwplayer.com/thumbs/QYgO4kau-720.jpg",
+            "title": "Midnight In Paris",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 720,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/QYgO4kau.m3u8",
+                    "height": 408
+                },
+                {
+                    "width": 320,
+                    "height": 182,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/QYgO4kau-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 272,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/QYgO4kau-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 408,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/QYgO4kau-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/QYgO4kau-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/QYgO4kau-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/QYgO4kau",
+            "duration": 125
+        },
+        {
+            "mediaid": "GQlE6Rqd",
+            "description": "Directed by Stanley Kubrick: A mediation on the nature of humanity and culture beginning with pre-human discovery of tools and the future of the tools we create in our image.  The first true exposition on the social impact of Artificial Intelligence by a true visionary",
+            "pubdate": 1489104000,
+            "tags": "science fiction,trailer,artificial intelligence",
+            "image": "https://cdn.jwplayer.com/thumbs/GQlE6Rqd-720.jpg",
+            "title": "2001 A Space Odyssey",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 720,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/GQlE6Rqd.m3u8",
+                    "height": 406
+                },
+                {
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/GQlE6Rqd-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/GQlE6Rqd-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/GQlE6Rqd-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/GQlE6Rqd-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/GQlE6Rqd-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/GQlE6Rqd",
+            "duration": 111
+        },
+        {
+            "mediaid": "92XQ91bP",
+            "description": "Star Wars: The Force Awakens opens in theaters December 18, 2015. Star Wars: The Force Awakens is directed by J.J. Abrams from a screenplay by Lawrence Kasdan & Abrams, and features a cast including actors John Boyega, Daisy Ridley, Adam Driver, Oscar Isaac, Andy Serkis, Academy Award winner Lupita Nyong\u2019o, Gwendoline Christie, Crystal Clarke, Pip Andersen, Domhnall Gleeson, and Max von Sydow.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,science fiction,trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/92XQ91bP-720.jpg",
+            "title": "Star Wars: The Force Awakens",
+            "nvgid": "qwfgqgfwqfgaqf",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/92XQ91bP.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/92XQ91bP-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/92XQ91bP-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/92XQ91bP-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "width": 1280,
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/92XQ91bP-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/92XQ91bP-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/92XQ91bP-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/92XQ91bP",
+            "duration": 138
+        },
+        {
             "mediaid": "co3rxpv9",
+            "description": "\u201cThe Nice Guys\u201d takes place in 1970s Los Angeles, when down-on-his-luck private eye Holland March (Gosling) and hired enforcer Jackson Healy (Crowe) must work together to solve the case of a missing girl and the seemingly unrelated death of a porn star. During their investigation, they uncover a shocking conspiracy that reaches up to the highest circles of power.",
+            "pubdate": 1449848296,
+            "tags": "action and adventure and fun,comedy,trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/co3rxpv9-720.jpg",
             "title": "The Nice Guys",
-            "custom": {}
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/co3rxpv9.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/co3rxpv9-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/co3rxpv9-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/co3rxpv9-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "width": 1280,
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/co3rxpv9-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/co3rxpv9-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/co3rxpv9-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/co3rxpv9",
+            "duration": 153
+        },
+        {
+            "mediaid": "4yN3Zspm",
+            "description": "For their fifth fully-animated feature-film collaboration, Illumination Entertainment and Universal Pictures present The Secret Life of Pets, a comedy about the lives our pets lead after we leave for work or school each day.",
+            "pubdate": 1449848296,
+            "tags": "comedy,trailer",
+            "image": "https://cdn.jwplayer.com/thumbs/4yN3Zspm-720.jpg",
+            "title": "The Secret Life of Pets",
+            "feedid": "r3MhKJyA",
+            "sources": [
+                {
+                    "width": 1280,
+                    "type": "application/vnd.apple.mpegurl",
+                    "file": "https://cdn.jwplayer.com/manifests/4yN3Zspm.m3u8",
+                    "height": 720
+                },
+                {
+                    "width": 320,
+                    "height": 180,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/4yN3Zspm-AgylS15n.mp4",
+                    "label": "H.264 320px"
+                },
+                {
+                    "width": 480,
+                    "height": 270,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/4yN3Zspm-8LSW5F2t.mp4",
+                    "label": "H.264 480px"
+                },
+                {
+                    "width": 720,
+                    "height": 406,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/4yN3Zspm-PA9rXzRh.mp4",
+                    "label": "H.264 720px"
+                },
+                {
+                    "width": 1280,
+                    "height": 720,
+                    "type": "video/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/4yN3Zspm-p3ZNjGCa.mp4",
+                    "label": "H.264 1280px"
+                },
+                {
+                    "type": "audio/mp4",
+                    "file": "https://cdn.jwplayer.com/videos/4yN3Zspm-pSu3VlhO.m4a",
+                    "label": "AAC Audio"
+                }
+            ],
+            "tracks": [
+                {
+                    "kind": "thumbnails",
+                    "file": "https://cdn.jwplayer.com/strips/4yN3Zspm-120.vtt"
+                }
+            ],
+            "link": "https://cdn.jwplayer.com/previews/4yN3Zspm",
+            "duration": 97
         }
     ],
-    "feedid": "r3MhKJyA"
+    "description": "",
+    "links": {
+        "next": "https://cdn.jwplayer.com/v2/playlists/r3MhKJyA?search=trailer&page_offset=11&page_limit=10",
+        "last": "https://cdn.jwplayer.com/v2/playlists/r3MhKJyA?search=trailer&page_offset=17&page_limit=10",
+        "first": "https://cdn.jwplayer.com/v2/playlists/r3MhKJyA?search=trailer&page_offset=1&page_limit=10"
+    },
+    "title": "product-demo-search",
+    "feed_instance_id": "3898ea50-fc34-45f2-9673-23a854bef6e3",
+    "feedid": "r3MhKJyA",
+    "kind": "SEARCH"
 }
