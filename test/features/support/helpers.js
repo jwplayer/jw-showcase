@@ -29,8 +29,9 @@ defineSupportCode(function () {
 
         return browser.executeScript(function (element) {
             var header = document.querySelector('.jw-header');
+            var scrollingDocument = document.documentElement || document.body;
             if (element) {
-                document.body.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
+                scrollingDocument.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
             }
         }, element.getWebElement());
     };

@@ -87,6 +87,10 @@ defineSupportCode(function ({Given, When, Then}) {
         return browser.executeScript('jwplayer().seek(jwplayer().getDuration() - 2)');
     });
 
+    When('I scroll to the video description', function () {
+        return scrollToElement($('.jw-collapsible-text-toggle'));
+    });
+
     //
     // Then steps
     //
