@@ -14,10 +14,14 @@
  * governing permissions and limitations under the License.
  **/
 
-module.exports = function () {
+const
+    {defineSupportCode} = require('cucumber');
+
+defineSupportCode(function () {
 
     global.swipe = function (element, direction) {
 
+        // @todo update this function
         return browser
             .executeScript(function (element, direction) {
 
@@ -59,4 +63,4 @@ module.exports = function () {
 
             }, element, direction);
     };
-};
+});

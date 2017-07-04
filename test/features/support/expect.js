@@ -14,11 +14,12 @@
  * governing permissions and limitations under the License.
  **/
 
-var chai           = require('chai'),
-    chaiAsPromised = require('chai-as-promised');
+const
+    chai                = require('chai'),
+    chaiAsPromised      = require('chai-as-promised'),
+    {defineSupportCode} = require('cucumber');
 
-module.exports = function () {
-
+defineSupportCode(function () {
     chai.use(chaiAsPromised);
     global.expect = chai.expect;
-};
+});
