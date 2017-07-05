@@ -68,6 +68,8 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                     window.$stateIsResolved = true;
                 });
             });
+
+            MockFirebase.override();
         });
     });
 

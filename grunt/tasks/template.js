@@ -5,14 +5,15 @@ module.exports = function (grunt) {
         template       = require('lodash.template'),
         pkg            = require(process.cwd() + '/package.json'),
         libPkg         = require(process.cwd() + '/bower_components/jw-showcase-lib/package.json'),
-        ngMocksInclude = '<script src="bower_components/angular-mocks/angular-mocks.js"></script>';
+        mocksInclude   = ['bower_components/angular-mocks/angular-mocks.js',
+                          'bower_components/firebase-mock/browser/firebasemock.js'];
 
     function compile (src, dest, configLocation, injectNgMocks) {
 
         var config   = require(process.cwd() + '/' + configLocation),
             baseUrl  = grunt.option('url') || '/',
             urlParts = url.parse(baseUrl),
-            html, compiler;
+            html, compiler, firstPartHtml, endPartHtml, injectedHtml;
 
         config.version    = pkg.version;
         config.libVersion = libPkg.version;
@@ -22,9 +23,18 @@ module.exports = function (grunt) {
         html = fs.readFileSync(src).toString();
 
         if (injectNgMocks) {
-            var pos = html.indexOf('<!-- build:js({.tmp,app}) scripts/scripts.js -->');
-            html    = html.substr(0, pos) + ngMocksInclude + '\n\n' +
-                '<script>window.name = "NG_DEFER_BOOTSTRAP!" + window.name;</script>' + '\n\n' + html.substr(pos);
+            var pos             = html.indexOf('<!-- build:js({.tmp,app}) scripts/scripts.js -->');
+            firstPartHtml       = html.substr(0, pos);
+            endPartHtml         = html.substr(pos);
+            injectedHtml        = '';
+
+            mocksInclude.forEach(function (mockInclude) {
+                injectedHtml += '<script src="' + mockInclude + '"></script>\n';
+            });
+
+            injectedHtml += '<script>window.name = "NG_DEFER_BOOTSTRAP!" + window.name;</script>' + '\n\n';
+
+            html = firstPartHtml + injectedHtml + endPartHtml;
         }
 
         compiler = template(html);
