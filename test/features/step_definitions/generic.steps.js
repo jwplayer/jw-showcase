@@ -105,6 +105,18 @@ defineSupportCode(function ({Given, When, Then}) {
         });
     });
 
+    When('I press the {stringInDoubleQuotes} key', function (key) {
+
+        // firefox throws exception "UnsupportedOperationError: sendKeysToActiveElement"
+        // safari doesn't press key, but sends the unicode char to active input element as value
+        if (this.browserName === 'firefox' || this.browserName === 'safari') {
+            return 'pending';
+        }
+
+        let keycode = protractor.Key[key.toUpperCase()];
+        return browser.actions().sendKeys(keycode).perform();
+    });
+
     //
     // Then steps
     //

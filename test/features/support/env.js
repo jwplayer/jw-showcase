@@ -79,19 +79,31 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
 
                 let mockFeeds = ['lrYLc95e', 'WXu7kuaW', 'Q352cyuc', 'oR7ahO0J'];
 
+                function returnFixture (id) {
+                    return function () {
+                        var request = new XMLHttpRequest();
+
+                        request.open('GET', './fixtures/feed/' + id + '.json', false);
+                        request.send(null);
+
+                        return [request.status, request.response, {}];
+                    };
+                }
+
                 // mock each feed request defined in mockFeeds
                 angular.forEach(mockFeeds, function (id) {
 
                     $httpBackend.whenGET('https://content.jwplatform.com/v2/playlists/' + id)
-                        .respond(function () {
-                            var request = new XMLHttpRequest();
-
-                            request.open('GET', './fixtures/feed/' + id + '.json', false);
-                            request.send(null);
-
-                            return [request.status, request.response, {}];
-                        });
+                        .respond(returnFixture(id));
                 });
+
+                // search playlist
+                $httpBackend.whenGET('https://content.jwplatform.com/v2/playlists/r3MhKJyA?search=trailer')
+                    .respond(returnFixture('searchFeed'));
+
+                // empty search playlist
+                $httpBackend.whenGET('https://content.jwplatform.com/v2/playlists/r3MhKJyA?search=nothing')
+                    .respond(returnFixture('emptySearchFeed'));
 
                 // let all other requests pass
                 $httpBackend.whenGET(/\S+/)
