@@ -5,8 +5,7 @@ module.exports = function (grunt) {
         template       = require('lodash.template'),
         pkg            = require(process.cwd() + '/package.json'),
         libPkg         = require(process.cwd() + '/bower_components/jw-showcase-lib/package.json'),
-        mocksInclude   = ['bower_components/angular-mocks/angular-mocks.js',
-                          'bower_components/firebase-mock/browser/firebasemock.js'];
+        mocksInclude   = ['bower_components/angular-mocks/angular-mocks.js'];
 
     function compile (src, dest, configLocation, injectNgMocks) {
 

@@ -69,8 +69,11 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                 });
             });
 
-            MockFirebase.override();
+
+
         });
+
+
     });
 
     Before(function () {
@@ -121,5 +124,43 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                 $animate.enabled(false);
             });
         });
+    });
+
+    Before(function () {
+        const world = this;
+
+        // Make sure this is ran only once.
+        if(!world.user) {
+            world.user = null;
+        }
+
+
+        return browser.addMockModule('firebase', function () {
+             angular.module('firebase').factory('$firebaseAuth', function() {
+                    return function() {
+                        return {
+                            'getIdentity': function () {
+                                return world.user;
+                            },
+                            'hasIdentity': function () {
+                                return !!world.user;
+                            },
+                            'logout': function () {
+                                world.user = null;
+                                window.location.reload();
+                            },
+                            'getToken': function () {
+                                if (!world.user) {
+                                    return null;
+                                }
+
+                                return world.user.token();
+                            }
+                        };
+                    };
+                }
+            );
+        });
+
     });
 });
