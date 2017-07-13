@@ -116,13 +116,62 @@ Feature: Authentication
 
 
     @mobile @tablet @desktop
-        Scenario: Signup is completed and confirmation alert is shown
-            Given I am still on the "index" page
-            And the signup modal is visible
-            When I click the signup button
-            And wait for 10 seconds
-            Then an alert should be shown
-            And the text in the should be "yay"
+    Scenario: Signup is completed and confirmation alert is shown
+        Given I am still on the "index" page
+        And the signup modal is visible
+        When I click the signup button
+        Then an alert should be shown
+        And click on the alert confirmation button
 
+    @mobile @tablet @desktop
+    Scenario: Login is completed and user is logged in
+        Given I am still on the "index" page
+        When I click on the userbadge
+        And the login modal is visible
+        And I focus on the "email" input
+        And I enter "test@test.nl" in the "email" input
+        And I focus on the "password" input
+        And I enter "thisisapassword" in the "password" input
 
+    @mobile @tablet @desktop @mock-user-logged-in
+    Scenario: User is logged in and user dropdown is shown with right info
+        Given I set the configLocation to "./fixtures/config/authentication.json"
+        When I go to the "index" page
+        And the userbadge should be visible
+        And I click on the userbadge
+        Then the userbadge dropdown should show
+        And the userbadge dropdown name is "John Doe"
+        And the userbadge dropdown email is "johndoe@test.com"
 
+    @mobile @tablet @desktop @mock-user-logged-in
+    Scenario: User is able to see his account info
+        Given I am still on the "index" page
+        And the userbadge dropdown should show
+        When I click the account-info button
+        Then the account info modal should be visible
+
+    @mobile @tablet @desktop @mock-user-logged-in
+    Scenario: User is able to change his password
+        Given I am still on the "index" page
+        And the account info modal should be visible
+        When I focus on the "password" input
+        And I remove everything in the "password" input
+        And I enter "thisisapassword" in the "password" input
+        And I focus on the "passwordconfirm" input
+        And I remove everything in the "passwordconfirm" input
+        And I enter "thisisapassword" in the "passwordconfirm" input
+        Then The "save" button should be not disabled
+
+    @mobile @tablet @desktop @mock-user-create-error
+    Scenario: User is logged in and user dropdown is shown with right info
+        Given I set the configLocation to "./fixtures/config/authentication.json"
+        When I go to the "index" page
+        And I click on the userbadge
+        And the login modal is visible
+        And I focus on the "email" input
+        And I enter "exists@exists.nl" in the "email" input
+        And I focus on the "password" input
+        And I enter "thisisapassword" in the "password" input
+        And I click on the "login" button
+        And I click on the "login" button
+        Then an error with "Error: Your email or password is wrong. Please try again!"
