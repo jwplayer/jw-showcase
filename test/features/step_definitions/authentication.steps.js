@@ -125,13 +125,61 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect(element.isDisplayed()).to.eventually.equal(true);
     });
 
-    Then('the text in the should be {stringInDoubleQuotes}', function (text) {
+    Then('the text in the alert should be {stringInDoubleQuotes}', function (text) {
         var element = $('.jw-popup-alert .jw-popup-title');
         return expect(element.getText()).to.eventually.equal(text);
     });
 
+    Then('click on the alert confirmation button', function () {
+        var element = $('.jw-popup-alert .jw-button-primary');
+        return element.click();
+    });
 
+    When('I click the login button', function () {
+        var element = $('.jw-button-login');
 
+        return element.click();
+    });
+
+    Then('the userbadge dropdown should show', function () {
+        var element = $('.jw-user-info-dropdown');
+        return expect(element.isDisplayed()).to.eventually.equal(true);
+    });
+
+    Then('the userbadge dropdown name is {stringInDoubleQuotes}', function (name) {
+        var element = $('.jw-user-info-dropdown .jw-user-info-dropdown-name');
+        return expect(element.getText()).to.eventually.equal(name);
+    });
+
+    Then('the userbadge dropdown email is {stringInDoubleQuotes}', function (email) {
+        var element = $('.jw-user-info-dropdown .jw-user-info-dropdown-email');
+        return expect(element.getText()).to.eventually.equal(email);
+    });
+
+    Then('the userbadge has a account info button', function () {
+        var element = $('.jw-user-info-dropdown .jw-user-info-dropdown-info');
+        return expect(element.isDisplayed()).to.eventually.equal(true);
+    });
+
+    Then('the userbadge has a logout button', function () {
+        var element = $('.jw-user-info-dropdown .jw-user-info-dropdown-log-out');
+        return expect(element.isDisplayed()).to.eventually.equal(true);
+    });
+
+    When('I click the account-info button', function () {
+        var element = $('.jw-user-info-dropdown .jw-user-info-dropdown-info');
+        return element.click();
+    });
+
+    Then('the account info modal should be visible', function () {
+        var element = $('.jw-popup-account-info');
+        return expect(element.isDisplayed()).to.eventually.equal(true);
+    });
+
+    Then('an error with {stringInDoubleQuotes}', function (errorText) {
+        var element = $('.jw-errors-row');
+        return expect(element.getText()).to.eventually.equal(errorText);
+    });
 
 
 

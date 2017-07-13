@@ -61,6 +61,30 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
 
             window.addToHomescreen = angular.noop;
 
+            window.isReloaded = false;
+
+            console.log('Ik kom hier dus wel!');
+
+            console.log(window.location.reload.toString());
+
+
+            // var base = window.location.reload;
+            // window.location.reload = function() {
+            //     window.isReloaded = true;
+            //     return base
+            // };
+
+            (function(proxied) {
+                window.location.reload = function() {
+                    window.isReloaded = true;
+                    return proxied.apply(this, arguments);
+                };
+            })(window.location.reload);
+
+            console.log(window.location.reload.toString());
+
+
+
             angular.module('app').run(function ($rootScope) {
                 window.configLocation = './fixtures/config/default.json';
 
@@ -136,25 +160,75 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
 
 
         return browser.addMockModule('firebase', function () {
+            angular.module('firebase').factory('$firebaseObject', function() {
+                return function () {
+                    return {
+                        $loaded: function () {
+                            return Promise.resolve({});
+                        }
+                    };
+                };
+            });
+
+            angular.module('firebase').factory('$firebaseArray', function() {
+                return function () {
+                    return {
+                        $loaded: function () {
+                            return Promise.resolve({});
+                        }
+                    };
+                };
+            });
+
+
              angular.module('firebase').factory('$firebaseAuth', function() {
+
+
+                 window.firebase = {
+                     initializeApp: function() {
+                         return Promise.resolve();
+                     },
+                     database: function() {
+                        return {
+                            ref: function() {
+                                return Promise.resolve();
+                            }
+                        };
+                     }
+                 };
+
+                 var identity = {
+                     getToken: function() {
+                         return 'foo';
+                     }
+                 };
+
                     return function() {
                         return {
-                            'getIdentity': function () {
-                                return world.user;
+                            $waitForSignIn: function() {
+                                return Promise.resolve();
                             },
-                            'hasIdentity': function () {
-                                return !!world.user;
-                            },
-                            'logout': function () {
-                                world.user = null;
-                                window.location.reload();
-                            },
-                            'getToken': function () {
-                                if (!world.user) {
-                                    return null;
-                                }
 
-                                return world.user.token();
+                            $getAuth: function() {
+                                return null;
+                            },
+                            $onAuthStateChanged: function() {
+
+                            },
+                            $createUserWithEmailAndPassword: function(email, password) {
+                                return Promise.resolve({
+                                    sendEmailVerification: function() {
+                                        return Promise.resolve();
+                                    }
+                                });
+                            },
+                            $signInWithEmailAndPassword: function(email, password) {
+                                return Promise.resolve({
+                                    emailVerified: true
+                                });
+                            },
+                            $signOut: function() {
+                                return Promise.resolve();
                             }
                         };
                     };
@@ -162,5 +236,80 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
             );
         });
 
+    });
+
+    Before("@mock-user-logged-in", function () {
+
+        return browser.addMockModule('app', function() {
+            angular.module('firebase').factory('$firebaseAuth', function () {
+                return function() {
+                    return {
+                        $waitForSignIn: function() {
+                            return Promise.resolve();
+                        },
+
+                        $getAuth: function() {
+                            return {
+                                displayName: 'John Doe',
+                                email: 'johndoe@test.com'
+                            };
+                        },
+                        $onAuthStateChanged: function() {
+
+                        },
+                        $createUserWithEmailAndPassword: function(email, password) {
+                            return Promise.resolve({
+                                sendEmailVerification: function() {
+                                    return Promise.resolve();
+                                }
+                            });
+                        },
+                        $signInWithEmailAndPassword: function(email, password) {
+                            return Promise.resolve({
+                                emailVerified: true
+                            });
+                        },
+                        $signOut: function() {
+                            return Promise.resolve();
+                        }
+                    };
+                };
+            });
+        });
+    });
+
+    Before("@mock-user-create-error", function () {
+
+        return browser.addMockModule('app', function() {
+            angular.module('firebase').factory('$firebaseAuth', function () {
+                return function() {
+                    return {
+                        $waitForSignIn: function() {
+                            return Promise.resolve();
+                        },
+
+                        $getAuth: function() {
+                            return null;
+                        },
+                        $onAuthStateChanged: function() {
+
+                        },
+                        $createUserWithEmailAndPassword: function(email, password) {
+                            return Promise.resolve({
+                                sendEmailVerification: function() {
+                                    return Promise.resolve();
+                                }
+                            });
+                        },
+                        $signInWithEmailAndPassword: function(email, password) {
+                            return Promise.reject(new Error());
+                        },
+                        $signOut: function() {
+                            return Promise.resolve();
+                        }
+                    };
+                };
+            });
+        });
     });
 });
