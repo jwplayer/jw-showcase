@@ -65,15 +65,6 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
 
             window.addToHomescreen = angular.noop;
 
-            window.isReloaded = false;
-
-            (function (proxied) {
-                window.location.reload = function () {
-                    window.isReloaded = true;
-                    return proxied.apply(this, arguments);
-                };
-            })(window.location.reload);
-
             angular.module('app').run(function ($rootScope) {
                 window.configLocation = './fixtures/config/default.json';
 
@@ -144,6 +135,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
         }
 
         return browser.addMockModule('firebase', function () {
+
             angular.module('firebase').factory('$firebaseObject', function () {
                 return function () {
                     return {
@@ -163,7 +155,6 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                     };
                 };
             });
-
 
              angular.module('firebase').factory('$firebaseAuth', function () {
 
@@ -185,7 +176,6 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                             $waitForSignIn: function () {
                                 return Promise.resolve();
                             },
-
                             $getAuth: function () {
                                 return null;
                             },
@@ -205,6 +195,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                                 });
                             },
                             $signOut: function () {
+
                                 return Promise.resolve();
                             }
                         };
@@ -224,7 +215,6 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                         $waitForSignIn: function () {
                             return Promise.resolve();
                         },
-
                         $getAuth: function () {
                             return {
                                 displayName: 'John Doe',
@@ -242,11 +232,13 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                             });
                         },
                         $signInWithEmailAndPassword: function () {
+
                             return Promise.resolve({
                                 emailVerified: true
                             });
                         },
                         $signOut: function () {
+
                             return Promise.resolve();
                         }
                     };
@@ -282,6 +274,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
                             return Promise.reject(new Error());
                         },
                         $signOut: function () {
+
                             return Promise.resolve();
                         }
                     };
