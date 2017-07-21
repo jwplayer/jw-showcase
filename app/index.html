@@ -55,7 +55,7 @@
 
 <jw-header ng-if="rootVm.config.options.enableHeader"></jw-header>
 <ui-view></ui-view>
-<jw-footer></jw-footer>
+<jw-footer ng-if="rootVm.config.options.enableFooter"></jw-footer>
 
 <div class="jw-cover jw-loading" ng-show="rootVm.appStore.loading">
   <div class="jw-loading-icon">
