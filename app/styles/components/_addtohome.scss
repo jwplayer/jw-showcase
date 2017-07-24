@@ -2,9 +2,17 @@
 // Add to home
 // --------------------------------
 
+$ath-bg: #e2e5ec !default;
+$ath-color: #6d6d6d !default;
+
 .ath-container {
-    background-color: $white;
-    box-shadow: none;
+    @include box-shadow(0 0 15px 0 rgba($black, 0.8));
+    padding: 0;
+    background-color: $ath-bg;
+
+    &.ath-ios.ath-tablet::after {
+        background-color: $ath-bg;
+    }
 
     &.ath-icon::before {
         background-color: $white;
@@ -17,11 +25,17 @@
     }
 
     .ath-application-icon {
+        @include box-shadow(2px 2px 7px rgba($black, 0.5));
         width: 4em;
         height: 4em;
+        margin: 30px 0 !important;
+        border-radius: 15px;
     }
 
     p {
+        padding: 1.4em 0.7em;
+        background: $white;
+        color: $ath-color;
         font-size: 1em;
     }
 }
