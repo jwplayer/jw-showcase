@@ -31,6 +31,10 @@ defineSupportCode(function ({Given, When, Then}) {
         return $$('.jw-side-rail .jw-side-rail-item').get(num - 1).click();
     });
 
+    When('I click on the show more button', function () {
+        return $$('.jw-side-rail .jw-side-rail-control .jw-button').click();
+    });
+
     //
     // Then steps
     //
@@ -57,7 +61,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the image src of the {ordinal} item in the siderail should contain {stringInDoubleQuotes}', function (num, src) {
-        return expect($$('.jw-side-rail .jw-side-rail-item-image').get(num - 1).getAttribute('src'))
+        return expect($$('.jw-side-rail .jw-side-rail-item-image img').get(num - 1).getAttribute('src'))
             .to.eventually.contain(src);
     });
 
@@ -68,7 +72,7 @@ defineSupportCode(function ({Given, When, Then}) {
 
         title = trim(title);
 
-        return expect($$('.jw-side-rail .jw-side-rail-item-title').get(num - 1).getText().then(trim))
+        return expect($$('.jw-side-rail .jw-side-rail-item-info strong').get(num - 1).getText().then(trim))
             .to.eventually.equal(title);
     });
 
@@ -80,6 +84,11 @@ defineSupportCode(function ({Given, When, Then}) {
     Then('the next up slider should be visible', function () {
         return expect($('jw-card-slider[feed="vm.activeFeed"]').isDisplayed())
             .to.eventually.equal(true);
+    });
+
+    Then('the show more button should be hidden', function () {
+        return expect($$('.jw-side-rail .jw-side-rail-control .jw-button').count())
+            .to.eventually.equal(0);
     });
 
 });

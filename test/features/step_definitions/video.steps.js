@@ -80,7 +80,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click the first video tag', function () {
-        return $$('.jw-video-tag').get(0).click();
+        return $$('.jw-video-details-tag').get(0).click();
     });
 
     When('I seek to the end of video', function () {
@@ -111,16 +111,21 @@ defineSupportCode(function ({Given, When, Then}) {
 
         title = trim(title);
 
-        return expect($('.jw-video-details .jw-video-title').getText().then(trim)).to.eventually.equal(title);
+        return expect($('.jw-video-details .jw-video-details-title').getText().then(trim)).to.eventually.equal(title);
+    });
+
+    Then('the video title is above the video', function () {
+        return expect($$('.jw-video-details-flag-above .jw-video-details-title').count()).to.eventually
+            .equal(1);
     });
 
     Then('the video description is:', function (description) {
-        return expect($('.jw-video-details .jw-video-description .jw-markdown').getText()).to.eventually
+        return expect($('.jw-video-details .jw-video-details-description .jw-markdown').getText()).to.eventually
             .equal(description);
     });
 
     Then('the video duration label is {stringInDoubleQuotes}', function (duration) {
-        return expect($('.jw-video-details .jw-video-duration').getText()).to.eventually.equal(duration);
+        return expect($('.jw-video-details .jw-video-details-duration').getText()).to.eventually.equal(duration);
     });
 
     Then('the next up title is shown', function () {
@@ -134,7 +139,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video tags should be visible', function () {
-        return expect($$('.jw-video-tag').get(0).isDisplayed()).to.eventually.equal(true);
+        return expect($$('.jw-video-details-tag').get(0).isDisplayed()).to.eventually.equal(true);
     });
 
 });

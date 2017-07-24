@@ -23,16 +23,22 @@ Feature: Video page
     """
 
   @mobile @tablet @desktop
+  Scenario: As a user I want to see the video title above the video and description below the video when having videoTitlePosition on "above"
+    Given I set the configLocation to "fixtures/config/videoTitlePosition.json"
+    And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
+    Then the video title is above the video
+    And the video title is "Spotlight 3 min"
+    And the video duration label is "3 min"
+    And the video description is:
+    """
+    Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d’Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world’s oldest and most trusted institutions.
+    """
+
+  @tablet @desktop
   Scenario: As a user I want to see the Next Up title
-    Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
+    Given I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
     When I scroll to the next up slider
     Then the next up title is shown
-
-  @mobile @tablet @desktop
-  Scenario: As a user I want to see the Related Videos title
-    Given I am still on the "/list/lrYLc95e/video/Iyfst4Se/" page
-    When I scroll to the related videos slider
-    Then the related videos title is shown
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to navigate back to the dashboard by clicking the back button
