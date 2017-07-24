@@ -14,64 +14,98 @@
  * governing permissions and limitations under the License.
  **/
 
-module.exports = function () {
+const
+    {defineSupportCode} = require('cucumber');
 
-    global.isCurrentUrl = function (path, success, error) {
+defineSupportCode(function () {
 
-        var fullUrl = browser.baseUrl + path;
-
-        browser
-            .getCurrentUrl()
-            .then(function (currentUrl) {
-
-                if (fullUrl === currentUrl) {
-                    setTimeout(success, 100);
-                }
-                else {
-                    error();
-                }
-            });
-    };
-
-    global.navigateToPage = function (path, callback, attempt) {
-
-        browser
-            .get(path)
-            .then(function () {
-
-                isCurrentUrl(path, callback, function () {
-
-                    if (attempt < 3) {
-                        navigateToPage(path, callback, attempt + 1);
-                    }
-                });
-            });
+    global.delay = function (time) {
+        return function () {
+            return browser.sleep(time);
+        };
     };
 
     global.scrollToElement = function (element) {
 
+        return browser.executeScript(function (element) {
+            var header = document.querySelector('.jw-header');
+            var scrollingDocument = document.documentElement || document.body;
+            if (element) {
+                scrollingDocument.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
+            }
+        }, element.getWebElement());
+    };
+
+    global.clickHelper = function (element) {
+
+        if (browser.browserName.toLowerCase() === 'firefox') {
+            return browser.executeScript(function (elem) {
+                elem.click();
+            }, element.getWebElement());
+        }
+
+        return element.click();
+    };
+
+    global.mouseMove = function (element) {
+
+        if (/safari|firefox/i.test(browser.browserName)) {
+
+            return browser
+                .executeScript(function (elem) {
+                    elem.classList.add('hover');
+                }, element.getWebElement());
+        }
+
         return browser
-            .executeScript(function (element) {
-
-                var header = document.querySelector('.jw-header');
-
-                if (element) {
-                    document.body.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
-                }
-            }, element);
+            .actions()
+            .mouseMove(element)
+            .perform();
     };
 
-    global.delay = function (fn, time) {
-        return function () {
-            setTimeout(fn, time);
-        };
-    };
+    function mockHoverPseudoElement () {
 
-    global.clickElement = function (selector, callback) {
-        return browser
-            .executeScript(function (cssSelector) {
-                document.querySelector(cssSelector)
-                    .click();
-            }, selector);
+        var cssRules = [],
+            hovers   = [],
+            n,
+            rule;
+
+        for (n = 0; n < document.styleSheets.length; n++) {
+            if (/styles\/main\.css$/.test(document.styleSheets[n].href)) {
+                cssRules = document.styleSheets[n].cssRules || document.styleSheets[n].rules;
+                break;
+            }
+        }
+
+        for (rule in cssRules) {
+            var theRule = cssRules[rule];
+            if (theRule instanceof window.CSSStyleRule && theRule.cssText && theRule.cssText.indexOf(':hover') !== -1) {
+                hovers.push(theRule.cssText.replace(':hover', '.hover'));
+            }
+        }
+
+        var css   = hovers.join(''),
+            head  = document.head || document.getElementsByTagName('head')[0],
+            style = document.createElement('style');
+
+        style.type = 'text/css';
+        style.innerHTML = css;
+
+        head.appendChild(style);
+    }
+
+    global.navigateToPath = function (page) {
+
+        return browser.get(page)
+            .then(function () {
+                return browser.wait(function () {
+                    return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
+                        return val === true;
+                    });
+                });
+            })
+            .then(function () {
+                return browser.executeScript(mockHoverPseudoElement);
+            });
     };
-};
+});

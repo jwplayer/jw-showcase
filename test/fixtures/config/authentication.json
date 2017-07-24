@@ -19,11 +19,18 @@
             "enabled": false
         },
         "useSigning": false,
-        "useAuthentication": false,
+        "useAuthentication": true,
         "authenticationRequired": false,
-        "authenticationProviders": null,
+        "authenticationProviders": ["facebook", "twitter", "google", "github"],
         "restrictedDomains": false,
-        "firebase": false
+        "firebase": {
+            "apiKey": "ThisIsAKey",
+            "authDomain": "fakeDomain.firebaseapp.com",
+            "databaseURL": "https://fakeDomain-78c80.firebaseio.com",
+            "projectId": "fakeId-78c80",
+            "storageBucket": "fakeStorage-78c80.appspot.com",
+            "messagingSenderId": "1234567890"
+        }
     },
     "content": [
         {
