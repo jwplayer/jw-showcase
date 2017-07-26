@@ -6,25 +6,24 @@ Feature: Feed page
 
   @mobile @tablet @desktop
   Scenario: As a user I want to see a feed not found page when the feed doesn't exist
-    Given I go directly to the "/list/johndoe" page
-    When I wait until the page has been loaded
-    Then the feed not found page should be visible
+    Given I go to the "/list/johndoe" page
+    Then the page should be "/feed-not-found"
+    And the subheader title should be "This feed doesn't exist"
 
   @mobile @tablet @desktop
   Scenario: Feed title is displayed in the header
     Given I go to the "/list/WXu7kuaW" page
-    And I wait until the page has been loaded
-    When I do nothing
-    Then the title in the toolbar should be "Featured Trailers"
+    Then the subheader title should be "Featured Trailers"
 
   @mobile @tablet @desktop
   Scenario: Navigate back via the header `back button`
     Given I am still on the "/list/WXu7kuaW" page
     When I click on the back button in the toolbar
-    Then I should navigate to the "index" page
+    Then the page should be "index"
 
   @mobile @tablet @desktop
   Scenario: Watch video from the overview
     Given I go to the "/list/WXu7kuaW" page
     When I click on the first video in the grid overview
-    Then I should navigate to the "/list/WXu7kuaW/video/DqGECHhT/central-intelligence" page
+    And I wait until the page is "/list/WXu7kuaW/video/DqGECHhT/central-intelligence"
+    Then the page should be "/list/WXu7kuaW/video/DqGECHhT/central-intelligence"

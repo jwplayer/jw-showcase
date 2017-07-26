@@ -8,75 +8,72 @@ Feature: Watch progress
 
   @desktop @tablet @mobile
   Scenario: Save video watch progress while playing video
-    Given I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
-    And the browser has localStorage support
-    And I wait until the page has been loaded
-    When I start video playback
-    And I wait until the video starts playing
-    And I seek to 30 seconds
-    And wait for 2 seconds
+    Given the browser has localStorage support
+    And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
+    When I wait until the video is loaded
+    And I start video playback
+    And I wait until the video is playing
+    And I seek to 50 seconds in the video
     Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should be saved
 
   @desktop @tablet @mobile
   Scenario: Remove video watch progress after 95% watch time
-    Given I have the following saved watch progress:
-      | mediaid  | feedid   | progress | lastWatched | offset |
-      | Iyfst4Se | lrYLc95e | 0.75     | now         | 0      |
-    And the browser has localStorage support
+    Given the browser has localStorage support
+    And localStorage key "jwshowcase.watchprogress" has the following data:
+    """
+    [{"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 9999999999999}]
+    """
     And I go to the "/list/lrYLc95e/video/Iyfst4Se/" page
-    And I wait until the page has been loaded
-    When I start video playback
+    When I wait until the video is loaded
+    And I start video playback
+    And I wait until the video is playing
     And I seek to the end of video
-    And wait for 2 seconds
     Then the video progress of mediaid "Iyfst4Se" and feedid "lrYLc95e" should not be saved
 
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page
-    Given I have the following saved watch progress:
-      | mediaid  | feedid   | progress | lastWatched | offset |
-      | LjBvF1FX | lrYLc95e | 0.75     | now         | -10    |
-      | Iyfst4Se | lrYLc95e | 0.5      | now         | 0      |
-    And the browser has localStorage support
+    Given the browser has localStorage support
+    And localStorage key "jwshowcase.watchprogress" has the following data:
+    """
+    [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 9999999999999},{"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 8888888888888}]
+    """
     And I go to the "index" page
-    When I wait until the page has been loaded
-    And I scroll to the watchProgress slider
-    Then the "Continue watching" slider should be visible
-    And the "Continue watching" slider should contain 2 cards
-    And the first card in "Continue watching" slider should have mediaid "Iyfst4Se"
-    And the first card in "Continue watching" slider should show "50%" watch progress
+    When I scroll to the continue watching slider
+    Then the continue watching slider should be visible
+    And the continue watching slider should contain 2 items
+    And the 1st card in the continue watching slider should have mediaid "LjBvF1FX"
+    And the 1st card in the continue watching slider should show 75% watch progress
+    And the 2nd card in the continue watching slider should have mediaid "Iyfst4Se"
+    And the 2nd card in the continue watching slider should show 50% watch progress
 
   @desktop @tablet @mobile
   Scenario: Show the "Continue watching" slider in the dashboard page without the invalid items
-    Given I have the following saved watch progress:
-      | mediaid  | feedid   | progress | lastWatched   | offset |
-      | LjBvF1FX | lrYLc95e | 0.75     | now           | -10    |
-      | Iyfst4Se | lrYLc95e | 0.5      | now           | 0      |
-      | uNXCVIsW | lrYLc95e | 1        | now           | 0      |
-      | FV4n0UaB | lrYLc95e | 0.5      | 1465224056293 | 0      |
-    And the browser has localStorage support
+    Given the browser has localStorage support
+    And localStorage key "jwshowcase.watchprogress" has the following data:
+    """
+    [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 1465224056293},
+    {"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 9999999999999},
+    {"mediaid": "uNXCVIsW", "feedid": "lrYLc95e", "progress": 1, "lastWatched": 8888888888888},
+    {"mediaid": "FV4n0UaB", "feedid": "lrYLc95e", "progress": 0.65, "lastWatched": 8888888888888}]
+    """
     And I go to the "index" page
-    And I wait until the page has been loaded
-    When I do nothing
-    Then the "Continue watching" slider should be visible
-    And the "Continue watching" slider should contain 2 cards
-
-  @desktop @tablet @mobile
-  Scenario: Not show video watch progress of 31 days old in "Continue watching" slider
-    Given I have a saved watchProgress of 31 days old with mediaid "Iyfst4Se" and feedid "lrYLc95e"
-    And the browser has localStorage support
-    And I go to the "index" page
-    When I wait until the page has been loaded
-    Then the "Continue watching" slider should be hidden
+    Then the continue watching slider should be visible
+    And the continue watching slider should contain 2 items
+    And the 1st card in the continue watching slider should have mediaid "Iyfst4Se"
+    And the 1st card in the continue watching slider should show 50% watch progress
+    And the 2nd card in the continue watching slider should have mediaid "FV4n0UaB"
+    And the 2nd card in the continue watching slider should show 65% watch progress
 
   @desktop @tablet @mobile
   Scenario: Start video at last known position
-    Given I have the following saved watch progress:
-      | mediaid  | feedid   | progress | lastWatched   | offset |
-      | LjBvF1FX | lrYLc95e | 0.5      | now           | -10    |
-    And the browser has localStorage support
+    Given the browser has localStorage support
+    And localStorage key "jwshowcase.watchprogress" has the following data:
+    """
+    [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 9999999999999}]
+    """
     And I go to the "/list/lrYLc95e/video/LjBvF1FX/" page
-    And I wait until the page has been loaded
-    When I start video playback
-    And I wait until the video starts playing
-    And wait for 2 seconds
-    Then the video progress should be greater than 50%
+    When I wait until the video is loaded
+    And I start video playback
+    And I wait until the video is playing
+    And wait for 1 seconds
+    Then the video progress should be greater than 49%

@@ -1,7 +1,7 @@
 {
   "name": "jw-showcase",
   "description": "JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.",
-  "version": "3.4.0",
+  "version": "3.5.0-beta",
   "dependencies": {},
   "repository": {
     "url": "https://github.com/jwplayer/jw-showcase.git"
@@ -13,7 +13,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "connect-modrewrite": "^0.9.0",
-    "cucumber": "^0.10.4",
+    "cucumber": "^2.3.1",
     "grunt": "^1.0.1",
     "grunt-angular-templates": "^1.0.4",
     "grunt-cli": "0.1.13",
@@ -43,7 +43,7 @@
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.2.2",
     "protractor": "^3.3.0",
-    "protractor-cucumber-framework": "^0.5.0",
+    "protractor-cucumber-framework": "^3.1.2",
     "selenium-webdriver": "^2.53.2",
     "serve-static": "^1.12.2",
     "time-grunt": "^1.0.0"
