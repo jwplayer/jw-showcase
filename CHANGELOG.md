@@ -1,3 +1,31 @@
+## 3.5.0-beta (July 26 2017)
+
+- Updated right rail layout
+- Updated "add to homescreen" dialog design
+- Added support for DFP display ads
+
+```
+  "options": {
+    "displayAds": {
+      "client": "dfp",
+      "slots": {
+        "above-video": "/1234567/unit-identifier1",
+        "below-video": "/1234567/unit-identifier2",
+        "rail": "/1234567/unit-identifier3"
+      }
+    }
+  }
+```
+
+- Added option to enable searching all content in your JW dashboard.
+
+```
+  "options": {
+    ...
+    "enableGlobalSearch": true
+  }
+```
+
 ## 3.4.0 (June 21 2017)
 
 - Added a 2:3 aspect ratio option for thumbnail images
