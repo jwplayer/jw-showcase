@@ -4,6 +4,7 @@ dist
 
 .tmp
 .sass-cache
+.update
 .DS_Store
 .idea
 
