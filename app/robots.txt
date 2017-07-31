@@ -3,3 +3,4 @@
 User-agent: *
 Disallow: /video-not-found
 Disallow: /feed-not-found
+Disallow: /search/
