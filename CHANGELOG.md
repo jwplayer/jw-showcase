@@ -1,3 +1,13 @@
+## 3.5.0 (August 1 2017)
+
+- Fixed issue with auto scroll
+- Fixed issue with right rail in IE11
+- Fixed lazy load not working after breakpoint change
+- Fixed card menus not closing when opening other card menu
+- Relocated right rail ad
+- Update DFP logic
+- Disabled muted autostart for mobile devices
+
 ## 3.5.0-beta (July 26 2017)
 
 - Updated right rail layout
