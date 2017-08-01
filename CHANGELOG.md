@@ -1,3 +1,13 @@
+## 3.5.0 (August 1 2017)
+
+- Fixed issue with auto scroll
+- Fixed issue with right rail in IE11
+- Fixed lazy load not working after breakpoint change
+- Fixed card menus not closing when opening other card menu
+- Relocated right rail ad
+- Update DFP logic
+- Disabled muted autostart for mobile devices
+
 ## 3.5.0-beta (July 26 2017)
 
 - Updated right rail layout
@@ -17,12 +27,23 @@
   }
 ```
 
-- Added option to enable searching all content in your JW dashboard.
+- Added option to show all videos from your JW dashboard in the search results. By default the search results are 
+limited to only list the videos that are included in the content feeds in your Showcase config.
 
 ```
   "options": {
     ...
     "enableGlobalSearch": true
+  }
+```
+
+- Added option choose the position of the video title. This can either be "above" or "below". By default this is 
+"below".
+
+```
+  "options": {
+    ...
+    "videoTitlePosition": "above"
   }
 ```
 
