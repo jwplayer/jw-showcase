@@ -17,12 +17,23 @@
   }
 ```
 
-- Added option to enable searching all content in your JW dashboard.
+- Added option to show all videos from your JW dashboard in the search results. By default the search results are 
+limited to only list the videos that are included in the content feeds in your Showcase config.
 
 ```
   "options": {
     ...
     "enableGlobalSearch": true
+  }
+```
+
+- Added option choose the position of the video title. This can either be "above" or "below". By default this is 
+"below".
+
+```
+  "options": {
+    ...
+    "videoTitlePosition": "above"
   }
 ```
 
