@@ -52,7 +52,7 @@ Topics for advanced users:
 3. By default, JW Showcase assumes the site is in your top-level web document root (/). If you want to use a subdirectory (for example, /videos/), edit the `index.html` file and replace the slash in &lt;base href="/"&gt; with your directory (for example, &lt;base href="/videos/"&gt;).
 3. Create a player in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/players) and get its `player key`.
     - The player key is the eight-character identifier of the player, not your JW Player license key. 
-    - To get the player key, in the JW Dashboard go to **Players** &gt; **Tools**. In the **Cloud Hosted Player Libraries** section at the top of the page, select the player you want to use from the **Player Title** drop down. Then, in the **Cloud Player Library URL** field, copy the eight-character value that appears just before `.js`. This value is the Player key. 
+    - To get the player key, in the JW Dashboard go to **Publish** &gt; **Tools**. In the **Cloud Hosted Player Libraries** section at the top of the page, select the player you want to use from the **Player Title** drop down. Then, in the **Cloud Player Library URL** field, copy the eight-character value that appears just before `.js`. This value is the Player key. 
     - For example, if your Cloud Player Library URL is https://content.jwplatform.com/libraries/BHYYA1V3.js, your player key is **BHYYA1V3**.
 4. Create one or more video playlist(s) in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/content/playlists) and record their eight-character playlist IDs.
 5. Configure your site by editing the `config.json` file in the directory where you extracted the JW Showcase release files.
