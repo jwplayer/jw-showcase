@@ -53,7 +53,6 @@
   <div>To make use of this website please make sure JavaScript is enabled.</div>
 </noscript>
 
-<jw-header ng-if="rootVm.config.options.enableHeader"></jw-header>
 <ui-view></ui-view>
 <jw-footer ng-if="rootVm.config.options.enableFooter"></jw-footer>
 
@@ -71,9 +70,11 @@
 
 <!-- build:js(.) scripts/vendor.1.js -->
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/vendor.2.js -->
+<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -93,14 +94,20 @@
 <script src="bower_components/jw-showcase-lib/js/core/core.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/animations/expand.animation.js"></script>
 
+<script src="bower_components/jw-showcase-lib/js/core/controllers/accountInfo.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/alert.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/cardMenu.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/cookies.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/confirm.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/forgotPassword.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/login.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/root.controller.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/controllers/share.controller.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/controllers/signup.controller.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/core/components/buttonBack.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/buttonMenu.component.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/components/userBadge.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/footer.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/header.component.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/components/headerMenu.component.js"></script>
@@ -119,7 +126,11 @@
 <script src="bower_components/jw-showcase-lib/js/core/directives/click.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/cardPoster.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/collapsibleText.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/compareTo.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/dropdown.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/floatingLabel.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/markdown.directive.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/directives/restrictedDomain.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/scroll.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/lazyLoad.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/player.directive.js"></script>
@@ -127,8 +138,10 @@
 <script src="bower_components/jw-showcase-lib/js/core/directives/toggle.directive.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/directives/view.directive.js"></script>
 
+<script src="bower_components/jw-showcase-lib/js/core/filters/capitalize.filter.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/filters/videoDuration.filter.js"></script>
 
+<script src="bower_components/jw-showcase-lib/js/core/services/auth.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/api.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/apiConsumer.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/appStore.service.js"></script>
@@ -144,7 +157,7 @@
 <script src="bower_components/jw-showcase-lib/js/core/services/player.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/popup.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/platform.service.js"></script>
-<script src="bower_components/jw-showcase-lib/js/core/services/preload.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/bootstrap.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/seo.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/session.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/sidebar.service.js"></script>
@@ -164,6 +177,8 @@
 
 <script src="bower_components/jw-showcase-lib/js/feed/feed.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/feed/controllers/feed.controller.js"></script>
+
+<script src="bower_components/jw-showcase-lib/js/login/login.module.js"></script>
 
 <script src="bower_components/jw-showcase-lib/js/search/search.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/search/controllers/search.controller.js"></script>

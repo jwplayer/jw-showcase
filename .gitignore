@@ -4,6 +4,7 @@ dist
 
 .tmp
 .sass-cache
+.update
 .DS_Store
 .idea
 
@@ -12,3 +13,4 @@ test/reports
 
 protractor.lab.conf.js
 /hosted
+functions/service-account.json

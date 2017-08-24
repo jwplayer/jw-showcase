@@ -1,0 +1,6 @@
+{
+    "restricted_domains": false,
+    "signing_ttl_hours": "1",
+    "signing_requires_auth": false,
+    "jw_secret": "TO_BE_SET"
+}
