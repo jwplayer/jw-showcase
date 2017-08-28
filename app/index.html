@@ -39,6 +39,10 @@
   </script>
   <% } %>
 
+  <!-- build:js(.) scripts/bridge.js -->
+  <script src="bower_components/jw-showcase-lib/js/bridge.js"></script>
+  <!-- endbuild -->
+
   <!-- build:css(.) styles/vendor.css -->
   <link rel="stylesheet" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
   <!-- endbuild -->
@@ -87,8 +91,9 @@
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/application.js -->
-<script src="bower_components/jw-showcase-lib/js/polyfills.js"></script>
 <script src="bower_components/jw-showcase-lib/js/vtt.js"></script>
+<script src="bower_components/jw-showcase-lib/js/polyfills.js"></script>
+
 <script src="bower_components/jw-showcase-lib/js/jwShowcase.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/core.module.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/animations/expand.animation.js"></script>
@@ -132,6 +137,7 @@
 <script src="bower_components/jw-showcase-lib/js/core/services/api.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/apiConsumer.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/appStore.service.js"></script>
+<script src="bower_components/jw-showcase-lib/js/core/services/bridge.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/configResolver.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/cookies.service.js"></script>
 <script src="bower_components/jw-showcase-lib/js/core/services/dataStore.service.js"></script>
