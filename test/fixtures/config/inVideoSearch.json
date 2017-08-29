@@ -1,6 +1,6 @@
 {
     "version": "2",
-    "player": "N8axwZHA",
+    "player": "ihWAPEHr",
     "theme": "light",
     "siteName": "JW Showcase",
     "description": "JW Showcase is an open-source, dynamically generated video website built around JW Player and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.",
@@ -9,27 +9,17 @@
     "recommendationsPlaylist": "wZuMVmMk",
     "options": {
         "backgroundColor": "",
-        "highlightColor": "",
         "enableContinueWatching": true,
-        "enableAddToHome": false,
-        "useRecommendationPlaylist": false,
-        "enableCookieNotice": false,
         "enableHeader": true,
-        "enableTags": false,
-        "rightRail": {
-            "enabled": true
-        }
+        "enableInVideoSearch": true
     },
     "content": [
         {
-            "playlistId": "WXu7kuaW",
-            "featured": true,
-            "enableText": false
+            "playlistId": "lrYLc95e",
+            "featured": true
         },
         {
-            "playlistId": "lrYLc95e",
-            "aspectratio": "23",
-            "cols": {"xs": 2, "sm": 3, "md": 4, "lg": 5, "xl": 6}
+            "playlistId": "WXu7kuaW"
         },
         {
             "playlistId": "Q352cyuc"
