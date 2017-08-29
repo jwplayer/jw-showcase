@@ -74,24 +74,24 @@ Feature: Search
     Then the page should be "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey"
 
   @tablet @desktop
-  Scenario: As a user I want to be able to to toggle in-video-search
+  Scenario: As a user I want to be able to toggle in-video-search
     Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
     And I go to the "/search/caption" page
     When I click on the in-video-search toggle
     Then the search results should show the caption matches
 
   @tablet @desktop
-  Scenario: As a user I want to hover an in-video-search occurrence
+  Scenario: As a user I want to be able to hover an in-video-search occurrence
     Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
     And I go to the "/search/caption" page
     When I click on the in-video-search toggle
-    And I hover on the first in-video-search dot
-    Then the description text should be "Caption one"
+    And I hover on the 3th in-video-search dot
+    Then the description text should be "Caption three"
 
   @tablet @desktop
-  Scenario: As a user I want to click on an in-video-search occurrence
+  Scenario: As a user I want to be able to click on an in-video-search occurrence
     Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
-    And I go to the "/search/caption" page
-    When I click on the in-video-search toggle
-    And I click on the 6th in-video-search dot
-    Then the page should be "/search/caption/video/RltV8MtT/the-bfg"
+    And I go to the "/search/caption?searchInCaptions=true" page
+    When I click on the 6th in-video-search dot
+    And I wait until the video is loaded
+    Then the video should be playing

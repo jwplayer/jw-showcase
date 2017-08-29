@@ -48,8 +48,8 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-toggle').click();
     });
 
-    When('I hover on the first in-video-search dot', function () {
-        return mouseMove($$('.jw-card-in-video-search-timeline-dot').get(0));
+    When('I hover on the {ordinal} in-video-search dot', function (index) {
+        return mouseMove($$('.jw-card-in-video-search-timeline-dot').get(index - 1));
     });
 
     When('I click on the {ordinal} in-video-search dot', function (whichItem) {
