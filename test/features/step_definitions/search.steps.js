@@ -44,15 +44,15 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').sendKeys(phrase);
     });
 
-    When('I click on the invideo search toggle', function () {
+    When('I click on the in-video-search toggle', function () {
         return $('.jw-header .jw-toggle').click();
     });
 
-    When('I hover on the first invideo search dot', function () {
+    When('I hover on the first in-video-search dot', function () {
         return mouseMove($$('.jw-card-in-video-search-timeline-dot').get(0));
     });
 
-    When('I click on the {ordinal} invideo search dot', function (whichItem) {
+    When('I click on the {ordinal} in-video-search dot', function (whichItem) {
         return ($$('.jw-card-in-video-search-timeline-dot').get(whichItem - 1)).click();
     });
 
@@ -80,7 +80,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-button-search').count()).to.eventually.equal(0);
     });
 
-    Then('a result with invideo results should show', function () {
+    Then('the search results should show the caption matches', function () {
         return expect($$('.jw-card-in-video-search-timeline-dot').get(0).isDisplayed()).to.eventually.equal(true);
     });
 
@@ -88,7 +88,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-button-show-more').isDisplayed()).to.eventually.equal(true);
     });
     
-    Then('The description text should be {stringInDoubleQuotes}', function (descriptionText) {
+    Then('the description text should be {stringInDoubleQuotes}', function (descriptionText) {
         return expect($$('.jw-card-description').get(0).getText()).to.eventually.contain(descriptionText);
     });
 
