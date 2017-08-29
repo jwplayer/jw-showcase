@@ -1,3 +1,10 @@
+## 3.6.0-beta (August 29 2017)
+
+- Added new display ad slot "below-rail" for mobile screen size
+- Added in-video-search feature
+- Right rail design changes
+- Added enableAddToHome option
+
 ## 3.5.0 (August 1 2017)
 
 - Fixed issue with auto scroll
