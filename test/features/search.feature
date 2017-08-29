@@ -72,3 +72,27 @@ Feature: Search
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
     And I go to the "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey" page
     Then the page should be "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey"
+
+  @tablet @desktop
+  Scenario: As a user I want to be able to to toggle invideo search
+    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+    And I go to the "/search/caption" page
+    When I click on the invideo search toggle
+    Then a result with invideo results should show
+    And the show more buttons should be visible
+
+  @tablet @desktop
+  Scenario: As a user I want to hover an invideo search occurrence
+    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+    And I go to the "/search/caption" page
+    When I click on the invideo search toggle
+    And I hover on the first invideo search dot
+    Then The description text should be "Caption two"
+
+  @tablet @desktop
+  Scenario: As a user I want to click on an invideo search occurrence
+    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+    And I go to the "/search/caption" page
+    When I click on the invideo search toggle
+    And I click on the 6th invideo search dot
+    Then the page should be "/search/caption/video/RltV8MtT/the-bfg"
