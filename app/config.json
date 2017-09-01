@@ -11,6 +11,7 @@
         "backgroundColor": "",
         "highlightColor": "",
         "enableContinueWatching": true,
+        "enableAddToHome": false,
         "useRecommendationPlaylist": false,
         "enableCookieNotice": false,
         "enableHeader": true,
