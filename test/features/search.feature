@@ -64,35 +64,37 @@ Feature: Search
   @mobile @tablet @desktop
   Scenario: As a user I want to see all videos when global search is enabled
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/trailer" page
+    And I go to the "/search/caption" page
     Then the search page should show 10 items
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to watch a video from the global search
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey" page
-    Then the page should be "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey"
+    And I go to the "/search/caption/video/GQlE6Rqd/2001-a-space-odyssey" page
+    Then the page should be "/search/caption/video/GQlE6Rqd/2001-a-space-odyssey"
 
   @tablet @desktop
-  Scenario: As a user I want to be able to to toggle invideo search
+  Scenario: As a user I want to be able to toggle in-video search
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
     And I go to the "/search/caption" page
-    When I click on the invideo search toggle
-    Then a result with invideo results should show
-    And the show more buttons should be visible
+    When I click on the include captions toggle
+    Then a in-video search result should be visible
 
   @tablet @desktop
-  Scenario: As a user I want to hover an invideo search occurrence
+  Scenario: As a user I want to be able to go to a page where include captions option is set in url
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/caption" page
-    When I click on the invideo search toggle
-    And I hover on the first invideo search dot
-    Then The description text should be "Caption two"
+    And I go to the "/search/caption?searchInCaptions=true" page
+    Then the include captions toggle is active
 
   @tablet @desktop
-  Scenario: As a user I want to click on an invideo search occurrence
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/caption" page
-    When I click on the invideo search toggle
-    And I click on the 6th invideo search dot
-    Then the page should be "/search/caption/video/RltV8MtT/the-bfg"
+  Scenario: As a user I want to be able to see the number of matches in the title if include captions is active
+    Given I am still on the "/search/caption?searchInCaptions=true" page
+    Then the 1st card title should include "8 matches:"
+
+  @tablet @desktop
+  Scenario: As a user I want to be able to hover the in-video search results and see the card change
+    Given I am still on the "/search/caption?searchInCaptions=true" page
+    When I mouse my mouse on the 3th in-video search element of the 2nd card
+    Then the 2nd card description should be "Caption four"
+    And wait for 5 seconds
+    And the 2nd card poster should be "http://cdn.jwplayer.com/strips/Iyfst4Se-320.jpg#xywh=0,1440,320,180"

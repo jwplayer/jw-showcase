@@ -18,8 +18,6 @@ const
     {defineSupportCode} = require('cucumber');
 
 defineSupportCode(function ({Given, When, Then}) {
-
-
     //
     // Given steps
     //
@@ -44,16 +42,21 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').sendKeys(phrase);
     });
 
-    When('I click on the invideo search toggle', function () {
-        return $('.jw-header .jw-toggle').click();
+    When('I click on the include captions toggle', function () {
+        return $('.jw-search-captions-toggle .jw-toggle').click();
     });
 
-    When('I hover on the first invideo search dot', function () {
-        return mouseMove($$('.jw-card-in-video-search-timeline-dot').get(0));
+    When('I mouse my mouse on the {ordinal} in-video search element of the {ordinal} card', function (inVideoNum, cardNum) {
+        let searchElement = $$('.jw-card').get(cardNum - 1).all(by.tagName('.jw-card-in-video-search-timeline-dot')).get(inVideoNum);
+
+        // mouseMove not supported in Firefox and Safari
+        return mouseMove(searchElement);
     });
 
-    When('I click on the {ordinal} invideo search dot', function (whichItem) {
-        return ($$('.jw-card-in-video-search-timeline-dot').get(whichItem - 1)).click();
+    When('I click on the {ordinal} in-video search element of the {ordinal} card', function (inVideoNum, cardNum) {
+        let searchElement = $$('.jw-card').get(cardNum - 1).all(by.tagName('.jw-card-in-video-search-timeline-dot')).get(inVideoNum);
+
+        return searchElement.click();
     });
 
     //
@@ -80,16 +83,23 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-button-search').count()).to.eventually.equal(0);
     });
 
-    Then('a result with invideo results should show', function () {
+    Then('a in-video search result should be visible', function () {
         return expect($$('.jw-card-in-video-search-timeline-dot').get(0).isDisplayed()).to.eventually.equal(true);
     });
 
-    Then('the show more buttons should be visible', function () {
-        return expect($('.jw-button-show-more').isDisplayed()).to.eventually.equal(true);
-    });
-    
-    Then('The description text should be {stringInDoubleQuotes}', function (descriptionText) {
-        return expect($$('.jw-card-description').get(0).getText()).to.eventually.contain(descriptionText);
+    Then('the include captions toggle is active', function () {
+        return expect($('.jw-search-captions-toggle .jw-toggle').getAttribute('class')).to.eventually.contain('jw-toggle-flag-checked');
     });
 
+    Then('the {ordinal} card title should include {stringInDoubleQuotes}', function (cardNum, titleText) {
+        return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-title`).getText()).to.eventually.contain(titleText);
+    });
+
+    Then('the {ordinal} card description should be {stringInDoubleQuotes}', function (cardNum, descriptionText) {
+        return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-description`).getText()).to.eventually.contain(descriptionText);
+    });
+
+    Then('the {ordinal} card poster should be {stringInDoubleQuotes}', function (cardNum, url) {
+        return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-poster`).getAttribute('style')).to.eventually.contain(url);
+    });
 });
