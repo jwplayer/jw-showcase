@@ -58,6 +58,18 @@ self.addEventListener('activate', function (event) {
     return event.waitUntil(self.clients.claim());
 });
 
+self.addEventListener('push', function (event) {
+    var data = event.data.json();
+    var title = data.title;
+    var options = {
+        body: data.message && data.message,
+        icon: 'images/logo.png',
+        dir: 'auto'
+    };
+
+    self.registration.showNotification(title, options);
+});
+
 /**
  * @todo this should happen sooner, find a way to obtain repo
  * @param repo

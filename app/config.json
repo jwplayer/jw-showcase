@@ -17,6 +17,10 @@
         "enableInVideoSearch": false,
         "enableHeader": true,
         "enableTags": false,
+        "notifications": {
+            "pushServerUrl": "http://localhost:1337",
+            "publicPushServerKey": "BKcm2wFUwoofOIFRimRedW8-YmcHh9qK5PmDDXgiW5hZSa0CEzTSowVPrLwNjzju0w1ZB_oGr2THvM9nJ-6CN3s"
+        },
         "rightRail": {
             "enabled": true
         }
