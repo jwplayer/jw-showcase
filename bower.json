@@ -18,5 +18,8 @@
     "angular-mocks": "1.6.4"
   },
   "appPath": "app",
-  "moduleName": "app"
+  "moduleName": "app",
+  "resolutions": {
+    "angular": "1.6.4"
+  }
 }
