@@ -35,8 +35,8 @@
         {
             "playlistId": "Q352cyuc",
             "type": "grid",
-            "enableShowMore": false,
-            "rows": 2
+            "enableSeeAll": true,
+            "rows": 1
         },
         {
             "playlistId": "oR7ahO0J"
