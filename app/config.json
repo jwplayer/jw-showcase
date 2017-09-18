@@ -33,7 +33,10 @@
             "cols": {"xs": 2, "sm": 3, "md": 4, "lg": 5, "xl": 6}
         },
         {
-            "playlistId": "Q352cyuc"
+            "playlistId": "Q352cyuc",
+            "type": "grid",
+            "enableSeeAll": true,
+            "rows": 1
         },
         {
             "playlistId": "oR7ahO0J"

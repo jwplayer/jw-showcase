@@ -81,7 +81,8 @@ describe('configResolver', function () {
             configResolver
                 .getConfig()
                 .then(function (config) {
-                    expect(config).toEqual(configs.default);
+                    expect(config.version).toEqual('2');
+                    expect(config.player).toEqual('ihWAPEHr');
                 }, notToBeCalled);
 
             $httpBackend.flush();
@@ -152,20 +153,8 @@ describe('configResolver', function () {
             configResolver
                 .getConfig()
                 .then(function (config) {
-                    expect(config).toEqual(configs.default);
-                }, notToBeCalled);
-
-            $httpBackend.flush();
-        });
-
-        it('should serialize the custom config to v2', function () {
-
-            request.respond(200, oldConfigs.custom);
-
-            configResolver
-                .getConfig()
-                .then(function (config) {
-                    expect(config).toEqual(configs.custom);
+                    expect(config.version).toEqual('2');
+                    expect(config.content).toBeDefined();
                 }, notToBeCalled);
 
             $httpBackend.flush();
@@ -178,7 +167,8 @@ describe('configResolver', function () {
             configResolver
                 .getConfig()
                 .then(function (config) {
-                    expect(config).toEqual(configs.disableFeaturedText);
+                    expect(config.content).toBeDefined();
+                    expect(config.content[0].enableText).toBe(false);
                 }, notToBeCalled);
 
             $httpBackend.flush();
@@ -191,7 +181,8 @@ describe('configResolver', function () {
             configResolver
                 .getConfig()
                 .then(function (config) {
-                    expect(config).toEqual(configs.noFeaturedPlaylist);
+                    expect(config.content).toBeDefined();
+                    expect(config.content[0].featured).toBe(false);
                 }, notToBeCalled);
 
             $httpBackend.flush();
@@ -204,7 +195,8 @@ describe('configResolver', function () {
             configResolver
                 .getConfig()
                 .then(function (config) {
-                    expect(config).toEqual(configs.noPlaylists);
+                    expect(config.content).toBeDefined();
+                    expect(config.content.length).toBe(3);
                 }, notToBeCalled);
 
             $httpBackend.flush();
