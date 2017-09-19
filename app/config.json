@@ -8,6 +8,7 @@
     "searchPlaylist": "r3MhKJyA",
     "recommendationsPlaylist": "wZuMVmMk",
     "options": {
+        "showcaseContentOnly": true,
         "backgroundColor": "",
         "highlightColor": "",
         "enableContinueWatching": true,
