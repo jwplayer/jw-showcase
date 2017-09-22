@@ -83,18 +83,17 @@ Feature: Search
   @tablet @desktop
   Scenario: As a user I want to be able to go to a page where include captions option is set in url
     Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/caption?searchInCaptions=true" page
+    And I go to the "/search/caption?showCaptionMatches=true" page
     Then the include captions toggle is active
 
   @tablet @desktop
   Scenario: As a user I want to be able to see the number of matches in the title if include captions is active
-    Given I am still on the "/search/caption?searchInCaptions=true" page
+    Given I am still on the "/search/caption?showCaptionMatches=true" page
     Then the 1st card title should include "8 matches:"
 
   @tablet @desktop
-  Scenario: As a user I want to be able to hover the in-video search results and see the card change
-    Given I am still on the "/search/caption?searchInCaptions=true" page
-    When I mouse my mouse on the 3th in-video search element of the 2nd card
+  Scenario: As a user I want to be able to hover the in-video search results and see the card caption change
+    Given I am still on the "/search/caption?showCaptionMatches=true" page
+    When I move my mouse on the 2nd card
+    When I move my mouse on the 3th in-video search element of the 2nd card
     Then the 2nd card description should be "Caption four"
-    And wait for 5 seconds
-    And the 2nd card poster should be "http://cdn.jwplayer.com/strips/Iyfst4Se-320.jpg#xywh=0,1440,320,180"

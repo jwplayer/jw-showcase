@@ -46,11 +46,18 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-search-captions-toggle .jw-toggle').click();
     });
 
-    When('I mouse my mouse on the {ordinal} in-video search element of the {ordinal} card', function (inVideoNum, cardNum) {
+    When('I move my mouse on the {ordinal} in-video search element of the {ordinal} card', function (inVideoNum, cardNum) {
         let searchElement = $$('.jw-card').get(cardNum - 1).all(by.tagName('.jw-card-in-video-search-timeline-dot')).get(inVideoNum);
 
         // mouseMove not supported in Firefox and Safari
         return mouseMove(searchElement);
+    });
+
+    When('I move my mouse on the {ordinal} card', function (cardNum) {
+        let cardElement = $$('.jw-card').get(cardNum - 1);
+
+        // mouseMove not supported in Firefox and Safari
+        return mouseMove(cardElement);
     });
 
     When('I click on the {ordinal} in-video search element of the {ordinal} card', function (inVideoNum, cardNum) {
