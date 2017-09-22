@@ -34,23 +34,30 @@ describe('watchProgress', function () {
         );
     });
 
-    beforeEach(inject(function (_$httpBackend_, _$timeout_, _watchProgress_, _dataStore_, _FeedModel_) {
-        $httpBackend  = _$httpBackend_;
-        $timeout      = _$timeout_;
-        watchProgress = _watchProgress_;
-        dataStore     = _dataStore_;
-        FeedModel     = _FeedModel_;
+    beforeEach(function () {
 
-        window.config = config;
+        module('jwShowcase.core', function ($provide) {
+            $provide.constant('config', config);
+        });
 
-        var model = new FeedModel('lrYLc95e');
-        model.playlist = feed.playlist;
+        inject(function (_$httpBackend_, _$timeout_, _watchProgress_, _dataStore_, _FeedModel_) {
+            $httpBackend  = _$httpBackend_;
+            $timeout      = _$timeout_;
+            watchProgress = _watchProgress_;
+            dataStore     = _dataStore_;
+            FeedModel     = _FeedModel_;
 
-        dataStore.feeds.push(model);
+            window.config = config;
 
-        // clear all items in localStorage
-        window.localStorage.clear();
-    }));
+            var model = new FeedModel('lrYLc95e');
+            model.playlist = feed.playlist;
+
+            dataStore.feeds.push(model);
+
+            // clear all items in localStorage
+            window.localStorage.clear();
+        });
+    });
 
     function prepareLocalStorage (items) {
         window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(items));
@@ -65,21 +72,25 @@ describe('watchProgress', function () {
                 {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date()}
             ]);
 
-            watchProgress.restore();
+            watchProgress.restore().then(function () {
+                expect(dataStore.watchProgressFeed.playlist.length).toEqual(2);
+            });
 
-            expect(dataStore.watchProgressFeed.playlist.length).toEqual(2);
+            $timeout.flush();
         });
 
         it('should not restore invalid items from session', function () {
 
             prepareLocalStorage([
                 {feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date()},
-                {mediaid: 'Iyfst4Se', progress: 0.75, lastWatched: +new Date()}
+                {progress: 0.75, lastWatched: +new Date()}
             ]);
 
-            watchProgress.restore();
+            watchProgress.restore().then(function () {
+                expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            });
 
-            expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            $timeout.flush();
         });
 
         it('should not restore items with wrong progress from session', function () {
@@ -89,9 +100,11 @@ describe('watchProgress', function () {
                 {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.91, lastWatched: +new Date()}
             ]);
 
-            watchProgress.restore();
+            watchProgress.restore().then(function () {
+                expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            });
 
-            expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            $timeout.flush();
         });
 
         it('should not restore items older than 30 days from session', function () {
@@ -100,9 +113,11 @@ describe('watchProgress', function () {
                 {mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() - 86400000 * 30}
             ]);
 
-            watchProgress.restore();
+            watchProgress.restore().then(function () {
+                expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            });
 
-            expect(dataStore.watchProgressFeed.playlist.length).toEqual(0);
+            $timeout.flush();
         });
 
         it('should sort items on lastWatched descending', function () {
@@ -113,11 +128,13 @@ describe('watchProgress', function () {
                 {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() - 10}
             ]);
 
-            watchProgress.restore();
+            watchProgress.restore().then(function () {
+                expect(dataStore.watchProgressFeed.playlist[0].mediaid).toEqual('LjBvF1FX');
+                expect(dataStore.watchProgressFeed.playlist[1].mediaid).toEqual('Iyfst4Se');
+                expect(dataStore.watchProgressFeed.playlist[2].mediaid).toEqual('uNXCVIsW');
+            });
 
-            expect(dataStore.watchProgressFeed.playlist[0].mediaid).toEqual('LjBvF1FX');
-            expect(dataStore.watchProgressFeed.playlist[1].mediaid).toEqual('Iyfst4Se');
-            expect(dataStore.watchProgressFeed.playlist[2].mediaid).toEqual('uNXCVIsW');
+            $timeout.flush();
         });
     });
 

@@ -1,3 +1,10 @@
+## 3.6.0 (September 6 2017)
+
+- Renamed "Include captions" toggle to "Show caption matches"
+- Fixed toggle not visible in dark and blue themes
+- Fixed search input overlapping "Include captions" toggle
+- Fixed "Copy link" text not visible in dark and blue themes 
+
 ## 3.6.0-beta (August 29 2017)
 
 - Added new display ad slot "below-rail" for mobile screen size
