@@ -14,12 +14,15 @@
         "enableContinueWatching": true,
         "enableAddToHome": false,
         "useRecommendationPlaylist": false,
-        "enableCookieNotice": false,
         "enableInVideoSearch": false,
         "enableHeader": true,
         "enableTags": false,
         "rightRail": {
             "enabled": true
+        },
+        "cookieNotice": {
+            "enabled": false,
+            "message": null
         }
     },
     "content": [
