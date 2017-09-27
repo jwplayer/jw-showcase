@@ -26,4 +26,4 @@ Feature: Feed page
     Given I go to the "/list/WXu7kuaW" page
     When I click on the first video in the grid overview
     And I wait until the page is "/list/WXu7kuaW/video/DqGECHhT/central-intelligence"
-    Then the page should be "/list/WXu7kuaW/video/DqGECHhT/central-intelligence"
+    Then the page should be "/DqGECHhT/central-intelligence??list=WXu7kuaW"

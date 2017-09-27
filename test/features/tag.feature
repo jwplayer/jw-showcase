@@ -20,4 +20,4 @@ Feature: Tag page
     Given I go to the "/tag/drama" page
     When I click on the first video in the grid overview
     And I wait until the page is "/list/lrYLc95e/video/Iyfst4Se/spotlight"
-    Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
+    Then the page should be "/Iyfst4Se/spotlight?list=lrYLc95e"
