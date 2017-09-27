@@ -42,7 +42,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').sendKeys(phrase);
     });
 
-    When('I click on the include captions toggle', function () {
+    When('I click on the show caption matches toggle', function () {
         return $('.jw-search-captions-toggle .jw-toggle').click();
     });
 
@@ -90,7 +90,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-button-search').count()).to.eventually.equal(0);
     });
 
-    Then('a in-video search result should be visible', function () {
+    Then('an in-video search result should be visible', function () {
         return expect($$('.jw-card-in-video-search-timeline-dot').get(0).isDisplayed()).to.eventually.equal(true);
     });
 

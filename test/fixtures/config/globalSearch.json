@@ -11,8 +11,7 @@
         "backgroundColor": "",
         "enableContinueWatching": true,
         "enableHeader": true,
-        "enableGlobalSearch": true,
-        "enableInVideoSearch": true
+        "enableGlobalSearch": true
     },
     "content": [
         {

@@ -75,14 +75,14 @@ Feature: Search
 
   @tablet @desktop
   Scenario: As a user I want to be able to toggle in-video search
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+    Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
     And I go to the "/search/caption" page
-    When I click on the include captions toggle
-    Then a in-video search result should be visible
+    When I click on the show caption matches toggle
+    Then an in-video search result should be visible
 
   @tablet @desktop
   Scenario: As a user I want to be able to go to a page where include captions option is set in url
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+    Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
     And I go to the "/search/caption?showCaptionMatches=true" page
     Then the include captions toggle is active
 
