@@ -28,7 +28,7 @@ Feature: Search
     And I click on the search input
     And I type "trailer" in the search input
     And I wait until the page is "/search/trailer"
-    Then the search page should show 6 items
+    Then the search page should show 7 items
     And the page title should be "trailer - JW Showcase"
 
   @mobile @tablet @desktop
@@ -45,7 +45,7 @@ Feature: Search
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to share the search overview by a link
     Given I go to the "/search/trailer" page
-    Then the search page should show 6 items
+    Then the search page should show 7 items
     And the page title should be "trailer - JW Showcase"
 
   @mobile @tablet @desktop
@@ -62,14 +62,14 @@ Feature: Search
     Then the search button should not be visible
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to see all videos when global search is enabled
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/caption" page
+  Scenario: As a user I want to see all videos when showcaseContentOnly is disabled
+    Given I set the configLocation to "./fixtures/config/showcaseContentOnly.json"
+    And I go to the "/search/trailer" page
     Then the search page should show 10 items
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to be able to watch a video from the global search
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+  Scenario: As a user I want to be able to watch a video from the property when showcaseContentOnly is disabled
+    Given I set the configLocation to "./fixtures/config/showcaseContentOnly.json"
     And I go to the "/GQlE6Rqd/2001-a-space-odyssey" page
     Then the page should be "/GQlE6Rqd/2001-a-space-odyssey"
 

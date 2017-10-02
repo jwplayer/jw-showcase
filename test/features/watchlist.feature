@@ -81,4 +81,4 @@ Feature: Watchlist
     Then the watchlist slider should be visible
     And the watchlist slider should contain 2 items
     When I click on the first card in the watchlist slider
-    Then the page should be "/Iyfst4Se/spotlight?list=lrYLc95e"
+    Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"

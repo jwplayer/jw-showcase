@@ -117,7 +117,7 @@ defineSupportCode(function ({When, Then}) {
 
         title = trim(title);
 
-        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-title').getText().then(trim))
+        return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-feed-title').getText().then(trim))
             .to.eventually.equal(title);
     });
 
@@ -159,7 +159,7 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('the title of the {ordinal} default slider should be hidden', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.jw-card-slider-title').isDisplayed())
+        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.jw-feed-title').isDisplayed())
             .to.eventually.equal(false);
     });
 

@@ -30,7 +30,7 @@ defineSupportCode(function ({Given, When, Then}) {
     //
 
     When('I scroll to the continue watching slider', function () {
-        return scrollToElement($('.jw-feed-continue-watching'));
+        return scrollToElement($('.jw-content-row-continue-watching'));
     });
 
     //
@@ -38,17 +38,17 @@ defineSupportCode(function ({Given, When, Then}) {
     //
 
     Then('the continue watching slider should be hidden', function () {
-        return expect($('.jw-feed-continue-watching').isElementPresent(by.css('.jw-card-slider')))
+        return expect($('.jw-content-row-continue-watching').isElementPresent(by.css('.jw-card-slider')))
             .to.eventually.equal(false);
     });
 
     Then('the continue watching slider should be visible', function () {
-        return expect($('.jw-feed-continue-watching').isElementPresent(by.css('.jw-card-slider')))
+        return expect($('.jw-content-row-continue-watching').isElementPresent(by.css('.jw-card-slider')))
             .to.eventually.equal(true);
     });
 
     Then('the continue watching slider should contain {int} items', function (num) {
-        return expect($$('.jw-feed-continue-watching .jw-card').count())
+        return expect($$('.jw-content-row-continue-watching .jw-card').count())
             .to.eventually.equal(num);
     });
 
@@ -73,12 +73,12 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the {ordinal} card in the continue watching slider should have mediaid {stringInDoubleQuotes}', function (num, mediaid) {
-        return expect($$('.jw-feed-continue-watching .jw-card').get(num - 1).evaluate('item.mediaid'))
+        return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).evaluate('item.mediaid'))
             .to.eventually.equal(mediaid);
     });
 
     Then('the {ordinal} card in the continue watching slider should show {int}% watch progress', function (num, percentage) {
-        return expect($$('.jw-feed-continue-watching .jw-card').get(num - 1).$('.jw-card-watch-progress').getAttribute('style'))
+        return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).$('.jw-card-watch-progress').getAttribute('style'))
             .to.eventually.contains(`width: ${percentage}%`);
     });
 

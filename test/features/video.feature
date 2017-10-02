@@ -61,32 +61,32 @@ Feature: Video page
     """
     Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d’Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world’s oldest and most trusted institutions.
     """
-    And the canonical path should be "/Iyfst4Se/spotlight?list=lrYLc95espotlight"
+    And the canonical path should be "/Iyfst4Se/spotlight?list=lrYLc95e"
 
   @desktop @tablet
   Scenario: As a user I expect the page title and og tags to match the video when the video changes
     Given I am still on the "/Iyfst4Se/spotlight?list=lrYLc95e" page
     When I scroll to the next up slider
     And I click on the 2nd visible card in the next up slider
-    And I wait until the page is "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
-    Then the page title should be "The Girl in the Book - JW Showcase"
-    And the description should be:
-    """
-    Set in the world of NYC publishing, a young book editor is forced to confront a troubling part of her past when a bestselling author re-enters her life.
-    """
-    And the canonical path should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
-
-  @desktop @tablet
-  Scenario: As a user I want to see the right title and metadata after the player starts playing the next item from the playlist
-    Given I am still on the "/list/lrYLc95e/video/LjBvF1FX/" page
-    When I wait until the video is loaded
-    And I start playing the next playlist item
+    And I wait until the page is "/uNXCVIsW/touched-with-fire?list=lrYLc95e"
     Then the page title should be "Touched with Fire - JW Showcase"
     And the description should be:
     """
     Touched With Fire stars Katie Homes and Luke Kirby as two poets with bipolar disorder whose art is fueled by their emotional extremes. When they meet in a treatment facility, their chemistry is instant and intense driving each other's mania to new heights. They pursue their passion which breaks outside the bounds of sanity, swinging them from fantastical highs to tormented lows until they ultimately must choose between sanity and love.
     """
-    And the canonical path should be "/list/lrYLc95e/video/uNXCVIsW/touched-with-fire"
+    And the canonical path should be "/uNXCVIsW/touched-with-fire?list=lrYLc95e"
+
+  @desktop @tablet
+  Scenario: As a user I want to see the right title and metadata after the player starts playing the next item from the playlist
+    Given I am still on the "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e" page
+    When I wait until the video is loaded
+    And I start playing the next playlist item
+    Then the page title should be "Spotlight - JW Showcase"
+    And the description should be:
+    """
+    Starring Michael Keaton, Mark Ruffalo, Rachel McAdams, Liev Schreiber, Brian d’Arcy James and Stanley Tucci, Spotlight tells the riveting true story of the Pulitzer Prize-winning Boston Globe investigation that would rock the city and cause a crisis in one of the world’s oldest and most trusted institutions.
+    """
+    And the canonical path should be "/Iyfst4Se/spotlight?list=lrYLc95e"
 
   @desktop @tablet @mobile
   Scenario: As a user I want to see tags below the video description when enabled

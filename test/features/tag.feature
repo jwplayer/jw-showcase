@@ -19,5 +19,5 @@ Feature: Tag page
   Scenario: Watch video from the overview
     Given I go to the "/tag/drama" page
     When I click on the first video in the grid overview
-    And I wait until the page is "/list/lrYLc95e/video/Iyfst4Se/spotlight"
-    Then the page should be "/Iyfst4Se/spotlight?list=lrYLc95e"
+    And I wait until the page is "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
+    Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
