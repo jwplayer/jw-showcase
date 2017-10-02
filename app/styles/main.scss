@@ -13,3 +13,31 @@
 // Import overrides
 // --------------------------------
 @import 'components/addtohome';
+
+// Click to Play
+.jwplayer {
+    &.jw-state-idle {
+        .jw-display-icon-display {
+            border-radius: 50%;
+
+            &::after {
+                @include transform(translateX(-50%));
+                position: absolute;
+                left: 50%;
+                margin-top: 5px;
+                font-size: 14px;
+                content: 'Click to Play';
+            }
+
+            .jw-icon {
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+
+                &::before {
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
