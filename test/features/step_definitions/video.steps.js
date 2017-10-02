@@ -129,12 +129,12 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the next up title is shown', function () {
-        return expect($('.jw-card-slider[feed="vm.activeFeed"] .jw-card-slider-title').isDisplayed()).to.eventually
+        return expect($('.jw-card-slider[feed="vm.activeFeed"] .jw-feed-title').isDisplayed()).to.eventually
             .equal(true);
     });
 
     Then('the related videos title is shown', function () {
-        return expect($('.jw-card-slider[feed="vm.extraFeed"] .jw-card-slider-title').isDisplayed()).to.eventually
+        return expect($('.jw-card-slider[feed="vm.extraFeed"] .jw-feed-title').isDisplayed()).to.eventually
             .equal(true);
     });
 

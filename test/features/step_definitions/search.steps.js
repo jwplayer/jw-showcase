@@ -83,7 +83,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the content title should be {stringInDoubleQuotes}', function (title) {
-        return expect($('.jw-content-title').getText().then((text) => text.trim())).to.eventually.equal(title);
+        return expect($('.jw-page-title').getText().then((text) => text.trim())).to.eventually.equal(title);
     });
 
     Then('the search button should not be visible', function () {
