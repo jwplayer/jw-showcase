@@ -28,7 +28,7 @@ defineSupportCode(function ({Given, When, Then}) {
     //
 
     When('I scroll to the watchlist slider', function () {
-        return scrollToElement($('.jw-feed-saved-videos'));
+        return scrollToElement($('.jw-content-row-saved-videos'));
     });
 
     When('I click on the card menu button of the first card in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
@@ -60,7 +60,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the first card in the watchlist slider', function () {
-        return $('.jw-feed-saved-videos .jw-card-slider-slide.first').click();
+        return $('.jw-content-row-saved-videos .jw-card-slider-slide.first').click();
     });
 
     //
@@ -68,17 +68,17 @@ defineSupportCode(function ({Given, When, Then}) {
     //
 
     Then('the watchlist slider should be hidden', function () {
-        return expect($('.jw-feed-saved-videos').isElementPresent(by.css('.jw-card-slider')))
+        return expect($('.jw-content-row-saved-videos').isElementPresent(by.css('.jw-card-slider')))
             .to.eventually.equal(false);
     });
 
     Then('the watchlist slider should be visible', function () {
-        return expect($('.jw-feed-saved-videos').isElementPresent(by.css('.jw-card-slider')))
+        return expect($('.jw-content-row-saved-videos').isElementPresent(by.css('.jw-card-slider')))
             .to.eventually.equal(true);
     });
 
     Then('the watchlist slider should contain {int} items', function (num) {
-        return expect($$('.jw-feed-saved-videos .jw-card').count())
+        return expect($$('.jw-content-row-saved-videos .jw-card').count())
             .to.eventually.equal(num);
     });
 
