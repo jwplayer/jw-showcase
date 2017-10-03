@@ -28,7 +28,7 @@ Feature: Search
     And I click on the search input
     And I type "trailer" in the search input
     And I wait until the page is "/search/trailer"
-    Then the search page should show 6 items
+    Then the search page should show 7 items
     And the page title should be "trailer - JW Showcase"
 
   @mobile @tablet @desktop
@@ -39,13 +39,13 @@ Feature: Search
     And I type "trailer" in the search input
     And I wait until the page is "/search/trailer"
     And I click on the first video in the grid overview
-    And I wait until the page is "/search/trailer/video/Iyfst4Se/spotlight"
-    Then the page should be "/search/trailer/video/Iyfst4Se/spotlight"
+    And I wait until the page is "/Iyfst4Se/spotlight"
+    Then the page should be "/Iyfst4Se/spotlight"
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to share the search overview by a link
     Given I go to the "/search/trailer" page
-    Then the search page should show 6 items
+    Then the search page should show 7 items
     And the page title should be "trailer - JW Showcase"
 
   @mobile @tablet @desktop
@@ -62,36 +62,38 @@ Feature: Search
     Then the search button should not be visible
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to see all videos when global search is enabled
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
+  Scenario: As a user I want to see all videos when showcaseContentOnly is disabled
+    Given I set the configLocation to "./fixtures/config/showcaseContentOnly.json"
     And I go to the "/search/trailer" page
     Then the search page should show 10 items
 
   @mobile @tablet @desktop
-  Scenario: As a user I want to be able to watch a video from the global search
-    Given I set the configLocation to "./fixtures/config/globalSearch.json"
-    And I go to the "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey" page
-    Then the page should be "/search/trailer/video/GQlE6Rqd/2001-a-space-odyssey"
+  Scenario: As a user I want to be able to watch a video from the property when showcaseContentOnly is disabled
+    Given I set the configLocation to "./fixtures/config/showcaseContentOnly.json"
+    And I go to the "/GQlE6Rqd/2001-a-space-odyssey" page
+    Then the page should be "/GQlE6Rqd/2001-a-space-odyssey"
 
   @tablet @desktop
-  Scenario: As a user I want to be able to toggle in-video-search
+  Scenario: As a user I want to be able to toggle in-video search
     Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
     And I go to the "/search/caption" page
-    When I click on the in-video-search toggle
-    Then the search results should show the caption matches
+    When I click on the show caption matches toggle
+    Then an in-video search result should be visible
 
   @tablet @desktop
-  Scenario: As a user I want to be able to hover an in-video-search occurrence
+  Scenario: As a user I want to be able to go to a page where include captions option is set in url
     Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
-    And I go to the "/search/caption" page
-    When I click on the in-video-search toggle
-    And I hover on the 3th in-video-search dot
-    Then the description text should be "Caption three"
+    And I go to the "/search/caption?showCaptionMatches=true" page
+    Then the include captions toggle is active
 
   @tablet @desktop
-  Scenario: As a user I want to be able to click on an in-video-search occurrence
-    Given I set the configLocation to "./fixtures/config/inVideoSearch.json"
-    And I go to the "/search/caption?searchInCaptions=true" page
-    When I click on the 6th in-video-search dot
-    And I wait until the video is loaded
-    Then the video should be playing
+  Scenario: As a user I want to be able to see the number of matches in the title if include captions is active
+    Given I am still on the "/search/caption?showCaptionMatches=true" page
+    Then the 1st card title should include "8 matches:"
+
+  @tablet @desktop
+  Scenario: As a user I want to be able to hover the in-video search results and see the card caption change
+    Given I am still on the "/search/caption?showCaptionMatches=true" page
+    When I move my mouse on the 2nd card
+    When I move my mouse on the 3th in-video search element of the 2nd card
+    Then the 2nd card description should be "Caption four"

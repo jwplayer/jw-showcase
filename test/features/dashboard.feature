@@ -59,7 +59,7 @@ Feature: Dashboard page
         When I scroll to the 1st "default" slider
         Then the title of the 1st "default" slider should be "Featured Trailers (8)"
         When I scroll to the 2nd "default" slider
-        Then the title of the 2st "default" slider should be "Comedy (5)"
+        Then the title of the 2st "default" slider should be "Comedy (6)"
 
     @mobile @tablet @desktop
     Scenario: As a user I want to see the title of the items in the default sliders
@@ -83,20 +83,20 @@ Feature: Dashboard page
     Scenario: As a user I want to be able to navigate to the video page by clicking on the first featured item
         Given I go to the "index" page
         When I click the first featured item in the dashboard
-        Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
+        Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
 
     @tablet @desktop
     Scenario: As a user I want to be able to navigate to the video page by clicking on the first featured item
         Given I go to the "index" page
         When I click the first item in the 1st "featured" slider
-        Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
+        Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
 
     @desktop
     Scenario: As a user I want to be able to navigate to the video page and start the video by clicking on the item play icon
         Given I go to the "index" page
         When I move my mouse to the first item in the 1st "featured" slider
         And I click the play icon in the visible item in the featured slider
-        Then the page should be "/list/lrYLc95e/video/Iyfst4Se/spotlight"
+        Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
         And the video should be playing
 
     @desktop

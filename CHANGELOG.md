@@ -1,3 +1,11 @@
+## 3.7.0-beta (October 3 2017)
+
+- Updated URL structure
+- Added showcaseContentOnly option
+- Added settings page
+- Added browser upgrade page
+- Removed enableGlobalSearch option
+
 ## 3.6.0 (September 6 2017)
 
 - Renamed "Include captions" toggle to "Show caption matches"
