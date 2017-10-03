@@ -91,7 +91,7 @@ Feature: Video page
   @desktop @tablet @mobile
   Scenario: As a user I want to see tags below the video description when enabled
     Given I set the configLocation to "fixtures/config/enableTags.json"
-    And I go to the "/list/lrYLc95e/video/LjBvF1FX/" page
+    And I go to the "/LjBvF1FX/?list=lrYLc95e" page
     When I scroll to the video description
     And I expand the video description
     Then the video tags should be visible
