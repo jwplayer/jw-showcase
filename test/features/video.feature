@@ -88,6 +88,33 @@ Feature: Video page
     """
     And the canonical path should be "/Iyfst4Se/spotlight?list=lrYLc95e"
 
+  @desktop-screen-tablet @tablet
+  Scenario: As a tablet user I want the player to stick to the top of the screen when scrolling
+    Given I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    And I scroll to the "bottom" of the page
+    Then the player should get pinned
+    When I scroll to the "top" of the page
+    Then the player should get unpinned
+
+  @desktop-screen-mobile @mobile
+  Scenario: As a mobile user I want the player to stick to the top of the screen when scrolling
+    Given I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    And I scroll to the "bottom" of the page
+    Then the player should stick
+    When I scroll to the "top" of the page
+    Then the player should unstick
+
+  @mobile
+  Scenario: As a mobile user I want the player to convert to a floating mini player when I leave the video page
+    Given I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    And I wait until the video is loaded
+    And I start video playback
+    And I wait until the video is playing
+    And I go to the "index" page
+    Then the sticky player should activate
+    Given I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    Then the sticky player should deactivate
+
   @desktop @tablet @mobile
   Scenario: As a user I want to see tags below the video description when enabled
     Given I set the configLocation to "fixtures/config/enableTags.json"

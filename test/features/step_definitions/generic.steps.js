@@ -93,7 +93,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return browser.executeScript(`jwplayer().seek(${seconds})`);
     });
 
-    When('I pause the page', function (seconds) {
+    When('I pause the page', function () {
         return browser.pause();
     });
 
@@ -115,6 +115,10 @@ defineSupportCode(function ({Given, When, Then}) {
 
         let keycode = protractor.Key[key.toUpperCase()];
         return browser.actions().sendKeys(keycode).perform();
+    });
+
+    When('I scroll to the {stringInDoubleQuotes} of the page', function (key) {
+        return scrollToEdge(key === 'top');
     });
 
     //

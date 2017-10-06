@@ -6,7 +6,13 @@ exports.config = {
         require: [
             'test/features/support/**/*.js',
             'test/features/step_definitions/**/*.js'
-        ]
+        ],
+
+        /**
+         * Ability to define a single scenario for developing tests
+         * @type  {String}
+         */
+        // name: 'As a mobile user I want the player to convert to a floating mini player when I leave the video page'
     },
 
     framework: 'custom',
@@ -16,20 +22,61 @@ exports.config = {
     maxSessions: 1,
 
     multiCapabilities: [
+        // desktop screensize independent
         createCapabilities({
             browserName: 'chrome'
-        }, ['@desktop'])
+        }, ['@desktop']),
+
+        // desktop different screen sizes
+        createCapabilities({
+            browserName: 'chrome'
+        }, ['@desktop-screen-desktop'], 'desktop'),
+
+        createCapabilities({
+            browserName: 'chrome'
+        }, ['@desktop-screen-tablet'], 'tablet'),
+
+        createCapabilities({
+            browserName: 'chrome'
+        }, ['@desktop-screen-mobile'], 'mobile'),
+
+        // chrome iPhone emulation
+        createCapabilities({
+            browserName: 'chrome',
+            chromeOptions: {
+                mobileEmulation: {
+                    deviceName: 'iPhone 6'
+                }
+            }
+        }, ['@mobile'])
     ],
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
-    specs: [
-        'test/features/*.feature'
-    ],
+    suites: {
+        video: 'test/features/video.feature',
+        full: [
+            'test/features/*.feature'
+        ]
+    },
 
     onPrepare: function() {
         /* global browser */
-        browser.driver.manage().window().maximize();
+        return browser.getProcessedConfig().then(function(config) {
+            var screenSize = config.capabilities.screenSize || 'desktop';
+
+            switch (screenSize) {
+            case 'mobile':
+                browser.driver.manage().window().setSize(480, 600);
+                break;
+            case 'tablet':
+                browser.driver.manage().window().setSize(992, 600);
+                break;
+            default:
+                browser.driver.manage().window().maximize();
+                break;
+            }
+        });
     }
 };
 
@@ -39,7 +86,13 @@ exports.config = {
  * @param {Object} capabilities
  * @returns {Object}
  */
-function createCapabilities (capabilities, tags) {
+function createCapabilities (capabilities, tags, screenSize) {
+    if (screenSize) {
+        capabilities.screenSize = screenSize;
+
+        // push tag
+        tags.push('@desktop-screen-' + screenSize);
+    }
 
     capabilities.cucumberOpts = {
         format: 'json:./test/reports/' + composeReportName(capabilities) + '.json'

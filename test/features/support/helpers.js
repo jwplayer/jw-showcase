@@ -20,6 +20,7 @@ const
 defineSupportCode(function () {
 
     global.delay = function (time) {
+
         return function () {
             return browser.sleep(time);
         };
@@ -34,6 +35,14 @@ defineSupportCode(function () {
                 scrollingDocument.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
             }
         }, element.getWebElement());
+    };
+
+    global.scrollToEdge = function (top) {
+
+        return browser.executeScript(function (top) {
+            var scrollingDocument = document.documentElement || document.body;
+            scrollingDocument.scrollTop = top ? 0 : 9999;
+        }, top);
     };
 
     global.clickHelper = function (element) {

@@ -142,4 +142,28 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-video-details-tag').get(0).isDisplayed()).to.eventually.equal(true);
     });
 
+    Then('the player should get pinned', function () {
+        return expect($('.jw-video-container-player').getAttribute('class')).to.eventually.contain('is-pinned');
+    });
+
+    Then('the player should get unpinned', function() {
+        return expect($('.jw-video-container-player').getAttribute('class')).to.eventually.not.contain('is-pinned');
+    });
+
+    Then('the player should stick', function () {
+        return expect($('.jw-video-container-player').getAttribute('class')).to.eventually.contain('is-stuck');
+    });
+
+    Then('the player should unstick', function () {
+        return expect($('.jw-video-container-player').getAttribute('class')).to.eventually.not.contain('is-stuck');
+    });
+
+    Then('the sticky player should activate', function () {
+        return expect($('.jw-mobile-player-container').getAttribute('class')).to.eventually.not.contain('is-pinned');
+    });
+
+    Then('the sticky player should deactivate', function () {
+        return expect($('.jw-mobile-player-container').getAttribute('class')).to.eventually.not.contain('is-pinned');
+    });
+
 });
