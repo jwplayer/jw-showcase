@@ -39,8 +39,8 @@ Feature: Search
     And I type "trailer" in the search input
     And I wait until the page is "/search/trailer"
     And I click on the first video in the grid overview
-    And I wait until the page is "/Iyfst4Se/spotlight"
-    Then the page should be "/Iyfst4Se/spotlight"
+    And I wait until the page is "/video/Iyfst4Se/spotlight"
+    Then the page should be "/video/Iyfst4Se/spotlight"
 
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to share the search overview by a link
@@ -70,8 +70,8 @@ Feature: Search
   @mobile @tablet @desktop
   Scenario: As a user I want to be able to watch a video from the property when showcaseContentOnly is disabled
     Given I set the configLocation to "./fixtures/config/showcaseContentOnly.json"
-    And I go to the "/GQlE6Rqd/2001-a-space-odyssey" page
-    Then the page should be "/GQlE6Rqd/2001-a-space-odyssey"
+    And I go to the "/video/GQlE6Rqd/2001-a-space-odyssey" page
+    Then the page should be "/video/GQlE6Rqd/2001-a-space-odyssey"
 
   @tablet @desktop
   Scenario: As a user I want to be able to toggle in-video search
