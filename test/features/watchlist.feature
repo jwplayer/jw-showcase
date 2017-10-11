@@ -57,14 +57,14 @@ Feature: Watchlist
 
   @desktop @tablet @mobile
   Scenario: Add video to watchlist via the save this video button on the video page
-    Given I go to the "/DqGECHhT/central-intelligence?list=WXu7kuaW" page
+    Given I go to the "/video/DqGECHhT/central-intelligence?list=WXu7kuaW" page
     And the browser has localStorage support
     When I click on the watchlist button in the video toolbar
     Then the unsave this video button should be visible in the video toolbar
 
   @desktop @tablet @mobile
   Scenario: Remove video from watchlist via the remove from watchlist button on the video page
-    Given I am still on the "/DqGECHhT/central-intelligence?list=WXu7kuaW" page
+    Given I am still on the "/video/DqGECHhT/central-intelligence?list=WXu7kuaW" page
     And the browser has localStorage support
     When I click on the watchlist button in the video toolbar
     Then the add to watchlist button should be visible on the video toolbar
@@ -81,4 +81,4 @@ Feature: Watchlist
     Then the watchlist slider should be visible
     And the watchlist slider should contain 2 items
     When I click on the first card in the watchlist slider
-    Then the page should be "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
+    Then the page should be "/video/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
