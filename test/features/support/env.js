@@ -24,7 +24,7 @@ defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterTy
         transformer: function (string) {
             return parseInt(string.replace(/st|nd|rd|th/, ''));
         },
-        typeName:    'ordinal'
+        name:    'ordinal'
     });
 
     setDefaultTimeout(20 * 1000);

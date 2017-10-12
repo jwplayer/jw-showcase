@@ -104,7 +104,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-display-icon-container .jw-icon-display').isDisplayed()).to.eventually.equal(true);
     });
 
-    Then('the video title is {stringInDoubleQuotes}', function (title) {
+    Then('the video title is {string}', function (title) {
         function trim (text) {
             return text.replace(/\s/g, '');
         }
@@ -124,7 +124,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .equal(description);
     });
 
-    Then('the video duration label is {stringInDoubleQuotes}', function (duration) {
+    Then('the video duration label is {string}', function (duration) {
         return expect($('.jw-video-details .jw-video-details-duration').getText()).to.eventually.equal(duration);
     });
 

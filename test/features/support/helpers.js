@@ -29,11 +29,19 @@ defineSupportCode(function () {
 
         return browser.executeScript(function (element) {
             var header = document.querySelector('.jw-header');
-            var scrollingDocument = document.documentElement || document.body;
+            var scrollingDocument = document.scrollingElement || document.documentElement || document.body;
             if (element) {
                 scrollingDocument.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
             }
         }, element.getWebElement());
+    };
+
+    global.scrollToEdge = function (top) {
+
+        return browser.executeScript(function (top) {
+            var scrollingDocument = document.scrollingElement || document.documentElement || document.body;
+            scrollingDocument.scrollTop = top ? 0 : 9999;
+        }, top);
     };
 
     global.clickHelper = function (element) {
