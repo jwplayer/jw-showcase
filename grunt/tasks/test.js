@@ -8,13 +8,16 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test:protractor', function () {
         // set configFile variable based on config option, default to local protractor config.
-        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.js');
+        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
         runProtractorTasks();
     });
 
     // don't break existing tasks
     grunt.registerTask('test:protractor:local', function () {
-        grunt.config.set('configFile', 'protractor.conf.js');
+        // set based on platform, default: desktop
+        var platform = grunt.option('platform') || 'desktop';
+        grunt.config.set('configFile', 'protractor.conf.local.' + platform + '.js');
+
         runProtractorTasks();
     });
 
@@ -32,7 +35,7 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        grunt.log.writeln('> Starting local tunnel...')
+        grunt.log.writeln('> Starting local tunnel...');
 
         ngrok.connect(9001, function (error, url) {
             if (error) {
@@ -63,6 +66,24 @@ module.exports = function (grunt) {
 
         if (grunt.option('no-server')) {
             return grunt.task.run(['protractor:run']);
+        }
+
+        // add cucumber name if needed
+        var cukeName = grunt.option('name');
+        if (cukeName) {
+            grunt.config.merge({
+                protractor: {
+                    run: {
+                        options: {
+                            args: {
+                                cucumberOpts: {
+                                    name: cukeName
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         grunt.task.run([
