@@ -25,5 +25,5 @@ Feature: Feed page
   Scenario: Watch video from the overview
     Given I go to the "/list/WXu7kuaW" page
     When I click on the first video in the grid overview
-    And I wait until the page is "/DqGECHhT/central-intelligence?list=WXu7kuaW"
-    Then the page should be "/DqGECHhT/central-intelligence?list=WXu7kuaW"
+    And I wait until the page is "/video/DqGECHhT/central-intelligence?list=WXu7kuaW"
+    Then the page should be "/video/DqGECHhT/central-intelligence?list=WXu7kuaW"
