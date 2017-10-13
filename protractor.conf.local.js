@@ -1,3 +1,10 @@
+var argv = {};
+process.argv.forEach(function(value, key) {
+    if (value.indexOf('--') === 0) {
+        argv[value.replace('--', '')] = process.argv[++key].split(',');
+    }
+});
+
 /**
  * Add cucumber report output
  *
@@ -5,6 +12,7 @@
  * @returns {Object}
  */
 function createCapabilities (capabilities, tags, screenSize) {
+
     if (!capabilities.cucumberOpts) {
         capabilities.cucumberOpts = {};
     }
@@ -16,51 +24,58 @@ function createCapabilities (capabilities, tags, screenSize) {
         tags.push('@desktop-screen-' + screenSize);
     }
 
-    capabilities.cucumberOpts.format = 'json:./test/reports/' + composeReportName(capabilities) + '.json';
+    var metadata = getMetaData(capabilities);
 
+    capabilities.cucumberOpts.format = 'json:./test/reports/results.json';
     capabilities.cucumberOpts.tags = tags;
+    capabilities.metadata = {
+        browser: {
+            name: metadata.browser,
+            version: metadata.browserVersion
+        },
+        device: metadata.device,
+        platform: {
+            name: metadata.os,
+            version: metadata.osVersion
+        }
+    };
 
     return capabilities;
 }
 
-/**
- * Compose report name based on given capabilities object
- *
- * @param   {Object}    capabilities    Capabilities
- *
- * @returns {string} Report name
- */
-function composeReportName (capabilities) {
+function getMetaData(capabilities) {
+    var os              = capabilities.os || 'osx',
+        osVersion       = capabilities.os_version || 'latest',
+        browser         = capabilities.browser || capabilities.browserName || 'default',
+        browserVersion  = capabilities.browserVersion || capabilities.browser_version || 'latest',
+        device          = capabilities.device || capabilities.screenSize || 'desktop',
+        screenSize      = capabilities.screenSize || '';
 
-    /*jshint camelcase: false */
-    var os = capabilities.os || 'host',
-        osVersion = capabilities.os_version || '',
-        browser = capabilities.browser || capabilities.browserName || 'default',
-        browserVersion = capabilities.browserVersion || capabilities.browser_version || 'latest',
-
-        name = os + ' ' + osVersion + ' - ' + browser + ' ' + browserVersion;
-
-    if (capabilities.device) {
-        name = capabilities.device + ' ' + name;
-    }
-
-    return name;
+    return {
+        os,
+        osVersion,
+        browser,
+        browserVersion,
+        device,
+        screenSize
+    };
 }
 
 const config = {
     baseUrl: 'http://localhost:9001',
 
+    framework: 'custom',
+    frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+    maxSessions: 1,
+
     cucumberOpts: {
         require: [
             'test/features/support/**/*.js',
             'test/features/step_definitions/**/*.js'
-        ]
+        ],
+        format: 'json:./test/reports/results.json'
     },
-
-    framework: 'custom',
-    frameworkPath: require.resolve('protractor-cucumber-framework'),
-
-    maxSessions: 2,
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
@@ -69,10 +84,21 @@ const config = {
         full: [
             'test/features/*.feature'
         ]
-    }
+    },
+
+    plugins: [{
+        package: 'protractor-multiple-cucumber-html-reporter-plugin',
+        options: {
+            automaticallyGenerateReport: true,
+            removeExistingJsonReportFile: true,
+            saveCollectedJSON: false,
+            reportPath: './test/reports/html'
+        }
+    }]
 };
 
 module.exports = {
     config,
-    createCapabilities
+    createCapabilities,
+    argv
 };

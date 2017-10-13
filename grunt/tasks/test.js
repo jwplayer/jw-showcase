@@ -18,6 +18,14 @@ module.exports = function (grunt) {
         var platform = grunt.option('platform') || 'desktop';
         grunt.config.set('configFile', 'protractor.conf.local.' + platform + '.js');
 
+        if (platform === 'desktop') {
+            if (grunt.option('browser')) {
+                addArgs({
+                    browser: grunt.option('browser')
+                });
+            }
+        }
+
         runProtractorTasks();
     });
 
@@ -62,6 +70,18 @@ module.exports = function (grunt) {
         'connect:test'
     ]);
 
+    function addArgs(args) {
+        grunt.config.merge({
+            protractor: {
+                run: {
+                    options: {
+                        args: args
+                    }
+                }
+            }
+        });
+    }
+
     function runProtractorTasks () {
 
         if (grunt.option('no-server')) {
@@ -71,17 +91,9 @@ module.exports = function (grunt) {
         // add cucumber name if needed
         var cukeName = grunt.option('name');
         if (cukeName) {
-            grunt.config.merge({
-                protractor: {
-                    run: {
-                        options: {
-                            args: {
-                                cucumberOpts: {
-                                    name: cukeName
-                                }
-                            }
-                        }
-                    }
+            addArgs({
+                cucumberOpts: {
+                    name: cukeName
                 }
             });
         }

@@ -39,6 +39,7 @@
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.1.0",
     "lodash.template": "^4.2.5",
+    "multiple-cucumber-html-reporter": "^1.1.0",
     "ngrok": "^2.2.9",
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.2.2",

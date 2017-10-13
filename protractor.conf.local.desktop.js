@@ -1,47 +1,54 @@
-var { config, createCapabilities } = require('./protractor.conf.local');
+var { config, createCapabilities, argv } = require('./protractor.conf.local');
 
-config.multiCapabilities = [
-    // desktop screensize independent
-    createCapabilities({
-        browserName: 'chrome'
-    }, ['@desktop']),
+function createScreensizeCapabilities(browser) {
+    var sizes = ['desktop', 'tablet', 'mobile'];
+    return sizes.map(function(size) {
+        return createCapabilities({
+            browserName: browser
+        }, ['@desktop-screen-' + size], size);
+    });
+}
 
-    createCapabilities({
-        browserName: 'safari'
-    }, ['@desktop']),
+config.multiCapabilities = [];
 
-    createCapabilities({
-        browserName: 'firefox',
-        marionette: true
-    }, ['@desktop']),
+var supportedBrowsers = ['chrome', 'firefox', 'safari', 'opera', 'iphone'];
+var browsers = supportedBrowsers;
+if (argv.browser) {
+    browsers = typeof argv.browser === 'string' ? [argv.browser] : argv.browser;
+}
 
-    createCapabilities({
-        browserName: 'opera'
-    }, ['@desktop']),
+browsers.forEach(function(browser) {
+    if (supportedBrowsers.indexOf(browser) === -1) {
+        return;
+    }
 
-    // // desktop different screen sizes
-    // createCapabilities({
-    //     browserName: 'chrome'
-    // }, ['@desktop-screen-desktop'], 'desktop'),
-    //
-    // createCapabilities({
-    //     browserName: 'chrome'
-    // }, ['@desktop-screen-tablet'], 'tablet'),
-    //
-    // createCapabilities({
-    //     browserName: 'chrome'
-    // }, ['@desktop-screen-mobile'], 'mobile'),
-    //
-    // // chrome iPhone emulation
-    // createCapabilities({
-    //     browserName: 'chrome',
-    //     chromeOptions: {
-    //         mobileEmulation: {
-    //             deviceName: 'iPhone 6'
-    //         }
-    //     }
-    // }, ['@mobile'])
-];
+    switch(browser) {
+    case 'iphone':
+        config.multiCapabilities.push(
+            // chrome iPhone emulation
+            createCapabilities({
+                browserName: 'chrome',
+                chromeOptions: {
+                    mobileEmulation: {
+                        deviceName: 'iPhone 6'
+                    }
+                }
+            }, ['@mobile'])
+        );
+        break;
+    default:
+        config.multiCapabilities.push(
+            createCapabilities({
+                browserName: browser
+            }, ['@desktop'])
+        );
+
+        createScreensizeCapabilities(browser).forEach(function(cap) {
+            config.multiCapabilities.push(cap);
+        });
+        break;
+    }
+});
 
 config.onPrepare = function() {
     /* global browser */
@@ -62,6 +69,8 @@ config.onPrepare = function() {
             browser.driver.manage().window().maximize();
             break;
         }
+
+        return config;
     });
 };
 
