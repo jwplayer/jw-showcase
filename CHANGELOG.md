@@ -1,3 +1,11 @@
+## 3.7.0 (October 17 2017)
+
+- Updated URL structure
+- Fix wrong SEO meta tags for tag state
+- Fix sidebar not closing when clicking settings
+- Fix settings sidebar item not having active state
+- Fix sidebar not scrollable
+
 ## 3.7.0-beta (October 3 2017)
 
 - Updated URL structure
