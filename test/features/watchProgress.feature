@@ -9,7 +9,7 @@ Feature: Watch progress
   @desktop @tablet @mobile
   Scenario: Save video watch progress while playing video
     Given the browser has localStorage support
-    And I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    And I go to the "/m/Iyfst4Se/spotlight?list=lrYLc95e" page
     When I wait until the video is loaded
     And I start video playback
     And I wait until the video is playing
@@ -23,7 +23,7 @@ Feature: Watch progress
     """
     [{"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 9999999999999}]
     """
-    And I go to the "/Iyfst4Se/spotlight?list=lrYLc95e" page
+    And I go to the "/m/Iyfst4Se/spotlight?list=lrYLc95e" page
     When I wait until the video is loaded
     And I start video playback
     And I wait until the video is playing
@@ -71,7 +71,7 @@ Feature: Watch progress
     """
     [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 9999999999999}]
     """
-    And I go to the "/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e" page
+    And I go to the "/m/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e" page
     When I wait until the video is loaded
     And I start video playback
     And I wait until the video is playing

@@ -61,11 +61,11 @@ Feature: Configuration
   @mobile @tablet @desktop
   Scenario: I don't want to use the right siderail
       Given I set the configLocation to "./fixtures/config/noSiderail.json"
-      And I go to the "/Iyfst4Se/?list=lrYLc95e" page
+      And I go to the "/m/Iyfst4Se/?list=lrYLc95e" page
       Then the siderail should not be visible
 
   @mobile @tablet @desktop
   Scenario: I want to use the right siderail
       Given I set the configLocation to "./fixtures/config/siderail.json"
-      And I go to the "/Iyfst4Se/?list=lrYLc95e" page
+      And I go to the "/m/Iyfst4Se/?list=lrYLc95e" page
       Then the siderail should be visible
