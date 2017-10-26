@@ -31,7 +31,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return scrollToElement($('.jw-content-row-saved-videos'));
     });
 
-    When('I click on the card menu button of the first card in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    When('I click on the card menu button of the first card in the {ordinal} {string} slider', function (num, type) {
         return $$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card-menu-button').click();
     });
 
@@ -51,7 +51,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-card-menu a[ng-click="vm.closeButtonClickHandler()"]').click();
     });
 
-    When('I click on the unsave button in the first card of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    When('I click on the unsave button in the first card of the {ordinal} {string} slider', function (num, type) {
         return $$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card-watchlist-button').click();
     });
 
@@ -77,7 +77,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the watchlist slider should contain {int} items', function (num) {
+    Then('the watchlist slider should contain ([0-9]*) items', function (num) {
         return expect($$('.jw-content-row-saved-videos .jw-card').count())
             .to.eventually.equal(num);
     });
@@ -92,7 +92,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the unsave button should be visible in the first card of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    Then('the unsave button should be visible in the first card of the {ordinal} {string} slider', function (num, type) {
         return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first')
             .isElementPresent(by.css('.jw-card-watchlist-button'))).to.eventually.equal(true);
     });

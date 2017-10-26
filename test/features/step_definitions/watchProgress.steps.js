@@ -47,12 +47,12 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the continue watching slider should contain {int} items', function (num) {
+    Then('the continue watching slider should contain ([0-9]*) items', function (num) {
         return expect($$('.jw-content-row-continue-watching .jw-card').count())
             .to.eventually.equal(num);
     });
 
-    Then('the video progress of mediaid {stringInDoubleQuotes} and feedid {stringInDoubleQuotes} should be saved', function (mediaid, feedid) {
+    Then('the video progress of mediaid {string} and feedid {string} should be saved', function (mediaid, feedid) {
         return browser
             .executeScript('return window.localStorage.getItem("jwshowcase.watchprogress")')
             .then(function (rawData) {
@@ -62,7 +62,7 @@ defineSupportCode(function ({Given, When, Then}) {
             });
     });
 
-    Then('the video progress of mediaid {stringInDoubleQuotes} and feedid {stringInDoubleQuotes} should not be saved', function (mediaid, feedid) {
+    Then('the video progress of mediaid {string} and feedid {string} should not be saved', function (mediaid, feedid) {
         return browser
             .executeScript('return window.localStorage.getItem("jwshowcase.watchprogress")')
             .then(function (rawData) {
@@ -72,17 +72,17 @@ defineSupportCode(function ({Given, When, Then}) {
             });
     });
 
-    Then('the {ordinal} card in the continue watching slider should have mediaid {stringInDoubleQuotes}', function (num, mediaid) {
+    Then('the {ordinal} card in the continue watching slider should have mediaid {string}', function (num, mediaid) {
         return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).evaluate('item.mediaid'))
             .to.eventually.equal(mediaid);
     });
 
-    Then('the {ordinal} card in the continue watching slider should show {int}% watch progress', function (num, percentage) {
+    Then('the {ordinal} card in the continue watching slider should show ([0-9]*)% watch progress', function (num, percentage) {
         return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).$('.jw-card-watch-progress').getAttribute('style'))
             .to.eventually.contains(`width: ${percentage}%`);
     });
 
-    Then('the video progress should be greater than {int}%', function (progress) {
+    Then('the video progress should be greater than ([0-9]*)%', function (progress) {
         return expect(browser.executeScript('return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;'))
             .to.eventually.be.greaterThan(progress);
     });

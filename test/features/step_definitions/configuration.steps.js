@@ -23,7 +23,7 @@ defineSupportCode(function ({Given, When, Then}) {
     // Given steps
     //
 
-    Given('I set the configLocation to {stringInDoubleQuotes}', function (configLocation) {
+    Given('I set the configLocation to {string}', function (configLocation) {
         return browser
             .addMockModule('app', `angular.module('app').run(function () {window.configLocation="${configLocation}";});`);
     });
@@ -36,16 +36,16 @@ defineSupportCode(function ({Given, When, Then}) {
     // Then steps
     //
 
-    Then('the logo should use {stringInDoubleQuotes} as src', function (src) {
+    Then('the logo should use {string} as src', function (src) {
         let regex = new RegExp(`${src}$`);
         return expect($('.jw-header-logo').getAttribute('src')).to.eventually.match(regex);
     });
 
-    Then('the theme should be {stringInDoubleQuotes}', function (theme) {
+    Then('the theme should be {string}', function (theme) {
         return expect($('body').getAttribute('class')).to.eventually.contain(`jw-theme-${theme}`);
     });
 
-    Then('the footer text should be {stringInDoubleQuotes}', function (text) {
+    Then('the footer text should be {string}', function (text) {
         return expect($('.jw-footer > p').getText()).to.eventually.equal(text);
     });
 
@@ -53,7 +53,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-modal-message').isPresent()).to.eventually.equal(true);
     });
 
-    Then('the error page displays the following message {stringInDoubleQuotes}', function (message) {
+    Then('the error page displays the following message {string}', function (message) {
         return expect($('.jw-modal-message').getText()).to.eventually.contain(message);
     });
 

@@ -19,11 +19,10 @@ const
 
 defineSupportCode(function ({After}) {
 
-    After(function (scenario) {
-
+    After(function ({result}) {
         const world = this;
 
-        if (scenario.isFailed()) {
+        if (result.status !== 'passed') {
             return browser
                 .takeScreenshot()
                 .then(function (png) {

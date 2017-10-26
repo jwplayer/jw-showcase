@@ -51,7 +51,7 @@ exports.config = {
     },
 
     afterLaunch: function () {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             local.stop(resolve);
         });
     },

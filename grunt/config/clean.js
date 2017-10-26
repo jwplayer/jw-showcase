@@ -10,5 +10,5 @@ module.exports = {
         }]
     },
     server: '.tmp',
-    reports: ['test/reports/*.json', 'test/reports/html']
+    reports: ['test/reports/*.json', 'test/reports/html', 'test/reports/json-output-folder']
 };
