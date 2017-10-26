@@ -1,3 +1,16 @@
+## 3.7.1 (October 20 2017)
+
+- Fix compatibility with deprecation of skins in JW8
+- Fix highlight color in stack icons
+
+## 3.7.0 (October 17 2017)
+
+- Updated URL structure
+- Fix wrong SEO meta tags for tag state
+- Fix sidebar not closing when clicking settings
+- Fix settings sidebar item not having active state
+- Fix sidebar not scrollable
+
 ## 3.7.0-beta (October 3 2017)
 
 - Updated URL structure
@@ -11,7 +24,7 @@
 - Renamed "Include captions" toggle to "Show caption matches"
 - Fixed toggle not visible in dark and blue themes
 - Fixed search input overlapping "Include captions" toggle
-- Fixed "Copy link" text not visible in dark and blue themes 
+- Fixed "Copy link" text not visible in dark and blue themes
 
 ## 3.6.0-beta (August 29 2017)
 
@@ -49,7 +62,7 @@
   }
 ```
 
-- Added option to show all videos from your JW dashboard in the search results. By default the search results are 
+- Added option to show all videos from your JW dashboard in the search results. By default the search results are
 limited to only list the videos that are included in the content feeds in your Showcase config.
 
 ```
@@ -59,7 +72,7 @@ limited to only list the videos that are included in the content feeds in your S
   }
 ```
 
-- Added option choose the position of the video title. This can either be "above" or "below". By default this is 
+- Added option choose the position of the video title. This can either be "above" or "below". By default this is
 "below".
 
 ```
@@ -104,8 +117,8 @@ limited to only list the videos that are included in the content feeds in your S
 
 **Configuration update**
 
-The configuration model has been updated to version 2. Previous configurations are still supported, but we 
-recommend updating your configuration to version 2. Support of the previous configuration will most likely be removed 
+The configuration model has been updated to version 2. Previous configurations are still supported, but we
+recommend updating your configuration to version 2. Support of the previous configuration will most likely be removed
 in the next major release.
 
 See the [example config](https://github.com/jwplayer/jw-showcase/blob/master/app/config.json) and [configuration wiki](https://github.com/jwplayer/jw-showcase/wiki/Getting-Started#configuration-parameters) for all available options.
@@ -165,7 +178,7 @@ See the [example config](https://github.com/jwplayer/jw-showcase/blob/master/app
 ## 2.0.0 Saved videos and Continue watching (Sep 23 2016)
 
 **New in this release:**
-- A "watch list" feature for users to save videos for watching later. A separate list for "continue watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., the lists do not sync across user's devices). 
+- A "watch list" feature for users to save videos for watching later. A separate list for "continue watching" is also kept so users can resume watching videos where they left off. The lists are per-browser at this time (i.e., the lists do not sync across user's devices).
 - A new grid view for a particular playlist of videos, with the ability to deep-link to the playlist through a static URL.
 - Thumbnail images in shelves are loaded on-demand instead of all on page load, saving substantial user bandwidth and improving page load speed.
 - Improved the UX of video descriptions (moved below the video instead of as a player overlay).
@@ -173,7 +186,7 @@ See the [example config](https://github.com/jwplayer/jw-showcase/blob/master/app
 
 We also fixed a few bugs. For details, see the [closed issues for the 2.0 milestone](https://github.com/jwplayer/jw-showcase/milestone/2?closed=1)
 
-## 1.1.0 Design update (Jul 29 2016) 
+## 1.1.0 Design update (Jul 29 2016)
 
 **Page design changes:**
 - In the Home page, the top carousel poster image in focus is now centered instead of offset to the left.
@@ -184,10 +197,10 @@ We also fixed a few bugs. For details, see the [closed issues for the 2.0 milest
 
 **Miscellaneous:**
 - Fixed issue #22
-- Fixed issue #4 
+- Fixed issue #4
 - Updated package.json with Apache license to fix grunt build warning ("EPACKAGEJSON jwshowcase@1.0.0 No license field").
 
-## 1.0.0 Initial release (Jun 24 2016) 
+## 1.0.0 Initial release (Jun 24 2016)
 
-First release of the JW Showcase video web site builder. For instructions on setting up your JW Showcase site, see 
+First release of the JW Showcase video web site builder. For instructions on setting up your JW Showcase site, see
 the [Wiki](https://github.com/jwplayer/jw-showcase/wiki).
