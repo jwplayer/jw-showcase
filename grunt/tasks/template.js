@@ -4,8 +4,8 @@ module.exports = function (grunt) {
         url            = require('url'),
         template       = require('lodash.template'),
         pkg            = require(process.cwd() + '/package.json'),
-        libPkg         = require(process.cwd() + '/bower_components/jw-showcase-lib/package.json'),
-        ngMocksInclude = '<script src="bower_components/angular-mocks/angular-mocks.js"></script>';
+        libPkg         = require(process.cwd() + '/node_modules/jw-showcase-lib/package.json'),
+        ngMocksInclude = '<script src="node_modules/angular-mocks/angular-mocks.js"></script>';
 
     function compile (src, dest, configLocation, injectNgMocks) {
 

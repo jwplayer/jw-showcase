@@ -16,7 +16,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd:    'bower_components/jw-showcase-lib/fonts',
+            cwd:    'node_modules/jw-showcase-lib/fonts',
             dest:   '<%= config.dist %>/fonts',
             src:    '*'
         }, {
@@ -38,7 +38,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd:    'bower_components/sw-toolbox',
+            cwd:    'node_modules/sw-toolbox',
             src:    'sw-toolbox.js',
             dest:   '<%= config.dist %>'
         }]
@@ -46,12 +46,12 @@ module.exports = {
     server: {
         files: [{
             expand: true,
-            cwd:    'bower_components/jw-showcase-lib/fonts',
+            cwd:    'node_modules/jw-showcase-lib/fonts',
             dest:   '.tmp/fonts/',
             src:    '*'
         }, {
             expand: true,
-            cwd:    'bower_components/sw-toolbox',
+            cwd:    'node_modules/sw-toolbox',
             src:    'sw-toolbox.js',
             dest:   '.tmp/'
         }]
