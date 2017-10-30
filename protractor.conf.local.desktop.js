@@ -28,6 +28,7 @@ browsers.forEach(function(browser) {
             // chrome iPhone emulation
             createCapabilities({
                 browserName: 'chrome',
+                device: 'iPhone 6',
                 chromeOptions: {
                     mobileEmulation: {
                         deviceName: 'iPhone 6'
