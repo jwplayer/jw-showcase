@@ -35,7 +35,8 @@ Feature: Watch progress
     Given the browser has localStorage support
     And localStorage key "jwshowcase.watchprogress" has the following data:
     """
-    [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 9999999999999},{"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 8888888888888}]
+    [{"mediaid": "LjBvF1FX", "feedid": "lrYLc95e", "progress": 0.75, "lastWatched": 9999999999999},
+    {"mediaid": "Iyfst4Se", "feedid": "lrYLc95e", "progress": 0.5, "lastWatched": 8888888888888}]
     """
     And I go to the "index" page
     When I scroll to the continue watching slider

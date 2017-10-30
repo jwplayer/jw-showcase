@@ -43,7 +43,7 @@ defineSupportCode(function ({When, Then}) {
         return mouseMove(firstCardSlide);
     });
 
-    When(' I click the first featured item in the dashboard', function () {
+    When('I click the first featured item in the dashboard', function () {
         return $$('.jw-card-flag-featured').get(0).click();
     });
 
@@ -52,7 +52,7 @@ defineSupportCode(function ({When, Then}) {
     });
 
     When('I click the play icon in the visible item in the featured slider', function () {
-        const element = $$(`.jw-card-slider-flag-featured`).get(0)
+        const element = $$('.jw-card-slider-flag-featured').get(0)
             .$('.jw-card-slider-slide.is-visible .jw-card-play-button');
 
         // play icon is not interactable in Firefox
@@ -159,12 +159,12 @@ defineSupportCode(function ({When, Then}) {
     });
 
     Then('the card title should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title`).isDisplayed())
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title').isDisplayed())
             .to.eventually.equal(false);
     });
 
     Then('the card description should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description`)
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description')
             .isDisplayed())
             .to.eventually.equal(false);
     });
