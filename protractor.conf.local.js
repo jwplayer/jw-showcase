@@ -90,7 +90,7 @@ const config = {
         package: 'protractor-multiple-cucumber-html-reporter-plugin',
         options: {
             automaticallyGenerateReport: true,
-            removeExistingJsonReportFile: true,
+            removeExistingJsonReportFile: false,
             saveCollectedJSON: false,
             reportPath: './test/reports/html'
         }
