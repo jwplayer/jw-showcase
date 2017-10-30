@@ -43,7 +43,10 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I start video playback', function () {
-        return browser.executeScript('jwplayer().play()');
+        return browser.executeScript(function () {
+            jwplayer().setMute(true);
+            jwplayer().play();
+        });
     });
 
     When('I wait until the video is playing', function () {
