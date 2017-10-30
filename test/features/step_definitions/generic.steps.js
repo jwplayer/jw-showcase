@@ -70,7 +70,7 @@ defineSupportCode(function ({Given, When, Then}) {
     // When
     //
 
-    When('wait for ([0-9]*) seconds', function (seconds) {
+    When('wait for {int} seconds', function (seconds) {
         return browser.sleep(seconds * 1000);
     });
 
@@ -89,7 +89,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return card.click();
     });
 
-    When('I seek to ([0-9]*) seconds in the video', function (seconds) {
+    When('I seek to {int} seconds in the video', function (seconds) {
         return browser.executeScript(`jwplayer().seek(${seconds})`);
     });
 

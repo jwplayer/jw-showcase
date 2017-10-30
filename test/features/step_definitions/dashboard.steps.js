@@ -79,11 +79,11 @@ defineSupportCode(function ({When, Then}) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.be.greaterThan(0);
     });
 
-    Then('there should be ([0-9]*) featured items visible', function (num) {
+    Then('there should be {int} featured items visible', function (num) {
         return expect($$('.jw-card-flag-featured').count()).to.eventually.equal(num);
     });
 
-    Then('there should be ([0-9]*) default sliders visible', function (num) {
+    Then('there should be {int} default sliders visible', function (num) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.equal(num);
     });
 

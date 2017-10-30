@@ -78,7 +78,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-search .jw-search-input').isDisplayed()).to.eventually.equal(false);
     });
 
-    Then('the search page should show ([0-9]*) items', function (count) {
+    Then('the search page should show {int} items', function (count) {
         return expect($$('.jw-card').count()).to.eventually.equal(count);
     });
 

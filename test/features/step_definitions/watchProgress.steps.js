@@ -47,7 +47,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the continue watching slider should contain ([0-9]*) items', function (num) {
+    Then('the continue watching slider should contain {int} items', function (num) {
         return expect($$('.jw-content-row-continue-watching .jw-card').count())
             .to.eventually.equal(num);
     });
@@ -77,12 +77,12 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(mediaid);
     });
 
-    Then('the {ordinal} card in the continue watching slider should show ([0-9]*)% watch progress', function (num, percentage) {
+    Then('the {ordinal} card in the continue watching slider should show {int}% watch progress', function (num, percentage) {
         return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).$('.jw-card-watch-progress').getAttribute('style'))
             .to.eventually.contains(`width: ${percentage}%`);
     });
 
-    Then('the video progress should be greater than ([0-9]*)%', function (progress) {
+    Then('the video progress should be greater than {int}%', function (progress) {
         return expect(browser.executeScript('return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;'))
             .to.eventually.be.greaterThan(progress);
     });

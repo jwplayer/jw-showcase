@@ -77,7 +77,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the watchlist slider should contain ([0-9]*) items', function (num) {
+    Then('the watchlist slider should contain {int} items', function (num) {
         return expect($$('.jw-content-row-saved-videos .jw-card').count())
             .to.eventually.equal(num);
     });
