@@ -59,6 +59,12 @@ defineSupportCode(function ({When, Then}) {
         return clickHelper(element);
     });
 
+    When('I swipe {string} in the {ordinal} {string} slider', function (direction, num, type) {
+        var element = $$(`.jw-card-slider-flag-${type} .jw-card-slider-align`).get(num - 1);
+
+        return swipe(element, direction);
+    });
+
     //
     // Then steps
     //
@@ -85,6 +91,16 @@ defineSupportCode(function ({When, Then}) {
 
     Then('there should be {int} default sliders visible', function (num) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.equal(num);
+    });
+
+    Then('the {string} item in the {ordinal} {string} slider should not be visible', function (item, num, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.not.contain('is-visible');
+    });
+
+    Then('the {string} item in the {ordinal} {string} slider should be visible', function (item, num, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.contain('is-visible');
     });
 
     Then('the {string} item in the {string} slider should not be visible', function (item, type) {
@@ -153,13 +169,13 @@ defineSupportCode(function ({When, Then}) {
             .to.eventually.equal(false);
     });
 
-    Then('the card titles should be hidden in the {ordinal} default slider', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.first .jw-card-info').isDisplayed())
+    Then('the card titles should be hidden in the {ordinal} {string} slider', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.first .jw-card-info').isDisplayed())
             .to.eventually.equal(false);
     });
 
-    Then('the title of the {ordinal} default slider should be hidden', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.jw-feed-title').isDisplayed())
+    Then('the title of the {ordinal} {string} slider should be hidden', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.jw-feed-title').isDisplayed())
             .to.eventually.equal(false);
     });
 

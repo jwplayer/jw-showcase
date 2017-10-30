@@ -95,5 +95,5 @@ Feature: Search
   Scenario: As a user I want to be able to hover the in-video search results and see the card caption change
     Given I am still on the "/q/caption?showCaptionMatches=true" page
     When I move my mouse on the 2nd card
-    When I move my mouse on the 3th in-video search element of the 2nd card
+    When I move my mouse on the 3rd in-video search element of the 2nd card
     Then the 2nd card description should be "Caption four"
