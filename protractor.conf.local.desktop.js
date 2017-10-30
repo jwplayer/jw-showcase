@@ -1,6 +1,6 @@
 var { config, createCapabilities, argv } = require('./protractor.conf.local');
 
-function createScreensizeCapabilities(browser) {
+function createViewportCapabilities(browser) {
     var sizes = ['desktop', 'tablet', 'mobile'];
     return sizes.map(function(size) {
         return createCapabilities({
@@ -43,9 +43,9 @@ browsers.forEach(function(browser) {
             }, ['@desktop'])
         );
 
-        createScreensizeCapabilities(browser).forEach(function(cap) {
-            config.multiCapabilities.push(cap);
-        });
+        // createViewportCapabilities(browser).forEach(function(cap) {
+        //     config.multiCapabilities.push(cap);
+        // });
         break;
     }
 });
@@ -53,12 +53,12 @@ browsers.forEach(function(browser) {
 config.onPrepare = function() {
     /* global browser */
     return browser.getProcessedConfig().then(function(config) {
-        var screenSize = config.capabilities.screenSize || 'desktop';
+        var viewport = config.capabilities.viewport || 'default';
 
         /* eslint-disable no-console */
-        console.log('Screen size', screenSize);
+        console.log('Viewport:', viewport);
 
-        switch (screenSize) {
+        switch (viewport) {
         case 'mobile':
             browser.driver.manage().window().setSize(480, 600);
             break;

@@ -11,21 +11,21 @@ process.argv.forEach(function(value, key) {
  * @param {Object} capabilities
  * @returns {Object}
  */
-function createCapabilities (capabilities, tags, screenSize) {
-
+function createCapabilities (capabilities, tags, viewport) {
     if (!capabilities.cucumberOpts) {
         capabilities.cucumberOpts = {};
     }
 
-    if (screenSize) {
-        capabilities.screenSize = screenSize;
+    if (viewport) {
+        capabilities.viewport = viewport;
 
         // push tag
-        tags.push('@desktop-screen-' + screenSize);
+        tags.push('@desktop-screen-' + viewport);
     }
 
     var metadata = getMetaData(capabilities);
 
+    var device = metadata.device + ((viewport && viewport !== 'default') ? ' @ ' + viewport : '');
     capabilities.cucumberOpts.format = 'json:./test/reports/results.json';
     capabilities.cucumberOpts.tags = tags;
     capabilities.metadata = {
@@ -33,7 +33,7 @@ function createCapabilities (capabilities, tags, screenSize) {
             name: metadata.browser,
             version: metadata.browserVersion
         },
-        device: metadata.device,
+        device: device,
         platform: {
             name: metadata.os,
             version: metadata.osVersion
@@ -48,8 +48,8 @@ function getMetaData(capabilities) {
         osVersion       = capabilities.os_version || 'latest',
         browser         = capabilities.browser || capabilities.browserName || 'default',
         browserVersion  = capabilities.browserVersion || capabilities.browser_version || 'latest',
-        device          = capabilities.device || capabilities.screenSize || 'desktop',
-        screenSize      = capabilities.screenSize || '';
+        device          = capabilities.device || capabilities.viewport || 'desktop',
+        viewport        = capabilities.viewport || '';
 
     return {
         os,
@@ -57,7 +57,7 @@ function getMetaData(capabilities) {
         browser,
         browserVersion,
         device,
-        screenSize
+        viewport
     };
 }
 
