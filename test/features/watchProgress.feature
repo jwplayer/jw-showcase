@@ -76,5 +76,5 @@ Feature: Watch progress
     When I wait until the video is loaded
     And I start video playback
     And I wait until the video is playing
-    And wait for 1 seconds
+    And wait for 2 seconds
     Then the video progress should be greater than 49%
