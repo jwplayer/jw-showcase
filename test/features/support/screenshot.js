@@ -23,6 +23,11 @@ defineSupportCode(function ({After}) {
         const world = this;
 
         if (result.status !== 'passed') {
+            // work around local safari bug with screenshots
+            if (browser.params && browser.params.envType === 'local' && browser.browserName === 'safari') {
+                return;
+            }
+
             return browser
                 .takeScreenshot()
                 .then(function (png) {

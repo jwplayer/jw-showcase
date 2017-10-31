@@ -98,7 +98,11 @@ const config = {
             saveCollectedJSON: false,
             reportPath: './test/reports/html'
         }
-    }]
+    ],
+
+    params: {
+        envType: 'local'
+    }
 };
 
 module.exports = {
