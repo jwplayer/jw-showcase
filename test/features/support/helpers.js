@@ -57,7 +57,7 @@ defineSupportCode(function () {
 
     global.mouseMove = function (element) {
 
-        if (/firefox/i.test(browser.browserName)) {
+        if (/safari|firefox/i.test(browser.browserName)) {
             // simulate hover with JS for FF and Safari because the browsers actions don't work
             return browser
                 .executeScript(function (elem) {
