@@ -42,6 +42,10 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').sendKeys(phrase);
     });
 
+    When('I press escape', function () {
+        return $('.jw-header .jw-search-input').sendKeys(protractor.Key.ESCAPE);
+    });
+
     When('I click on the show caption matches toggle', function () {
         return $('.jw-search-captions-toggle .jw-toggle').click();
     });

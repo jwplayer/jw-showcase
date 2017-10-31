@@ -18,7 +18,7 @@ Feature: Search
     Given I am still on the "index" page
     When I click on the search button in the header
     And I click on the search input
-    And I press the "ESCAPE" key
+    And I press escape
     Then the search bar should not be visible
 
   @mobile @tablet @desktop
