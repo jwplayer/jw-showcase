@@ -1,3 +1,6 @@
+var path = require('path');
+var fs = require('fs');
+
 var argv = {};
 process.argv.forEach(function(value, key) {
     if (value.indexOf('--') === 0) {
@@ -23,11 +26,9 @@ function createCapabilities (capabilities, tags, viewport) {
         tags.push('@desktop-screen-' + viewport);
     }
 
+    // fill metadata
     var metadata = getMetaData(capabilities);
-
-    var device = metadata.device + ((viewport && viewport !== 'default') ? ' @ ' + viewport : '');
-    capabilities.cucumberOpts.format = 'json:./test/reports/results.json';
-    capabilities.cucumberOpts.tags = tags;
+    var device = metadata.device + (viewport ? ' @ ' + viewport : '');
     capabilities.metadata = {
         browser: {
             name: metadata.browser,
@@ -39,6 +40,13 @@ function createCapabilities (capabilities, tags, viewport) {
             version: metadata.osVersion
         }
     };
+
+    // cucumber
+    capabilities.cucumberOpts.format = ['progress', 'json:./test/reports/results.json'];
+    capabilities.cucumberOpts.tags = tags;
+
+    capabilities.name = metadata.browser + '_' + metadata.device + (viewport ? '_' + viewport : '');
+    capabilities.logName = metadata.browser + '_' + metadata.device + (viewport ? '_' + viewport : '');
 
     return capabilities;
 }
@@ -90,13 +98,28 @@ const config = {
         ]
     },
 
-    plugins: [{
-        package: 'protractor-multiple-cucumber-html-reporter-plugin',
-        options: {
-            automaticallyGenerateReport: true,
-            removeExistingJsonReportFile: false,
-            saveCollectedJSON: false,
-            reportPath: './test/reports/html'
+    plugins: [
+        {
+            inline: {
+                postResults: function() {
+                    // remove empty result files
+                    var resultPth = path.join(path.resolve('./test/reports/'), 'results.' + process.pid + '.json');
+
+                    var res = require(resultPth);
+                    if (!(res && res.length)) {
+                        fs.unlinkSync(resultPth);
+                    }
+                }
+            }
+        },
+        {
+            package: 'protractor-multiple-cucumber-html-reporter-plugin',
+            options: {
+                automaticallyGenerateReport: true,
+                removeExistingJsonReportFile: false,
+                saveCollectedJSON: false,
+                reportPath: './test/reports/html'
+            }
         }
     ],
 

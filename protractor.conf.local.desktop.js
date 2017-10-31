@@ -44,9 +44,9 @@ browsers.forEach(function(browser) {
             }, ['@desktop'])
         );
 
-        // createViewportCapabilities(browser).forEach(function(cap) {
-        //     config.multiCapabilities.push(cap);
-        // });
+        createViewportCapabilities(browser).forEach(function(cap) {
+            config.multiCapabilities.push(cap);
+        });
         break;
     }
 });
