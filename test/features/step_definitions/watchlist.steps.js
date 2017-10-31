@@ -60,7 +60,13 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the first card in the watchlist slider', function () {
-        return $('.jw-content-row-saved-videos .jw-card-slider-slide.first').click();
+        var card = $('.jw-content-row-saved-videos .jw-card-slider-slide.first');
+
+        if (this.browserName === 'safari') {
+            return card.click().click();
+        }
+
+        return card.click();
     });
 
     //
