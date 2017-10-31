@@ -13,7 +13,7 @@ Feature: Dashboard page
     @mobile
     Scenario: As a user I want to see featured items
         Given I go to the "index" page
-        Then there should be 18 featured items visible
+        Then there should be 9 featured items visible
 
     @mobile @tablet @desktop
     Scenario: As a user I want to see the default sliders
