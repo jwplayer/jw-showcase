@@ -21,46 +21,53 @@ defineSupportCode(function () {
 
     global.swipe = function (element, direction) {
 
-        // @todo update this function
-        return browser
-            .executeScript(function (element, direction) {
+        return browser.executeScript(function (element, direction) {
+            var fromX = 200,
+                fromY = 100,
+                toX   = 200,
+                toY   = 100;
 
-                var fromX = 200,
-                    fromY = 100,
-                    toX   = 200,
-                    toY   = 100;
+            switch (direction) {
+            case 'left':
+                toX -= 100;
+                break;
+            case 'right':
+                toX += 100;
+                break;
+            case 'up':
+                toY -= 100;
+                break;
+            case 'down':
+                toY += 100;
+                break;
+            }
 
-                switch (direction) {
-                case 'left':
-                    toX -= 100;
-                    break;
-                case 'right':
-                    toX += 100;
-                    break;
-                case 'up':
-                    toY -= 100;
-                    break;
-                case 'down':
-                    toY += 100;
-                    break;
-                }
+            sendTouchEvent(fromX, fromY, element, 'touchstart');
+            sendTouchEvent(toX, toY, element, 'touchmove');
+            sendTouchEvent(toX, toY, element, 'touchend');
 
-                touchEvent(element, 'touchstart', fromX, fromY);
-                touchEvent(element, 'touchmove', toX, toY);
-                touchEvent(element, 'touchend', toX, toY);
+            function sendTouchEvent(x, y, element, eventType) {
+                const touchObj = new Touch({
+                    identifier: Date.now(),
+                    target: element,
+                    clientX: x,
+                    clientY: y,
+                    radiusX: 2.5,
+                    radiusY: 2.5,
+                    rotationAngle: 10,
+                    force: 0.5,
+                });
 
-                function touchEvent (target, name, x, y) {
-                    var event = new Event(name);
+                const touchEvent = new TouchEvent(eventType, {
+                    cancelable: true,
+                    bubbles: true,
+                    touches: [touchObj],
+                    targetTouches: [],
+                    changedTouches: [touchObj]
+                });
 
-                    event.touches = [{
-                        clientX: x,
-                        clientY: y
-                    }];
-
-                    event.target = target;
-                    target.dispatchEvent(event);
-                }
-
-            }, element, direction);
+                element.dispatchEvent(touchEvent);
+            }
+        }, element, direction);
     };
 });
