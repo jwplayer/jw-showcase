@@ -119,4 +119,17 @@ defineSupportCode(function () {
                 return browser.executeScript(mockHoverPseudoElement);
             });
     };
+
+    global.filterUniqueElements = function(selector, attr) {
+        var found = [];
+        return selector.filter(function(elem) {
+            return elem.getAttribute(attr).then(function (value) {
+                // if not already found
+                if (found.indexOf(value) === -1) {
+                    found.push(value);
+                    return true;
+                }
+            });
+        });
+    };
 });

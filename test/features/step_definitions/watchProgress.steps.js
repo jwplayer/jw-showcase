@@ -48,7 +48,7 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the continue watching slider should contain {int} items', function (num) {
-        return expect($$('.jw-content-row-continue-watching .jw-card').count())
+        return expect(filterUniqueElements($$('.jw-content-row-continue-watching .jw-card'), 'key').count())
             .to.eventually.equal(num);
     });
 
