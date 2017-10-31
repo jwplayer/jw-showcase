@@ -67,20 +67,24 @@ const config = {
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
-    maxSessions: 1,
+    maxSessions: 10,
 
     cucumberOpts: {
         require: [
             'test/features/support/**/*.js',
             'test/features/step_definitions/**/*.js'
         ],
-        format: 'json:./test/reports/results.json'
+        format: ['progress', 'json:./test/reports/results.json']
     },
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
     suites: {
         video: 'test/features/video.feature',
+        search: 'test/features/search.feature',
+        dashboard: 'test/features/dashboard.feature',
+        watchProgress: 'test/features/watchProgress.feature',
+
         full: [
             'test/features/*.feature'
         ]
