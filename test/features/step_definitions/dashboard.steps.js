@@ -24,11 +24,11 @@ defineSupportCode(function ({When, Then}) {
     //
 
     When('I click the left arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(800));
     });
 
     When('I click the right arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(800));
     });
 
     When('I scroll to the {ordinal} {string} slider', function (num, type) {
