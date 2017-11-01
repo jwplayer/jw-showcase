@@ -71,40 +71,40 @@ exports.config = extendConfig(
                 // //
                 // // OS X
                 // //
+
+                // latest Firefox
+                createBrowserstackCapabilities({
+                    'browserName': 'firefox',
+                    'os':          'OS X',
+                    'os_version':  'Sierra'
+                }, ['@desktop']),
+
+                // latest Chrome
+                createBrowserstackCapabilities({
+                    'browserName': 'chrome',
+                    'os':          'OS X',
+                    'os_version':  'Sierra'
+                }, ['@desktop']),
+
+                // latest Safari
+                createBrowserstackCapabilities({
+                    'browserName': 'safari',
+                    'os':          'OS X',
+                    'os_version':  'Sierra'
+                }, ['@desktop']),
+
+                // Safari 9.1
+                createBrowserstackCapabilities({
+                    'browserName': 'safari',
+                    'version':     '9.1',
+                    'os':          'OS X',
+                    'os_version':  'El Capitan'
+                }, ['@desktop']),
+
                 //
-                // // latest Firefox
-                // createBrowserstackCapabilities({
-                //     'browserName': 'firefox',
-                //     'os':          'OS X',
-                //     'os_version':  'Sierra'
-                // }, ['@desktop']),
+                // Windows
                 //
-                // // latest Chrome
-                // createBrowserstackCapabilities({
-                //     'browserName': 'chrome',
-                //     'os':          'OS X',
-                //     'os_version':  'Sierra'
-                // }, ['@desktop']),
-                //
-                // // latest Safari
-                // createBrowserstackCapabilities({
-                //     'browserName': 'safari',
-                //     'os':          'OS X',
-                //     'os_version':  'Sierra'
-                // }, ['@desktop']),
-                //
-                // // Safari 9.1
-                // createBrowserstackCapabilities({
-                //     'browserName': 'safari',
-                //     'version':     '9.1',
-                //     'os':          'OS X',
-                //     'os_version':  'El Capitan'
-                // }, ['@desktop']),
-                //
-                // //
-                // // Windows
-                // //
-                //
+
                 // Internet Explorer 11
                 createBrowserstackCapabilities({
                     'browserName': 'internet explorer',
@@ -113,26 +113,26 @@ exports.config = extendConfig(
                     'os_version':  '10'
                 }, ['@desktop']),
 
-                // // latest Chrome
-                // createBrowserstackCapabilities({
-                //     'browserName': 'chrome',
-                //     'os':          'WINDOWS',
-                //     'os_version':  '10'
-                // }, ['@desktop']),
-                //
-                // // latest Firefox
-                // createBrowserstackCapabilities({
-                //     'browserName': 'firefox',
-                //     'os':          'WINDOWS',
-                //     'os_version':  '10'
-                // }, ['@desktop']),
-                //
-                // // last Edge
-                // createBrowserstackCapabilities({
-                //     'browserName': 'edge',
-                //     'os':          'WINDOWS',
-                //     'os_version':  '10'
-                // }, ['@desktop']),
+                // latest Chrome
+                createBrowserstackCapabilities({
+                    'browserName': 'chrome',
+                    'os':          'WINDOWS',
+                    'os_version':  '10'
+                }, ['@desktop']),
+
+                // latest Firefox
+                createBrowserstackCapabilities({
+                    'browserName': 'firefox',
+                    'os':          'WINDOWS',
+                    'os_version':  '10'
+                }, ['@desktop']),
+
+                // last Edge
+                createBrowserstackCapabilities({
+                    'browserName': 'edge',
+                    'os':          'WINDOWS',
+                    'os_version':  '10'
+                }, ['@desktop'])
 
             ]
         };
