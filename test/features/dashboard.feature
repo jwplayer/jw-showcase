@@ -53,7 +53,7 @@ Feature: Dashboard page
         Given I go to the "index" page
         Then the "left" arrow in the 1st "default" slider should be disabled
         And the "left" arrow in the 2nd "default" slider should be disabled
-        And the "left" arrow in the 3th "default" slider should be disabled
+        And the "left" arrow in the 3rd "default" slider should be disabled
 
     @mobile @tablet @desktop
     Scenario: As a user I want to see title with video count for each slider

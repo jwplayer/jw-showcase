@@ -83,8 +83,11 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video progress should be greater than {int}%', function (progress) {
-        return expect(browser.executeScript('return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;'))
-            .to.eventually.be.greaterThan(progress);
+        return browser.executeScript(function() {
+            return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;
+        }).then(function (pos) {
+            return expect(pos).to.be.greaterThan(progress);
+        });
     });
 
 });

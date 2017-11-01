@@ -92,6 +92,8 @@ const config = {
         search: 'test/features/search.feature',
         dashboard: 'test/features/dashboard.feature',
         watchProgress: 'test/features/watchProgress.feature',
+        watchlist: 'test/features/watchlist.feature',
+        siderail: 'test/features/siderail.feature',
 
         full: [
             'test/features/*.feature'
