@@ -75,11 +75,11 @@ Feature: Dashboard page
         Then the title and description should be visible in the featured slider
 
     @desktop
-    Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
+    Scenario: As a user I want to see the description and controls in the default feeds on mouse hover
         Given I am still on the "index" page
         When I move my mouse to the first item in the 1st "default" slider
         Then I should see the description in the first item of the 1st "default" slider
-        And I should see the duration in the first item of the 1st "default" slider
+        And I should see the controls in the first item of the 1st "default" slider
 
     @mobile
     Scenario: As a user I want to be able to navigate to the video page by clicking on the first featured item

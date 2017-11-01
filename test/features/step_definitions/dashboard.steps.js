@@ -153,8 +153,8 @@ defineSupportCode(function ({When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('I should see the duration in the first item of the {ordinal} {string} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-duration').isDisplayed())
+    Then('I should see the controls in the first item of the {ordinal} {string} slider', function (num, type) {
+        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-controls').isDisplayed())
             .to.eventually.equal(true);
     });
 
