@@ -1,14 +1,5 @@
 var { config, createCapabilities, argv } = require('./protractor.conf.local');
 
-function createViewportCapabilities(browser) {
-    var sizes = ['desktop', 'tablet', 'mobile'];
-    return sizes.map(function(size) {
-        return createCapabilities({
-            browserName: browser
-        }, ['@desktop-screen-' + size], size);
-    });
-}
-
 config.multiCapabilities = [];
 
 var supportedBrowsers = ['chrome', 'firefox', 'safari', 'opera', 'iphone'];
@@ -43,10 +34,6 @@ browsers.forEach(function(browser) {
                 browserName: browser
             }, ['@desktop'])
         );
-
-        createViewportCapabilities(browser).forEach(function(cap) {
-            config.multiCapabilities.push(cap);
-        });
         break;
     }
 });
