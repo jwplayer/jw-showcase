@@ -32,7 +32,8 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the show more button', function () {
-        return $$('.jw-side-rail .jw-side-rail-control .jw-button').click();
+        var btn = $('.jw-side-rail .jw-side-rail-control .jw-button');
+        return browser.executeScript('arguments[0].click();', btn.getWebElement());
     });
 
     //
