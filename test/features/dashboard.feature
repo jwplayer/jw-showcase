@@ -99,7 +99,7 @@ Feature: Dashboard page
         When I move my mouse to the first item in the 1st "featured" slider
         And I click the play icon in the visible item in the featured slider
         Then the page should be "/m/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
-        And the video should be playing
+        And the video should autoplay
 
     @desktop
     Scenario: As a user I want to be able to disable the featured text overlay

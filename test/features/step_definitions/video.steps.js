@@ -103,6 +103,12 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.match(/playing|buffering/);
     });
 
+    Then('the video should autoplay', function() {
+        var regex = browser.browserName === 'safari' ? /paused|playing|buffering/ : /playing|buffering/;
+        return expect(browser.executeScript('return jwplayer().getState()'))
+            .to.eventually.match(regex);
+    });
+
     Then('the play icon should be visible', function () {
         return expect($('.jw-display-icon-container .jw-icon-display').isDisplayed()).to.eventually.equal(true);
     });
