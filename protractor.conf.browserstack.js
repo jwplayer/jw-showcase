@@ -5,6 +5,9 @@ var local;
 
 var extendConfig = require('./protractor/_base');
 
+const BROWSERSTACK_USER = env.BROWSERSTACK_USERNAME || env.BROWSERSTACK_USER || env.BS_USERNAME;
+const BROWSERSTACK_KEY = env.BROWSERSTACK_ACCESS_KEY || env.BROWSERSTACK_KEY || env.BS_AUTHKEY;
+
 exports.config = extendConfig(
     function() {
         return {
@@ -20,7 +23,7 @@ exports.config = extendConfig(
                     local = new browserstack.Local();
                     local.start({
                         'force': true,
-                        'key':   env.BROWSERSTACK_KEY || env.BS_AUTHKEY
+                        'key': BROWSERSTACK_KEY
                     }, function (error) {
                         if (error) {
                             return reject(error);
@@ -41,8 +44,8 @@ exports.config = extendConfig(
     './test/reports/browserstack',
 
     function (capabilities) {
-        capabilities['browserstack.user']  = env.BROWSERSTACK_USER || env.BROWSERSTACK_USERNAME || env.BS_USERNAME;
-        capabilities['browserstack.key']   = env.BROWSERSTACK_KEY || env.BROWSERSTACK_ACCESS_KEY || env.BS_AUTHKEY;
+        capabilities['browserstack.user']  = BROWSERSTACK_USER;
+        capabilities['browserstack.key']   = BROWSERSTACK_KEY;
         capabilities['browserstack.local'] = true;
 
         // Selenium 3.4.0 does not work great with IE11
