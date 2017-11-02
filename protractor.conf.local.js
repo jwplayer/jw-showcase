@@ -1,7 +1,11 @@
+var fs = require('fs');
+
 var { extendConfig, argv } = require('./protractor.conf.base');
 
+var LOCAL_IP = fs.readFileSync('./LOCAL_IP', 'utf8').trim() || 'localhost';
+
 var localConfig = {
-    baseUrl: 'http://10.0.10.13:9001',
+    baseUrl: 'http://' + LOCAL_IP +':9001',
 
     maxSessions: 10,
 
