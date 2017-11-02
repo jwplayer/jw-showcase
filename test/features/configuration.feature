@@ -39,17 +39,11 @@ Feature: Configuration
     Then the error page is shown
     And the error page displays the following message "Failed to load config file"
 
-  @tablet @desktop
+  @mobile @tablet @desktop
   Scenario: I don't want to use the featured slider
     Given I set the configLocation to "./fixtures/config/noFeaturedPlaylist.json"
     And I go to the "index" page
     Then the featured slider should not be visible
-
-  @mobile
-  Scenario: I don't want to use the featured slider
-    Given I set the configLocation to "./fixtures/config/noFeaturedPlaylist.json"
-    And I go to the "index" page
-    Then the featured items should not be visible
 
   @mobile @tablet @desktop
   Scenario: I don't want to use the default sliders

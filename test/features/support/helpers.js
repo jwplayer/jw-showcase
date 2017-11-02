@@ -58,10 +58,13 @@ defineSupportCode(function () {
     global.mouseMove = function (element) {
 
         if (/safari|firefox/i.test(browser.browserName)) {
-
+            // simulate hover with JS for FF and Safari because the browsers actions don't work
             return browser
                 .executeScript(function (elem) {
                     elem.classList.add('hover');
+                    var evObj = document.createEvent('MouseEvents');
+                    evObj.initEvent( 'mouseover', true, false );
+                    elem.dispatchEvent(evObj);
                 }, element.getWebElement());
         }
 
@@ -115,5 +118,18 @@ defineSupportCode(function () {
             .then(function () {
                 return browser.executeScript(mockHoverPseudoElement);
             });
+    };
+
+    global.filterUniqueElements = function(selector, attr) {
+        var found = [];
+        return selector.filter(function(elem) {
+            return elem.getAttribute(attr).then(function (value) {
+                // if not already found
+                if (found.indexOf(value) === -1) {
+                    found.push(value);
+                    return true;
+                }
+            });
+        });
     };
 });

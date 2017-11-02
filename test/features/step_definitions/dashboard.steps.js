@@ -24,11 +24,11 @@ defineSupportCode(function ({When, Then}) {
     //
 
     When('I click the left arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(800));
     });
 
     When('I click the right arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(800));
     });
 
     When('I scroll to the {ordinal} {string} slider', function (num, type) {
@@ -43,7 +43,7 @@ defineSupportCode(function ({When, Then}) {
         return mouseMove(firstCardSlide);
     });
 
-    When(' I click the first featured item in the dashboard', function () {
+    When('I click the first featured item in the dashboard', function () {
         return $$('.jw-card-flag-featured').get(0).click();
     });
 
@@ -52,11 +52,17 @@ defineSupportCode(function ({When, Then}) {
     });
 
     When('I click the play icon in the visible item in the featured slider', function () {
-        const element = $$(`.jw-card-slider-flag-featured`).get(0)
+        const element = $$('.jw-card-slider-flag-featured').get(0)
             .$('.jw-card-slider-slide.is-visible .jw-card-play-button');
 
         // play icon is not interactable in Firefox
         return clickHelper(element);
+    });
+
+    When('I swipe {string} in the {ordinal} {string} slider', function (direction, num, type) {
+        var element = $$(`.jw-card-slider-flag-${type} .jw-card-slider-align`).get(num - 1);
+
+        return swipe(element, direction);
     });
 
     //
@@ -79,12 +85,22 @@ defineSupportCode(function ({When, Then}) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.be.greaterThan(0);
     });
 
-    Then('there should be ([0-9]*) featured items visible', function (num) {
+    Then('there should be {int} featured items visible', function (num) {
         return expect($$('.jw-card-flag-featured').count()).to.eventually.equal(num);
     });
 
-    Then('there should be ([0-9]*) default sliders visible', function (num) {
+    Then('there should be {int} default sliders visible', function (num) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.equal(num);
+    });
+
+    Then('the {string} item in the {ordinal} {string} slider should not be visible', function (item, num, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.not.contain('is-visible');
+    });
+
+    Then('the {string} item in the {ordinal} {string} slider should be visible', function (item, num, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.contain('is-visible');
     });
 
     Then('the {string} item in the {string} slider should not be visible', function (item, type) {
@@ -137,29 +153,29 @@ defineSupportCode(function ({When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('I should see the duration in the first item of the {ordinal} {string} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-duration').isDisplayed())
+    Then('I should see the controls in the first item of the {ordinal} {string} slider', function (num, type) {
+        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-controls').isDisplayed())
             .to.eventually.equal(true);
     });
 
     Then('the card title should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title`).isDisplayed())
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title').isDisplayed())
             .to.eventually.equal(false);
     });
 
     Then('the card description should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description`)
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description')
             .isDisplayed())
             .to.eventually.equal(false);
     });
 
-    Then('the card titles should be hidden in the {ordinal} default slider', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.first .jw-card-info').isDisplayed())
+    Then('the card titles should be hidden in the {ordinal} {string} slider', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.first .jw-card-info').isDisplayed())
             .to.eventually.equal(false);
     });
 
-    Then('the title of the {ordinal} default slider should be hidden', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.jw-feed-title').isDisplayed())
+    Then('the title of the {ordinal} {string} slider should be hidden', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.jw-feed-title').isDisplayed())
             .to.eventually.equal(false);
     });
 

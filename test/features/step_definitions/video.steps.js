@@ -43,7 +43,10 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I start video playback', function () {
-        return browser.executeScript('jwplayer().play()');
+        return browser.executeScript(function () {
+            jwplayer().setMute(true);
+            jwplayer().play();
+        });
     });
 
     When('I wait until the video is playing', function () {
@@ -98,6 +101,12 @@ defineSupportCode(function ({Given, When, Then}) {
     Then('the video should be playing', function () {
         return expect(browser.executeScript('return jwplayer().getState()'))
             .to.eventually.match(/playing|buffering/);
+    });
+
+    Then('the video should autoplay', function() {
+        var regex = browser.browserName === 'safari' ? /paused|playing|buffering/ : /playing|buffering/;
+        return expect(browser.executeScript('return jwplayer().getState()'))
+            .to.eventually.match(regex);
     });
 
     Then('the play icon should be visible', function () {

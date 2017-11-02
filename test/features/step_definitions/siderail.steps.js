@@ -32,7 +32,8 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the show more button', function () {
-        return $$('.jw-side-rail .jw-side-rail-control .jw-button').click();
+        var btn = $('.jw-side-rail .jw-side-rail-control .jw-button');
+        return browser.executeScript('arguments[0].click();', btn.getWebElement());
     });
 
     //
@@ -51,7 +52,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-side-rail .jw-side-rail-header').getText()).to.eventually.equal(title);
     });
 
-    Then('the siderail should contain ([0-9]*) items', function (num) {
+    Then('the siderail should contain {int} items', function (num) {
         return expect($$('.jw-side-rail .jw-side-rail-item').count()).to.eventually.equal(num);
     });
 

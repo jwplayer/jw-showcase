@@ -42,6 +42,10 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').sendKeys(phrase);
     });
 
+    When('I press escape', function () {
+        return $('.jw-header .jw-search-input').sendKeys(protractor.Key.ESCAPE);
+    });
+
     When('I click on the show caption matches toggle', function () {
         return $('.jw-search-captions-toggle .jw-toggle').click();
     });
@@ -78,7 +82,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-search .jw-search-input').isDisplayed()).to.eventually.equal(false);
     });
 
-    Then('the search page should show ([0-9]*) items', function (count) {
+    Then('the search page should show {int} items', function (count) {
         return expect($$('.jw-card').count()).to.eventually.equal(count);
     });
 

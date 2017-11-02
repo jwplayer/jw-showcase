@@ -14,28 +14,24 @@ module.exports = function (grunt) {
 
     // don't break existing tasks
     grunt.registerTask('test:protractor:local', function () {
+        grunt.task.run('clean:reports_local');
+
         // set based on platform, default: desktop
         var platform = grunt.option('platform') || 'desktop';
         grunt.config.set('configFile', 'protractor.conf.local.' + platform + '.js');
-
-        if (platform === 'desktop') {
-            if (grunt.option('browser')) {
-                addArgs({
-                    browser: grunt.option('browser')
-                });
-            }
-        }
 
         runProtractorTasks();
     });
 
     grunt.registerTask('test:protractor:browserstack', function () {
-        grunt.config.set('configFile', 'protractor.browserstack.conf.js');
+        grunt.task.run('clean:reports_browserstack');
+
+        grunt.config.set('configFile', 'protractor.conf.browserstack.js');
         runProtractorTasks();
     });
 
     grunt.registerTask('test:protractor:mobile', function () {
-        grunt.config.set('configFile', 'protractor.mobile.conf.js');
+        grunt.config.set('configFile', 'protractor.conf.mobile.js');
 
         if (!process.env.JENKINS_URL) {
             return runProtractorTasks();
@@ -62,7 +58,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test:server', [
         'clean:server',
-        'clean:reports',
         'compass',
         'ngtemplates:server',
         'template:serverE2E',
@@ -70,32 +65,10 @@ module.exports = function (grunt) {
         'connect:test'
     ]);
 
-    function addArgs(args) {
-        grunt.config.merge({
-            protractor: {
-                run: {
-                    options: {
-                        args: args
-                    }
-                }
-            }
-        });
-    }
-
     function runProtractorTasks () {
 
         if (grunt.option('no-server')) {
             return grunt.task.run(['protractor:run']);
-        }
-
-        // add cucumber name if needed
-        var cukeName = grunt.option('name');
-        if (cukeName) {
-            addArgs({
-                cucumberOpts: {
-                    name: cukeName
-                }
-            });
         }
 
         grunt.task.run([

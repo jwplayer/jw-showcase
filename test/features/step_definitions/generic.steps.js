@@ -70,7 +70,7 @@ defineSupportCode(function ({Given, When, Then}) {
     // When
     //
 
-    When('wait for ([0-9]*) seconds', function (seconds) {
+    When('wait for {int} seconds', function (seconds) {
         return browser.sleep(seconds * 1000);
     });
 
@@ -89,7 +89,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return card.click();
     });
 
-    When('I seek to ([0-9]*) seconds in the video', function (seconds) {
+    When('I seek to {int} seconds in the video', function (seconds) {
         return browser.executeScript(`jwplayer().seek(${seconds})`);
     });
 
@@ -103,18 +103,6 @@ defineSupportCode(function ({Given, When, Then}) {
                 return url.indexOf(page) !== -1;
             });
         });
-    });
-
-    When('I press the {string} key', function (key) {
-
-        // firefox throws exception "UnsupportedOperationError: sendKeysToActiveElement"
-        // safari doesn't press key, but sends the unicode char to active input element as value
-        if (this.browserName === 'firefox' || this.browserName === 'safari') {
-            return 'pending';
-        }
-
-        let keycode = protractor.Key[key.toUpperCase()];
-        return browser.actions().sendKeys(keycode).perform();
     });
 
     //

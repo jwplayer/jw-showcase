@@ -60,7 +60,13 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the first card in the watchlist slider', function () {
-        return $('.jw-content-row-saved-videos .jw-card-slider-slide.first').click();
+        var card = $('.jw-content-row-saved-videos .jw-card-slider-slide.first');
+
+        if (this.browserName === 'safari') {
+            return card.click().click();
+        }
+
+        return card.click();
     });
 
     //
@@ -77,8 +83,8 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('the watchlist slider should contain ([0-9]*) items', function (num) {
-        return expect($$('.jw-content-row-saved-videos .jw-card').count())
+    Then('the watchlist slider should contain {int} items', function (num) {
+        return expect(filterUniqueElements($$('.jw-content-row-saved-videos .jw-card'), 'key').count())
             .to.eventually.equal(num);
     });
 
