@@ -41,8 +41,8 @@ exports.config = extendConfig(
     './test/reports/browserstack',
 
     function (capabilities) {
-        capabilities['browserstack.user']  = env.BROWSERSTACK_USER || env.BS_USERNAME;
-        capabilities['browserstack.key']   = env.BROWSERSTACK_KEY || env.BS_AUTHKEY;
+        capabilities['browserstack.user']  = env.BROWSERSTACK_USER || env.BROWSERSTACK_USERNAME || env.BS_USERNAME;
+        capabilities['browserstack.key']   = env.BROWSERSTACK_KEY || env.BROWSERSTACK_ACCESS_KEY || env.BS_AUTHKEY;
         capabilities['browserstack.local'] = true;
 
         // Selenium 3.4.0 does not work great with IE11
