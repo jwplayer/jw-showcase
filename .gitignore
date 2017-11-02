@@ -13,3 +13,6 @@ test/reports
 
 protractor.lab.conf.js
 /hosted
+local.log
+
+LOCAL_IP
