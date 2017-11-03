@@ -1,20 +1,22 @@
 var path = require('path');
 var fs = require('fs');
 
-// process argv
-var argv = {};
-process.argv.forEach(function(value, key) {
-    if (value.indexOf('--') === 0) {
-        argv[value.replace('--', '')] = process.argv[++key].split(',');
-    }
-});
+var CAPABILITIES = require('./_caps');
 
 var REPORT_FILENAME = 'results';
 
+// process argv
+var ARGV = {};
+process.argv.forEach(function(value, key) {
+    if (value.indexOf('--') === 0) {
+        ARGV[value.replace('--', '')] = process.argv[++key].split(',');
+    }
+});
+
 function getMetaData(capabilities) {
-    var os              = capabilities.os || 'osx',
+    var os              = capabilities.os || 'unknown',
         osVersion       = capabilities.os_version || 'latest',
-        browser         = capabilities.browser || capabilities.browserName || 'default',
+        browser         = capabilities.browser || capabilities.browserName || 'unknown',
         browserVersion  = capabilities.browserVersion || capabilities.browser_version || 'latest',
         device          = capabilities.device || capabilities.viewport || 'desktop',
         viewport        = capabilities.viewport || '';
@@ -23,6 +25,7 @@ function getMetaData(capabilities) {
         device += '_' + viewport;
     }
 
+    // convert name for html-reporter
     switch(os) {
     case 'MAC':
     case 'OS X':
@@ -45,12 +48,29 @@ function getMetaData(capabilities) {
     };
 }
 
-function extendConfig(callback, reportPath) {
-    function createCapabilities (capabilities, tags, viewport) {
-        if (!capabilities.cucumberOpts) {
-            capabilities.cucumberOpts = {};
+function getCukeFormat(reportPath, reportName = 'results') {
+    return [ 'progress', 'json:' + path.join(reportPath, reportName + '.json') ];
+}
+
+function extendConfig(callback, reportPath, customCapabilities) {
+    // get browsers from argv
+    var browserIds = Object.keys(CAPABILITIES);
+    if (ARGV.browser) {
+        // ensure array
+        browserIds = typeof ARGV.browser === 'string' ? [ARGV.browser] : ARGV.browser;
+    }
+
+    console.log(`\nBROWSER IDS\n${JSON.stringify(browserIds, null, 2)}\n`);
+
+    function createCapabilities (id) {
+        var cap = CAPABILITIES[id];
+        if (!cap) {
+            return;
         }
 
+        var [ capabilities, tags, viewport ] = cap;
+
+        // add viewport meta and tags if needed
         if (viewport) {
             capabilities.viewport = viewport;
 
@@ -58,7 +78,7 @@ function extendConfig(callback, reportPath) {
             tags.push('@desktop-screen-' + viewport);
         }
 
-        // fill metadata
+        // fill metadata for html-reporter
         var metadata = getMetaData(capabilities);
         capabilities.metadata = {
             browser: {
@@ -73,13 +93,16 @@ function extendConfig(callback, reportPath) {
         };
 
         // cucumber
-        capabilities.cucumberOpts.format = ['progress', 'json:' + path.join(reportPath, REPORT_FILENAME + '.json')];
+        if (!capabilities.cucumberOpts) {
+            capabilities.cucumberOpts = {};
+        }
+        capabilities.cucumberOpts.format = getCukeFormat(reportPath);
         capabilities.cucumberOpts.tags = tags;
 
-        capabilities.name = metadata.browser + '_' + metadata.device;
-        capabilities.logName = metadata.browser + '_' + metadata.device;
+        capabilities.name = id;
+        capabilities.logName = id;
 
-        return capabilities;
+        return customCapabilities ? customCapabilities(capabilities) : capabilities;
     }
 
     var baseConfig = {
@@ -95,7 +118,7 @@ function extendConfig(callback, reportPath) {
                 'test/features/support/**/*.js',
                 'test/features/step_definitions/**/*.js'
             ],
-            format: ['progress', 'json:' + path.join(reportPath, REPORT_FILENAME + '.json')]
+            format: getCukeFormat(reportPath)
         },
 
         seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -141,7 +164,11 @@ function extendConfig(callback, reportPath) {
                     reportPath: path.join(reportPath, 'html')
                 }
             }
-        ]
+        ],
+
+        multiCapabilities: browserIds.map(createCapabilities).filter(function (cap) {
+            return !!cap;
+        })
     };
 
     // merge objects
@@ -149,7 +176,4 @@ function extendConfig(callback, reportPath) {
     return Object.assign({}, baseConfig, customConfig);
 }
 
-module.exports = {
-    extendConfig,
-    argv
-};
+module.exports = extendConfig;

@@ -1,10 +1,11 @@
+const DEBUG = process.argv.indexOf('--debug') !== -1;
 
 module.exports = function (config) {
     config.set({
 
         basePath: '.',
 
-        frameworks: ['jasmine'],
+        frameworks: [ 'jasmine' ],
 
         files: [
             'bower_components/angular/angular.js',
@@ -23,7 +24,9 @@ module.exports = function (config) {
             'test/fixtures/config/**/*.json',
             'test/unit/helpers/*.js',
             'test/unit/specs/**/*.spec.js',
-            {pattern: 'app/images/*', included: false, served: true}
+            {
+                pattern: 'app/images/*', included: false, served: true
+            }
         ],
 
         exclude: [
@@ -41,11 +44,11 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            '**/*.html':                 ['ng-html2js'],
-            'test/fixtures/**/*.json':   ['json_fixtures']
+            '**/*.html':                 [ 'ng-html2js' ],
+            'test/fixtures/**/*.json':   [ 'json_fixtures' ]
         },
 
-        reporters: ['dots'],
+        reporters: [ 'dots' ],
 
         port: 9876,
 
@@ -55,10 +58,24 @@ module.exports = function (config) {
 
         autoWatch: true,
 
-        browsers: ['PhantomJS'],
+        browsers: [ 'PhantomJS' ],
 
         singleRun: true,
 
         concurrency: Infinity
     });
+
+    if (DEBUG) {
+        config.set({
+            // Allow remote debugging when using PhantomJS
+            customLaunchers: {
+                'PhantomJS_custom': {
+                    base: 'PhantomJS',
+                    debug: true
+                },
+            },
+
+            singleRun: false
+        });
+    }
 };
