@@ -16,10 +16,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test:protractor:local', function () {
         grunt.task.run('clean:reports_local');
 
-        // set based on platform, default: desktop
-        var platform = grunt.option('platform') || 'desktop';
-        grunt.config.set('configFile', 'protractor.conf.local.' + platform + '.js');
-
+        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
         runProtractorTasks();
     });
 
