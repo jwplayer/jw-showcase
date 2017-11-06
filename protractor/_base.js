@@ -52,13 +52,43 @@ function getCukeFormat(reportPath, reportName = 'results') {
     return [ 'progress', 'json:' + path.join(reportPath, reportName + '.json') ];
 }
 
-function extendConfig(callback, reportPath, customCapabilities) {
+function parseBrowserIds() {
+    var allBrowserIds = Object.keys(CAPABILITIES);
+
     // get browsers from argv
-    var browserIds = Object.keys(CAPABILITIES);
     if (ARGV.browser) {
+        // default
+        var ret = [];
+
         // ensure array
-        browserIds = typeof ARGV.browser === 'string' ? [ARGV.browser] : ARGV.browser;
+        var args = typeof ARGV.browser === 'string' ? [ARGV.browser] : ARGV.browser;
+
+        args.forEach(function (arg) {
+            // if wildcard
+            if (arg.indexOf('*') !== -1) {
+                var regex = new RegExp(arg.replace('*', '.*'));
+                // check matches
+                allBrowserIds.forEach(function (browserId) {
+                    if (browserId.match(regex)) {
+                        ret.push(browserId);
+                    }
+                });
+            } else {
+                ret.push(arg);
+            }
+        });
+
+        // unique array
+        ret = ret.filter((v, k, self) => self.indexOf(v) === k);
+
+        return ret;
+    } else {
+        return allBrowserIds;
     }
+}
+
+function extendConfig(callback, reportPath, customCapabilities) {
+    var browserIds = parseBrowserIds();
 
     console.log(`\nBROWSER IDS\n${JSON.stringify(browserIds, null, 2)}\n`);
 
