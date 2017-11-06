@@ -2,7 +2,14 @@ var fs = require('fs');
 
 var extendConfig = require('./protractor/_base');
 
-var LOCAL_IP = fs.readFileSync('./LOCAL_IP', 'utf8').trim() || 'localhost';
+var localIp;
+try {
+    localIp = fs.readFileSync('./LOCAL_IP', 'utf8').trim();
+} catch(ex) {
+    // ignore
+}
+
+var LOCAL_IP = localIp || 'localhost';
 
 exports.config = extendConfig(
     function() {
