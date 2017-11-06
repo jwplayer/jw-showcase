@@ -15,11 +15,11 @@ module.exports = function (config) {
             'node_modules/angular-ui-router/release/angular-ui-router.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'node_modules/ua-parser-js/dist/ua-parser.pack.js',
-            'node_modules/jw-showcase-lib/js/polyfills.js',
-            'node_modules/jw-showcase-lib/js/vtt.js',
-            'node_modules/jw-showcase-lib/js/core/core.module.js',
-            'node_modules/jw-showcase-lib/js/core/**/*.js',
-            'node_modules/jw-showcase-lib/views/**/*.html',
+            'app/scripts/polyfills.js',
+            'app/scripts/vtt.js',
+            'app/scripts/core/core.module.js',
+            'app/scripts/core/**/*.js',
+            'app/views/**/*.html',
             'test/fixtures/feed/*.json',
             'test/fixtures/config/**/*.json',
             'test/unit/helpers/*.js',
@@ -35,7 +35,6 @@ module.exports = function (config) {
         ],
 
         ngHtml2JsPreprocessor: {
-            stripPrefix: 'node_modules/jw-showcase-lib/',
             moduleName:  'app.partials'
         },
 

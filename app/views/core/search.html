@@ -1,0 +1,28 @@
+<div class="jw-search"
+    ng-class="{'is-active': vm.searchBarActive, 'jw-search-flag-ivs': vm.config.options.enableInVideoSearch}">
+  <div class="jw-search-container ng-hide" ng-show="vm.searchBarActive">
+    <div class="jw-search-align">
+      <i class="jwy-icon jwy-icon-search jw-search-icon"></i>
+      <input class="jw-search-input" type="text" placeholder="Type to search..."
+          ng-model="vm.searchPhrase" ng-model-options="{ debounce: 500 }"
+          ng-keyup="vm.searchInputKeyupHandler($event)" ng-change="vm.searchInputChangeHandler()"/>
+      <div class="jw-search-captions-toggle" ng-if="vm.config.options.enableInVideoSearch">
+          <span class="jw-search-captions-toggle-label">Show caption matches:</span>
+          <jw-toggle
+              aria-label="show caption matches"
+              tabindex="0"
+              ng-model="vm.showCaptionMatches"
+              ng-change="vm.showCaptionMatchesChangeHandler()"
+          ></jw-toggle>
+      </div>
+      <jw-button class="jw-icon-button jw-button-close-search jw-button-default"
+          ng-click="vm.closeSearchButtonClickHandler($event)"
+          tabindex="0">
+        <i class="jwy-icon jwy-icon-cross"></i>
+      </jw-button>
+    </div>
+  </div>
+  <jw-button class="jw-button-search jw-button-default" ng-click="vm.searchButtonClickHandler()" tabindex="0">
+    <span class="jw-button-label">Search</span> <i class="jwy-icon jwy-icon-search jwy-icon-sm"></i>
+  </jw-button>
+</div>

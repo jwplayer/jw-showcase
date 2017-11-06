@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="app" ng-controller="RootController as rootVm">
 <head>
-  <!-- <%= version %>, lib <%= libVersion %> -->
+  <!-- <%= version %> -->
   <base href="<%= path %>">
   <meta charset="utf-8">
 
@@ -41,7 +41,7 @@
   <% } %>
 
   <!-- build:js(.) scripts/bridge.js -->
-  <script src="node_modules/jw-showcase-lib/js/bridge.js"></script>
+  <script src="scripts/bridge.js"></script>
   <!-- endbuild -->
 
   <!-- build:css(.) styles/vendor.css -->
@@ -92,107 +92,107 @@
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/application.js -->
-<script src="node_modules/jw-showcase-lib/js/vtt.js"></script>
-<script src="node_modules/jw-showcase-lib/js/polyfills.js"></script>
+<script src="scripts/vtt.js"></script>
+<script src="scripts/polyfills.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/jwShowcase.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/core.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/animations/expand.animation.js"></script>
+<script src="scripts/jwShowcase.module.js"></script>
+<script src="scripts/core/core.module.js"></script>
+<script src="scripts/core/animations/expand.animation.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/controllers/cardMenu.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/controllers/cookies.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/controllers/confirm.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/controllers/root.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/controllers/share.controller.js"></script>
+<script src="scripts/core/controllers/cardMenu.controller.js"></script>
+<script src="scripts/core/controllers/cookies.controller.js"></script>
+<script src="scripts/core/controllers/confirm.controller.js"></script>
+<script src="scripts/core/controllers/root.controller.js"></script>
+<script src="scripts/core/controllers/share.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/components/buttonBack.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/buttonMenu.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/footer.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/header.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/headerMenu.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/rail.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/search.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/sidebar.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/sidebarLayout.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/components/toolbar.component.js"></script>
+<script src="scripts/core/components/buttonBack.component.js"></script>
+<script src="scripts/core/components/buttonMenu.component.js"></script>
+<script src="scripts/core/components/footer.component.js"></script>
+<script src="scripts/core/components/header.component.js"></script>
+<script src="scripts/core/components/headerMenu.component.js"></script>
+<script src="scripts/core/components/rail.component.js"></script>
+<script src="scripts/core/components/search.component.js"></script>
+<script src="scripts/core/components/sidebar.component.js"></script>
+<script src="scripts/core/components/sidebarLayout.component.js"></script>
+<script src="scripts/core/components/toolbar.component.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/directives/adSlot.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/button.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/card.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/cardGrid.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/cardMenu.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/cardSlider.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/click.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/cardPoster.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/collapsibleText.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/feedTitle.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/markdown.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/scroll.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/lazyLoad.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/player.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/screenSize.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/toggle.directive.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/directives/view.directive.js"></script>
+<script src="scripts/core/directives/adSlot.directive.js"></script>
+<script src="scripts/core/directives/button.directive.js"></script>
+<script src="scripts/core/directives/card.directive.js"></script>
+<script src="scripts/core/directives/cardGrid.directive.js"></script>
+<script src="scripts/core/directives/cardMenu.directive.js"></script>
+<script src="scripts/core/directives/cardSlider.directive.js"></script>
+<script src="scripts/core/directives/click.directive.js"></script>
+<script src="scripts/core/directives/cardPoster.directive.js"></script>
+<script src="scripts/core/directives/collapsibleText.directive.js"></script>
+<script src="scripts/core/directives/feedTitle.directive.js"></script>
+<script src="scripts/core/directives/markdown.directive.js"></script>
+<script src="scripts/core/directives/scroll.directive.js"></script>
+<script src="scripts/core/directives/lazyLoad.directive.js"></script>
+<script src="scripts/core/directives/player.directive.js"></script>
+<script src="scripts/core/directives/screenSize.directive.js"></script>
+<script src="scripts/core/directives/toggle.directive.js"></script>
+<script src="scripts/core/directives/view.directive.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/filters/videoDuration.filter.js"></script>
+<script src="scripts/core/filters/videoDuration.filter.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/services/api.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/apiConsumer.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/appStore.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/bridge.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/configResolver.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/cookies.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/dataStore.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/dfp.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/feedModel.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/history.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/userSettings.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/utils.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/serviceWorker.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/player.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/popup.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/platform.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/preload.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/seo.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/session.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/sidebar.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/thumbstrip.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/watchlist.service.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/services/watchProgress.service.js"></script>
+<script src="scripts/core/services/api.service.js"></script>
+<script src="scripts/core/services/apiConsumer.service.js"></script>
+<script src="scripts/core/services/appStore.service.js"></script>
+<script src="scripts/core/services/bridge.service.js"></script>
+<script src="scripts/core/services/configResolver.service.js"></script>
+<script src="scripts/core/services/cookies.service.js"></script>
+<script src="scripts/core/services/dataStore.service.js"></script>
+<script src="scripts/core/services/dfp.service.js"></script>
+<script src="scripts/core/services/feedModel.service.js"></script>
+<script src="scripts/core/services/history.service.js"></script>
+<script src="scripts/core/services/userSettings.service.js"></script>
+<script src="scripts/core/services/utils.service.js"></script>
+<script src="scripts/core/services/serviceWorker.service.js"></script>
+<script src="scripts/core/services/player.service.js"></script>
+<script src="scripts/core/services/popup.service.js"></script>
+<script src="scripts/core/services/platform.service.js"></script>
+<script src="scripts/core/services/preload.service.js"></script>
+<script src="scripts/core/services/seo.service.js"></script>
+<script src="scripts/core/services/session.service.js"></script>
+<script src="scripts/core/services/sidebar.service.js"></script>
+<script src="scripts/core/services/thumbstrip.service.js"></script>
+<script src="scripts/core/services/watchlist.service.js"></script>
+<script src="scripts/core/services/watchProgress.service.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/core/listeners/stateChangeStart.listener.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/listeners/stateChangeError.listener.js"></script>
-<script src="node_modules/jw-showcase-lib/js/core/listeners/stateChangeSuccess.listener.js"></script>
+<script src="scripts/core/listeners/stateChangeStart.listener.js"></script>
+<script src="scripts/core/listeners/stateChangeError.listener.js"></script>
+<script src="scripts/core/listeners/stateChangeSuccess.listener.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/error/error.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/error/controllers/error.controller.js"></script>
+<script src="scripts/error/error.module.js"></script>
+<script src="scripts/error/controllers/error.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/dashboard/dashboard.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/dashboard/controllers/dashboard.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/dashboard/directives/contentRow.directive.js"></script>
+<script src="scripts/dashboard/dashboard.module.js"></script>
+<script src="scripts/dashboard/controllers/dashboard.controller.js"></script>
+<script src="scripts/dashboard/directives/contentRow.directive.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/feed/feed.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/feed/controllers/feed.controller.js"></script>
+<script src="scripts/feed/feed.module.js"></script>
+<script src="scripts/feed/controllers/feed.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/search/search.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/search/controllers/search.controller.js"></script>
+<script src="scripts/search/search.module.js"></script>
+<script src="scripts/search/controllers/search.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/settings/settings.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/settings/controllers/settings.controller.js"></script>
+<script src="scripts/settings/settings.module.js"></script>
+<script src="scripts/settings/controllers/settings.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/tag/tag.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/tag/controllers/tag.controller.js"></script>
+<script src="scripts/tag/tag.module.js"></script>
+<script src="scripts/tag/controllers/tag.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/updateBrowser/updateBrowser.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/updateBrowser/controllers/updateBrowser.controller.js"></script>
+<script src="scripts/updateBrowser/updateBrowser.module.js"></script>
+<script src="scripts/updateBrowser/controllers/updateBrowser.controller.js"></script>
 
-<script src="node_modules/jw-showcase-lib/js/video/video.module.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/controllers/video.controller.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/components/toolbarVideo.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/components/videoDetails.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/components/videoDetailsTitle.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/components/videoDetailsDescription.component.js"></script>
-<script src="node_modules/jw-showcase-lib/js/video/components/videoDetailsShare.component.js"></script>
+<script src="scripts/video/video.module.js"></script>
+<script src="scripts/video/controllers/video.controller.js"></script>
+<script src="scripts/video/components/toolbarVideo.component.js"></script>
+<script src="scripts/video/components/videoDetails.component.js"></script>
+<script src="scripts/video/components/videoDetailsTitle.component.js"></script>
+<script src="scripts/video/components/videoDetailsDescription.component.js"></script>
+<script src="scripts/video/components/videoDetailsShare.component.js"></script>
 <!-- endbuild -->
 
 <script>

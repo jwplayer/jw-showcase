@@ -1,0 +1,47 @@
+//
+// jwCollapsibleText
+// --------------------------------
+
+.jw-collapsible-text {
+
+    &.expanded {
+
+        .jw-collapsible-text-toggle .jw-button {
+            @include transform(rotate(180deg));
+        }
+    }
+
+    &.inactive {
+        .jw-collapsible-text-toggle {
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+
+    .jw-collapsible-text-content {
+        @include transition(max-height 0.3s ease 0s);
+
+        position: relative;
+        overflow: hidden;
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .jw-collapsible-text-toggle {
+        height: 15px;
+        line-height: 15px;
+        text-align: center;
+
+        .jw-button {
+            @include transition(transform 0.3s ease 0s);
+            top: -5px;
+            padding: 5px 15px;
+
+            .jwy-icon {
+                font-size: rem(18px);
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+.jw-showcase-player {
+    &-flag-click-to-play {
+        // Click to Play
+        .jwplayer {
+            &.jw-state-idle {
+                .jw-display-icon-display {
+                    border-radius: 50%;
+
+                    &::after {
+                        @include transform(translateX(-50%));
+                        position: absolute;
+                        left: 50%;
+                        margin-top: 5px;
+                        font-size: 14px;
+                        content: 'Click to Play';
+                    }
+
+                    .jw-icon {
+                        width: 55px;
+                        height: 55px;
+                        line-height: 55px;
+
+                        &::before {
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+// jwPlayer
+// --------------------------------
+
+.jwplayer.jw-reset {
+
+    .jw-title {
+        display: none !important;
+    }
+
+    .jw-dock {
+        margin: 30px;
+
+        pointer-events: none;
+
+        .jw-dock-button {
+            pointer-events: all;
+        }
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include tablet-and-larger () {
+
+    .jwplayer.jw-reset.jw-flag-aspect-mode {
+        height: 100% !important;
+    }
+}

@@ -1,0 +1,56 @@
+//
+// jwContainer
+// --------------------------------
+
+.jw-container {
+    position: relative;
+
+    &-full {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+//
+// Paddings
+// --------------------------------
+
+.pb {
+    padding-bottom: $base-spacing;
+}
+
+.pbh {
+    padding-bottom: $base-spacing-heading;
+}
+
+.pt {
+    padding-top: $base-spacing;
+}
+
+.pth {
+    padding-top: $base-spacing-heading;
+}
+
+.center {
+    text-align: center;
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include tablet-only () {
+
+    .jw-container {
+        max-width: $container-width-tablet;
+        margin: 0 auto;
+    }
+}
+
+@include desktop-only () {
+
+    .jw-container {
+        max-width: $container-width-desktop;
+        margin: 0 auto;
+    }
+}

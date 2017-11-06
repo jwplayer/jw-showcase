@@ -1,0 +1,11 @@
+<div class="jw-page jw-page-flag-header">
+  <div class="jw-page-content">
+    <div ng-repeat="row in ::vm.rows">
+      <jw-content-row
+          feed="::row.feed"
+          options="::row.options"
+          card-click-handler="vm.cardClickHandler"
+      ></jw-content-row>
+    </div>
+  </div>
+</div>

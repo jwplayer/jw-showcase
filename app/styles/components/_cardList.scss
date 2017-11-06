@@ -1,0 +1,10 @@
+//
+// jwCardGrid
+// --------------------------------
+
+.jw-card-list {
+
+    .jw-card:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}

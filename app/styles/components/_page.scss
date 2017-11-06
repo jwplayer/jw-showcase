@@ -1,0 +1,41 @@
+
+.jw-page {
+
+    &-title {
+        text-align: center;
+    }
+
+    .jw-flag-no-header & {
+        &-flag-subheader {
+            padding-top: 0;
+        }
+    }
+
+    body:not(.jw-flag-no-header) & {
+        &-flag-subheader {
+            padding-top: $header-height + $toolbar-height;
+        }
+
+        &-flag-header {
+            padding-top: $header-height;
+        }
+    }
+}
+
+//
+// Mobile screen size uses a different header height so the scroll content needs to be changed also
+//
+@include mobile-only () {
+
+    .jw-page {
+        body:not(.jw-flag-no-header) & {
+            &-flag-header {
+                padding-top: $header-height-mobile;
+            }
+
+            &-flag-subheader {
+                padding-top: $header-height-mobile + $toolbar-height;
+            }
+        }
+    }
+}

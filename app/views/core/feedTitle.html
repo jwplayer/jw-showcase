@@ -1,0 +1,12 @@
+<div class="jw-feed-title">
+  <jw-button ui-sref="root.feed({feedId: vm.feed.feedid})"
+      class="jw-button-link jw-button-text jw-button-default"
+      ng-if="vm.feed.$navigable">
+    <span>{{ vm.feed.title }}</span> <i class="jwy-icon jwy-icon-angle-right"></i> <span
+      class="jw-feed-title-count">({{ vm.feed.playlist.length }})</span>
+  </jw-button>
+  <div ng-if="!vm.feed.$navigable">
+    <span>{{ vm.feed.title }}</span> <span class="jw-feed-title-count"
+      ng-if="vm.feed.playlist.length">({{ vm.feed.playlist.length }})</span>
+  </div>
+</div>

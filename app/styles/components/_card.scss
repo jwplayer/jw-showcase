@@ -1,0 +1,409 @@
+//
+// jwCard
+// --------------------------------
+
+.jw-card {
+    position: relative;
+    font-size: rem(15px);
+
+    body:not(.jw-flag-touch) & {
+
+        &.jw-card-flag-active,
+        &:hover,
+        .jw-card-container:focus {
+            .jw-card-controls {
+                opacity: 1;
+            }
+        }
+    }
+
+    &-flag-menu-open,
+    &-flag-toast-open {
+        .jw-card-watchlist-button {
+            @include transform(scale(0) !important);
+        }
+
+        .jw-card-in-video-search-timeline {
+            display: none;
+        }
+    }
+
+    &-flag-hide-text {
+        .jw-card-title,
+        .jw-card-description {
+            display: none !important;
+        }
+    }
+
+    &.jw-lazy-load {
+
+        .jw-card-poster {
+            display: none !important;
+            background: none !important;
+        }
+    }
+
+    &.jw-card-aspect-916 .jw-card-aspect {
+        padding-bottom: (16 / 9) * 100%;
+    }
+
+    &.jw-card-aspect-23 .jw-card-aspect {
+        padding-bottom: (3 / 2) * 100%;
+    }
+
+    &.jw-card-aspect-11 .jw-card-aspect {
+        padding-bottom: 100%;
+    }
+
+    &.jw-card-aspect-43 .jw-card-aspect {
+        padding-bottom: 75%;
+    }
+
+    &.jw-card-aspect-53 .jw-card-aspect {
+        padding-bottom: 60%;
+    }
+
+    &.jw-card-aspect-21 .jw-card-aspect {
+        padding-bottom: 50%;
+    }
+
+    .jw-button-watchlist {
+        @include single-transition(transform, 0.2s, cubic-bezier(0.48, 0.76, 0.39, 1.15), 0s);
+        position: absolute;
+        top: -14px;
+        left: 2px;
+
+        &:hover {
+            @include transform(scale(1.2));
+        }
+
+        &.ng-enter,
+        &.ng-leave.ng-leave-active {
+            @include transform(scale(0));
+        }
+
+        &.ng-enter.ng-enter-active,
+        &.ng-leave {
+            @include transform(scale(1));
+        }
+
+        .jwy-icon {
+            font-size: rem(26px);
+        }
+    }
+
+    .jw-card-aspect {
+        position: relative;
+        padding-bottom: (9 / 16) * 100%;
+    }
+
+    .jw-card-container {
+        @include display-flex();
+        @include flex-direction(column);
+        @include cover();
+        @include single-transition(background, 0.2s, ease, 0s);
+        background: rgba($black, 0.1);
+        cursor: pointer;
+    }
+
+    .jw-card-controls {
+        @include display-flex();
+        @include flex(1 1 auto);
+        @include single-transition(opacity, 0.2s, ease, 0s);
+        position: relative;
+        opacity: 0;
+    }
+
+    .jw-card-controls-align {
+        @include flex(1 1 auto);
+        @include align-self(center);
+        text-align: center;
+    }
+
+    .jw-card-info {
+        @include flex(0 1 auto);
+    }
+
+    .jw-card-duration {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 5px 8px;
+
+        font-size: rem(14px);
+    }
+
+    .jw-card-text-now-playing {
+        display: none;
+        font-size: rem(16px);
+    }
+
+    .jw-card-title {
+        display: inline-block;
+        width: 100%;
+        padding: 0 10px;
+
+        font-weight: bold;
+        line-height: 39px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .jw-card-description {
+        padding: 0 10px;
+
+        font-size: rem(14px);
+        line-height: rem(16px);
+        overflow: hidden;
+    }
+
+    .jw-card-play-button {
+        @include single-transition(opacity, 0.05s, ease-out, 0s);
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .jw-card-menu-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 5px 0 10px;
+
+        font-size: rem(16px);
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+
+        .jwy-icon {
+            vertical-align: middle;
+        }
+    }
+
+    .jw-card-toast-container {
+        &.ng-enter,
+        &.ng-leave {
+            @include single-transition(opacity, 0.2s, ease);
+        }
+
+        &.ng-enter {
+            opacity: 0;
+        }
+
+        &.ng-enter.ng-enter-active {
+            opacity: 1;
+        }
+
+        &.ng-leave {
+            opacity: 1;
+        }
+
+        &.ng-leave.ng-leave-active {
+            opacity: 0;
+        }
+    }
+
+    .jw-card-toast {
+        @include cover();
+
+        .jw-card-toast-container {
+            @include transform(translateY(-50%));
+
+            position: absolute;
+            top: 50%;
+            width: 100%;
+
+            font-size: rem(16px);
+            text-align: center;
+
+            .jw-card-toast-icon {
+                display: inline-block;
+                margin-bottom: 10px;
+                font-size: 3em;
+            }
+
+            .jw-rotate-animation {
+                width: 42px;
+                height: 42px;
+                font-size: 42px;
+            }
+        }
+    }
+
+    .jw-card-in-video-search-timeline {
+        @include transition(all 0.15s ease-in);
+        position: relative;
+        height: rem(2px);
+
+        .jw-card-in-video-search-timeline-dot {
+            $size: 13px;
+            $adjust-size: ($size - 1) / 2;
+
+            @include transform(translate(-$adjust-size, -$adjust-size));
+            @include transition(all 0.15s ease-in);
+
+            position: absolute;
+            width: rem($size);
+            height: rem($size);
+
+            border-radius: 50%;
+
+            &:hover {
+                $hover-size: 18px;
+                transform: translate(-$adjust-size, -$adjust-size) scale($hover-size / $size, $hover-size / $size);
+            }
+        }
+    }
+}
+
+//
+// jwCard-flag-default
+// --------------------------------
+
+.jw-card.jw-card-flag-default {
+    padding-bottom: 39px;
+
+    body:not(.jw-flag-touch) & {
+
+        &:hover .jw-card-container,
+        .jw-card-container:focus {
+            background-color: rgba($black, 0.6);
+
+            .jw-card-info .jw-card-info-mask {
+                height: 100px;
+            }
+        }
+    }
+
+    &.jw-card-flag-hide-text {
+        padding-bottom: 0;
+
+        .jw-card-info {
+            display: none !important;
+        }
+    }
+
+    .jw-card-info-mask {
+        @include transition(height 0.2s ease);
+        height: 39px;
+        overflow: hidden;
+    }
+
+    .jw-card-info {
+        position: relative;
+    }
+
+    .jw-card-description {
+        display: block;
+        display: -webkit-box;
+        max-height: 3 * 16px;
+
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .jw-card-watch-progress {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        width: 0;
+        height: 4px;
+    }
+
+}
+
+//
+// jwCard-flag-featured
+// --------------------------------
+
+.jw-card.jw-card-flag-featured {
+    font-size: 32px;
+
+    &:hover .jw-card-container,
+    .jw-card-container:focus {
+        background-color: transparent;
+    }
+
+    .jw-card-duration,
+    .jw-card-menu-button {
+        display: none;
+    }
+
+    .jw-card-info {
+        padding-bottom: 10px;
+    }
+
+    .jw-card-title {
+        padding: 0 50px 15px;
+        line-height: normal;
+    }
+
+    .jw-card-description {
+        display: block;
+        display: -webkit-box;
+        max-height: 3 * 18px;
+        padding: 0 50px;
+        line-height: 18px;
+
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .jw-card-controls-align {
+        margin-top: 4%;
+    }
+
+    .jw-card-container {
+        background-color: rgba($black, 0.35);
+    }
+
+    .jw-button-watchlist {
+        display: none;
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only () {
+
+    .jw-card.jw-card-flag-featured .jw-card-title {
+        margin-bottom: 10px;
+        padding: 0 20px;
+    }
+
+    .jw-card.jw-card-flag-featured .jw-card-description {
+        max-height: 2 * 18px;
+        padding: 0 20px;
+
+        -webkit-line-clamp: 2;
+    }
+}
+
+@include mobile-and-tablet () {
+
+    .jw-card.jw-card-flag-featured {
+        font-size: 21px;
+    }
+}
+
+@include tablet-only () {
+
+    .jw-card.jw-card-flag-featured {
+
+        .jw-card-title {
+            padding: 0 30px 10px;
+        }
+
+        .jw-card-description {
+            max-height: 3 * 18px;
+            padding: 0 30px;
+
+            -webkit-line-clamp: 3;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+//
+// jwToggle
+// --------------------------------
+
+.jw-toggle {
+    display: inline-block;
+    position: relative;
+
+    width: $toggle-width;
+    height: $toggle-height;
+
+    cursor: pointer;
+    vertical-align: middle;
+
+    &-track {
+        @include single-transition(background, 0.2s, ease-out);
+        height: 100%;
+        border-radius: $toggle-height / 2;
+    }
+
+    &-button {
+        @include box-shadow(0 0 6px 0 rgba($black, 0.3));
+        @include single-transition(left, 0.1s, ease-out);
+        position: absolute;
+        top: ($toggle-height - $toggle-button-size) / 2;
+        left: 0;
+        width: $toggle-button-size;
+        height: $toggle-button-size;
+
+        border: 1px solid;
+        border-radius: 50%;
+    }
+
+    &-flag-checked .jw-toggle-button {
+        left: calc(100% - #{$toggle-button-size});
+    }
+}

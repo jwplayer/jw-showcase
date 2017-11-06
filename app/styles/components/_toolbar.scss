@@ -1,0 +1,110 @@
+//
+// jwToolbar
+// --------------------------------
+
+.jw-toolbar {
+    height: $toolbar-height;
+    min-height: $toolbar-height;
+    padding: 0 0 0 $toolbar-padding;
+
+    &-subheader {
+        position: fixed;
+        top: $header-height;
+        width: 100%;
+        z-index: $toolbar-z-index;
+
+        // make subheader static when header is disabled
+        .jw-flag-no-header & {
+            position: static;
+            top: 0;
+        }
+    }
+
+    &-video {
+
+        .jw-toolbar-nav:first-child .jw-button {
+            margin-left: -$toolbar-padding;
+        }
+
+        .jw-toolbar-nav:last-child {
+            @include flex-grow(1);
+        }
+    }
+
+    .jw-toolbar-container {
+        @include display-flex();
+        @include flex-direction(row);
+        position: relative;
+    }
+
+    .jw-toolbar-nav {
+        @include flex(0 0 $toolbar-nav-width);
+        @include align-self(center);
+        min-width: $toolbar-nav-width;
+        max-height: $toolbar-height;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+    .jw-toolbar-title {
+        @include flex(1 1 auto);
+        @include align-self(center);
+        padding: 5px 0;
+
+        font-size: rem(22px);
+        font-weight: bold;
+        line-height: 1em;
+        text-align: center;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &.left {
+            text-align: left;
+        }
+    }
+
+    .jw-button {
+        height: $toolbar-height;
+        line-height: $toolbar-height / 2;
+
+        > .jwy-icon {
+            font-size: 1.5rem;
+        }
+
+        > .jw-button-label {
+            opacity: 0.65;
+        }
+    }
+
+    .jw-toolbar-nav {
+        @include flex(0 0 $toolbar-nav-width);
+        min-width: $toolbar-nav-width;
+        white-space: nowrap;
+    }
+}
+
+@include mobile-only () {
+
+    .jw-toolbar {
+
+        &-subheader {
+            top: $header-height-mobile;
+        }
+
+        &-video {
+            padding-right: 0;
+
+            .jw-toolbar-nav:last-child {
+                padding-right: 0;
+            }
+        }
+
+        .jw-toolbar-title {
+            font-size: rem(16px);
+        }
+    }
+}

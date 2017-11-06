@@ -1,0 +1,11 @@
+<div class="jw-collapsible-text inactive">
+  <div class="jw-collapsible-text-content" id="jw-collapsible-text-content" role="article" aria-expanded="{{ vm.expanded }}" ng-transclude></div>
+  <div class="jw-collapsible-text-toggle">
+    <jw-button class="jw-button-default"
+        ng-click="vm.toggleClickHandler()"
+        tabindex="0"
+        aria-controls="jw-collapsible-text-content">
+      <i class="jwy-icon jwy-icon-angle-down"></i>
+    </jw-button>
+  </div>
+</div>

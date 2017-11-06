@@ -4,7 +4,6 @@ module.exports = function (grunt) {
         url            = require('url'),
         template       = require('lodash.template'),
         pkg            = require(process.cwd() + '/package.json'),
-        libPkg         = require(process.cwd() + '/node_modules/jw-showcase-lib/package.json'),
         ngMocksInclude = '<script src="node_modules/angular-mocks/angular-mocks.js"></script>';
 
     function compile (src, dest, configLocation, injectNgMocks) {
@@ -15,7 +14,6 @@ module.exports = function (grunt) {
             html, compiler;
 
         config.version    = pkg.version;
-        config.libVersion = libPkg.version;
 
         config.pwa = grunt.option('pwa');
 

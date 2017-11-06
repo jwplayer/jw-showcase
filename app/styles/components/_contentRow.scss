@@ -1,0 +1,10 @@
+
+.jw-content-row:not(.jw-content-row-featured) {
+
+    // scss-lint:disable SelectorFormat
+    .jw-card-slider,
+    .jw-card-grid,
+    .jw-displayAd > div {
+        padding: $base-spacing 0;
+    }
+}

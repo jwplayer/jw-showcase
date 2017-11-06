@@ -1,0 +1,5 @@
+<div class="jw-sidebar-layout" aria-hidden="{{ !vm.sidebar.opened }}" ng-class="{'jw-sidebar-layout-flag-opened': vm.sidebar.opened}">
+  <jw-sidebar ng-swipe-left="vm.swipeLeftHandler()"></jw-sidebar>
+  <div class="jw-sidebar-backdrop" ng-click="vm.backdropClickHandler()"></div>
+  <div class="jw-sidebar-layout-content" ng-transclude></div>
+</div>

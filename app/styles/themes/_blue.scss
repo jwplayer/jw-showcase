@@ -1,0 +1,65 @@
+
+.#{theme-name('blue')} {
+
+    // import theme mixin
+    @import '../mixins/theme';
+
+    // override variables
+    $body-bg: #2a374c;
+    $body-color: $white;
+
+    $popup-bg: #2a374c;
+    $popup-color: $white;
+
+    $btn-light-bg: #5b6064;
+    $btn-light-color: $white;
+    $btn-secondary-bg: #1e273f;
+
+    $toolbar-bg: #2a374c;
+    $toolbar-color: $white;
+
+    $btn-icon-nested-color: $toolbar-bg;
+    $btn-light-bg: #354560;
+
+    $sidebar-bg: #2a374c;
+    $sidebar-color: $white;
+
+    $toggle-default-color: #41485d;
+    $toggle-checked-color: #64789a;
+
+    $card-slider-title-color: $white;
+    $card-slider-button-color: $white;
+    $card-slider-odd-bg-color: #354560;
+
+    $card-info-bg: #1e273f;
+    $card-info-color: $white;
+    $card-info-hover-bg: #1e273f;
+    $card-info-hover-color: $white;
+
+    $card-menu-bg: #2c374a;
+
+    $header-bg: #1e273f;
+    $header-color: $white;
+
+    $video-layout-bg: #354560;
+
+    $scroll-track-bg: $gray-darker;
+    $scroll-indicator-bg: #7f899a;
+
+    $rail-bg: #334056;
+    $rail-header-bg: #2c374a;
+    $rail-header-color: $white;
+    $rail-item-color: $white;
+    $rail-item-hover-bg: #435470;
+
+    $rail-button-block-color: $white;
+
+
+    //$video-details-bg: #354560;
+    $video-details-color: $white;
+
+    $footer-color: $white;
+
+    // create theme rules
+    @include theme();
+}
