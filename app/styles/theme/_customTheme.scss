@@ -18,7 +18,7 @@
 .#{theme-name('custom')} {
 
     // import theme mixin
-    @import '../../../bower_components/jw-showcase-lib/scss/mixins/theme';
+    @import '../../../node_modules/jw-showcase-lib/scss/mixins/theme';
 
     // overwrite any variable defined in theme mixin
 

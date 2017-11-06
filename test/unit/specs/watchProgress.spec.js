@@ -16,13 +16,19 @@
 
 describe('watchProgress', function () {
 
-    var config = getFixture('config/default'),
-        feed   = getFixture('feed/lrYLc95e'),
-        $httpBackend,
+    var config   = getFixture('config/default'),
+        feed     = getFixture('feed/lrYLc95e'),
+        LjBvF1FX = getFixture('feed/LjBvF1FX'),
+        Iyfst4Se = getFixture('feed/Iyfst4Se'),
         $timeout,
+        $httpBackend,
         watchProgress,
         dataStore,
         FeedModel;
+
+    function prepareLocalStorage (items) {
+        window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(items));
+    }
 
     beforeEach(function () {
         module(
@@ -40,12 +46,15 @@ describe('watchProgress', function () {
             $provide.constant('config', config);
         });
 
-        inject(function (_$httpBackend_, _$timeout_, _watchProgress_, _dataStore_, _FeedModel_) {
-            $httpBackend  = _$httpBackend_;
+        inject(function (_$timeout_, _$httpBackend_, _watchProgress_, _dataStore_, _FeedModel_) {
             $timeout      = _$timeout_;
+            $httpBackend  = _$httpBackend_;
             watchProgress = _watchProgress_;
             dataStore     = _dataStore_;
             FeedModel     = _FeedModel_;
+
+            $httpBackend.whenGET(/.*\/media\/LjBvF1FX/).respond(LjBvF1FX);
+            $httpBackend.whenGET(/.*\/media\/Iyfst4Se/).respond(Iyfst4Se);
 
             window.config = config;
 
@@ -59,31 +68,31 @@ describe('watchProgress', function () {
         });
     });
 
-    function prepareLocalStorage (items) {
-        window.localStorage.setItem('jwshowcase.watchprogress', JSON.stringify(items));
-    }
-
     describe('restore()`', function () {
 
         it('should restore items from session', function () {
 
+            $httpBackend.expectGET(/.*\/media\/LjBvF1FX/);
+            $httpBackend.expectGET(/.*\/media\/Iyfst4Se/);
+
             prepareLocalStorage([
-                {mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date()},
-                {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date()}
+                { mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() },
+                { mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() }
             ]);
 
             watchProgress.restore().then(function () {
                 expect(dataStore.watchProgressFeed.playlist.length).toEqual(2);
             });
 
+            $httpBackend.flush();
             $timeout.flush();
         });
 
         it('should not restore invalid items from session', function () {
 
             prepareLocalStorage([
-                {feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date()},
-                {progress: 0.75, lastWatched: +new Date()}
+                { feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() },
+                { progress: 0.75, lastWatched: +new Date() }
             ]);
 
             watchProgress.restore().then(function () {
@@ -96,8 +105,8 @@ describe('watchProgress', function () {
         it('should not restore items with wrong progress from session', function () {
 
             prepareLocalStorage([
-                {mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.09, lastWatched: +new Date()},
-                {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.91, lastWatched: +new Date()}
+                { mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.09, lastWatched: +new Date() },
+                { mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.91, lastWatched: +new Date() }
             ]);
 
             watchProgress.restore().then(function () {
@@ -110,7 +119,7 @@ describe('watchProgress', function () {
         it('should not restore items older than 30 days from session', function () {
 
             prepareLocalStorage([
-                {mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() - 86400000 * 30}
+                { mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.75, lastWatched: +new Date() - 86400000 * 30 }
             ]);
 
             watchProgress.restore().then(function () {
@@ -123,9 +132,9 @@ describe('watchProgress', function () {
         it('should sort items on lastWatched descending', function () {
 
             prepareLocalStorage([
-                {mediaid: 'uNXCVIsW', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() - 500},
-                {mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date()},
-                {mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() - 10}
+                { mediaid: 'uNXCVIsW', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() - 500 },
+                { mediaid: 'LjBvF1FX', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() },
+                { mediaid: 'Iyfst4Se', feedid: 'lrYLc95e', progress: 0.5, lastWatched: +new Date() - 10 }
             ]);
 
             watchProgress.restore().then(function () {

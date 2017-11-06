@@ -43,7 +43,10 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I start video playback', function () {
-        return browser.executeScript('jwplayer().play()');
+        return browser.executeScript(function () {
+            jwplayer().setMute(true);
+            jwplayer().play();
+        });
     });
 
     When('I wait until the video is playing', function () {
@@ -100,11 +103,17 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.match(/playing|buffering/);
     });
 
+    Then('the video should autoplay', function() {
+        var regex = browser.browserName === 'safari' ? /paused|playing|buffering/ : /playing|buffering/;
+        return expect(browser.executeScript('return jwplayer().getState()'))
+            .to.eventually.match(regex);
+    });
+
     Then('the play icon should be visible', function () {
         return expect($('.jw-display-icon-container .jw-icon-display').isDisplayed()).to.eventually.equal(true);
     });
 
-    Then('the video title is {stringInDoubleQuotes}', function (title) {
+    Then('the video title is {string}', function (title) {
         function trim (text) {
             return text.replace(/\s/g, '');
         }
@@ -124,7 +133,7 @@ defineSupportCode(function ({Given, When, Then}) {
             .equal(description);
     });
 
-    Then('the video duration label is {stringInDoubleQuotes}', function (duration) {
+    Then('the video duration label is {string}', function (duration) {
         return expect($('.jw-video-details .jw-video-details-duration').getText()).to.eventually.equal(duration);
     });
 

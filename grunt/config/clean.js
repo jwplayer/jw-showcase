@@ -10,5 +10,14 @@ module.exports = {
         }]
     },
     server: '.tmp',
-    reports: ['test/reports/*.json', 'test/reports/html']
+    reports_local: [
+        'test/reports/local/*.json',
+        'test/reports/local/html',
+        'test/reports/local/json-output-folder'
+    ],
+    reports_browserstack: [
+        'test/reports/browserstack/*.json',
+        'test/reports/browserstack/html',
+        'test/reports/browserstack/json-output-folder'
+    ]
 };

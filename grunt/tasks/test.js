@@ -8,23 +8,27 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test:protractor', function () {
         // set configFile variable based on config option, default to local protractor config.
-        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.js');
+        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
         runProtractorTasks();
     });
 
     // don't break existing tasks
     grunt.registerTask('test:protractor:local', function () {
-        grunt.config.set('configFile', 'protractor.conf.js');
+        grunt.task.run('clean:reports_local');
+
+        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
         runProtractorTasks();
     });
 
     grunt.registerTask('test:protractor:browserstack', function () {
-        grunt.config.set('configFile', 'protractor.browserstack.conf.js');
+        grunt.task.run('clean:reports_browserstack');
+
+        grunt.config.set('configFile', 'protractor.conf.browserstack.js');
         runProtractorTasks();
     });
 
     grunt.registerTask('test:protractor:mobile', function () {
-        grunt.config.set('configFile', 'protractor.mobile.conf.js');
+        grunt.config.set('configFile', 'protractor.conf.mobile.js');
 
         if (!process.env.JENKINS_URL) {
             return runProtractorTasks();
@@ -32,7 +36,7 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        grunt.log.writeln('> Starting local tunnel...')
+        grunt.log.writeln('> Starting local tunnel...');
 
         ngrok.connect(9001, function (error, url) {
             if (error) {
@@ -51,7 +55,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test:server', [
         'clean:server',
-        'clean:reports',
         'compass',
         'ngtemplates:server',
         'template:serverE2E',

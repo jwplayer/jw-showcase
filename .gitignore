@@ -1,5 +1,4 @@
 node_modules
-bower_components
 dist
 
 .tmp
@@ -13,3 +12,6 @@ test/reports
 
 protractor.lab.conf.js
 /hosted
+local.log
+
+LOCAL_IP

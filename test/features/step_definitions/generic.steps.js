@@ -23,13 +23,13 @@ defineSupportCode(function ({Given, When, Then}) {
     // Given steps
     //
 
-    Given('I go to the {stringInDoubleQuotes} page', function (page) {
+    Given('I go to the {string} page', function (page) {
         page = page === 'index' ? '/' : page;
 
         return navigateToPath(page);
     });
 
-    Given('I am still on the {stringInDoubleQuotes} page', function (page) {
+    Given('I am still on the {string} page', function (page) {
         page = page === 'index' ? '/' : page;
 
         return browser.getCurrentUrl().then(function (location) {
@@ -56,7 +56,7 @@ defineSupportCode(function ({Given, When, Then}) {
         });
     });
 
-    Given('localStorage key {stringInDoubleQuotes} has the following data:', function (key, data) {
+    Given('localStorage key {string} has the following data:', function (key, data) {
         return browser.addMockModule('injectLocalStorage', function (lKey, lData) {
             angular.module('injectLocalStorage', []).run(function () {
                 if (window.localStorageSupport) {
@@ -70,7 +70,7 @@ defineSupportCode(function ({Given, When, Then}) {
     // When
     //
 
-    When('wait for {number} seconds', function (seconds) {
+    When('wait for {int} seconds', function (seconds) {
         return browser.sleep(seconds * 1000);
     });
 
@@ -97,7 +97,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return browser.pause();
     });
 
-    When('I wait until the page is {stringInDoubleQuotes}', function (page) {
+    When('I wait until the page is {string}', function (page) {
         return browser.wait(function () {
             return browser.getCurrentUrl().then(function (url) {
                 return url.indexOf(page) !== -1;
@@ -105,28 +105,16 @@ defineSupportCode(function ({Given, When, Then}) {
         });
     });
 
-    When('I press the {stringInDoubleQuotes} key', function (key) {
-
-        // firefox throws exception "UnsupportedOperationError: sendKeysToActiveElement"
-        // safari doesn't press key, but sends the unicode char to active input element as value
-        if (this.browserName === 'firefox' || this.browserName === 'safari') {
-            return 'pending';
-        }
-
-        let keycode = protractor.Key[key.toUpperCase()];
-        return browser.actions().sendKeys(keycode).perform();
-    });
-
     //
     // Then steps
     //
 
-    Then('the page should be {stringInDoubleQuotes}', function (page) {
+    Then('the page should be {string}', function (page) {
         page = page === 'index' ? '/' : page;
         return expect(browser.getCurrentUrl()).to.eventually.equal(browser.baseUrl + page);
     });
 
-    Then('the page title should be {stringInDoubleQuotes}', function (title) {
+    Then('the page title should be {string}', function (title) {
         return expect(browser.getTitle()).to.eventually.equal(title);
     });
 
@@ -135,12 +123,12 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(description);
     });
 
-    Then('the canonical path should be {stringInDoubleQuotes}', function (path) {
+    Then('the canonical path should be {string}', function (path) {
         return expect($('link[rel=canonical]').getAttribute('href'))
             .to.eventually.equal(browser.baseUrl + path);
     });
 
-    Then('the subheader title should be {stringInDoubleQuotes}', function (text) {
+    Then('the subheader title should be {string}', function (text) {
         return expect($('.jw-toolbar-subheader .jw-toolbar-title').getText()).to.eventually.equal(text);
     });
 
