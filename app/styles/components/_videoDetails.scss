@@ -27,9 +27,9 @@
         line-height: rem(32px);
 
         &::after {
+            content: '';
             display: block;
             clear: both;
-            content: '';
         }
     }
 

@@ -4,8 +4,9 @@
 // --------------------------------
 
 .jw-modal {
-    background-size: cover;
     z-index: $view-z-index + 100;
+
+    background-size: cover;
 
     .jw-modal-container {
         @include transform(translate(-50%, -50%));

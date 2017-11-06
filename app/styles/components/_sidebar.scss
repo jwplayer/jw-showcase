@@ -47,13 +47,16 @@
 
 .jw-sidebar-backdrop {
     display: none;
+
     position: fixed;
+    z-index: $sidebar-z-index - 1;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     background: rgba($black, 0.4);
-    z-index: $sidebar-z-index - 1;
 }
 
 //
@@ -63,16 +66,18 @@
 .jw-sidebar {
     @include single-transition(transform, 0.2s, cubic-bezier(0.52, 0.51, 0.2, 1));
     @include transform(translateX(-100%));
-    position: fixed;
 
+    visibility: hidden;
+
+    position: fixed;
+    z-index: $sidebar-z-index;
     top: 0;
+
     width: 370px;
     max-width: 100%;
     height: auto;
     max-height: 100vh;
 
-    visibility: hidden;
-    z-index: $sidebar-z-index;
 
     overflow-x: hidden;
     overflow-y: auto;

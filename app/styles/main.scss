@@ -81,10 +81,10 @@ body {
     margin: 0;
     padding: 0;
 
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     font-size: $body-font-size;
 
     -webkit-font-smoothing: antialiased;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
 }

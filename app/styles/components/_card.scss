@@ -143,19 +143,21 @@
         width: 100%;
         padding: 0 10px;
 
+        overflow: hidden;
+
         font-weight: bold;
         line-height: 39px;
         text-overflow: ellipsis;
         white-space: nowrap;
-        overflow: hidden;
     }
 
     .jw-card-description {
         padding: 0 10px;
 
+        overflow: hidden;
+
         font-size: rem(14px);
         line-height: rem(16px);
-        overflow: hidden;
     }
 
     .jw-card-play-button {

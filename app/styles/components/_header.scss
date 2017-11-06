@@ -15,9 +15,9 @@
     //
     &-fixed {
         position: fixed;
-        width: 100%;
-
         z-index: $header-z-index;
+
+        width: 100%;
     }
 
     //
@@ -28,8 +28,9 @@
         width: 100%;
 
         .jw-header-main .jw-header-title {
-            white-space: normal;
             overflow: visible;
+
+            white-space: normal;
         }
     }
 
@@ -68,8 +69,9 @@
             max-width: 100%;
             max-height: $header-height - 20px;
 
-            cursor: pointer;
             vertical-align: middle;
+
+            cursor: pointer;
         }
     }
 

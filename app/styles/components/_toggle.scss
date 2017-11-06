@@ -9,8 +9,9 @@
     width: $toggle-width;
     height: $toggle-height;
 
-    cursor: pointer;
     vertical-align: middle;
+
+    cursor: pointer;
 
     &-track {
         @include single-transition(background, 0.2s, ease-out);

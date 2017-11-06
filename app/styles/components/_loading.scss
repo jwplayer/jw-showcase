@@ -3,8 +3,9 @@
 // --------------------------------
 
 .jw-loading {
-    background-color: $white;
     z-index: $loading-z-index;
+
+    background-color: $white;
 
     &.ng-hide-add {
         @include transition(opacity 0.2s linear 0s, transform 0.2s ease-in 0s);

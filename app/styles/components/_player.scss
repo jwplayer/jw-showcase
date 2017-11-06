@@ -1,29 +1,28 @@
-.jw-showcase-player {
-    &-flag-click-to-play {
-        // Click to Play
-        .jwplayer {
-            &.jw-state-idle {
-                .jw-display-icon-display {
-                    border-radius: 50%;
+// Click to Play
+.jw-showcase-player-flag-click-to-play {
+    .jwplayer.jw-state-idle {
+        .jw-display-icon-display {
+            border-radius: 50%;
 
-                    &::after {
-                        @include transform(translateX(-50%));
-                        position: absolute;
-                        left: 50%;
-                        margin-top: 5px;
-                        font-size: 14px;
-                        content: 'Click to Play';
-                    }
+            &::after {
+                @include transform(translateX(-50%));
 
-                    .jw-icon {
-                        width: 55px;
-                        height: 55px;
-                        line-height: 55px;
+                content: 'Click to Play';
 
-                        &::before {
-                            font-size: 28px;
-                        }
-                    }
+                position: absolute;
+                left: 50%;
+
+                margin-top: 5px;
+                font-size: 14px;
+            }
+
+            .jw-icon {
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+
+                &::before {
+                    font-size: 28px;
                 }
             }
         }

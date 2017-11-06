@@ -9,9 +9,10 @@
 
     &-subheader {
         position: fixed;
-        top: $header-height;
-        width: 100%;
         z-index: $toolbar-z-index;
+        top: $header-height;
+
+        width: 100%;
 
         // make subheader static when header is disabled
         .jw-flag-no-header & {
@@ -53,6 +54,8 @@
         @include align-self(center);
         padding: 5px 0;
 
+        overflow: hidden;
+
         font-size: rem(22px);
         font-weight: bold;
         line-height: 1em;
@@ -60,7 +63,6 @@
 
         text-overflow: ellipsis;
         white-space: nowrap;
-        overflow: hidden;
 
         &.left {
             text-align: left;
