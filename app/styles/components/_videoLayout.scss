@@ -1,0 +1,83 @@
+//
+// jwVideoLayout
+// --------------------------------
+
+.jw-video-layout {
+
+    &-align {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+
+    &-row {
+        max-width: $video-layout-width;
+        margin: 0 auto;
+    }
+
+    &-flag-rail {
+        padding-right: 0;
+        padding-left: 0;
+
+        .jw-video-layout-row {
+            @include display-flex();
+            max-width: $video-layout-right-rail-width;
+        }
+
+        .jw-video-layout-main {
+            @include flex(1 1 auto);
+        }
+
+        .jw-video-layout-rail {
+            @include flex(0 0 360px);
+            position: relative;
+            width: 360px;
+        }
+
+        .jw-video-layout-align {
+            padding: 0;
+        }
+    }
+}
+
+@include mobile-only () {
+
+    .jw-video-layout {
+
+        &-align {
+            padding: 0;
+        }
+
+        .jw-video-details {
+            padding-right: $base-spacing;
+            padding-left: $base-spacing;
+        }
+    }
+}
+
+@include mobile-and-tablet () {
+
+    .jw-video-layout {
+
+        &-flag-rail .jw-video-layout-row {
+            @include flex-direction(column);
+
+            .jw-video-layout-rail {
+                @include flex-basis(100%);
+                @include flex(0);
+
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include tablet-and-larger () {
+
+    .jw-video-layout {
+
+        &-flag-rail .jw-video-layout-main .jw-row {
+            padding-right: $base-spacing;
+            padding-left: $base-spacing;
+        }
+    }
+}

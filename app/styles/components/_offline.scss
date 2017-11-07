@@ -1,0 +1,46 @@
+
+//
+// jwOffline
+// --------------------------------
+
+.jw-flag-offline {
+    padding-bottom: 45px;
+
+    .jw-card:not(.jw-card-flag-offline-available),
+    .jw-side-rail-item {
+        opacity: 0.6;
+        pointer-events: none;
+        filter: grayscale(0.5);
+    }
+
+    .jw-offline-message {
+        @include transform(translateY(0%));
+        visibility: visible;
+    }
+
+    .jw-button-search,
+    .jw-side-rail-control {
+        opacity: 0.2;
+        pointer-events: none;
+    }
+}
+
+.jw-offline-message {
+    @include single-transition(transform, 0.2s, ease);
+    @include transform(translateY(100%));
+
+    visibility: hidden;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 14px 0;
+    color: $white;
+    font-size: 14px;
+    text-align: center;
+
+    a {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}

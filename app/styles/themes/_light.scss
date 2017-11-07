@@ -1,0 +1,9 @@
+
+.#{theme-name('light')} {
+
+    // import theme mixin
+    @import '../mixins/theme';
+
+    // create theme rules
+    @include theme();
+}

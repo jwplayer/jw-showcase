@@ -1,0 +1,28 @@
+<div class="jw-card-slider" aria-live="polite">
+  <div class="jw-card-slider-container">
+    <jw-feed-title feed="vm.feed"></jw-feed-title>
+      <div class="jw-card-slider-content">
+        <div class="jw-card-slider-align">
+          <div class="jw-card-slider-controls" aria-label="slider buttons" aria-controls="jw-card-slider">
+            <jw-button
+                    class="jw-button-default jw-card-slider-button jw-card-slider-button-flag-left is-hidden-mobile-device"
+                    ng-click="vm.slideLeft($event)"
+                    aria-label="slide left"
+                    tabindex="0">
+              <i class="jwy-icon jwy-icon-angle-left"></i>
+            </jw-button>
+          </div>
+          <div class="jw-card-slider-list"></div>
+          <div class="jw-card-slider-controls" aria-label="slider buttons" aria-controls="jw-card-slider">
+            <jw-button
+                    class="jw-button-default jw-card-slider-button jw-card-slider-button-flag-right is-hidden-mobile-device"
+                    ng-click="vm.slideRight($event)"
+                    aria-label="slide right"
+                    tabindex="0">
+              <i class="jwy-icon jwy-icon-angle-right"></i>
+            </jw-button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

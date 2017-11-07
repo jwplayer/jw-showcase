@@ -1,0 +1,49 @@
+
+.is-hidden-mobile {
+    @include mobile-only() {
+        display: none !important;
+    }
+}
+
+.is-visible-mobile {
+    @include tablet-and-larger () {
+        display: none !important;
+    }
+}
+
+.is-hidden-tablet {
+    @include tablet-only() {
+        display: none !important;
+    }
+}
+
+.is-visible-tablet {
+    @include mobile-only () {
+        display: none !important;
+    }
+
+    @include desktop-only() {
+        display: none !important;
+    }
+}
+
+.is-hidden-desktop {
+    @include desktop-only() {
+        display: none !important;
+    }
+}
+
+.is-visible-desktop {
+
+    @include mobile-and-tablet () {
+        display: none !important;
+    }
+}
+
+.jw-flag-cordova .is-hidden-hybrid-app {
+    display: none !important;
+}
+
+.jw-flag-mobile .is-hidden-mobile-device {
+    display: none !important;
+}

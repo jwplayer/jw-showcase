@@ -1,0 +1,64 @@
+//
+// jwVideoDetails
+// --------------------------------
+
+.jw-video-details {
+    color: $white;
+    line-height: 1.4em;
+    white-space: normal;
+
+    &-duration {
+        display: inline-block;
+        padding: 0 8px;
+
+        background-color: $white;
+        color: $black;
+        font-size: rem(11px);
+        font-weight: normal;
+
+        line-height: 19px;
+        vertical-align: middle;
+    }
+
+    &-title {
+        margin: 0 0 $base-spacing-heading;
+        font-size: rem(22px);
+        font-weight: bold;
+        line-height: rem(32px);
+
+        &::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+
+    &-share {
+        padding-right: $base-spacing;
+        float: right;
+
+        .jw-button {
+            padding: 0 2px;
+        }
+    }
+
+    &-description {
+        margin-bottom: $base-spacing;
+    }
+
+    &-tags {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        > li {
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+
+            .jw-video-details-tag {
+                padding: 3px 7px;
+            }
+        }
+    }
+}

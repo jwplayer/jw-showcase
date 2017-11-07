@@ -1,0 +1,763 @@
+@mixin theme() {
+
+    // Colors
+
+    $primary-color: $red !default;
+    $secondary-color: $blue !default;
+    $success-color: $green !default;
+    $light-color: $gray-lighter !default;
+    $dark-color: $gray-dark !default;
+
+    $facebook-color: #3b5998 !default;
+    $twitter-color: #55acee !default;
+
+    // Body
+
+    $body-bg: #d6dbe5 !default;
+    $body-color: $dark-color !default;
+    $body-font-family: Helvetica Neue, Helvetica, Arial, sans-serif !default;
+
+    // Buttons
+
+    $btn-primary-bg: $primary-color !default;
+    $btn-primary-color: $white !default;
+
+    $btn-secondary-bg: $secondary-color !default;
+    $btn-secondary-color: $white !default;
+
+    $btn-light-bg: $light-color !default;
+    $btn-light-color: #4a4a4a !default;
+
+    $btn-dark-bg: $dark-color !default;
+    $btn-dark-color: $white !default;
+
+    $btn-facebook-bg: #3b5998 !default;
+    $btn-twitter-bg: #55acee !default;
+
+    $btn-play-icon-color: $primary-color !default;
+    $btn-play-border-color: $white !default;
+
+    $btn-icon-nested-color: $white !default;
+    $btn-icon-active-color: $primary-color !default;
+    $btn-icon-nested-active-color: $white !default;
+
+    $btn-effect-bg: rgba($secondary-color, 0.1) !default;
+
+    // Card
+
+    $card-watch-progress-color: $primary-color !default;
+    $card-color: $white !default;
+
+    $card-info-bg: $white !default;
+    $card-info-color: #4a4a4a !default;
+    $card-info-hover-bg: $card-info-bg !default;
+    $card-info-hover-color: $card-info-color !default;
+
+    $card-featured-info-color: $white !default;
+
+    $card-toast-primary-bg: $primary-color !default;
+    $card-toast-primary-color: $white !default;
+
+    $card-toast-success-bg: $success-color !default;
+    $card-toast-success-color: $white !default;
+
+    $card-menu-bg: $white !default;
+
+    $card-in-video-timeline-bg: $secondary-color !default;
+
+    // CardSlider
+
+    $card-slider-title-color: $secondary-color !default;
+    $card-slider-error-title-color: #979797 !default;
+    $card-slider-button-color: $white !default;
+    $card-slider-button-hover-color: $primary-color !default;
+
+    $card-slider-featured-bg: #111 !default;
+    $card-slider-featured-button-color: $white !default;
+    $card-slider-featured-button-hover-color: $primary-color !default;
+
+    $card-slider-odd-bg-color: transparent !default;
+
+    $card-slider-loading-bg: $black !default;
+    $card-slider-loading-card-bg: $secondary-color !default;
+
+    $card-slider-error-bg: $black !default;
+    $card-slider-error-card-bg: $secondary-color !default;
+
+    // CardGrid
+
+    $card-grid-title-color: $secondary-color !default;
+
+    // Cookies
+
+    $cookies-title-color: $primary-color !default;
+    $cookies-color: $dark-color !default;
+    $cookies-bg: $white !default;
+
+    // Footer
+
+    $footer-color: #000 !default;
+
+    // Header
+
+    $header-bg: $white !default;
+    $header-color: $secondary-color !default;
+    $header-hover-color: $primary-color !default;
+    $header-fixed-shadow: 0 0 15px 0 rgba($black, 0.5) !default;
+
+    $search-bg: $header-bg !default;
+    $search-color: inherit !default;
+    $search-border: 1px solid $light-color !default;
+
+    // Modal
+
+    $modal-bg: $light-color !default;
+    $modal-color: $black !default;
+
+    // Offline
+
+    $offline-bg: $primary-color !default;
+    $offline-color: $white !default;
+
+    // Loading
+
+    $loading-color: $primary-color !default;
+
+    // Popups
+
+    $popup-backdrop-bg: rgba(#000, 0.4) !default;
+    $popup-bg: $white !default;
+    $popup-color: #4a4a4a !default;
+
+    // Rail
+
+    $rail-bg: #d5dbe4 !default;
+    $rail-header-border-bottom: none !default;
+    $rail-header-bg: $white !default;
+    $rail-header-color: $secondary-color !default;
+    $rail-item-color: $secondary-color !default;
+    $rail-item-hover-bg: #e3e7ec !default;
+
+    $rail-button-block-bg: transparent !default;
+    $rail-button-block-color: $secondary-color !default;
+    $rail-button-block-border-top: 1px solid $white !default;
+
+    // Scroll
+
+    $scroll-track-bg: $white !default;
+    $scroll-indicator-bg: rgba($secondary-color, 0.75) !default;
+
+    // Sidebar
+
+    $sidebar-bg: $white !default;
+    $sidebar-color: $secondary-color !default;
+
+    // Toggle
+
+    $toggle-default-color: #d7dce5 !default;
+    $toggle-checked-color: $secondary-color !default;
+    $toggle-button-bg: $white !default;
+
+    // Toolbar
+
+    $toolbar-bg: $white !default;
+    $toolbar-color: $secondary-color !default;
+    $toolbar-hover-color: $primary-color !default;
+    $toolbar-nav-border: 1px solid lighten($toolbar-bg, 5%) !default;
+
+    $row-inverse-bg: #444 !default;
+    $row-inverse-color: $white !default;
+
+    // Video
+
+    $video-layout-bg: #e2e5ec !default;
+
+    // VideoDetails
+
+    $video-details-bg: transparent !default;
+    $video-details-color: $secondary-color !default;
+
+    $video-details-tag-bg: $dark-color !default;
+    $video-details-tag-hover-bg: darken($dark-color, 5%) !default;
+    $video-details-tag-color: $white !default;
+    $video-details-tag-hover-color: $white !default;
+    $video-details-tag-shadow: 0 1px 0 $black !default;
+
+    //
+    // Body
+    // --------------------------------
+
+    background-color: $body-bg;
+    color: $body-color;
+    font-family: $body-font-family;
+
+    //
+    // Buttons
+    // --------------------------------
+
+    .jw-button {
+
+        &.is-active .jwy-icon-stack {
+            color: $btn-icon-active-color;
+
+            .jwy-icon {
+                color: $btn-icon-nested-active-color;
+            }
+        }
+
+        &:not(.is-active) {
+            .jwy-icon-stack .jwy-icon {
+                color: $btn-icon-nested-color;
+            }
+        }
+
+        &-default {
+
+            &:not(.is-disabled):hover,
+            &.active {
+                color: $btn-primary-bg;
+            }
+        }
+
+        &-primary {
+            @include button-variant($btn-primary-color, $btn-primary-bg);
+        }
+
+        &-secondary {
+            @include button-variant($btn-secondary-color, $btn-secondary-bg);
+        }
+
+        &-light {
+            @include button-variant($btn-light-color, $btn-light-bg);
+        }
+
+        &-dark {
+            @include button-variant($btn-dark-color, $btn-dark-bg);
+        }
+
+        &-border-light {
+            border: 1px solid $light-color;
+        }
+
+        &-facebook {
+            background-color: $facebook-color;
+        }
+
+        &-twitter {
+            background-color: $twitter-color;
+        }
+
+        &-mail {
+            background-color: $dark-color;
+        }
+
+        &-play {
+            border-color: $btn-play-border-color;
+
+            .jwy-icon {
+                color: $btn-play-icon-color;
+            }
+        }
+
+        &-facebook {
+            background-color: $btn-facebook-bg;
+        }
+
+        &-twitter {
+            background-color: $btn-twitter-bg;
+        }
+
+        &-effect {
+            background-color: $btn-effect-bg;
+        }
+    }
+
+    //
+    // Card
+    // --------------------------------
+
+    .jw-card.jw-card-flag-default {
+
+        color: $card-color;
+
+        &:hover .jw-card-info {
+            background-color: $card-info-hover-bg;
+            color: $card-info-hover-color;
+        }
+
+        .jw-card-info {
+            background-color: $card-info-bg;
+            color: $card-info-color;
+        }
+
+        .jw-card-watch-progress {
+            background: $card-watch-progress-color;
+        }
+
+        .jw-card-toast {
+
+            &.jw-card-toast-primary {
+                background-color: $card-toast-primary-bg;
+                color: $card-toast-primary-color;
+            }
+
+            &.jw-card-toast-success {
+                background-color: $card-toast-success-bg;
+                color: $card-toast-success-color;
+
+                .jwy-icon-stack .jwy-icon {
+                    color: $card-toast-success-bg;
+                }
+            }
+        }
+
+        .jw-card-title .jw-card-title-matches {
+            color: $primary-color;
+            font-weight: 400;
+        }
+
+        .jw-card-description .jw-card-description-caption {
+            color: $gray;
+
+            span {
+                color: $primary-color;
+                font-weight: 700;
+            }
+        }
+
+        .jw-card-in-video-search-timeline {
+            background-color: $card-in-video-timeline-bg;
+
+            &:hover {
+                background-color: $primary-color;
+            }
+
+            .jw-card-in-video-search-timeline-dot {
+                background-color: $card-in-video-timeline-bg;
+
+                &:hover {
+                    background-color: $primary-color;
+                }
+            }
+        }
+    }
+
+    .jw-card.jw-card-flag-featured {
+
+        .jw-card-info {
+            color: $card-featured-info-color;
+        }
+    }
+
+    //
+    // CardSlider
+    // --------------------------------
+
+    .jw-row:nth-child(2n+3) {
+        .jw-card-slider {
+            background-color: $card-slider-odd-bg-color;
+        }
+    }
+
+    .jw-card-slider {
+
+        &-flag-default {
+            .jw-card-slider-controls {
+                color: $card-slider-button-color;
+
+                .jw-card-slider-button:hover:not(.is-disabled) {
+                    color: $card-slider-button-hover-color;
+                }
+            }
+        }
+
+        &-flag-featured {
+            background-color: $card-slider-featured-bg;
+
+            .jw-card-slider-controls {
+                color: $card-slider-featured-button-color;
+
+                .jw-card-slider-button:hover:not(.is-disabled) {
+                    color: $card-slider-featured-button-hover-color;
+                }
+            }
+        }
+
+        &-flag-error .jw-feed-title {
+            color: $card-slider-error-title-color;
+        }
+
+        .jw-feed-title {
+            color: $card-slider-title-color;
+        }
+
+        .jw-card-slider-slide {
+
+            &-flag-loading {
+                background: $card-slider-loading-bg;
+
+                .jw-card-aspect {
+                    background: $card-slider-loading-card-bg;
+                }
+            }
+
+            &-flag-error {
+                background: $card-slider-error-bg;
+
+                .jw-card-aspect {
+                    background: $card-slider-error-card-bg;
+                }
+            }
+        }
+    }
+
+    .jw-card-menu {
+        background-color: $card-menu-bg;
+    }
+
+    //
+    // CardGrid
+    // --------------------------------
+
+    .jw-card-grid {
+
+        &-control {
+            color: $secondary-color;
+        }
+
+        .jw-feed-title {
+            color: $card-grid-title-color;
+        }
+    }
+
+    //
+    // Cookies
+    // --------------------------------
+
+    .jw-cookies {
+        background-color: $cookies-bg;
+    }
+
+    .jw-cookies-title {
+        color: $cookies-title-color;
+    }
+
+    .jw-cookies-explanation {
+        color: $cookies-color;
+    }
+
+    //
+    // Footer
+    // --------------------------------
+
+    .jw-footer {
+        color: $footer-color;
+    }
+
+    //
+    // Header
+    // --------------------------------
+
+    .jw-header {
+        background-color: $header-bg;
+        color: $header-color;
+
+        // Only declare rule if toolbar hover color differs from primary color.
+        @if $header-hover-color != $primary-color {
+            .jw-button:hover {
+                color: $header-hover-color;
+            }
+        }
+
+        &-fixed {
+            @include box-shadow($header-fixed-shadow);
+        }
+    }
+
+    //
+    // Video
+    // --------------------------------
+
+    .jw-video-layout {
+        background-color: $video-layout-bg;
+    }
+
+    //
+    // Rail
+    // --------------------------------
+
+    .jw-side-rail {
+        background-color: $rail-bg;
+
+        &-header {
+            border-bottom: $rail-header-border-bottom;
+            background-color: $rail-header-bg;
+            color: $rail-header-color;
+        }
+
+        &-item {
+            color: $rail-item-color;
+
+            &:focus,
+            &:hover {
+                background-color: $rail-item-hover-bg;
+            }
+        }
+
+        &-control .jw-button-block {
+            border-top: $rail-button-block-border-top;
+            background-color: $rail-button-block-bg;
+            color: $rail-button-block-color;
+        }
+    }
+
+    //
+    // Loading
+    // --------------------------------
+
+    .jw-loading .jw-loading-icon .jwy-icon {
+        color: $loading-color;
+    }
+
+    //
+    // Modal
+    // --------------------------------
+
+    .jw-modal {
+        background-color: $modal-bg;
+        color: $modal-color;
+    }
+
+    //
+    // Offline
+    // --------------------------------
+
+    .jw-offline-message {
+        background: $offline-bg;
+        color: $offline-color;
+    }
+
+    //
+    // Popup
+    // --------------------------------
+
+    .jw-popups-backdrop {
+        background-color: $popup-backdrop-bg;
+    }
+
+    .jw-popup {
+        background-color: $popup-bg;
+
+        .jw-popup-title,
+        .jw-popup-buttons {
+            color: $popup-color;
+        }
+    }
+
+    //
+    // Scroll
+    //
+    .jw-scroll {
+
+        // scss-lint:disable SelectorFormat
+        .iScrollVerticalScrollbar {
+            background: $scroll-track-bg;
+
+            .iScrollIndicator {
+                border: 2px solid $scroll-track-bg;
+                background-color: $scroll-indicator-bg;
+            }
+        }
+        // scss-lint:enable SelectorFormat
+    }
+
+    //
+    // Search
+    // --------------------------------
+
+    .jw-search-container {
+        background-color: $search-bg;
+
+        .jw-search-align {
+            border-bottom: $search-border;
+        }
+
+        .jw-search-input {
+            color: $search-color;
+        }
+    }
+
+    //
+    // Sidebar
+    // --------------------------------
+
+    .jw-sidebar {
+        background: $sidebar-bg;
+        color: $sidebar-color;
+
+        .jw-header {
+            background: $sidebar-bg;
+            color: $sidebar-color;
+        }
+    }
+
+    //
+    // Text
+    // --------------------------------
+
+    .jw-text-primary {
+        color: $primary-color;
+    }
+
+    .jw-text-secondary {
+        color: $secondary-color;
+    }
+
+    .jw-text-success {
+        color: $success-color;
+    }
+
+    //
+    // Toggle
+    // --------------------------------
+
+    .jw-toggle {
+        &-track {
+            background: $toggle-default-color;
+        }
+
+        &-button {
+            border-color: $toggle-default-color;
+            background: $toggle-button-bg;
+        }
+
+        &-flag-checked {
+
+            .jw-toggle-track {
+                background: $toggle-checked-color;
+            }
+
+            .jw-toggle-button {
+                border-color: $toggle-checked-color;
+            }
+        }
+    }
+
+    //
+    // Toolbar
+    // --------------------------------
+
+    .jw-toolbar {
+        background-color: $toolbar-bg;
+        color: $toolbar-color;
+
+        // Only declare rule if toolbar hover color differs from primary color.
+        @if $toolbar-hover-color != $primary-color {
+            .jw-button:hover {
+                color: $toolbar-hover-color;
+            }
+        }
+
+        .jw-toolbar-nav:last-child .jw-button {
+            border-left: $toolbar-nav-border;
+        }
+
+        .jw-button-label {
+            color: rgba($toolbar-color, 0.65);
+        }
+    }
+
+    .jw-toolbar-row-bg {
+        background-color: $toolbar-bg;
+        color: $toolbar-color;
+    }
+
+    .jw-toolbar-row-bg {
+        background-color: $toolbar-bg;
+        color: $toolbar-color;
+    }
+
+    .jw-toolbar-row-bg {
+        background-color: $toolbar-bg;
+        color: $toolbar-color;
+    }
+
+    .jw-toolbar-row-bg {
+        background-color: $toolbar-bg;
+        color: $toolbar-color;
+    }
+
+    .jw-row-inverse {
+        background-color: $row-inverse-bg;
+        color: $row-inverse-color;
+    }
+
+    //
+    // VideoDetails
+    // --------------------------------
+
+    .jw-video-details {
+        background-color: $video-details-bg;
+        color: $video-details-color;
+
+        .jw-video-details-tag {
+            @include box-shadow($video-details-tag-shadow);
+            background-color: $video-details-tag-bg;
+            color: $video-details-tag-color;
+
+            &:hover {
+                background-color: $video-details-tag-hover-bg;
+                color: $video-details-tag-hover-color;
+            }
+        }
+    }
+
+    //
+    // Skin
+    // --------------------------------
+
+    .jwplayer.jw-skin-jw-showcase {
+
+        .jw-background-color {
+            background-color: rgba($dark-color, 0.9);
+        }
+
+        .jw-controlbar {
+            background-color: rgba($black, 0.2);
+        }
+
+        .jw-progress {
+            background-color: $primary-color;
+        }
+
+        .jw-button-color,
+        .jw-toggle.jw-off {
+            color: $white;
+
+            &:hover,
+            &:focus {
+                color: $primary-color;
+            }
+        }
+
+        .jw-toggle {
+            color: $primary-color;
+        }
+    }
+
+    //
+    // Settings
+    // --------------------------------
+
+    .jw-settings .jw-toggle-track {
+        background-color: $gray-alternate;
+    }
+
+    .jw-settings .jw-toggle-flag-checked .jw-toggle-track {
+        background-color: $blue;
+    }
+
+    .jw-settings-row {
+        border-bottom: 2px solid rgba($dark-color, 0.1);
+    }
+}

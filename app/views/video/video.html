@@ -1,0 +1,113 @@
+<div class="jw-page jw-page-flag-header">
+  <div class="jw-page-content">
+    <div class="jw-video-layout pth" ng-class="{'jw-video-layout-flag-rail': vm.enableRail}">
+      <div class="jw-video-layout-row pb" jw-screen-size="tablet">
+        <jw-ad-slot slot-id="above-video" slot-size="[728,90]">
+      </div>
+
+      <div class="jw-video-layout-row">
+        <div class="jw-video-layout-main">
+          <div class="jw-video-layout-align">
+            <div class="jw-row" ng-if="vm.config.options.videoTitlePosition === 'above'">
+              <jw-video-details item="vm.item" class="jw-video-details-flag-above">
+                <jw-video-details-title>
+                  <jw-video-details-share item="vm.item" ng-if="vm.config.options.videoTitlePosition === 'above'">
+                  </jw-video-details-share>
+                </jw-video-details-title>
+              </jw-video-details>
+            </div>
+          </div>
+        </div>
+        <div class="jw-video-layout-rail"></div>
+      </div>
+
+      <div class="jw-video-layout-row">
+        <div class="jw-video-layout-main">
+          <div class="jw-video-layout-align">
+            <div class="jw-row">
+              <div class="jw-video-container" ng-class="{'is-loading': vm.loading}">
+                <div class="jw-video-container-aspect">
+                  <div class="jw-video-loading">
+                    <div class="jw-rotate-animation">
+                      <i class="jwy-icon-buffer"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="jw-video-container-player">
+                  <jw-player settings="vm.playerSettings"
+                      on-playlist-item="vm.onPlaylistItem"
+                      on-time="vm.onTime"
+                      on-complete="vm.onComplete"
+                      on-first-frame="vm.onFirstFrame"
+                      on-levels="vm.onLevels"
+                      on-ready="vm.onReady"
+                      on-error="vm.onError"
+                      on-setup-error="vm.onSetupError"
+                      on-ad-impression="vm.onAdImpression">
+                  </jw-player>
+                </div>
+              </div>
+            </div>
+
+            <div class="jw-row pb">
+              <jw-toolbar-video item="vm.item" show-save-button="vm.feedIsPresentInPlaylist"></jw-toolbar-video>
+            </div>
+
+            <div class="jw-row pb">
+              <jw-video-details item="vm.item">
+                <jw-video-details-title ng-if="vm.config.options.videoTitlePosition === 'below'"></jw-video-details-title>
+                <jw-video-details-description enable-tags="vm.config.options.enableTags"></jw-video-details-description>
+              </jw-video-details>
+            </div>
+          </div>
+
+          <jw-ad-slot
+              slot-id="below-video"
+              slot-size="[300,250]"
+              slot-size-mapping="[[[1052, 0], [728, 90]], [[1000, 0], [300, 250]], [[768, 0], [728, 90]]]"
+              class="jw-row pb"></jw-ad-slot>
+        </div>
+
+        <div class="jw-video-layout-rail" ng-if="vm.enableRail && vm.activeFeed.playlist.length > 1">
+          <jw-ad-slot
+              slot-id="rail"
+              slot-size="[300,250]"
+              jw-screen-size="desktop"
+              class="jw-side-rail-ad pb"></jw-ad-slot>
+          <jw-rail
+              title="vm.activeFeedTitle"
+              feed="vm.activeFeed"
+              currently-playing="vm.item"
+              on-item-click="vm.cardClickHandler(newItem, clickedOnPlay)">
+          </jw-rail>
+          <jw-ad-slot
+              slot-id="below-rail"
+              slot-size="[300,250]"
+              class="jw-row pb"
+              jw-screen-size="mobile"></jw-ad-slot>
+        </div>
+      </div>
+    </div>
+
+    <div class="jw-row" ng-if="vm.activeFeed && !vm.enableRail">
+      <jw-rail
+          title="vm.activeFeedTitle"
+          feed="vm.activeFeed"
+          currently-playing="vm.item"
+          on-item-click="vm.cardClickHandler(newItem, clickedOnPlay)"
+          jw-screen-size="mobile">
+      </jw-rail>
+      <div class="jw-content-row" jw-screen-size="tablet,desktop">
+        <jw-card-slider
+            feed="vm.activeFeed"
+            first-item="vm.item"
+            featured="false"
+            title="{{ vm.activeFeedTitle }}"
+            class="jw-card-slider-flag-now-playing jw-lazy-load"
+            on-card-click="vm.cardClickHandler">
+        </jw-card-slider>
+      </div>
+    </div>
+  </div>
+</div>

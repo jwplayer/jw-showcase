@@ -1,0 +1,56 @@
+<div class="jw-card">
+
+  <div class="jw-card-aspect" jw-card-poster="vm.item">
+    <div class="jw-card-poster is-active is-loading"></div>
+  </div>
+
+  <div class="jw-card-container"
+      ng-click="vm.containerClickHandler($event)"
+      role="button"
+      tabindex="0">
+    <div class="jw-card-controls">
+      <div class="jw-card-controls-align">
+        <a class="jw-button jw-card-play-button jw-button-play">
+          <i class="jwy-icon jwy-icon-play"></i>
+        </a>
+        <div class="jw-card-text jw-card-text-now-playing">Currently playing</div>
+      </div>
+      <div class="jw-card-duration jw-card-text"></div>
+    </div>
+    <div class="jw-card-info">
+      <div class="jw-card-watch-progress ng-hide"></div>
+      <div class="jw-card-info-mask">
+        <a class="jw-card-title jw-card-text" tabindex="-1"></a>
+        <div class="jw-card-description jw-card-text jw-markdown">
+          <div
+            ng-if="vm.activeCaption"
+            class="jw-card-description-caption"
+            ng-bind-html="vm.activeCaption.highlighted"
+          ></div>
+          <jw-markdown ng-if="!vm.activeCaption" ng-model="vm.item.description"></jw-markdown>
+        </div>
+      </div>
+    </div>
+    <div class="jw-card-in-video-search-timeline" ng-if="vm.showCaptionMatches">
+      <div
+        class="jw-card-in-video-search-timeline-dot"
+        ng-repeat="caption in vm.item.captionMatches"
+        ng-style="{left: (caption.time / vm.item.duration) * 100 + '%'}"
+        ng-click="vm.containerClickHandler($event, caption.time)"
+        ng-mouseenter="vm.setActiveCaption(caption)"
+        ng-mouseleave="vm.removeActiveCaption()"
+        ng-if="(caption.time / vm.item.duration) <= 1"
+      ></div>
+    </div>
+  </div>
+
+  <jw-button
+      class="jw-card-menu-button jw-button-default"
+      ng-click="vm.menuButtonClickHandler($event)"
+      aria-label="open card menu"
+      tabindex="0">
+    <i class="jwy-icon jwy-icon-more jwy-icon-rotate-90"></i>
+  </jw-button>
+
+  <div class="jw-card-toasts"></div>
+</div>

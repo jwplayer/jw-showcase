@@ -1,0 +1,15 @@
+<div
+    ng-if="!feed.$virtual || feed.playlist.length"
+    ng-class="{'jw-expand-animation': feed.$virtual}">
+  <jw-card-slider
+      feed="feed"
+      featured="false"
+      aspectratio="::options.aspectratio"
+      cols="::options.cols"
+      enable-title="::options.enableTitle"
+      enable-text="::options.enableText"
+      enable-preview="::options.enablePreview"
+      on-card-click="cardClickHandler"
+      class="jw-lazy-load"
+  ></jw-card-slider>
+</div>

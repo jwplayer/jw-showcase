@@ -16,7 +16,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd:    'node_modules/jw-showcase-lib/fonts',
+            cwd:    'app/fonts',
             dest:   '<%= config.dist %>/fonts',
             src:    '*'
         }, {
@@ -46,7 +46,7 @@ module.exports = {
     server: {
         files: [{
             expand: true,
-            cwd:    'node_modules/jw-showcase-lib/fonts',
+            cwd:    'app/fonts',
             dest:   '.tmp/fonts/',
             src:    '*'
         }, {

@@ -1,0 +1,11 @@
+<div class="jw-video-details-description" jw-collapsible-text="4.2em" jw-collapsible-text-watch="vm.jwVideoDetails.item.description">
+  <p>
+    <jw-markdown ng-model="vm.jwVideoDetails.item.description" class="jw-markdown"></jw-markdown>
+  </p>
+
+  <ul class="jw-video-details-tags" ng-if="vm.enableTags">
+    <li ng-repeat="tag in vm.jwVideoDetails.item.tags.split(',') track by $index">
+      <a class="jw-video-details-tag" ui-sref="root.tag({tag: tag})">{{ ::tag }}</a>
+    </li>
+  </ul>
+</div>

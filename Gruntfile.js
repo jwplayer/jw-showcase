@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     var config = {
-        app:  require('./package.json').appPath || 'app',
+        app:  'app',
         dist: 'dist'
     };
 

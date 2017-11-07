@@ -1,0 +1,137 @@
+//
+// jwRightRail
+// --------------------------------
+.jw-side-rail {
+    margin-bottom: $base-spacing;
+
+    &-header {
+        @include display-flex();
+        @include align-items(center);
+        height: 40px;
+        padding: 0 $base-spacing;
+
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    &-scroll-wrapper {
+        position: relative;
+    }
+
+    &-items {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &-item {
+        @include display-flex();
+        @include single-transition(background, 0.2s, ease);
+        cursor: pointer;
+
+        // disable animation when items are added or removed.
+        &.ng-leave,
+        &.ng-enter {
+            @include transition(none !important);
+        }
+
+        &:focus,
+        &:hover {
+            .jw-side-rail-item-image-overlay {
+                opacity: 1;
+            }
+        }
+
+        &-image {
+            @include flex(0 0 auto);
+            @include display-flex();
+            @include align-items(center);
+
+            position: relative;
+            width: 160px;
+            height: 90px;
+            margin: $base-spacing;
+
+            overflow: hidden;
+
+            > img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            &-overlay {
+                @include cover();
+                @include display-flex();
+                @include align-items(center);
+                @include justify-content(center);
+                @include single-transition(opacity, 0.2s, ease);
+
+                opacity: 0;
+
+                background-color: rgba($black, 0.3);
+
+                .jw-button-play {
+                    font-size: 0.825em;
+                }
+            }
+        }
+
+        &-info {
+            @include align-self(center);
+
+            display: -webkit-box;
+
+            max-height: 5rem;
+
+            margin: $base-spacing $base-spacing $base-spacing 0;
+
+            overflow: hidden;
+
+            font-size: 0.8rem;
+            line-height: 1rem;
+
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    &-control {
+        padding: 0 $base-spacing;
+    }
+}
+
+@include mobile-and-tablet () {
+
+    .jw-side-rail {
+
+        &-item-title {
+            font-size: rem(14px);
+        }
+
+        &-control {
+            padding: $base-spacing;
+            text-align: center;
+
+            .jw-button {
+                width: 200px;
+            }
+        }
+    }
+}
+
+@include tablet-only () {
+
+    .jw-side-rail {
+
+        &-items {
+            @include display-flex();
+            @include flex-flow(wrap);
+        }
+
+        &-item {
+            @include flex(0 0 50%);
+        }
+    }
+}
