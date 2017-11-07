@@ -58,7 +58,9 @@
                 useRecommendationPlaylist: false,
                 displayAds:                false
             },
-            experimental: {}
+            experimental: {
+                footerLinks: []
+            }
         });
 
     /**
@@ -104,6 +106,7 @@
      * @property {Object}               experimental
      * @property {boolean}              experimental.enableRelatedOverlay
      * @property {boolean}              experimental.showClickToPlayText
+     * @property {Array}                experimental.footerLinks
      */
 
     /**

@@ -1,3 +1,8 @@
 <div class="jw-footer">
-  <p>{{ ::vm.config.footerText }}</p>
+    <p>{{ ::vm.config.footerText }}</p>
+
+    <a class="jw-footer-link" href="{{ ::link.url }}" ng-repeat-start="(key, link) in vm.config.experimental.footerLinks">
+        {{ ::link.text }}
+    </a>
+    <span ng-repeat-end ng-if="!$last"> - </span>
 </div>
