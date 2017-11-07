@@ -6,22 +6,20 @@ module.exports = function (grunt) {
         'karma'
     ]);
 
-    grunt.registerTask('test:protractor', function () {
-        // set configFile variable based on config option, default to local protractor config.
-        grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
-        runProtractorTasks();
-    });
-
     // don't break existing tasks
     grunt.registerTask('test:protractor:local', function () {
-        grunt.task.run('clean:reports_local');
+        if (grunt.option('clean')) {
+            grunt.task.run('clean:reports_local');
+        }
 
         grunt.config.set('configFile', grunt.option('config') || 'protractor.conf.local.js');
         runProtractorTasks();
     });
 
     grunt.registerTask('test:protractor:browserstack', function () {
-        grunt.task.run('clean:reports_browserstack');
+        if (grunt.option('clean')) {
+            grunt.task.run('clean:reports_browserstack');
+        }
 
         grunt.config.set('configFile', 'protractor.conf.browserstack.js');
         runProtractorTasks();

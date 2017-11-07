@@ -105,8 +105,11 @@ defineSupportCode(function ({Given, When, Then}) {
 
     Then('the video should autoplay', function() {
         var regex = browser.browserName === 'safari' ? /paused|playing|buffering/ : /playing|buffering/;
-        return expect(browser.executeScript('return jwplayer().getState()'))
-            .to.eventually.match(regex);
+        return browser.wait(function () {
+            return browser.executeScript('return jwplayer().getState()').then(function (state) {
+                return state.match(regex);
+            });
+        });
     });
 
     Then('the play icon should be visible', function () {

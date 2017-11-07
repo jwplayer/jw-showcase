@@ -39,7 +39,16 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I type {string} in the search input', function (phrase) {
-        return $('.jw-header .jw-search-input').sendKeys(phrase);
+        var input = $('.jw-header .jw-search-input');
+
+        // send phrase without last char
+        return input.sendKeys(phrase.slice(0, -1)).then(function() {
+            // wait for debounce
+            return browser.sleep(1000).then(function() {
+                // send last char
+                return input.sendKeys(phrase.substr(-1));
+            });
+        });
     });
 
     When('I press escape', function () {
