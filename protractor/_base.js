@@ -160,6 +160,7 @@ function extendConfig(callback, reportPath, customCapabilities) {
             watchProgress: 'test/features/watchProgress.feature',
             watchlist: 'test/features/watchlist.feature',
             siderail: 'test/features/siderail.feature',
+            experimental: 'test/features/experimental.feature',
 
             full: [
                 'test/features/*.feature'
