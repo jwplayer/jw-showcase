@@ -48,7 +48,7 @@ exports.config = extendConfig(
         capabilities['browserstack.key']   = BROWSERSTACK_KEY;
         capabilities['browserstack.local'] = true;
 
-        // Selenium 3.4.0 does not work great with IE11
+        // Selenium 3.6.0 does not work great with IE11
         if (capabilities.browserName !== 'internet explorer') {
             capabilities['browserstack.selenium_version'] = '3.4.0';
         }

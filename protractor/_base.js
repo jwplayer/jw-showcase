@@ -13,13 +13,15 @@ process.argv.forEach(function(value, key) {
     }
 });
 
-function getMetaData(capabilities) {
+function getMetaData(capabilities) { // jshint ignore:line
+    // jshint -W106
     var os              = capabilities.os || 'unknown',
         osVersion       = capabilities.os_version || 'latest',
         browser         = capabilities.browser || capabilities.browserName || 'unknown',
         browserVersion  = capabilities.browserVersion || capabilities.browser_version || 'latest',
         device          = capabilities.device || capabilities.viewport || 'desktop',
         viewport        = capabilities.viewport || '';
+    // jshint +W106
 
     if (capabilities.viewport) {
         device += '_' + viewport;
@@ -177,7 +179,10 @@ function extendConfig(callback, reportPath, customCapabilities) {
                 inline: {
                     postResults: function() {
                         // remove empty result files
-                        var resultPth = path.join(path.resolve(reportPath), REPORT_FILENAME + '.' + process.pid + '.json');
+                        var resultPth = path.join(
+                            path.resolve(reportPath),
+                            REPORT_FILENAME + '.' + process.pid + '.json'
+                        );
 
                         var res = require(resultPth);
                         if (!(res && res.length)) {
