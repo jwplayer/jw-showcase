@@ -107,6 +107,7 @@
      * @property {boolean}              experimental.enableRelatedOverlay
      * @property {boolean}              experimental.showClickToPlayText
      * @property {Array}                experimental.footerLinks
+     * @property {string}               experimental.copyrightText
      */
 
     /**

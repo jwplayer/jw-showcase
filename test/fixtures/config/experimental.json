@@ -13,6 +13,7 @@
         "enableHeader": true
     },
     "experimental": {
+        "copyrightText": "© 2017 Longtail Ad Solutions, Inc. All Rights Reserved. JW Player is a registered trademark.",
         "footerLinks": [
             {
                 "text": "Privacy Policy",

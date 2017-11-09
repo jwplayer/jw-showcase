@@ -51,4 +51,8 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect(func).to.eventually.equal(content);
     });
 
+    Then('the footer should contain the copyright text', function() {
+        return expect($('.jw-footer p:last-child').getText()).to.eventually.equal('© 2017 Longtail Ad Solutions, Inc. All Rights Reserved. JW Player is a registered trademark.');
+    });
+
 });

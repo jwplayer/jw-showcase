@@ -1,9 +1,13 @@
 <div class="jw-footer">
     <p>{{ ::vm.config.footerText }}</p>
 
-    <a class="jw-footer-link"
-       href="{{ ::link.url }}"
-       target="_blank"
-       ng-repeat-start="(key, link) in vm.config.experimental.footerLinks">{{ ::link.text }}</a>
-    <span ng-repeat-end ng-if="!$last"> - </span>
+    <p ng-if="vm.config.experimental.footerLinks">
+        <a class="jw-footer-link"
+           href="{{ ::link.url }}"
+           target="_blank"
+           ng-repeat-start="(key, link) in vm.config.experimental.footerLinks">{{ ::link.text }}</a>
+        <span ng-repeat-end ng-if="!$last"> - </span>
+    </p>
+
+    <p ng-if="vm.config.experimental.copyrightText">{{ ::vm.config.experimental.copyrightText }}</p>
 </div>
