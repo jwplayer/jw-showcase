@@ -55,7 +55,7 @@
     "ngrok": "^2.2.9",
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.2.2",
-    "protractor": "^5.1.2",
+    "protractor": "^5.2.0",
     "protractor-cucumber-framework": "^4.0.8",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.2.3",
     "selenium-webdriver": "^3.6.0",
