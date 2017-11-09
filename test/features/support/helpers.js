@@ -109,9 +109,13 @@ defineSupportCode(function () {
 
         return browser.get(page)
             .then(function () {
-                return browser.wait(function () {
-                    return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
-                        return val === true;
+                return browser.waitForAngular().then(function() {
+                    return browser.wait(function () {
+                        return browser.executeScript(function () {
+                            return window && window.$stateIsResolved;
+                        }).then(function (val) {
+                            return val === true;
+                        });
                     });
                 });
             })
