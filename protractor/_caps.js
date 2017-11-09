@@ -1,3 +1,5 @@
+/* jshint -W106 */
+
 module.exports = {
     //
     // OS X
@@ -26,24 +28,12 @@ module.exports = {
     ],
 
     // latest Safari
-    'osx_sierra_safari': [
+    'osx_highsierra_safari': [
         {
             platform:    'MAC',
             browserName: 'safari',
             os:          'OS X',
-            os_version:  'Sierra'
-        },
-        ['@desktop']
-    ],
-
-    // Safari 9.1
-    'osx_elcapitan_safari_9.1': [
-        {
-            platform:    'MAC',
-            browserName: 'safari',
-            version:     '9.1',
-            os:          'OS X',
-            os_version:  'El Capitan'
+            os_version:  'High Sierra',
         },
         ['@desktop']
     ],
