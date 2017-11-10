@@ -90,6 +90,14 @@ defineSupportCode(function ({Given, When, Then}) {
         return browser.executeScript('jwplayer().seek(jwplayer().getDuration() - 2)');
     });
 
+    When('I wait for the video to end', function () {
+        return browser.wait(function () {
+            return browser.executeScript('return jwplayer().getState()').then(function (state) {
+                return state === 'complete';
+            });
+        });
+    });
+
     When('I scroll to the video description', function () {
         return scrollToElement($('.jw-collapsible-text-toggle'));
     });
@@ -152,6 +160,11 @@ defineSupportCode(function ({Given, When, Then}) {
 
     Then('the video tags should be visible', function () {
         return expect($$('.jw-video-details-tag').get(0).isDisplayed()).to.eventually.equal(true);
+    });
+
+    Then('the related overlay is shown', function () {
+        return expect($('.jw-related.jw-overlay.jw-overlay-open').isDisplayed()).to.eventually
+            .equal(true);
     });
 
 });
