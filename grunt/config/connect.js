@@ -19,6 +19,10 @@ module.exports = function (grunt) {
                             '/node_modules',
                             serveStatic('./node_modules')
                         ),
+                        connect().use(
+                            '/app',
+                            serveStatic('./app')
+                        ),
                         serveStatic('./app')
                     ];
                 }
@@ -37,6 +41,10 @@ module.exports = function (grunt) {
                         connect().use(
                             '/node_modules',
                             serveStatic('./node_modules')
+                        ),
+                        connect().use(
+                            '/app',
+                            serveStatic('./app')
                         ),
                         serveStatic('./app')
                     ];
