@@ -4,7 +4,13 @@ module.exports = function (grunt) {
         url            = require('url'),
         template       = require('lodash.template'),
         pkg            = require(process.cwd() + '/package.json'),
-        ngMocksInclude = '<script src="node_modules/angular-mocks/angular-mocks.js"></script>';
+        ngMocksInclude = '<script src="node_modules/angular-mocks/angular-mocks.js"></script>',
+        jsonEditorCode = fs.readFileSync(process.cwd() + '/grunt/template/jsonEditor.html', 'utf8');
+
+    function injectIntoHtml(html, searchStr, content) {
+        var pos = html.indexOf(searchStr);
+        return html.substr(0, pos) + content + html.substr(pos);
+    }
 
     function compile (src, dest, configLocation, injectNgMocks) {
 
@@ -20,9 +26,19 @@ module.exports = function (grunt) {
         html = fs.readFileSync(src).toString();
 
         if (injectNgMocks) {
-            var pos = html.indexOf('<!-- build:js({.tmp,app}) scripts/scripts.js -->');
-            html    = html.substr(0, pos) + ngMocksInclude + '\n\n' +
-                '<script>window.name = "NG_DEFER_BOOTSTRAP!" + window.name;</script>' + '\n\n' + html.substr(pos);
+            html = injectIntoHtml(
+                html,
+                '<!-- build:js({.tmp,app}) scripts/scripts.js -->',
+                ngMocksInclude + '\n\n' + '<script>window.name = "NG_DEFER_BOOTSTRAP!" + window.name;</script>' + '\n\n'
+            );
+        }
+
+        if (grunt.option('jsoneditor')) {
+            html = injectIntoHtml(
+                html,
+                '</body>',
+                '\n' + jsonEditorCode + '\n'
+            );
         }
 
         compiler = template(html);
