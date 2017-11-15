@@ -57,11 +57,11 @@ Topics for advanced users:
 4. Create one or more video playlist(s) in the [JW Player Dashboard](https://dashboard.jwplayer.com/#/content/playlists) and record their eight-character playlist IDs.
 5. Configure your site by editing the `config.json` file in the directory where you extracted the JW Showcase release files.
     - Use the player key from the previous step in the `player` field.
-    - Use playlist IDs for the 'playlistId` keys in the `content` array.
+    - Use playlist IDs for the `playlistId` keys in the `content` array.
 6. Visit your site.
 
 ## Support and Bug Reporting
 
 To report bugs and feature requests, or request help using JW Showcase, use this repository's [Issues](https://github.com/jwplayer/jw-showcase/issues) page.
 
-v3.7.1
+v3.8.0-beta
