@@ -23,5 +23,9 @@ module.exports = function (grunt) {
         tasks.push('hosted');
     }
 
+    if (grunt.option('jsoneditor')) {
+        tasks.push('copy:jsoneditor');
+    }
+
     grunt.registerTask('build', tasks);
 };
