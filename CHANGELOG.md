@@ -1,4 +1,4 @@
-## 3.8.0-beta (November 15 2017)
+## 3.8.0 (November 16 2017)
 
 - [#125](http://github.com/jwplayer/jw-showcase/issues/125) Remove Bower
 - Merge complete [jw-showcase-lib](http://github.com/jwplayer/jw-showcase-lib) into this repository
