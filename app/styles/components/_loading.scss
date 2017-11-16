@@ -1,0 +1,29 @@
+//
+// jwLoading
+// --------------------------------
+
+.jw-loading {
+    z-index: $loading-z-index;
+
+    background-color: $white;
+
+    &.ng-hide-add {
+        @include transition(opacity 0.2s linear 0s, transform 0.2s ease-in 0s);
+        @include transform(scale(1));
+        opacity: 1;
+    }
+
+    &.ng-hide-add-active {
+        @include transform(scale(1.5));
+        opacity: 0;
+    }
+
+    .jw-loading-icon {
+        @include center-self();
+
+        .jwy-icon-buffer {
+            color: $gray;
+            font-size: 5em;
+        }
+    }
+}

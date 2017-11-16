@@ -1,29 +1,32 @@
+const DEBUG = process.argv.indexOf('--debug') !== -1;
 
 module.exports = function (config) {
     config.set({
 
         basePath: '.',
 
-        frameworks: ['jasmine'],
+        frameworks: [ 'jasmine' ],
 
         files: [
-            'bower_components/angular/angular.js',
-            'bower_components/angular-animate/angular-animate.js',
-            'bower_components/angular-sanitize/angular-sanitize.js',
-            'bower_components/angular-touch/angular-touch.js',
-            'bower_components/angular-ui-router/release/angular-ui-router.js',
-            'bower_components/angular-mocks/angular-mocks.js',
-            'bower_components/ua-parser-js/dist/ua-parser.pack.js',
-            'bower_components/jw-showcase-lib/js/polyfills.js',
-            'bower_components/jw-showcase-lib/js/vtt.js',
-            'bower_components/jw-showcase-lib/js/core/core.module.js',
-            'bower_components/jw-showcase-lib/js/core/**/*.js',
-            'bower_components/jw-showcase-lib/views/**/*.html',
+            'node_modules/angular/angular.js',
+            'node_modules/angular-animate/angular-animate.js',
+            'node_modules/angular-sanitize/angular-sanitize.js',
+            'node_modules/angular-touch/angular-touch.js',
+            'node_modules/angular-ui-router/release/angular-ui-router.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'node_modules/ua-parser-js/dist/ua-parser.pack.js',
+            'app/scripts/polyfills.js',
+            'app/scripts/vtt.js',
+            'app/scripts/core/core.module.js',
+            'app/scripts/core/**/*.js',
+            'app/views/**/*.html',
             'test/fixtures/feed/*.json',
             'test/fixtures/config/**/*.json',
             'test/unit/helpers/*.js',
             'test/unit/specs/**/*.spec.js',
-            {pattern: 'app/images/*', included: false, served: true}
+            {
+                pattern: 'app/images/*', included: false, served: true
+            }
         ],
 
         exclude: [
@@ -32,7 +35,6 @@ module.exports = function (config) {
         ],
 
         ngHtml2JsPreprocessor: {
-            stripPrefix: 'bower_components/jw-showcase-lib/',
             moduleName:  'app.partials'
         },
 
@@ -41,11 +43,11 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            '**/*.html':                 ['ng-html2js'],
-            'test/fixtures/**/*.json':   ['json_fixtures']
+            '**/*.html':                 [ 'ng-html2js' ],
+            'test/fixtures/**/*.json':   [ 'json_fixtures' ]
         },
 
-        reporters: ['dots'],
+        reporters: [ 'dots' ],
 
         port: 9876,
 
@@ -55,10 +57,24 @@ module.exports = function (config) {
 
         autoWatch: true,
 
-        browsers: ['PhantomJS'],
+        browsers: [ 'PhantomJS' ],
 
         singleRun: true,
 
         concurrency: Infinity
     });
+
+    if (DEBUG) {
+        config.set({
+            // Allow remote debugging when using PhantomJS
+            customLaunchers: {
+                'PhantomJS_custom': {
+                    base: 'PhantomJS',
+                    debug: true
+                },
+            },
+
+            singleRun: false
+        });
+    }
 };

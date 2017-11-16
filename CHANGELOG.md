@@ -1,3 +1,10 @@
+## 3.8.0 (November 16 2017)
+
+- [#125](http://github.com/jwplayer/jw-showcase/issues/125) Remove Bower
+- Merge complete [jw-showcase-lib](http://github.com/jwplayer/jw-showcase-lib) into this repository
+- Fix several Karma and Protractor tests
+- Remove `siteName` from SEO title on video page
+
 ## 3.7.1 (October 20 2017)
 
 - Fix compatibility with deprecation of skins in JW8

@@ -32,7 +32,8 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     When('I click on the show more button', function () {
-        return $$('.jw-side-rail .jw-side-rail-control .jw-button').click();
+        var btn = $('.jw-side-rail .jw-side-rail-control .jw-button');
+        return browser.executeScript('arguments[0].click();', btn.getWebElement());
     });
 
     //
@@ -47,7 +48,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-side-rail').count()).to.eventually.equal(0);
     });
 
-    Then('the siderail title should be {stringInDoubleQuotes}', function (title) {
+    Then('the siderail title should be {string}', function (title) {
         return expect($('.jw-side-rail .jw-side-rail-header').getText()).to.eventually.equal(title);
     });
 
@@ -60,12 +61,12 @@ defineSupportCode(function ({Given, When, Then}) {
             .to.eventually.equal(false);
     });
 
-    Then('the image src of the {ordinal} item in the siderail should contain {stringInDoubleQuotes}', function (num, src) {
+    Then('the image src of the {ordinal} item in the siderail should contain {string}', function (num, src) {
         return expect($$('.jw-side-rail .jw-side-rail-item-image img').get(num - 1).getAttribute('src'))
             .to.eventually.contain(src);
     });
 
-    Then('the title of the {ordinal} item in the siderail should be {stringInDoubleQuotes}', function (num, title) {
+    Then('the title of the {ordinal} item in the siderail should be {string}', function (num, title) {
         function trim(text) {
             return text.replace(/\s/g, '');
         }

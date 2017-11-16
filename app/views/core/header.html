@@ -1,0 +1,13 @@
+<div class="jw-header jw-header-fixed">
+  <div class="jw-header-container">
+    <div class="jw-header-nav">
+      <jw-button-menu></jw-button-menu>
+    </div>
+    <div class="jw-header-main">
+      <img class="jw-header-logo" ui-sref="root.dashboard()" ng-src="{{ ::vm.config.assets.banner }}" alt="logo"/>
+    </div>
+    <div class="jw-header-nav">
+      <jw-search ng-if="vm.config.searchPlaylist"></jw-search>
+    </div>
+  </div>
+</div>

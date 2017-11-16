@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="jsoneditor/jsoneditor.min.css">
+<link rel="stylesheet" href="jsoneditor/darktheme.css">
+<script src="jsoneditor/jsoneditor.min.js"></script>
+<style>
+  #jsoneditor-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 999999;
+  }
+
+  #jsoneditor {
+    width: 80%;
+    height: 80%;
+    margin: 25px auto 25px;
+    color: #fff;
+  }
+
+  .jsoneditor-control {
+    text-align: right;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    #jsoneditor {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="jw-theme-dark" id="jsoneditor-wrapper">
+  <div id="jsoneditor"></div>
+  <div class="jsoneditor-control">
+    <a class="jw-button jw-button-primary" id="loadShowcase">Open Showcase!</a>
+  </div>
+</div>
+
+<script>
+  var $q = angular.injector(['ng']).get('$q');
+  var editor = new JSONEditor(document.querySelector('#jsoneditor'), {});
+
+  window.configLoaded = function (config) {
+    var defer = $q.defer();
+    editor.set(config);
+    document.querySelector('#loadShowcase').onclick = function () {
+      defer.resolve(editor.get());
+      editor.destroy();
+        angular.element(document.querySelector('#jsoneditor-wrapper')).remove();
+    };
+    return defer.promise;
+}
+</script>

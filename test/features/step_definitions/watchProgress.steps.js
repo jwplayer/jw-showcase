@@ -48,11 +48,11 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the continue watching slider should contain {int} items', function (num) {
-        return expect($$('.jw-content-row-continue-watching .jw-card').count())
+        return expect(filterUniqueElements($$('.jw-content-row-continue-watching .jw-card'), 'key').count())
             .to.eventually.equal(num);
     });
 
-    Then('the video progress of mediaid {stringInDoubleQuotes} and feedid {stringInDoubleQuotes} should be saved', function (mediaid, feedid) {
+    Then('the video progress of mediaid {string} and feedid {string} should be saved', function (mediaid, feedid) {
         return browser
             .executeScript('return window.localStorage.getItem("jwshowcase.watchprogress")')
             .then(function (rawData) {
@@ -62,7 +62,7 @@ defineSupportCode(function ({Given, When, Then}) {
             });
     });
 
-    Then('the video progress of mediaid {stringInDoubleQuotes} and feedid {stringInDoubleQuotes} should not be saved', function (mediaid, feedid) {
+    Then('the video progress of mediaid {string} and feedid {string} should not be saved', function (mediaid, feedid) {
         return browser
             .executeScript('return window.localStorage.getItem("jwshowcase.watchprogress")')
             .then(function (rawData) {
@@ -72,7 +72,7 @@ defineSupportCode(function ({Given, When, Then}) {
             });
     });
 
-    Then('the {ordinal} card in the continue watching slider should have mediaid {stringInDoubleQuotes}', function (num, mediaid) {
+    Then('the {ordinal} card in the continue watching slider should have mediaid {string}', function (num, mediaid) {
         return expect($$('.jw-content-row-continue-watching .jw-card').get(num - 1).evaluate('item.mediaid'))
             .to.eventually.equal(mediaid);
     });
@@ -83,8 +83,11 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
     Then('the video progress should be greater than {int}%', function (progress) {
-        return expect(browser.executeScript('return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;'))
-            .to.eventually.be.greaterThan(progress);
+        return browser.executeScript(function() {
+            return (jwplayer().getPosition() / jwplayer().getDuration()) * 100;
+        }).then(function (pos) {
+            return expect(pos).to.be.greaterThan(progress);
+        });
     });
 
 });

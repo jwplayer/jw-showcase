@@ -20,11 +20,11 @@ const
 defineSupportCode(function ({After, Before, setDefaultTimeout, defineParameterType}) {
 
     defineParameterType({
-        regexp:      /\d+(?:st|nd|rd|th)/,
+        name: 'ordinal',
+        regexp: /\d+(?:st|nd|rd|th)/,
         transformer: function (string) {
             return parseInt(string.replace(/st|nd|rd|th/, ''));
-        },
-        typeName:    'ordinal'
+        }
     });
 
     setDefaultTimeout(20 * 1000);

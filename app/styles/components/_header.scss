@@ -1,0 +1,122 @@
+//
+// jwHeader
+// --------------------------------
+
+.jw-header {
+    height: $header-height;
+    padding: $header-padding;
+
+    .jw-flag-loading-config & {
+        display: none !important;
+    }
+
+    //
+    // Make header fixed
+    //
+    &-fixed {
+        position: fixed;
+        z-index: $header-z-index;
+
+        width: 100%;
+    }
+
+    //
+    // Make header static
+    //
+    &-static {
+        position: static;
+        width: 100%;
+
+        .jw-header-main .jw-header-title {
+            overflow: visible;
+
+            white-space: normal;
+        }
+    }
+
+    //
+    // Header container
+    //
+    .jw-header-container {
+        @include display-flex();
+        @include flex-direction(row);
+        position: relative;
+        height: 100%;
+    }
+
+    //
+    // Header navigation
+    //
+    .jw-header-nav {
+        @include flex(0 0 $header-nav-width);
+        @include align-self(center);
+        min-width: $header-nav-width;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+    //
+    // Header main content
+    //
+    .jw-header-main {
+        @include flex(1 1 auto);
+        @include align-self(center);
+        text-align: center;
+
+        .jw-header-logo {
+            max-width: 100%;
+            max-height: $header-height - 20px;
+
+            vertical-align: middle;
+
+            cursor: pointer;
+        }
+    }
+
+    .jw-button {
+        vertical-align: middle;
+
+        &.jw-button-menu .jwy-icon {
+            -webkit-font-smoothing: none;
+        }
+
+        .jw-button-label {
+            padding: 0 3px;
+            font-size: rem(14px);
+        }
+
+        > .jwy-icon {
+            font-size: rem(24px);
+        }
+    }
+
+    .jwy-icon.jwy-icon-search {
+        font-size: rem(22px);
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only () {
+
+    .jw-header {
+        height: $header-height-mobile;
+
+        .jw-header-main .jw-header-logo {
+            max-height: $header-height-mobile - 20px;
+        }
+
+        .jw-header-nav {
+            @include flex(0 0 $header-nav-width-mobile);
+            min-width: $header-nav-width-mobile;
+        }
+
+        .jw-header-nav .jw-button-label {
+            display: none;
+        }
+    }
+}

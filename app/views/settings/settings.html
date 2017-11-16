@@ -1,0 +1,72 @@
+<jw-toolbar toolbar-class="jw-toolbar-subheader">Settings</jw-toolbar>
+<div class="jw-page jw-page-flag-subheader">
+  <div class="jw-page-content pth">
+    <div class="jw-settings">
+      <div class="jw-settings-row">
+        <div class="jw-feed-title">Play settings</div>
+        <div class="jw-settings-actions">
+          <div class="jw-settings-actions-col">
+            <p class="jw-settings-label">Reduce Data Usage</p>
+            <div class="jw-settings-actions-row">
+              <p class="jw-settings-description">
+                Limits playback to lower video qualities
+              </p>
+              <div class="jw-settings-action">
+                <jw-toggle
+                    aria-label="reduce data usage"
+                    tabindex="0"
+                    ng-model="vm.conserveBandwidth"
+                    ng-change="vm.toggleChangeHandler('conserveBandwidth')"
+                ></jw-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="jw-settings-actions-col">
+            <p class="jw-settings-label">Continue Watching</p>
+            <div class="jw-settings-actions-row">
+              <p class="jw-settings-description">
+                Displays on your homepage the videos you've watched but did not finish
+              </p>
+              <div class="jw-settings-action">
+                <jw-toggle
+                    aria-label="enable continue watching"
+                    tabindex="0"
+                    ng-model="vm.continueWatching"
+                    ng-change="vm.toggleChangeHandler('continueWatching')"
+                ></jw-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="jw-settings-row" ng-if="vm.watchlist.playlist.length">
+        <div class="jw-feed-title">Your saved videos</div>
+        <jw-card-slider
+            feed="vm.watchlist"
+            featured="false"
+            on-card-click="vm.cardClickHandler"
+            enable-title="false"
+        ></jw-card-slider>
+        <jw-button ng-click="vm.clearWatchlist()"
+            class="jw-button-default jw-button-secondary jw-button-settings-action">
+          Clear saved videos
+        </jw-button>
+      </div>
+
+      <div class="jw-settings-row" ng-if="vm.continueWatching && vm.watchProgress.playlist.length">
+        <div class="jw-feed-title">Continue watching</div>
+        <jw-card-slider
+            feed="vm.watchProgress"
+            featured="false"
+            on-card-click="vm.cardClickHandler"
+            enable-title="false"
+        ></jw-card-slider>
+        <jw-button ng-click="vm.clearWatchProgress()"
+            class="jw-button-default jw-button-secondary jw-button-settings-action">
+          Clear continue watching
+        </jw-button>
+      </div>
+    </div>
+  </div>
+</div>

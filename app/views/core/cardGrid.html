@@ -1,0 +1,28 @@
+<div class="jw-card-grid">
+  <jw-feed-title feed="vm.feed" ng-if="::vm.enableTitle"></jw-feed-title>
+  <div class="jw-card-grid-align">
+    <div class="jw-card-grid-cards">
+      <jw-card
+          item="item"
+          aspectratio="::vm.aspectratio"
+          enable-text="::vm.enableText"
+          enable-preview="::vm.enablePreview"
+          ng-repeat="item in vm.feed.playlist|limitTo:vm.limit"
+          ng-class="::vm.cardClassName"
+          on-click="vm.onCardClick"
+      ></jw-card>
+    </div>
+  </div>
+  <div class="jw-card-grid-control" ng-if="vm.controlIsVisible()">
+    <jw-button
+        class="jw-button jw-button-link jw-button-default"
+        ng-if="vm.enableSeeAll"
+        ui-sref="root.feed({feedId: vm.feed.feedid})"
+    ><span class="jw-button-label">See all</span> <i class="jwy-icon jwy-icon-angle-right"></i></jw-button>
+    <jw-button
+        class="jw-button jw-button-secondary jw-button-animate"
+        ng-if="vm.enableShowMore"
+        ng-click="vm.showMoreClickHandler()"
+    >Show more</jw-button>
+  </div>
+</div>

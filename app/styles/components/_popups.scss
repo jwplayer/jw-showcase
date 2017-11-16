@@ -1,0 +1,72 @@
+//
+// jwPopups
+// --------------------------------
+
+.jw-popups {
+    @extend %cover;
+    position: fixed;
+    z-index: $popups-z-index;
+
+    .jw-popups-backdrop {
+        @extend %cover;
+        position: absolute;
+    }
+
+    .jw-popups-backdrop {
+        background: rgba($black, 0.4);
+    }
+}
+
+.jw-popup {
+    @include transform(translate(-50%, -50%));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 30px;
+
+    .jw-popup-title {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .jw-popup-buttons {
+        text-align: center;
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &-share {
+        width: 240px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+
+        .jw-share-buttons {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    }
+
+    &-confirm {
+        width: 240px;
+
+        .jw-button {
+            min-width: 65px;
+        }
+    }
+
+    &-cookies {
+        @include transform(none);
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+%cover {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

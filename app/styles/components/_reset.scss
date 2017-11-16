@@ -1,0 +1,40 @@
+//
+// reset
+// --------------------------------
+
+html {
+    @include text-size-adjust(100%);
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    border: 0;
+}
+
+*,
+*::before,
+*::after {
+    @include box-sizing(border-box);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a,
+button,
+input {
+    border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}

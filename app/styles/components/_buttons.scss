@@ -1,0 +1,169 @@
+//
+// jwButton
+// --------------------------------
+
+.jw-button {
+    display: inline-block;
+    position: relative;
+
+    padding: 0.7rem 10px;
+
+    overflow: hidden;
+
+    color: inherit;
+
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &-block {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    &-disabled {
+        opacity: 0.3;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &-link {
+        padding: 0;
+    }
+
+    &-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        color: $white;
+        font-size: 22px;
+        line-height: 19px;
+    }
+
+    &-icon {
+        min-width: 40px;
+    }
+
+    &-label {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .jwy-icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+//
+// jwButtonShowMore
+// --------------------------------
+
+.jw-button-show-more {
+    display: block;
+    position: relative;
+    margin: 0 80px;
+}
+
+//
+// jwButtonPlay
+// --------------------------------
+
+.jw-button-play {
+    width: 3em;
+    height: 3em;
+
+    border: 0.2em solid;
+    border-radius: 50%;
+
+    .jwy-icon {
+        font-size: 1.4em;
+
+        &.jwy-icon-play {
+            @include center-self(50%, 54%);
+        }
+
+        &.jwy-icon-pause {
+            @include center-self(50%, 50%);
+        }
+    }
+}
+
+//
+// jwButtonWatchlist
+// --------------------------------
+
+.jw-button-watchlist > .jwy-icon {
+    @include transition(color .1s ease);
+}
+
+.jw-button-share .jwy-icon-stack {
+    display: inline-block;
+
+    .jwy-icon {
+        @include transform(translate(-50%, -50%));
+        top: 50%;
+        left: 50%;
+        font-size: 0.7em;
+    }
+}
+
+//
+// jwButtonEffect
+// --------------------------------
+
+.jw-button-effect {
+    display: block;
+
+    position: absolute;
+    z-index: 99999;
+
+    width: 40px;
+    height: 40px;
+
+    margin-top: -20px;
+    margin-left: -20px;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    &.active {
+        animation: button-click-feedback 0.4s forwards;
+    }
+}
+
+//
+// jwButton effect keyframes
+// --------------------------------
+
+@keyframes button-click-feedback {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+
+    40%, 60% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale3d(1.5, 1.5, 1);
+        opacity: 0;
+    }
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only() {
+
+    .jw-button-show-more {
+        margin: 0 15px;
+    }
+}

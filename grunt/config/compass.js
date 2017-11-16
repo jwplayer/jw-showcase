@@ -6,7 +6,7 @@ module.exports = {
         imagesDir:               '<%= config.app %>/images',
         javascriptsDir:          '<%= config.app %>/scripts',
         fontsDir:                '<%= config.app %>/styles/fonts',
-        importPath:              './bower_components',
+        importPath:              './node_modules',
         httpImagesPath:          '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath:           '/styles/fonts',

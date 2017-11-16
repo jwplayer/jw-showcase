@@ -1,0 +1,22 @@
+
+.jw-feed-title {
+    font-size: 21px;
+    font-weight: bold;
+
+    > .jw-link {
+        display: inline-block;
+
+        text-decoration: none;
+        cursor: pointer;
+
+        > span,
+        > .jwy-icon {
+            vertical-align: middle;
+        }
+    }
+
+    &-count {
+        font-size: rem(18px);
+        font-weight: normal;
+    }
+}

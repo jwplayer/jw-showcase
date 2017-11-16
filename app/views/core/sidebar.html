@@ -1,0 +1,80 @@
+<div class="jw-sidebar">
+  <jw-header-menu></jw-header-menu>
+
+  <div class="jw-sidebar-content">
+    <div class="jw-sidebar-group">
+      <jw-button
+          class="jw-button-block jw-button-default"
+          ui-sref="root.dashboard()"
+          ui-sref-active="active"
+          tabindex="0"
+          ng-click="vm.itemClickHandler($event)">
+        <span class="jw-button-label">Homepage</span>
+        <i class="jwy-icon jwy-icon-angle-right"></i>
+      </jw-button>
+      <jw-button
+          class="jw-button-block jw-button-default"
+          ui-sref="root.feed({feedId: 'saved-videos'})"
+          ui-sref-active="active"
+          tabindex="0"
+          is-disabled="!vm.watchlist.playlist.length"
+          ng-click="vm.itemClickHandler($event)">
+        <span class="jw-button-label">Saved videos ({{ vm.watchlist.playlist.length }})</span>
+        <i class="jwy-icon jwy-icon-angle-right"></i>
+      </jw-button>
+      <jw-button
+          class="jw-button-block jw-button-default"
+          ui-sref="root.feed({feedId: 'continue-watching'})"
+          ui-sref-active="active"
+          tabindex="0"
+          is-disabled="!vm.watchProgress.playlist.length"
+          ng-if="::vm.config.options.enableContinueWatching"
+          ng-click="vm.itemClickHandler($event)">
+        <span class="jw-button-label">Continue watching ({{ vm.watchProgress.playlist.length }})</span>
+        <i class="jwy-icon jwy-icon-angle-right"></i>
+      </jw-button>
+    </div>
+
+    <div class="jw-sidebar-group">
+      <jw-button
+          class="jw-button-block jw-button-default"
+          ng-repeat="feed in vm.feeds"
+          ui-sref="root.feed({feedId: feed.feedid})"
+          ui-sref-active="active"
+          tabindex="0"
+          ng-click="vm.itemClickHandler($event)">
+        <span class="jw-button-label">{{ feed.title }}</span>
+        <i class="jwy-icon jwy-icon-angle-right"></i>
+      </jw-button>
+    </div>
+
+    <div class="jw-sidebar-group">
+      <jw-button
+          class="jw-button-block jw-button-default"
+          ng-click="vm.clearWatchlist()"
+          tabindex="0"
+          is-disabled="!vm.watchlist.playlist.length">
+        <span class="jw-button-label">Clear Saved videos</span>
+      </jw-button>
+      <jw-button ng-click="vm.clearWatchProgress()"
+          class="jw-button-block jw-button-default"
+          tabindex="0"
+          is-disabled="!vm.watchProgress.playlist.length"
+          ng-if="::vm.config.options.enableContinueWatching">
+        <span class="jw-button-label">Clear Continue watching</span>
+      </jw-button>
+    </div>
+
+    <div class="jw-sidebar-group">
+      <jw-button
+          class="jw-button-block jw-button-default"
+          tabindex="0"
+          ui-sref="root.settings"
+          ui-sref-active="active"
+          ng-click="vm.itemClickHandler($event)">
+            <span class="jw-button-label">Settings</span>
+            <i class="jwy-icon jwy-icon-settings"></i>
+        </jw-button>
+    </div>
+  </div>
+</div>

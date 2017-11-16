@@ -1,0 +1,18 @@
+//
+// jwFooter
+// --------------------------------
+
+.jw-footer {
+    padding: 23px 20px;
+
+    font-size: rem(12px);
+    text-align: center;
+
+    &-link {
+        font-weight: bold;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}

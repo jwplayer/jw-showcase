@@ -16,7 +16,7 @@
 
 describe('configResolver', function () {
 
-    var configs    = {
+    var configs = {
             default:             getFixture('config/default'),
             custom:              getFixture('config/custom'),
             disableFeaturedText: getFixture('config/disableFeaturedText'),
@@ -103,7 +103,7 @@ describe('configResolver', function () {
         it('should reject when missing required fields', function () {
 
             request.respond(200, {
-                "version": "2"
+                version: '2'
             });
 
             configResolver
@@ -119,12 +119,12 @@ describe('configResolver', function () {
         it('should reject content is not an array', function () {
 
             request.respond(200, {
-                "version":     "2",
-                "player":      "N8axwZHA",
-                "theme":       "light",
-                "siteName":    "JW Showcase",
-                "description": "desc",
-                "content":     false
+                version:     '2',
+                player:      'N8axwZHA',
+                theme:       'light',
+                siteName:    'JW Showcase',
+                description: 'desc',
+                content:     false
             });
 
             configResolver
@@ -202,28 +202,14 @@ describe('configResolver', function () {
             $httpBackend.flush();
         });
 
-        it('should reject when missing required fields', function () {
-
-            request.respond(200, {});
-
-            configResolver
-                .getConfig()
-                .then(notToBeCalled, function (e) {
-                    expect(e.message)
-                        .toEqual('The config file is missing the following properties: player, theme, siteName, description');
-                });
-
-            $httpBackend.flush();
-        });
-
         it('should reject when playlist is not an array', function () {
 
             request.respond(200, {
-                "player":      "N8axwZHA",
-                "theme":       "light",
-                "siteName":    "JW Showcase",
-                "description": "desc",
-                "playlists":   false
+                player:      'N8axwZHA',
+                theme:       'light',
+                siteName:    'JW Showcase',
+                description: 'desc',
+                playlists:   false
             });
 
             configResolver
@@ -238,11 +224,11 @@ describe('configResolver', function () {
         it('should reject when featuredPlaylist is not a string', function () {
 
             request.respond(200, {
-                "player":           "N8axwZHA",
-                "theme":            "light",
-                "siteName":         "JW Showcase",
-                "description":      "desc",
-                "featuredPlaylist": false
+                player:           'N8axwZHA',
+                theme:            'light',
+                siteName:         'JW Showcase',
+                description:      'desc',
+                featuredPlaylist: false
             });
 
             configResolver

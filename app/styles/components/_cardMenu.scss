@@ -1,0 +1,43 @@
+//
+// jwCardMenu
+// --------------------------------
+
+.jw-card-menu {
+    @include cover();
+    background: $white;
+
+    .jw-card-menu-container {
+        @include transform(translateY(-50%));
+
+        position: absolute;
+        top: 50%;
+        width: 100%;
+
+        font-size: rem(16px);
+    }
+
+    .jw-card-menu-item {
+        margin: 5px 0;
+        text-align: center;
+
+        .jw-button {
+            min-width: 80%;
+        }
+
+        &:last-child .jw-button {
+            font-weight: normal;
+        }
+    }
+}
+
+@include mobile-only () {
+
+    .jw-card-menu {
+
+        .jw-card-menu-item + .jw-card-menu-item ~ .jw-card-menu-item {
+            display: none;
+        }
+
+    }
+
+}

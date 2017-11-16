@@ -1,0 +1,18 @@
+<jw-toolbar toolbar-class="jw-toolbar-subheader">Search results</jw-toolbar>
+
+<div class="jw-page jw-page-flag-subheader">
+  <div class="jw-page-content pth">
+    <h4 class="jw-page-title" ng-if="!vm.feed.playlist.length && !vm.searching">
+      Nothing could be found, try changing your search phrase
+    </h4>
+    <jw-card-grid
+        feed="vm.feed"
+        rows="10"
+        enable-title="false"
+        enable-show-more="true"
+        cols="{xs:2, sm:2, md:3, lg:4, xl:5}"
+        on-card-click="vm.cardClickHandler"
+        card-class-name="jw-lazy-load"
+    ></jw-card-grid>
+  </div>
+</div>

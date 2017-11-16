@@ -13,7 +13,7 @@ Feature: Dashboard page
     @mobile
     Scenario: As a user I want to see featured items
         Given I go to the "index" page
-        Then there should be 18 featured items visible
+        Then there should be 9 featured items visible
 
     @mobile @tablet @desktop
     Scenario: As a user I want to see the default sliders
@@ -35,23 +35,25 @@ Feature: Dashboard page
     @mobile @tablet
     Scenario: As a user I want to be able to navigate forward through a default feed by swiping
         Given I go to the "index" page
-        When I scroll to the 1st default slider
-        And I swipe left in the 1st default slider
-        Then the first item in the 1st default slider should not be visible
+        When I scroll to the 1st "default" slider
+        And I swipe "left" in the 1st "default" slider
+        And wait for 1 seconds
+        Then the "first" item in the 1st "default" slider should not be visible
 
     @mobile @tablet
     Scenario: As a user I want to be able to navigate backward through the default feed by swiping
         Given I am still on the "index" page
-        And I scroll to the 1st default slider
-        And I swipe right in the 1st default slider
-        Then the first item in the 1st default slider should be visible
+        And I scroll to the 1st "default" slider
+        And I swipe "right" in the 1st "default" slider
+        And wait for 1 seconds
+        Then the "first" item in the 1st "default" slider should be visible
 
     @tablet @desktop
     Scenario: As a user I want to see when I can't slide to the left
         Given I go to the "index" page
         Then the "left" arrow in the 1st "default" slider should be disabled
         And the "left" arrow in the 2nd "default" slider should be disabled
-        And the "left" arrow in the 3th "default" slider should be disabled
+        And the "left" arrow in the 3rd "default" slider should be disabled
 
     @mobile @tablet @desktop
     Scenario: As a user I want to see title with video count for each slider
@@ -73,11 +75,11 @@ Feature: Dashboard page
         Then the title and description should be visible in the featured slider
 
     @desktop
-    Scenario: As a user I want to see the description and duration in the default feeds on mouse hover
+    Scenario: As a user I want to see the description and controls in the default feeds on mouse hover
         Given I am still on the "index" page
         When I move my mouse to the first item in the 1st "default" slider
         Then I should see the description in the first item of the 1st "default" slider
-        And I should see the duration in the first item of the 1st "default" slider
+        And I should see the controls in the first item of the 1st "default" slider
 
     @mobile
     Scenario: As a user I want to be able to navigate to the video page by clicking on the first featured item
@@ -97,7 +99,7 @@ Feature: Dashboard page
         When I move my mouse to the first item in the 1st "featured" slider
         And I click the play icon in the visible item in the featured slider
         Then the page should be "/m/LjBvF1FX/the-girl-in-the-book?list=lrYLc95e"
-        And the video should be playing
+        And the video should autoplay
 
     @desktop
     Scenario: As a user I want to be able to disable the featured text overlay
@@ -110,10 +112,10 @@ Feature: Dashboard page
     Scenario: As a user I want to be able to disable text in a default slider
         Given I set the configLocation to "./fixtures/config/disableDefaultText.json"
         And I go to the "index" page
-        Then the card titles should be hidden in the 1st default slider
+        Then the card titles should be hidden in the 1st "default" slider
 
     @desktop
     Scenario: As a user I want to be able to disable text in a default slider
         Given I set the configLocation to "./fixtures/config/disableDefaultTitle.json"
         And I go to the "index" page
-        Then the title of the 1st default slider should be hidden
+        Then the title of the 1st "default" slider should be hidden

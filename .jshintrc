@@ -22,7 +22,7 @@
     "maxparams": 20,
     "maxdepth": 5,
     "maxstatements": 40,
-    "maxcomplexity": 8,
+    "maxcomplexity": 10,
     "maxlen": 120,
     "asi": false,
     "boss": false,
@@ -58,6 +58,7 @@
         "angular": false,
         "jwplayer": false,
         "$": false,
-        "UAParser": false
+        "UAParser": false,
+        "googletag": false
     }
 }

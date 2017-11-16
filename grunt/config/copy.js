@@ -16,7 +16,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd:    'bower_components/jw-showcase-lib/fonts',
+            cwd:    'app/fonts',
             dest:   '<%= config.dist %>/fonts',
             src:    '*'
         }, {
@@ -38,7 +38,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd:    'bower_components/sw-toolbox',
+            cwd:    'node_modules/sw-toolbox',
             src:    'sw-toolbox.js',
             dest:   '<%= config.dist %>'
         }]
@@ -46,12 +46,12 @@ module.exports = {
     server: {
         files: [{
             expand: true,
-            cwd:    'bower_components/jw-showcase-lib/fonts',
+            cwd:    'app/fonts',
             dest:   '.tmp/fonts/',
             src:    '*'
         }, {
             expand: true,
-            cwd:    'bower_components/sw-toolbox',
+            cwd:    'node_modules/sw-toolbox',
             src:    'sw-toolbox.js',
             dest:   '.tmp/'
         }]
@@ -61,5 +61,25 @@ module.exports = {
         cwd:    '<%= config.app %>/styles',
         dest:   '.tmp/styles/',
         src:    '{,*/}*.css'
+    },
+    jsoneditor: {
+        files: [{
+            expand: true,
+            dot: false,
+            flatten: true,
+            cwd: 'node_modules/jsoneditor',
+            dest: '<%= config.dist %>/jsoneditor',
+            src: [
+                'dist/jsoneditor.min.css',
+                'dist/jsoneditor.min.js',
+                'examples/css/darktheme.css'
+            ]
+        }, {
+            expand: true,
+            dot: false,
+            cwd: 'node_modules/jsoneditor/dist',
+            dest: '<%= config.dist %>/jsoneditor/',
+            src: 'img/{,*/}*'
+        }]
     }
 };

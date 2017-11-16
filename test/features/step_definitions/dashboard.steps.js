@@ -24,18 +24,18 @@ defineSupportCode(function ({When, Then}) {
     //
 
     When('I click the left arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-left').click().then(delay(800));
     });
 
     When('I click the right arrow in the featured slider', function () {
-        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(300));
+        return $('.jw-card-slider-flag-featured .jw-card-slider-button-flag-right').click().then(delay(800));
     });
 
-    When('I scroll to the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    When('I scroll to the {ordinal} {string} slider', function (num, type) {
         return scrollToElement($$(`.jw-card-slider-flag-${type}`).get(num - 1));
     });
 
-    When('I move my mouse to the first item in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    When('I move my mouse to the first item in the {ordinal} {string} slider', function (num, type) {
         const firstCardSlide = $$(`.jw-card-slider-flag-${type}`).get(num - 1)
             .$('.jw-card-slider-slide.first .jw-card');
 
@@ -43,20 +43,26 @@ defineSupportCode(function ({When, Then}) {
         return mouseMove(firstCardSlide);
     });
 
-    When(' I click the first featured item in the dashboard', function () {
+    When('I click the first featured item in the dashboard', function () {
         return $$('.jw-card-flag-featured').get(0).click();
     });
 
-    When('I click the first item in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    When('I click the first item in the {ordinal} {string} slider', function (num, type) {
         return $$(`.jw-card-slider-flag-${type}`).get(num - 1).click();
     });
 
     When('I click the play icon in the visible item in the featured slider', function () {
-        const element = $$(`.jw-card-slider-flag-featured`).get(0)
+        const element = $$('.jw-card-slider-flag-featured').get(0)
             .$('.jw-card-slider-slide.is-visible .jw-card-play-button');
 
         // play icon is not interactable in Firefox
         return clickHelper(element);
+    });
+
+    When('I swipe {string} in the {ordinal} {string} slider', function (direction, num, type) {
+        var element = $$(`.jw-card-slider-flag-${type} .jw-card-slider-align`).get(num - 1);
+
+        return swipe(element, direction);
     });
 
     //
@@ -87,29 +93,39 @@ defineSupportCode(function ({When, Then}) {
         return expect($$('.jw-card-slider-flag-default').count()).to.eventually.equal(num);
     });
 
-    Then('the {stringInDoubleQuotes} item in the {stringInDoubleQuotes} slider should not be visible', function (item, type) {
+    Then('the {string} item in the {ordinal} {string} slider should not be visible', function (item, num, type) {
         return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
             .to.eventually.not.contain('is-visible');
     });
 
-    Then('the {stringInDoubleQuotes} item in the {stringInDoubleQuotes} slider should be visible', function (item, type) {
+    Then('the {string} item in the {ordinal} {string} slider should be visible', function (item, num, type) {
         return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
             .to.eventually.contain('is-visible');
     });
 
-    Then('the {stringInDoubleQuotes} arrow in the {ordinal} {stringInDoubleQuotes} slider should be disabled', function (side, num, type) {
+    Then('the {string} item in the {string} slider should not be visible', function (item, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.not.contain('is-visible');
+    });
+
+    Then('the {string} item in the {string} slider should be visible', function (item, type) {
+        return expect($(`.jw-card-slider-flag-${type} .jw-card-slider-slide.${item}`).getAttribute('class'))
+            .to.eventually.contain('is-visible');
+    });
+
+    Then('the {string} arrow in the {ordinal} {string} slider should be disabled', function (side, num, type) {
         return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`)
             .getAttribute('class'))
             .to.eventually.contain('is-disabled');
     });
 
-    Then('the {stringInDoubleQuotes} arrow in the {ordinal} {stringInDoubleQuotes} slider should not be disabled', function (side, num, type) {
+    Then('the {string} arrow in the {ordinal} {string} slider should not be disabled', function (side, num, type) {
         return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$(`.jw-card-slider-button-flag-${side}`)
             .getAttribute('class'))
             .to.eventually.not.contain('is-disabled');
     });
 
-    Then('the title of the {ordinal} {stringInDoubleQuotes} slider should be {stringInDoubleQuotes}', function (num, type, title) {
+    Then('the title of the {ordinal} {string} slider should be {string}', function (num, type, title) {
 
         function trim (text) {
             return text.replace(/\s/g, '');
@@ -121,7 +137,7 @@ defineSupportCode(function ({When, Then}) {
             .to.eventually.equal(title);
     });
 
-    Then('the card titles should be visible in the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    Then('the card titles should be visible in the {ordinal} {string} slider', function (num, type) {
         return expect($$(`.jw-card-slider-flag-${type}`).get(num - 1).$('.jw-card-slider-slide.first .jw-card-info')
             .isDisplayed())
             .to.eventually.equal(true);
@@ -132,34 +148,34 @@ defineSupportCode(function ({When, Then}) {
             .to.eventually.equal(true);
     });
 
-    Then('I should see the description in the first item of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
+    Then('I should see the description in the first item of the {ordinal} {string} slider', function (num, type) {
         return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-description').isDisplayed())
             .to.eventually.equal(true);
     });
 
-    Then('I should see the duration in the first item of the {ordinal} {stringInDoubleQuotes} slider', function (num, type) {
-        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-duration').isDisplayed())
+    Then('I should see the controls in the first item of the {ordinal} {string} slider', function (num, type) {
+        return expect($$(`.jw-card-slider-flag-${type} .first`).get(num - 1).$('.jw-card-controls').isDisplayed())
             .to.eventually.equal(true);
     });
 
     Then('the card title should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title`).isDisplayed())
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-title').isDisplayed())
             .to.eventually.equal(false);
     });
 
     Then('the card description should be hidden in the featured slider', function () {
-        return expect($(`.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description`)
+        return expect($('.jw-card-slider-flag-featured .jw-card-slider-slide.is-visible .jw-card-description')
             .isDisplayed())
             .to.eventually.equal(false);
     });
 
-    Then('the card titles should be hidden in the {ordinal} default slider', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.first .jw-card-info').isDisplayed())
+    Then('the card titles should be hidden in the {ordinal} {string} slider', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.first .jw-card-info').isDisplayed())
             .to.eventually.equal(false);
     });
 
-    Then('the title of the {ordinal} default slider should be hidden', function (num) {
-        return expect($$('.jw-card-slider-flag-default').get(num - 1).$('.jw-feed-title').isDisplayed())
+    Then('the title of the {ordinal} {string} slider should be hidden', function (num, type) {
+        return expect($$('.jw-card-slider-flag-'+type).get(num - 1).$('.jw-feed-title').isDisplayed())
             .to.eventually.equal(false);
     });
 

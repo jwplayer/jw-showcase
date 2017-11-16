@@ -29,11 +29,19 @@ defineSupportCode(function () {
 
         return browser.executeScript(function (element) {
             var header = document.querySelector('.jw-header');
-            var scrollingDocument = document.documentElement || document.body;
+            var scrollingDocument = document.scrollingElement || document.documentElement || document.body;
             if (element) {
                 scrollingDocument.scrollTop = element.offsetTop - (header ? header.offsetHeight : 0);
             }
         }, element.getWebElement());
+    };
+
+    global.scrollToEdge = function (top) {
+
+        return browser.executeScript(function (top) {
+            var scrollingDocument = document.scrollingElement || document.documentElement || document.body;
+            scrollingDocument.scrollTop = top ? 0 : 9999;
+        }, top);
     };
 
     global.clickHelper = function (element) {
@@ -50,10 +58,13 @@ defineSupportCode(function () {
     global.mouseMove = function (element) {
 
         if (/safari|firefox/i.test(browser.browserName)) {
-
+            // simulate hover with JS for FF and Safari because the browsers actions don't work
             return browser
                 .executeScript(function (elem) {
                     elem.classList.add('hover');
+                    var evObj = document.createEvent('MouseEvents');
+                    evObj.initEvent( 'mouseover', true, false );
+                    elem.dispatchEvent(evObj);
                 }, element.getWebElement());
         }
 
@@ -98,14 +109,31 @@ defineSupportCode(function () {
 
         return browser.get(page)
             .then(function () {
-                return browser.wait(function () {
-                    return browser.executeScript('return window.$stateIsResolved;').then(function (val) {
-                        return val === true;
+                return browser.waitForAngular().then(function() {
+                    return browser.wait(function () {
+                        return browser.executeScript(function () {
+                            return window && window.$stateIsResolved;
+                        }).then(function (val) {
+                            return val === true;
+                        });
                     });
                 });
             })
             .then(function () {
                 return browser.executeScript(mockHoverPseudoElement);
             });
+    };
+
+    global.filterUniqueElements = function(selector, attr) {
+        var found = [];
+        return selector.filter(function(elem) {
+            return elem.getAttribute(attr).then(function (value) {
+                // if not already found
+                if (found.indexOf(value) === -1) {
+                    found.push(value);
+                    return true;
+                }
+            });
+        });
     };
 });

@@ -1,0 +1,43 @@
+//
+// jwCookies
+// --------------------------------
+.jw-cookies {
+    @include display-flex();
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.jw-cookies-title {
+    @include flex(0 0 200px);
+    padding-right: 30px;
+
+    font-size: rem(32px);
+    font-weight: bold;
+    line-height: rem(32px);
+}
+
+.jw-cookies-explanation {
+    @include flex(1 1 auto);
+}
+
+//
+// mediaQueries
+// --------------------------------
+
+@include mobile-only () {
+
+    .jw-cookies {
+        @include flex-direction(column);
+        padding: 20px;
+    }
+
+    .jw-cookies-title {
+        @include flex(1 1 auto);
+        margin-bottom: 20px;
+    }
+
+    .jw-cookies-button-bar {
+        text-align: center;
+    }
+}

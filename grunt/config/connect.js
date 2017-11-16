@@ -16,8 +16,12 @@ module.exports = function (grunt) {
                         modRewrite(['^[^\\.]*$ /index.html [L]']),
                         serveStatic('.tmp'),
                         connect().use(
-                            '/bower_components',
-                            serveStatic('./bower_components')
+                            '/node_modules',
+                            serveStatic('./node_modules')
+                        ),
+                        connect().use(
+                            '/app',
+                            serveStatic('./app')
                         ),
                         serveStatic('./app')
                     ];
@@ -35,8 +39,12 @@ module.exports = function (grunt) {
                         serveStatic('.tmp'),
                         serveStatic('test'),
                         connect().use(
-                            '/bower_components',
-                            serveStatic('./bower_components')
+                            '/node_modules',
+                            serveStatic('./node_modules')
+                        ),
+                        connect().use(
+                            '/app',
+                            serveStatic('./app')
                         ),
                         serveStatic('./app')
                     ];

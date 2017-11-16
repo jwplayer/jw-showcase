@@ -38,8 +38,21 @@ defineSupportCode(function ({Given, When, Then}) {
         return $('.jw-header .jw-search-input').click();
     });
 
-    When('I type {stringInDoubleQuotes} in the search input', function (phrase) {
-        return $('.jw-header .jw-search-input').sendKeys(phrase);
+    When('I type {string} in the search input', function (phrase) {
+        var input = $('.jw-header .jw-search-input');
+
+        // send phrase without last char
+        return input.sendKeys(phrase.slice(0, -1)).then(function() {
+            // wait for debounce
+            return browser.sleep(1000).then(function() {
+                // send last char
+                return input.sendKeys(phrase.substr(-1));
+            });
+        });
+    });
+
+    When('I press escape', function () {
+        return $('.jw-header .jw-search-input').sendKeys(protractor.Key.ESCAPE);
     });
 
     When('I click on the show caption matches toggle', function () {
@@ -82,7 +95,7 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($$('.jw-card').count()).to.eventually.equal(count);
     });
 
-    Then('the content title should be {stringInDoubleQuotes}', function (title) {
+    Then('the content title should be {string}', function (title) {
         return expect($('.jw-page-title').getText().then((text) => text.trim())).to.eventually.equal(title);
     });
 
@@ -98,15 +111,15 @@ defineSupportCode(function ({Given, When, Then}) {
         return expect($('.jw-search-captions-toggle .jw-toggle').getAttribute('class')).to.eventually.contain('jw-toggle-flag-checked');
     });
 
-    Then('the {ordinal} card title should include {stringInDoubleQuotes}', function (cardNum, titleText) {
+    Then('the {ordinal} card title should include {string}', function (cardNum, titleText) {
         return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-title`).getText()).to.eventually.contain(titleText);
     });
 
-    Then('the {ordinal} card description should be {stringInDoubleQuotes}', function (cardNum, descriptionText) {
+    Then('the {ordinal} card description should be {string}', function (cardNum, descriptionText) {
         return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-description`).getText()).to.eventually.contain(descriptionText);
     });
 
-    Then('the {ordinal} card poster should be {stringInDoubleQuotes}', function (cardNum, url) {
+    Then('the {ordinal} card poster should be {string}', function (cardNum, url) {
         return expect($(`.jw-card:nth-of-type(${cardNum}) .jw-card-poster`).getAttribute('style')).to.eventually.contain(url);
     });
 });
