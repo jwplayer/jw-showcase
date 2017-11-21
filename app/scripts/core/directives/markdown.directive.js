@@ -20,6 +20,7 @@
         MARKDOWN_ITALIC_REGEX        = /(?:\*|_)(\S[\s\S]*?)(?:\*|_)/ig,
         MARKDOWN_STRONG_REGEX        = /(?:\*{2}|_{2})(\S[\s\S]*?)(?:\*{2}|_{2})/ig,
         MARKDOWN_ITALIC_STRONG_REGEX = /(?:\*{3}|_{3})(\S[\s\S]*?)(?:\*{3}|_{3})/ig,
+        MARKDOWN_HEADERS_REGEX       = /^(#{1,6})(.*)$/gm,
         LINEBREAK_REGEX              = /(?:\r\n|\r|\n)/g;
 
     angular
@@ -59,10 +60,11 @@
 
         function link (scope, element, attrs, ctrl) {
 
+            ctrl.$formatters.push(linebreakFormatter); // linebreak formatter should run last
             ctrl.$formatters.push(markdownLinkFormatter);
             ctrl.$formatters.push(markdownBoldAndItalicFormatter);
-            ctrl.$formatters.push(linebreakFormatter);
-            ctrl.$formatters.push(removeHTMLTagsFormatter);
+            ctrl.$formatters.push(markdownHeaderFormatter);
+            ctrl.$formatters.push(removeHTMLTagsFormatter); // remove html should run first
 
             /**
              * Render the $viewValue as HTML
@@ -109,6 +111,22 @@
                         var target = /^(https?|www\.)/.test(link) ? ' target="_blank"' : '';
 
                         return '<a href="' + link + '"' + target + '>' + word + '</a>';
+                    });
+                }
+
+                return value;
+            }
+
+            /**
+             * Replace markdown headers to HTML tags.
+             * @param {string} value
+             * @returns {string}
+             */
+            function markdownHeaderFormatter (value) {
+
+                if (angular.isString(value)) {
+                    value = value.replace(MARKDOWN_HEADERS_REGEX, function (match, header, title) {
+                        return '<h' + header.length + '>' + title.trim() + '</h' + header.length + '>';
                     });
                 }
 
