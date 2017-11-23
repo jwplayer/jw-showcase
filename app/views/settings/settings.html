@@ -21,7 +21,7 @@
               </div>
             </div>
           </div>
-          <div class="jw-settings-actions-col">
+          <div ng-if="vm.enableContinueWatching" class="jw-settings-actions-col">
             <p class="jw-settings-label">Continue Watching</p>
             <div class="jw-settings-actions-row">
               <p class="jw-settings-description">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="jw-settings-row" ng-if="vm.watchlist.playlist.length">
         <div class="jw-feed-title">Your saved videos</div>
         <jw-card-slider

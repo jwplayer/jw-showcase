@@ -534,13 +534,13 @@
          */
         function performConditionalSeek () {
 
+            performedConditionalSeek = true;
+
             // startTime via $stateParams
             if (startTime) {
                 player.seek(startTime);
 
                 startTime = null;
-
-                performedConditionalSeek = true;
 
                 return;
             }
@@ -548,8 +548,6 @@
             var continueWatching = userSettings.settings.continueWatching && config.options.enableContinueWatching;
             if (continueWatching && angular.isDefined(watchProgressItem)) {
                 resumeWatchProgress();
-
-                performedConditionalSeek = true;
             }
         }
 
