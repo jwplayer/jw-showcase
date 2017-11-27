@@ -1,3 +1,7 @@
+## 3.9.0 (November 27 2017)
+
+- Support linebreaks and Markdown headers in video description
+
 ## 3.8.0 (November 16 2017)
 
 - [#125](http://github.com/jwplayer/jw-showcase/issues/125) Remove Bower

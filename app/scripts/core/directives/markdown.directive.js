@@ -19,7 +19,9 @@
     var MARKDOWN_LINK_REGEX          = /\[([^\[]+)]\(((https?:\/\/|www\.)?[^)]+)\)/ig,
         MARKDOWN_ITALIC_REGEX        = /(?:\*|_)(\S[\s\S]*?)(?:\*|_)/ig,
         MARKDOWN_STRONG_REGEX        = /(?:\*{2}|_{2})(\S[\s\S]*?)(?:\*{2}|_{2})/ig,
-        MARKDOWN_ITALIC_STRONG_REGEX = /(?:\*{3}|_{3})(\S[\s\S]*?)(?:\*{3}|_{3})/ig;
+        MARKDOWN_ITALIC_STRONG_REGEX = /(?:\*{3}|_{3})(\S[\s\S]*?)(?:\*{3}|_{3})/ig,
+        MARKDOWN_HEADERS_REGEX       = /^(#{1,6})(.*)$/gm,
+        LINEBREAK_REGEX              = /(?:\r\n|\r|\n)/g;
 
     angular
         .module('jwShowcase.core')
@@ -38,6 +40,13 @@
      *  - **bold emphasis** or __bold emphasis__
      *  - *italic emphasis* or _italic emphasis_
      *  - [links](http://jwplayer.com)
+     *  - line breaks
+     *  - # Header 1
+     *  - ## Header 2
+     *  - ### Header 3
+     *  - #### Header 4
+     *  - ##### Header 5
+     *  - ###### Header 6
      *
      * @requires ngModel
      *
@@ -57,9 +66,11 @@
 
         function link (scope, element, attrs, ctrl) {
 
+            ctrl.$formatters.push(linebreakFormatter); // linebreak formatter should run last
             ctrl.$formatters.push(markdownLinkFormatter);
             ctrl.$formatters.push(markdownBoldAndItalicFormatter);
-            ctrl.$formatters.push(removeHTMLTagsFormatter);
+            ctrl.$formatters.push(markdownHeaderFormatter);
+            ctrl.$formatters.push(removeHTMLTagsFormatter); // remove html should run first
 
             /**
              * Render the $viewValue as HTML
@@ -107,6 +118,36 @@
 
                         return '<a href="' + link + '"' + target + '>' + word + '</a>';
                     });
+                }
+
+                return value;
+            }
+
+            /**
+             * Replace markdown headers to HTML tags.
+             * @param {string} value
+             * @returns {string}
+             */
+            function markdownHeaderFormatter (value) {
+
+                if (angular.isString(value)) {
+                    value = value.replace(MARKDOWN_HEADERS_REGEX, function (match, header, title) {
+                        return '<h' + header.length + '>' + title.trim() + '</h' + header.length + '>';
+                    });
+                }
+
+                return value;
+            }
+
+            /**
+             * Convert linebreaks to br tags.
+             * @param {string} value
+             * @returns {string}
+             */
+            function linebreakFormatter (value) {
+
+                if (angular.isString(value)) {
+                    value = value.replace(LINEBREAK_REGEX, '<br />');
                 }
 
                 return value;

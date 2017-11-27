@@ -26,12 +26,15 @@
      *
      * @requires jwShowcase.core.platform
      */
-    SettingsController.$inject = ['dataStore', 'watchlist', 'watchProgress', 'userSettings', 'popup', '$state', 'utils',
-        'platform'];
+    SettingsController.$inject = ['dataStore', 'watchlist', 'watchProgress', 'userSettings', 'popup',
+        '$state', 'utils', 'platform', 'config'];
 
-    function SettingsController (dataStore, watchlist, watchProgress, userSettings, popup, $state, utils, platform) {
+    function SettingsController (dataStore, watchlist, watchProgress, userSettings, popup,
+                                 $state, utils, platform, config) {
 
         var vm = this;
+
+        vm.enableContinueWatching = config.options.enableContinueWatching;
 
         vm.watchlist         = dataStore.getFeed('saved-videos');
         vm.watchProgress     = dataStore.getFeed('continue-watching');
