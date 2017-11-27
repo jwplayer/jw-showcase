@@ -1,4 +1,4 @@
-## 3.9.0-beta (November 22 2017)
+## 3.9.0 (November 27 2017)
 
 - Support linebreaks and Markdown headers in video description
 
