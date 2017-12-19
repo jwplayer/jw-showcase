@@ -38,7 +38,8 @@
                     scrollTop = toState.scrollTop;
                 }
 
-                document.body.scrollTop = scrollTop;
+                var scrollingDocument = document.scrollingElement || document.documentElement || document.body;
+                scrollingDocument.scrollTop = scrollTop;
             });
         });
     }
