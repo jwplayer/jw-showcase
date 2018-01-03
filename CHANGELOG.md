@@ -1,3 +1,7 @@
+## 3.9.1 (January 3 2018)
+
+- Fix scrolling to top of video page
+
 ## 3.9.0 (November 27 2017)
 
 - Support linebreaks and Markdown headers in video description
