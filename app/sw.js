@@ -1,12 +1,12 @@
 /* globals self,caches,importScripts,RangedResponse,toolbox */
 
-const OFFLINE_VIDEO_REGEX = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
+var OFFLINE_VIDEO_REGEX = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
 
 importScripts('sw-toolbox.js');
 importScripts('ranged-request.js');
 
 toolbox.options.debug      = false;
-toolbox.options.cache.name = 'jw-showcase-v3.2.0';
+toolbox.options.cache.name = 'jw-showcase';
 
 toolbox.precache([
     '/',
@@ -21,17 +21,23 @@ toolbox.precache([
     /* inject:scripts */
 ]);
 
-toolbox.router.get('/(.*)', toolbox.networkFirst, {origin: 'content.jwplatform.com'});
-toolbox.router.get('/(.*)', toolbox.networkFirst, {origin: 'assets-jpcust.jwpsrv.com'});
-toolbox.router.get('/(.*)', toolbox.networkFirst, {origin: 'ssl.p.jwpcdn.com'});
-toolbox.router.get('/(.*)', toolbox.networkOnly, {origin: 'jwpltx.com'});
+toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'content.jwplatform.com' });
+toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'assets-jpcust.jwpsrv.com' });
+toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'ssl.p.jwpcdn.com' });
+toolbox.router.get('/(.*)', toolbox.networkOnly, { origin: 'jwpltx.com' });
 
-toolbox.router.get('/(.*)', function (request) {
-    if (RangedResponse.isRangedRequest(request) && OFFLINE_VIDEO_REGEX.test(request.url)) {
-        return RangedResponse.create(request);
+toolbox.router.get(
+    '/(.*)',
+    function (request) {
+        if (RangedResponse.isRangedRequest(request) && OFFLINE_VIDEO_REGEX.test(request.url)) {
+            return RangedResponse.create(request);
+        }
+        return toolbox.networkFirst(request);
+    },
+    {
+        origin: 'cdn.jwplayer.com'
     }
-    return toolbox.networkFirst(request);
-}, {origin: 'cdn.jwplayer.com'});
+);
 
 toolbox.router.get('/(.*)', toolbox.cacheFirst);
 toolbox.router.default = toolbox.networkFirst;
