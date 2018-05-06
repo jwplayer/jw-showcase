@@ -1,16 +1,42 @@
+var path = require('path');
 var modRewrite = require('connect-modrewrite');
 var serveStatic = require('serve-static');
 
 module.exports = function (grunt) {
+    var ssl = grunt.option('ssl'),
+        key,
+        cert,
+        ca;
+
+    if (ssl) {
+        key = grunt.file.read(path.resolve(ssl, 'server.key'));
+        cert = grunt.file.read(path.resolve(ssl, 'server.crt'));
+        ca = grunt.file.read(path.resolve(ssl, 'ca.crt'));
+    }
+
     return {
+        conf: {
+            livereload: {
+                host:       'localhost',
+                protocol:   ssl ? 'https' : 'http',
+                port:       35729,
+                key:        key,
+                cert:       cert,
+                ca:         ca
+            }
+        },
         options:    {
             port:       9000,
-            hostname:   '0.0.0.0',
-            livereload: 35729
+            hostname:   'localhost',
+            protocol:   ssl ? 'https' : 'http',
+            key:        key,
+            cert:       cert,
+            ca:         ca,
+            livereload: '<%= connect.conf.livereload.port %>'
         },
         livereload: {
             options: {
-                open:       true,
+                open:       false,
                 middleware: function (connect) {
                     return [
                         modRewrite(['^[^\\.]*$ /index.html [L]']),

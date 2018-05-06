@@ -3,7 +3,7 @@ module.exports = {
         files:   ['<%= config.app %>/scripts/**/*.js'],
         tasks:   [],
         options: {
-            livereload: '<%= connect.options.livereload %>'
+            livereload: '<%= connect.conf.livereload %>'
         }
     },
     compass:    {
@@ -14,19 +14,19 @@ module.exports = {
         files: ['<%= config.app %>/views/**/*.html'],
         tasks: ['ngtemplates'],
         options: {
-            livereload: '<%= connect.options.livereload %>'
+            livereload: '<%= connect.conf.livereload %>'
         }
     },
     html: {
         files: ['<%= config.app %>/index.html', '<%= config.app %>/config.json'],
         tasks: ['template:server'],
         options: {
-            livereload: '<%= connect.options.livereload %>'
+            livereload: '<%= connect.conf.livereload %>'
         }
     },
     livereload: {
         options: {
-            livereload: '<%= connect.options.livereload %>'
+            livereload: '<%= connect.conf.livereload %>'
         },
         files:   [
             '.tmp/styles/{,*/}*.css',
