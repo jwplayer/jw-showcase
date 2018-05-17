@@ -32,15 +32,8 @@ module.exports = {
             cwd:    '<%= config.app %>',
             dest:   '<%= config.dist %>',
             src:    [
-                'images/*/*.{jpg,gif,png,svg}',
-                'manifest.json',
-                '*.js'
+                'manifest.json'
             ]
-        }, {
-            expand: true,
-            cwd:    'node_modules/sw-toolbox',
-            src:    'sw-toolbox.js',
-            dest:   '<%= config.dist %>'
         }]
     },
     server: {
@@ -49,11 +42,6 @@ module.exports = {
             cwd:    'app/fonts',
             dest:   '.tmp/fonts/',
             src:    '*'
-        }, {
-            expand: true,
-            cwd:    'node_modules/sw-toolbox',
-            src:    'sw-toolbox.js',
-            dest:   '.tmp/'
         }]
     },
     styles: {
