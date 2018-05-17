@@ -25,7 +25,14 @@
 
   <% if (pwa) { %>
   <!-- Progressive Web App -->
+
+  <!-- Chrome, Firefox OS and Opera -->
   <meta name="theme-color" content="#fff">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#fff">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+
   <link rel="manifest" href="manifest.json">
   <script>
       window.enablePwa = /^https/.test(window.location.href);
@@ -196,7 +203,7 @@
 <!-- endbuild -->
 
 <script>
-    window.configLocation = './config.json';
+  window.configLocation = './config.json';
 </script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
