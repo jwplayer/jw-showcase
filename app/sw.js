@@ -1,9 +1,8 @@
-/* globals self,caches,importScripts,RangedResponse,toolbox */
+/* globals self,caches,RangedResponse,toolbox */
+
+/* inject:vendorscripts */
 
 var OFFLINE_VIDEO_REGEX = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
-
-importScripts('sw-toolbox.js');
-importScripts('ranged-request.js');
 
 toolbox.options.debug      = false;
 toolbox.options.cache.name = 'jw-showcase';

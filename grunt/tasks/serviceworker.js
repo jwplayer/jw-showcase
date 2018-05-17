@@ -18,24 +18,31 @@ module.exports = function (grunt) {
 
     var fs = require('fs');
 
-    grunt.registerTask('serviceworker', function () {
+    function copySw(dest) {
+        var app = grunt.config.get('config.app');
 
-        var dist = grunt.config.get('config.dist'),
-            sw;
+        var sw = fs.readFileSync(app + '/sw.js').toString();
 
-        // update sw.js
-        sw = fs.readFileSync(dist + '/sw.js').toString();
-        sw = sw.replace('/* inject:scripts */',
-            '\'scripts/scripts.js\',' +
-            '\'scripts/application.js\',' +
-            '\'scripts/vendor.1.js\',' +
-            '\'scripts/vendor.2.js\',' +
-            '\'styles/vendor.css\''
+        // inject vendor scripts
+        sw = sw.replace(
+            '/* inject:vendorscripts */',
+            [
+                'node_modules/sw-toolbox/sw-toolbox.js',
+                app + '/ranged-request.js'
+            ].map(
+                function(pth) {
+                    return fs.readFileSync(pth).toString().replace(/\/\/# ?sourceMappingURL.*/, '');
+                }
+            ).join('\n')
         );
 
         sw = sw.replace(/[ ]+'config\.json',\n/, '');
 
-        fs.writeFileSync(dist + '/sw.js', sw);
-    });
+        fs.writeFileSync(dest + '/sw.js', sw);
+    }
 
+    grunt.registerTask('serviceworker', function () {
+        var dist = grunt.config.get('config.dist');
+        copySw(dist + '/scripts');
+    });
 };
