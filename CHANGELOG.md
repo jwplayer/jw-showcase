@@ -1,3 +1,7 @@
+## 3.9.2 (October 26 2018)
+
+- Updates to ServiceWorker
+
 ## 3.9.1 (January 3 2018)
 
 - Fix scrolling to top of video page
