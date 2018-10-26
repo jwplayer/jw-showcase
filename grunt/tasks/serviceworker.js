@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                 'node_modules/sw-toolbox/sw-toolbox.js',
                 app + '/ranged-request.js'
             ].map(
-                function(pth) {
+                function (pth) {
                     return fs.readFileSync(pth).toString().replace(/\/\/# ?sourceMappingURL.*/, '');
                 }
             ).join('\n')
@@ -43,6 +43,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('serviceworker', function () {
         var dist = grunt.config.get('config.dist');
-        copySw(dist + '/scripts');
+        copySw(dist);
     });
 };

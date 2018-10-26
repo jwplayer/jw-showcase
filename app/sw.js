@@ -2,9 +2,10 @@
 
 /* inject:vendorscripts */
 
-var OFFLINE_VIDEO_REGEX = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
+var OFFLINE_VIDEO_REGEX_A = /cdn\.jwplayer\.com\/videos\/(.)+\.mp4$/;
+var OFFLINE_VIDEO_REGEX_B = /content\.jwplatform\.com\/videos\/(.)+\.mp4$/;
 
-toolbox.options.debug      = false;
+toolbox.options.debug = false;
 toolbox.options.cache.name = 'jw-showcase';
 
 toolbox.precache([
@@ -14,34 +15,46 @@ toolbox.precache([
     '/manifest.json',
 
     // Scripts
-    'application.js',
-    'bridge.js',
-    'scripts.js',
-    'vendor.1.js',
-    'vendor.2.js',
+    'scripts/application.js',
+    'scripts/bridge.js',
+    'scripts/scripts.js',
+    'scripts/vendor.1.js',
+    'scripts/vendor.2.js',
 
     // Styles
-    '../styles/main.css',
-    '../styles/vendor.css',
+    'styles/main.css',
+    'styles/vendor.css',
 
     // Fonts
-    '../fonts/icons.ttf'
+    'fonts/icons.ttf'
 ]);
 
-toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'content.jwplatform.com' });
-toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'assets-jpcust.jwpsrv.com' });
-toolbox.router.get('/(.*)', toolbox.networkFirst, { origin: 'ssl.p.jwpcdn.com' });
-toolbox.router.get('/(.*)', toolbox.networkOnly, { origin: 'jwpltx.com' });
+toolbox.router.get('/(.*)', toolbox.networkFirst, {
+    origin: 'content.jwplatform.com'
+});
+toolbox.router.get('/(.*)', toolbox.networkFirst, {
+    origin: 'assets-jpcust.jwpsrv.com'
+});
+toolbox.router.get('/(.*)', toolbox.networkFirst, {
+    origin: 'ssl.p.jwpcdn.com'
+});
+toolbox.router.get('/(.*)', toolbox.networkOnly, {
+    origin: 'jwpltx.com'
+});
 
 toolbox.router.get(
     '/(.*)',
     function (request) {
-        if (RangedResponse.isRangedRequest(request) && OFFLINE_VIDEO_REGEX.test(request.url)) {
-            return RangedResponse.create(request);
+        if (RangedResponse.isRangedRequest(request)) {
+            if (OFFLINE_VIDEO_REGEX_A.test(request.url)) {
+                return RangedResponse.create(request);
+            }
+            if (OFFLINE_VIDEO_REGEX_B.test(request.url)) {
+                return RangedResponse.create(request);
+            }
         }
         return toolbox.networkFirst(request);
-    },
-    {
+    }, {
         origin: 'cdn.jwplayer.com'
     }
 );
@@ -69,7 +82,7 @@ self.addEventListener('activate', function (event) {
     return event.waitUntil(self.clients.claim());
 });
 
-function prefetchPlayer (repo) {
+function prefetchPlayer(repo) {
     toolbox.cache(repo + 'provider.html5.js');
     toolbox.cache(repo + 'provider.cast.js');
     toolbox.cache(repo + 'jwplayer.controls.js');
@@ -77,8 +90,8 @@ function prefetchPlayer (repo) {
     toolbox.cache(repo + 'related.js');
 }
 
-function prefetchConfig (config) {
-    var base    = config.contentService,
+function prefetchConfig(config) {
+    var base = config.contentService,
         content = config.content || [];
 
     content.forEach(function (content) {
