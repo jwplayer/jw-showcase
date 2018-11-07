@@ -1,3 +1,7 @@
+## 3.9.3 (November 7 2018)
+
+- Fix height of video player in mobile media query
+
 ## 3.9.2 (October 26 2018)
 
 - Updates to ServiceWorker
