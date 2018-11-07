@@ -44,7 +44,7 @@
 @include mobile-only-landscape () {
 
     .jw-video-container {
-        max-height: calc(100vh - #{($header-height-mobile)});
+        max-height: 100vh;
         overflow: hidden;
 
         .jwplayer.jw-flag-aspect-mode {
