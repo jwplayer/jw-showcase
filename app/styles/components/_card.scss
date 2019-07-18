@@ -162,11 +162,6 @@
 
     .jw-card-play-button {
         @include single-transition(opacity, 0.05s, ease-out, 0s);
-        opacity: 0.5;
-
-        &:hover {
-            opacity: 1;
-        }
     }
 
     .jw-card-menu-button {
