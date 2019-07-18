@@ -213,11 +213,15 @@
             function containerClickHandler (event, startTime) {
                 event.stopPropagation();
 
-                var playButton    = findElement('.jw-card-play-button')[0],
-                    clickedOnPlay = playButton === event.target || playButton === event.target.parentNode;
+                var autoplay = false;
+                var cardVideo = findElement('.jw-card-controls')[0];
+
+                if (event.target === cardVideo) {
+                  autoplay = true;
+                }
 
                 if (angular.isFunction(scope.vm.onClick)) {
-                    scope.vm.onClick(scope.vm.item, clickedOnPlay, startTime);
+                    scope.vm.onClick(scope.vm.item, autoplay, startTime);
                 }
             }
 
