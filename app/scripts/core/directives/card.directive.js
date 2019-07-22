@@ -216,7 +216,7 @@
                 var autoplay = false;
                 var cardVideo = findElement('.jw-card-controls')[0];
 
-                if (event.target === cardVideo || event.target.parentNode === cardVideo) {
+                if (event.target === cardVideo || cardVideo.contains(event.target)) {
                   autoplay = true;
                 }
 
