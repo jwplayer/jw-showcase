@@ -4,7 +4,7 @@
   "version": "3.9.3",
   "dependencies": {
     "add-to-homescreen": "^3.2.6",
-    "angular": "1.6.4",
+    "angular": "1.8.0",
     "angular-animate": "1.6.4",
     "angular-aria": "^1.6.4",
     "angular-sanitize": "1.6.4",
