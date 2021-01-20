@@ -10,7 +10,7 @@
     "angular-sanitize": "1.6.4",
     "angular-touch": "1.6.4",
     "angular-ui-router": "~0.3.0",
-    "gsap": "~1.18.4",
+    "gsap": "~3.6.0",
     "iscroll": "~5.2.0",
     "sw-toolbox": "^3.6.0",
     "ua-parser-js": "^0.7.12"
