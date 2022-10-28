@@ -44,7 +44,7 @@
     "jasmine-core": "^2.4.1",
     "jshint": "^2.9.4",
     "jsoneditor": "^5.9.6",
-    "karma": "^0.13.22",
+    "karma": "^6.4.1",
     "karma-jasmine": "^0.3.8",
     "karma-json-fixtures-preprocessor": "0.0.6",
     "karma-ng-html2js-preprocessor": "^1.0.0",
