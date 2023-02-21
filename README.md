@@ -1,3 +1,5 @@
+:warning: **DEPRECATED**: JW Showcase has been deprecated and is no longer maintained. Please use the [JW OTT Web App](https://github.com/jwplayer/ott-web-app) instead.
+
 # JW Showcase
 
 JW Showcase is an open-source, dynamically generated video website built around [JW Player](http://www.jwplayer.com) and JW Platform services. It enables you to easily publish your JW Player-hosted video content with no coding and minimal configuration.
